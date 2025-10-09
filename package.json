@@ -7,6 +7,16 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
+    "lint-staged": "lint-staged",
+    "tsc-check": "tsc --noEmit",
+    "commitlint": "commitlint",
+    "prepare": "is-ci || husky install"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "react": "19.1.0",
@@ -15,6 +25,8 @@
   },
   "devDependencies": {
     "typescript": "5",
+    "@commitlint/cli": "20.1.0",
+    "@commitlint/config-conventional": "20.0.0",
     "@types/node": "20",
     "@types/react": "19",
     "@types/react-dom": "19",
@@ -23,5 +35,8 @@
     "eslint": "9",
     "eslint-config-next": "15.5.4",
     "@eslint/eslintrc": "3"
+    "husky": "8.0.3",
+    "lint-staged": "16.2.3",
+    "typescript": "5.9.3"
   }
 }
