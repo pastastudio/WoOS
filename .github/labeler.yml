@@ -1,39 +1,60 @@
 api:
-  - 'src/api/**'
-
+  - changed-files:
+      - any-glob-to-any-file:
+          - src/api/*
+          - src/api/**/*
 docs:
-  - 'docs/**'
-  - 'README.md'
-
+  - changed-files:
+      - any-glob-to-any-file:
+          - docs/*
+          - docs/**/*
+          - README.md
 ui:
-  - 'src/ui/**'
-  - 'src/components/**'
-  - 'src/app/**'
-  - 'src/app/pages/**'
-
+  - changed-files:
+      - any-glob-to-any-file:
+          - src/ui/*
+          - src/ui/**/*
+          - src/components/*
+          - src/components/**/*
+          - src/app/*
+          - src/app/pages/**/*
 deps:
-  - 'package.json'
-  - 'package-lock.json'
-
+  - changed-files:
+      - any-glob-to-any-file:
+          - package.json
+          - package-lock.json
 tests:
-  - 'tests/**'
-  - '**/*.spec.*'
-  - '**/*.test.*'
-
+  - changed-files:
+      - any-glob-to-any-file:
+          - tests/*
+          - tests/**/*
+          - '**/*.spec.*'
+          - '**/*.test.*'
 infra:
-  - '.github/**'
-  - 'terraform/**'
-
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/*
+          - .github/**/*
+          - terraform/*
+          - terraform/**/*
 ci:
-  - '.github/workflows/**'
-
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/workflows/*
+          - .github/workflows/**/*
 styles:
-  - 'src/**/*.css'
-  - 'src/**/*.scss'
-  - 'src/styles/**'
-  - 'public/**/*.css'
-
+  - changed-files:
+      - any-glob-to-any-file:
+          - src/**/*.css
+          - src/**/*.scss
+          - src/styles/*
+          - src/styles/**/*
+          - public/**/*.css
 security:
-  - 'SECURITY.md'
-  - 'security/**'
-  - '.github/security/**'
+  - changed-files:
+      - any-glob-to-any-file:
+          - SECURITY.md
+          - security/*
+          - security/**/*
+          - .github/security/*
+          - .github/security/**/*
