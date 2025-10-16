@@ -1,0 +1,7 @@
+api:
+  - src/api/**
+docs:
+  - docs/**
+  - README.md
+ui:
+  - src/ui/**
