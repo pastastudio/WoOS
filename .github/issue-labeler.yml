@@ -1,0 +1,8 @@
+bug:
+  - "\\b(bug|error|fails?|exception)s?\\b"
+feature:
+  - "\\b(feature|enhancement|proposal)s?\\b"
+docs:
+  - "\\b(doc|docs|readme|documentation)s?\\b"
+security:
+  - "\\b(vulnerability|xss|csrf|security)s?\\b"

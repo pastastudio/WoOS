@@ -1,0 +1,59 @@
+name: Sync Labels
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node for label sync
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install js-yaml
+        run: |
+          npm init -y
+          npm install js-yaml@4
+
+      - name: Sync labels via node script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          node -e "
+          const fs = require('fs');
+          const yaml = require('js-yaml');
+          const { Octokit } = require('@octokit/rest');
+          const token = process.env.GITHUB_TOKEN;
+          const octokit = new Octokit({ auth: token });
+          const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
+          const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
+          const path = '.github/labels.yml';
+          if (!fs.existsSync(path)) { console.log('No labels file found, skipping'); process.exit(0); }
+          const content = fs.readFileSync(path, 'utf8');
+          const data = yaml.load(content);
+          if (!data || !data.labels) { console.log('labels.yml missing labels root'); process.exit(0); }
+          (async () => {
+            for (const label of data.labels) {
+              const name = label.name;
+              const color = (label.color || 'ededed').replace('#','');
+              const description = label.description || '';
+              try {
+                await octokit.rest.issues.getLabel({ owner, repo, name });
+                await octokit.rest.issues.updateLabel({ owner, repo, current_name: name, name, color, description });
+                console.log('Updated', name);
+              } catch (err) {
+                if (err.status === 404) {
+                  await octokit.rest.issues.createLabel({ owner, repo, name, color, description });
+                  console.log('Created', name);
+                } else { throw err; }
+              }
+            }
+          })();"

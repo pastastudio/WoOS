@@ -19,6 +19,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "tsc-check": "tsc --noEmit",
     "commitlint": "commitlint",
     "prepare": "is-ci || husky install"
   },

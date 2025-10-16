@@ -1,0 +1,28 @@
+labels:
+  - name: api
+    color: ffaabe
+    description: Changes related to backend API or server code
+  - name: docs
+    color: 0366d6
+    description: Documentation changes
+  - name: ui
+    color: ffbeb7
+    description: UI / components / visual changes
+  - name: deps
+    color: 0e8a16
+    description: Dependency updates (package.json, lockfiles)
+  - name: tests
+    color: c2e0c6
+    description: Tests and test infra
+  - name: infra
+    color: d4c5f9
+    description: Infrastructure, CI, and config files
+  - name: ci
+    color: 006b75
+    description: CI workflow changes
+  - name: styles
+    color: fbca04
+    description: Styling / CSS changes
+  - name: security
+    color: b60205
+    description: Security-related changes or advisories

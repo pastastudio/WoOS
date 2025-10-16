@@ -1,0 +1,4 @@
+# CODEOWNERS file
+# Assign the copiedcopypasta organization as code owner for all files.
+
+* @copiedcopypasta/owners

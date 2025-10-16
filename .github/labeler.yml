@@ -1,7 +1,39 @@
 api:
-  - src/api/**
+  - 'src/api/**'
+
 docs:
-  - docs/**
-  - README.md
+  - 'docs/**'
+  - 'README.md'
+
 ui:
-  - src/ui/**
+  - 'src/ui/**'
+  - 'src/components/**'
+  - 'src/app/**'
+  - 'src/app/pages/**'
+
+deps:
+  - 'package.json'
+  - 'package-lock.json'
+
+tests:
+  - 'tests/**'
+  - '**/*.spec.*'
+  - '**/*.test.*'
+
+infra:
+  - '.github/**'
+  - 'terraform/**'
+
+ci:
+  - '.github/workflows/**'
+
+styles:
+  - 'src/**/*.css'
+  - 'src/**/*.scss'
+  - 'src/styles/**'
+  - 'public/**/*.css'
+
+security:
+  - 'SECURITY.md'
+  - 'security/**'
+  - '.github/security/**'
