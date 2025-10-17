@@ -1,28 +1,54 @@
-labels:
-  - name: api
-    color: ffaabe
-    description: Changes related to backend API or server code
-  - name: docs
-    color: 0366d6
-    description: Documentation changes
-  - name: ui
-    color: ffbeb7
-    description: UI / components / visual changes
-  - name: deps
-    color: 0e8a16
-    description: Dependency updates (package.json, lockfiles)
-  - name: tests
-    color: c2e0c6
-    description: Tests and test infra
-  - name: infra
-    color: d4c5f9
-    description: Infrastructure, CI, and config files
-  - name: ci
-    color: 006b75
-    description: CI workflow changes
-  - name: styles
-    color: fbca04
-    description: Styling / CSS changes
-  - name: security
-    color: b60205
-    description: Security-related changes or advisories
+- name: api
+  color: '5663e9'
+- name: ui
+  color: ffbeb7
+- name: deps
+  color: 276bd1
+- name: dependencies
+  color: 276bd1
+- name: tests
+  color: f06dff
+- name: infra
+  color: d4c5f9
+- name: ci
+  color: 0075ca
+- name: styles
+  color: fbca04
+- name: security
+  color: b60205
+- name: bug
+  color: d73a4a
+- name: caching
+  color: 80c042
+- name: chore
+  color: ffffff
+- name: blocked
+  color: fc1423
+- name: discussion
+  color: b6b1f9
+- name: duplicate
+  color: cfd3d7
+- name: error handling
+  color: 80c042
+- name: feature request
+  color: fcf95a
+- name: good first issue
+  color: 7057ff
+- name: help wanted
+  color: '008672'
+- name: in progress
+  color: ffccd7
+- name: in review
+  color: aed5fc
+- name: interactions
+  color: 80c042
+- name: invalid
+  color: e4e669
+- name: threads
+  color: 80c042
+- name: typings
+  color: 80c042
+- name: utility
+  color: 80c042
+- name: wontfix
+  color: ffffff
