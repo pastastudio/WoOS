@@ -18,10 +18,10 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install js-yaml
+      - name: Install dependencies for label sync
         run: |
           npm init -y
-          npm install js-yaml@4
+          npm install js-yaml@4 @octokit/rest@20
 
       - name: Sync labels via node script
         env:
