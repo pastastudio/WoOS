@@ -24,3 +24,38 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Simple responsive 12-column grid utilities used by the app pages */
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem; /* 24px */
+}
+
+.app-col {
+  grid-column: span 12;
+}
+
+.app-col-sidebar {
+  grid-column: span 12;
+}
+
+.app-col-main {
+  grid-column: span 12;
+}
+
+@media (min-width: 768px) {
+  .app-col-sidebar {
+    grid-column: span 3;
+  }
+  /* If sidebar is not present we keep main full-width so inner container can center correctly */
+  .app-col-main {
+    grid-column: span 12;
+  }
+}
+
+/* small utility to center content inside main area */
+.app-col-main > * {
+  max-width: 1200px;
+  margin: 0 auto;
+}

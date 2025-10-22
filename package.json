@@ -15,18 +15,20 @@
   "author": "CCP",
   "type": "module",
   "scripts": {
-    "dev": "npm run lint && next dev",
+    "dev": "npm run ceg && npm run lint && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "tsc-check": "tsc --noEmit",
     "commitlint": "commitlint",
+    "ceg": "npm run generate:components",
+    "generate:components": "npx -y ts-node ./scripts/CEG.ts",
     "prepare": "is-ci || husky install"
   },
   "dependencies": {
     "next": "15.5.4",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "20.1.0",
