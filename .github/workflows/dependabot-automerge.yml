@@ -14,13 +14,17 @@ jobs:
     steps:
       - name: Check PR author and semver change
         id: check
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
         run: |
-          if [ "${{ github.event.pull_request.user.login }}" != "dependabot[bot]" ] && [ "${{ github.event.pull_request.user.login }}" != "dependabot-preview[bot]" ]; then
+          if [ "$PR_AUTHOR" != "dependabot[bot]" ] && [ "$PR_AUTHOR" != "dependabot-preview[bot]" ]; then
             echo "author=skip" >> $GITHUB_OUTPUT
             exit 0
           fi
 
-          TEXT="${{ github.event.pull_request.title }}\n${{ github.event.pull_request.body }}"
+          TEXT="${PR_TITLE}\n${PR_BODY}"
           # Extract from X.Y.Z to A.B.C
           if echo "$TEXT" | grep -Eo "from [0-9]+\.[0-9]+\.[0-9]+ to [0-9]+\.[0-9]+\.[0-9]+" >/dev/null; then
             PAIR=$(echo "$TEXT" | grep -Eo "from [0-9]+\.[0-9]+\.[0-9]+ to [0-9]+\.[0-9]+\.[0-9]+" | head -n1)
