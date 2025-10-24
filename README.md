@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+    <br />
+    <p>
+        <a href="https://github.com/copiedcopypasta/dmwt">
+            <img src="assets/dmwt-logo.png" title="dmwt" alt="dmwt logo" width="500" />
+        </a>
+    </p>
+    <br />
+    <p>
+        <!-- Build Workflow -->
+        <a href="https://github.com/copiedcopypasta/dmwt/actions/workflows/ci.yml">
+            <img src="https://github.com/copiedcopypasta/dmwt/actions/workflows/ci.yml/badge.svg" alt="Build" />
+        </a>
+        <!-- Production Workflow -->
+        <a href="https://github.com/copiedcopypasta/dmwt/deployments/Production">
+            <img src="https://img.shields.io/badge/deployment-Production-blue" alt="Production Deployment" />
+        </a>
+        <!-- React Version -->
+        <img src="https://img.shields.io/github/package-json/dependency-version/copiedcopypasta/dmwt/react" alt="React Version" />
+        <!-- Next.js Version -->
+        <img src="https://img.shields.io/github/package-json/dependency-version/copiedcopypasta/dmwt/next" alt="Next.js Version" />
+    </p>
+    <br />
+</div>
 
-## Getting Started
+## About
 
-First, run the development server:
+**A website designed with Green IT principles, built with Next.js.**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This project helps you make more sustainable tech decisions: reduce unnecessary device purchases, choose and compare energy‑efficient operating systems, and adopt development practices that make software run faster while using less power.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> [!IMPORTANT]
+> **This project was created as part of a university course.**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Links
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [Website][website] (_work in progress_)
+- [API][api] (_work in progress_)
 
-## Learn More
+## Disclaimer
 
-To learn more about Next.js, take a look at the following resources:
+This project is not affiliated with a real company and was created for academic purposes. The information may contain inaccuracies. Please verify independently before using or reproducing any content.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is licensed under the [MIT License][license].
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[website]: https://site.ccp.2hoch1.dev
+[api]: https://api.ccp.2hoch1.dev
+[license]: LICENSE
