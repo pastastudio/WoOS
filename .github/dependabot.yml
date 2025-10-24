@@ -22,6 +22,6 @@ updates:
       - 'dependabot'
     # Prefix for commit messages
     commit-message:
-      prefix: 'deps'
+      prefix: 'chore(deps)'
     # Target branch for PRs
     target-branch: 'main'
