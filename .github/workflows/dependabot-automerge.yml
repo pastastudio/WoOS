@@ -1,61 +1,27 @@
-name: Dependabot Auto-merge (minor)
+name: Dependabot Auto-merge
 
 on:
   pull_request:
-    types: [opened, reopened, synchronize, labeled]
+    types: [opened, synchronize]
 
 permissions:
   contents: write
   pull-requests: write
 
 jobs:
-  automerge:
+  dependabot:
     runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
     steps:
-      - name: Check PR author and semver change
-        id: check
-        env:
-          PR_TITLE: ${{ github.event.pull_request.title }}
-          PR_BODY: ${{ github.event.pull_request.body }}
-          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
-        run: |
-          if [ "$PR_AUTHOR" != "dependabot[bot]" ] && [ "$PR_AUTHOR" != "dependabot-preview[bot]" ]; then
-            echo "author=skip" >> $GITHUB_OUTPUT
-            exit 0
-          fi
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v2
+        with:
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
 
-          TEXT="${PR_TITLE}\n${PR_BODY}"
-          # Extract from X.Y.Z to A.B.C
-          if echo "$TEXT" | grep -Eo "from [0-9]+\.[0-9]+\.[0-9]+ to [0-9]+\.[0-9]+\.[0-9]+" >/dev/null; then
-            PAIR=$(echo "$TEXT" | grep -Eo "from [0-9]+\.[0-9]+\.[0-9]+ to [0-9]+\.[0-9]+\.[0-9]+" | head -n1)
-            OLD=$(echo "$PAIR" | awk '{print $2}')
-            NEW=$(echo "$PAIR" | awk '{print $4}')
-            OMAJOR=$(echo "$OLD" | cut -d. -f1)
-            OMINOR=$(echo "$OLD" | cut -d. -f2)
-            OPATCH=$(echo "$OLD" | cut -d. -f3)
-            NMAJOR=$(echo "$NEW" | cut -d. -f1)
-            NMINOR=$(echo "$NEW" | cut -d. -f2)
-            NPATCH=$(echo "$NEW" | cut -d. -f3)
-            if [ "$NMAJOR" -ne "$OMAJOR" ]; then
-              echo "author=skip" >> $GITHUB_OUTPUT
-              exit 0
-            fi
-            if [ "$NMINOR" -lt "$OMINOR" ]; then
-              echo "author=skip" >> $GITHUB_OUTPUT
-              exit 0
-            fi
-            if [ "$NMINOR" -eq "$OMINOR" ] && [ "$NPATCH" -lt "$OPATCH" ]; then
-              echo "author=skip" >> $GITHUB_OUTPUT
-              exit 0
-            fi
-            echo "author=dependabot" >> $GITHUB_OUTPUT
-          else
-            echo "author=skip" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Attempt auto-merge
-        if: steps.check.outputs.author == 'dependabot'
-        uses: pascalgn/automerge-action@v0.15.0
+      - name: Enable auto-merge for Dependabot PRs
+        if: steps.metadata.outputs.update-type == 'version-update:semver-minor' || steps.metadata.outputs.update-type == 'version-update:semver-patch'
+        run: gh pr merge --auto --squash "$PR_URL"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          MERGE_METHOD: squash
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
