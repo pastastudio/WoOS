@@ -1,6 +1,6 @@
 {
   "name": "dmwt",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "description": "A modern DMWT website for green-it.",
   "homepage": "https://site.ccp.2hoch1.dev",
@@ -13,19 +13,25 @@
   },
   "license": "MIT",
   "author": "CCP",
+  "contributors": [
+    "copiedcopypasta/owners (https://github.com/copiedcopypasta/owners)"
+  ],
   "type": "module",
   "scripts": {
-    "dev": "npm run ceg && npm run lint && next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint",
-    "tsc-check": "tsc --noEmit",
-    "commitlint": "commitlint",
     "ceg": "npm run generate:components",
+    "commitlint": "commitlint",
+    "dev": "npm run ceg && npm run lint && next dev",
     "generate:components": "npx -y ts-node ./scripts/CEG.ts",
-    "prepare": "is-ci || husky install"
+    "postinstall": "is-ci || prisma generate --no-engine",
+    "lint": "eslint",
+    "prepare": "is-ci || husky install",
+    "start": "next start",
+    "tsc-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@prisma/client": "6.18.0",
+    "@prisma/extension-accelerate": "2.0.2",
     "next": "16.0.0",
     "react": "19.2.0",
     "react-dom": "19.2.0"
@@ -43,11 +49,12 @@
     "husky": "8.0.3",
     "lint-staged": "16.2.6",
     "prettier": "3.6.2",
+    "prettier-plugin-packagejson": "2.5.19",
+    "prettier-plugin-sort-json": "4.1.1",
     "prettier-plugin-tailwindcss": "0.6.14",
+    "prisma": "6.18.0",
     "tailwindcss": "4",
+    "tsx": "4.20.6",
     "typescript": "5.9.3"
-  },
-  "engines": {
-    "node": ">=22.12.0"
   }
 }
