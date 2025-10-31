@@ -262,6 +262,9 @@ function generateIndexFile(
     indexFileContent += exports.join('\n') + '\n\n';
   }
 
+  // Remove trailing newline to avoid extra blank line at end
+  indexFileContent = indexFileContent.trimEnd() + '\n';
+
   fs.writeFileSync(outputFilePath, indexFileContent, 'utf8');
 
   // Count how many export lines were written
