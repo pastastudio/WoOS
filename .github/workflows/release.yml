@@ -29,6 +29,7 @@ jobs:
           git add package.json package-lock.json
           git commit -m "chore(release): update version to $VERSION"
           git fetch origin main
+          git rebase origin/main
           git push origin HEAD:main
 
       - name: Get previous tag
