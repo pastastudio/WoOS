@@ -3,7 +3,8 @@ name: Release
 on:
   push:
     tags:
-      - 'v*.*.*'
+      - '*.*.*'
+      - '*.*.*-*'
 
 jobs:
   release:
@@ -21,7 +22,7 @@ jobs:
 
       - name: Update package.json version
         run: |
-          VERSION=${GITHUB_REF_NAME#v}
+          VERSION=${GITHUB_REF_NAME}
           npm version $VERSION --no-git-tag-version
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -34,7 +35,7 @@ jobs:
         id: prev_tag
         run: |
           git fetch --tags
-          PREV_TAG=$(git tag --sort=-creatordate | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+' | grep -v "${GITHUB_REF_NAME}" | head -n 1)
+          PREV_TAG=$(git tag --sort=-creatordate | grep -E '^[0-9]+\.[0-9]+\.[0-9]+(-.+)?$' | grep -v "${GITHUB_REF_NAME}" | head -n 1)
           echo "prev_tag=$PREV_TAG" >> $GITHUB_OUTPUT
 
       - name: Generate changelog
@@ -49,7 +50,7 @@ jobs:
       - name: Check if pre-release
         id: prerelease
         run: |
-          if [[ "${GITHUB_REF_NAME}" =~ -alpha|-beta|-rc ]]; then
+          if [[ "${GITHUB_REF_NAME}" =~ -(alpha|beta|rc) ]]; then
             echo "is_prerelease=true" >> $GITHUB_OUTPUT
           else
             echo "is_prerelease=false" >> $GITHUB_OUTPUT
