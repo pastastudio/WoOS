@@ -14,6 +14,12 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
+/**
+ * Prompts the user for input.
+ *
+ * @param question The question to ask the user
+ * @returns A promise that resolves to the user's input
+ */
 function prompt(question: string): Promise<string> {
   return new Promise((resolve) => {
     rl.question(question, (answer) => {
@@ -22,6 +28,11 @@ function prompt(question: string): Promise<string> {
   });
 }
 
+/**
+ * Main function to run the migration
+ *
+ * @returns void
+ */
 async function main() {
   console.log('🔄 Prisma Migration Tool\n');
 
