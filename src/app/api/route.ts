@@ -13,3 +13,17 @@ export async function GET() {
     );
   }
 }
+
+export async function POST(request: Request) {
+  try {
+    const data = await request.json();
+    const user = await prisma.user.create({ data });
+    return NextResponse.json(user);
+  } catch (err) {
+    console.error('API /api error:', err);
+    return NextResponse.json(
+      { error: 'Failed to create user' },
+      { status: 500 },
+    );
+  }
+}
