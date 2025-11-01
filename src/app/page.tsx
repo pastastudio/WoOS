@@ -1,10 +1,8 @@
 'use client';
 import * as Components from './components/index';
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function Home() {
-  const [inputValue, setInputValue] = useState('');
-
   return (
     <>
       <Components.Banner
@@ -96,12 +94,22 @@ export default function Home() {
                 <Components.Button color="blue" text="Beschreibung" link="" />
               </section>
               <section>
-                <p>Inputfield:</p>
+                <p>Multiple separate Inputfields:</p>
+
                 <Components.Inputfield
-                  label="Example Inputfield"
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  placeholder="hier kann man reinschreiben"
+                  label="Singleline"
+                  defaultValue={''}
+                  placeholder="Example Singleline Text"
+                  fullWidth
+                />
+
+                <Components.Inputfield
+                  label="Multiline"
+                  defaultValue={''}
+                  placeholder="Example Multiline Text"
+                  fullWidth
+                  multiline
+                  rows={4}
                 />
               </section>
               <section>
