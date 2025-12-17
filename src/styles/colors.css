@@ -1,0 +1,39 @@
+:root {
+  /* Brand Colors */
+  --blue: #00d9ff;
+  --purple: #b026ff;
+  --pink: #ff006e;
+  --green: #39ff14;
+  --yellow: #fffc00;
+  --orange: #ff5f1f;
+  --cyan: #00ffff;
+  --magenta: #ff00ff;
+
+  /* Glow */
+  --glow-blue: 0 0 20px rgba(0, 217, 255, 0.8);
+  --glow-purple: 0 0 20px rgba(176, 38, 255, 0.8);
+  --glow-pink: 0 0 20px rgba(255, 0, 110, 0.8);
+  --glow-green: 0 0 20px rgba(57, 255, 20, 0.8);
+  --glow-yellow: 0 0 20px rgba(255, 252, 0, 0.8);
+  --glow-orange: 0 0 20px rgba(255, 95, 31, 0.8);
+  --glow-cyan: 0 0 20px rgba(0, 255, 255, 0.8);
+  --glow-magenta: 0 0 20px rgba(255, 0, 255, 0.8);
+
+  /* Grays */
+  --gray-50: #fafafa;
+  --gray-100: #f4f4f5;
+  --gray-200: #e4e4e7;
+  --gray-300: #d4d4d8;
+  --gray-400: #a1a1aa;
+  --gray-500: #71717a;
+  --gray-600: #52525b;
+  --gray-700: #3f3f46;
+  --gray-800: #27272a;
+  --gray-900: #18181b;
+  --gray-950: #09090b;
+
+  /* Status */
+  --success: var(--green);
+  --warning: var(--yellow);
+  --error: var(--pink);
+}

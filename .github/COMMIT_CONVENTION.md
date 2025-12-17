@@ -13,21 +13,25 @@ Messages must be matched by the following regex:
 ### Examples
 
 **Feature hinzufügen (API-Modul):**
+
 ```
 feat(api): add user authentication
 ```
 
 **Bugfix im UI:**
+
 ```
 fix(ui): correct button alignment
 ```
 
 **Dokumentation aktualisieren:**
+
 ```
 docs: update README with setup instructions
 ```
 
 **Performance-Verbesserung im Core:**
+
 ```
 perf(core): optimize database queries
 
@@ -35,36 +39,43 @@ BREAKING CHANGE: query format has changed
 ```
 
 **Refactoring im TypeScript-Bereich:**
+
 ```
 refactor(types): simplify user type definitions
 ```
 
 **Test hinzufügen:**
+
 ```
 test(api): add tests for login endpoint
 ```
 
 **Build-Konfiguration ändern:**
+
 ```
 build: update webpack config
 ```
 
 **CI-Workflow anpassen:**
+
 ```
 ci: add code coverage step
 ```
 
 **Chore (Routine-Aufgabe):**
+
 ```
 chore: update dependencies
 ```
 
 **Style-Anpassung:**
+
 ```
 style(ui): format header component
 ```
 
 **Revert eines Commits:**
+
 ```
 revert: feat(api): add user authentication
 
@@ -72,16 +83,19 @@ This reverts commit 667ecc1654a317a13331b17617d973392f415f02.
 ```
 
 **Typen aktualisieren:**
+
 ```
 types: update user interface
 ```
 
 **API-Scope Beispiel:**
+
 ```
 api(user): add endpoint for user profile
 ```
 
 **UI-Scope Beispiel:**
+
 ```
 ui(header): fix logo alignment
 ```

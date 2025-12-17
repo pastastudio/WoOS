@@ -1,0 +1,308 @@
+/* ============================================================================
+   Greenland Section
+   ============================================================================ */
+
+.greenlandWrapper {
+  color: var(--color-brand-200);
+  display: block;
+  overflow: hidden;
+}
+
+.greenland {
+  display: block;
+  height: auto;
+  width: 100%;
+  margin-bottom: -3px;
+}
+
+/* ============================================================================
+   Footer Container
+   ============================================================================ */
+
+.footerContainer {
+  background-color: var(--color-brand-200);
+  display: flex;
+  gap: 2rem;
+  padding-left: 9rem;
+  padding-right: 9rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  width: 100%;
+}
+
+/* ============================================================================
+   Info Section (Logo, Language, Socials)
+   ============================================================================ */
+
+.infoSection {
+  font-family: var(--font-pixelify);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logoWrapper {
+  margin-bottom: 2rem;
+}
+
+.logo {
+  height: 6.25rem;
+  width: auto;
+  color: white;
+}
+
+.languageWrapper {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.sectionTitle {
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  color: var(--color-neutral-500);
+}
+
+/* Language Selector */
+.selectTrigger {
+  font-family: var(--font-pixelify);
+  background-color: rgba(34, 197, 94, 0.2);
+  width: fit-content;
+  min-width: 12.5rem;
+  border-radius: 0.5rem;
+  border: transparent;
+  color: white;
+  padding: 0.5rem;
+}
+
+.selectTrigger:hover {
+  background-color: rgba(34, 197, 94, 0.3);
+}
+
+.selectContent {
+  background-color: rgba(34, 197, 94, 0.2);
+  border: transparent;
+  color: white;
+  backdrop-filter: blur(4px);
+}
+
+.selectItem {
+  padding: 0.5rem;
+}
+
+.selectItem:hover {
+  background-color: rgba(34, 197, 94, 0.3);
+  color: white;
+}
+
+.selectItem:focus {
+  background-color: rgba(34, 197, 94, 0.3);
+  color: white;
+}
+
+.languageOption {
+  font-family: var(--font-pixelify);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Social Links */
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.socialLink {
+  transition: opacity 0.2s;
+}
+
+.socialLink:hover {
+  opacity: 0.7;
+}
+
+.socialIcon {
+  height: 1.5rem;
+  width: 1.5rem;
+  color: white;
+}
+
+/* ============================================================================
+   Links Section
+   ============================================================================ */
+
+.linksWrapper {
+  grid-column: span 2;
+}
+
+.linksContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.categoryTitle {
+  font-family: var(--font-pixelify);
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  color: var(--color-neutral-400);
+}
+
+.linkList {
+  font-family: var(--font-pixelify);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.linkList li {
+  list-style: none;
+}
+
+.link {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  color: var(--color-neutral-700);
+  text-decoration: none;
+  transition: text-decoration 0.2s;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* ============================================================================
+   Banner Section
+   ============================================================================ */
+
+.bannerWrapper {
+  grid-column: span 3;
+}
+
+.banner {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+/* ============================================================================
+   Responsive
+   ============================================================================ */
+
+@media (max-width: 1140px) {
+  .linksContainer {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .linkCategory {
+    width: calc(50% - 0.75rem);
+  }
+}
+
+@media (max-width: 920px) {
+  .footerContainer {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .contentGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .linksWrapper {
+    grid-column: span 2;
+  }
+
+  .bannerWrapper {
+    grid-column: span 2;
+  }
+
+  .selectTrigger {
+    min-width: 10rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .footerContainer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .infoSection {
+    width: 100%;
+  }
+
+  .logoWrapper {
+    margin-bottom: 1.5rem;
+  }
+
+  .logo {
+    height: 5rem;
+  }
+
+  .languageWrapper {
+    margin-bottom: 1.5rem;
+    width: 100%;
+  }
+
+  .selectTrigger {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .linksWrapper {
+    grid-column: span 1;
+  }
+
+  .linksContainer {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .categoryTitle {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .linkList {
+    gap: 0.25rem;
+  }
+
+  .link {
+    font-size: 1rem;
+  }
+
+  .bannerWrapper {
+    grid-column: span 1;
+  }
+
+  .sectionTitle {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .socialLinks {
+    gap: 0.75rem;
+  }
+
+  .socialIcon {
+    height: 1.25rem;
+    width: 1.25rem;
+  }
+}
