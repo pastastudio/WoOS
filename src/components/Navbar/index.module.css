@@ -1,0 +1,126 @@
+/* ============================================================================
+   Navbar Styles
+   ============================================================================ */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: auto;
+  width: auto;
+  padding: 1rem;
+}
+
+.navbar.fixed {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 50;
+}
+
+.navbar.withBorder {
+  border-bottom: 1px solid rgb(31, 31, 31);
+}
+
+/* ============================================================================
+   Logo Section
+   ============================================================================ */
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logoContainer:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.logoSvg {
+  height: 2rem;
+  width: auto;
+}
+
+.bannerSvg {
+  height: 1.5rem;
+  width: auto;
+}
+
+/* ============================================================================
+   Links Section
+   ============================================================================ */
+
+.linksList {
+  font-family: var(--font-pixelify);
+  display: flex;
+  gap: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+}
+
+.linkItem {
+  list-style: none;
+}
+
+.link:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ============================================================================
+   Navigation & Right Section
+   ============================================================================ */
+
+.centerNav {
+  margin-left: auto;
+  margin-right: auto;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.rightElement {
+  display: flex;
+  align-items: center;
+  padding: 0 0.3rem;
+}
+
+.separator {
+  width: 1px;
+  height: 1.3rem;
+  background-color: rgba(126, 126, 126, 0.2);
+  margin: 0 0.25rem;
+}
+
+/* ============================================================================
+   Buttons
+   ============================================================================ */
+
+.loginButton {
+  font-family: var(--font-pixelify);
+  background-color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  color: black;
+  margin-left: 0.5rem;
+}
+
+.loginButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: inherit;
+}
+
+.profileButton {
+  position: relative;
+}
+
+.profileButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: inherit;
+}

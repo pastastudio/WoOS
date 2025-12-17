@@ -1,6 +1,6 @@
+import dotenv from 'dotenv';
 import fs from 'node:fs';
 import path from 'node:path';
-import dotenv from 'dotenv';
 import { defineConfig, env } from 'prisma/config';
 
 const root = path.resolve(__dirname);

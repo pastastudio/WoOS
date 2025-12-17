@@ -1,0 +1,50 @@
+/* =====================================================
+   GLOBALS – Next.js + Tailwind + Dein Token-System
+===================================================== */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+/* Dein Design-System */
+@import './components.css';
+@import './theme.css';
+
+/* =====================================================
+   Layout Grid (modern, CSS Grid)
+===================================================== */
+
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+  gap: 1.5rem;
+  background: var(--color-default-background);
+  color: var(--color-default-font);
+}
+
+/* =====================================================
+   Responsive Layout (>= 768px)
+===================================================== */
+
+/* =====================================================
+   Grid Area Mapping
+===================================================== */
+
+header {
+  grid-area: header;
+}
+
+aside {
+  grid-area: sidebar;
+}
+
+main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
+}

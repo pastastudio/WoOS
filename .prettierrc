@@ -3,7 +3,7 @@
   "bracketSpacing": true,
   "endOfLine": "lf",
   "jsonRecursiveSort": true,
-  "jsxSingleQuote": false,
+  "jsxSingleQuote": true,
   "plugins": [
     "prettier-plugin-tailwindcss",
     "prettier-plugin-sort-json",

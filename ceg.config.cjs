@@ -6,10 +6,10 @@
 
 const paths = {
   // Directory where components live (relative to project root)
-  components: 'src/app/components',
+  components: 'src/components',
 
   // Output path for the generated index file (defaults to components folder)
-  indexOutput: 'src/app/components/index.ts',
+  indexOutput: 'src/generated/components.ts',
 };
 
 const rules = {
@@ -17,7 +17,7 @@ const rules = {
   allowedExtensions: ['.tsx'],
 
   // Filenames to ignore when scanning the components directory
-  ignoreFiles: ['base.tsx', 'index.ts'],
+  ignoreFiles: ['base.tsx', 'index.ts', 'Layout.tsx'],
 };
 
 const comment = `/**
@@ -26,6 +26,7 @@ const comment = `/**
  * This file is auto-generated, do not edit manually.
  */`;
 
+/* eslint-disable-next-line no-undef */
 module.exports = {
   // Paths used by the generator
   paths,
