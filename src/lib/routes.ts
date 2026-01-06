@@ -1,11 +1,7 @@
-/**
- * DO NOT TOUCH THIS FILE!
- * This file is auto-generated. Any changes made here will be overwritten.
- */
+import path from 'path';
+import { type Routes } from '@/types';
 
-import path from "path";
-
-const routes = [
+const routes: Routes[] = [
   { path: path.resolve('src/app/(main)/page'), resolved: '/', priority: 1.0 },
   {
     path: path.resolve('src/app/(main)/feedback/page'),

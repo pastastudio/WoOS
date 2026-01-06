@@ -106,7 +106,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='de' style={{ height: '100vh' }} suppressHydrationWarning>
+    <html lang='de' suppressHydrationWarning style={{ height: '100vh' }}>
       <body
         className='min-h-screen'
         style={{
@@ -115,7 +115,7 @@ export default function RootLayout({
           height: '100%',
         }}
       >
-        <ThemeProvider attribute='class' defaultTheme='system'>
+        <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
           <Navbar {...navbar} />
           {children}
           <Footer {...footer} />

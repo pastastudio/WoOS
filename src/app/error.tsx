@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { AlertTriangle, RotateCw, Home } from 'lucide-react';
 import ErrorLayout from '@/layouts/ErrorLayout';
 import { FlipButton } from '@/components/ui/shadcn-io/flip-button';
@@ -30,18 +29,10 @@ export default function GlobalError({
 
   return (
     <ErrorLayout>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, ease: 'easeOut' }}
-        className='flex flex-col items-center gap-4 text-center'
-      >
-        <motion.div
-          animate={{ y: [-3, 3, -3] }}
-          transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-        >
+      <div className='animate-fade-in flex flex-col items-center gap-4 text-center'>
+        <div className='animate-float'>
           <AlertTriangle className='text-error-500 h-12 w-12' />
-        </motion.div>
+        </div>
 
         <h1 className='text-2xl font-semibold text-neutral-900'>
           {ERROR_CONFIG.title}
@@ -68,7 +59,7 @@ export default function GlobalError({
             />
           </Link>
         </div>
-      </motion.div>
+      </div>
     </ErrorLayout>
   );
 }

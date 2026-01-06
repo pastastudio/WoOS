@@ -51,3 +51,14 @@ export interface CurrentUserProps {
     isAdmin: boolean;
   } | null;
 }
+
+export interface Routes {
+  path: string;
+  resolved: string;
+  priority: number;
+}
+
+export interface Theme {
+  backgroundColor: string;
+  themeColor: string;
+}

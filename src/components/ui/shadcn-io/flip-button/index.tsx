@@ -1,33 +1,24 @@
 'use client';
 
 import * as React from 'react';
-import {
-  type HTMLMotionProps,
-  type Transition,
-  type Variant,
-  motion,
-} from 'motion/react';
-
 import { cn } from '@/lib/utils';
 
 type FlipDirection = 'top' | 'bottom' | 'left' | 'right';
 
-type FlipButtonProps = HTMLMotionProps<'button'> & {
+type FlipButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   frontText: string;
   backText: string | React.ReactElement;
-  transition?: Transition;
   frontClassName?: string;
   backClassName?: string;
   from?: FlipDirection;
 };
 
 const DEFAULT_SPAN_CLASS_NAME =
-  'absolute inset-0 flex items-center justify-center rounded-lg';
+  'absolute inset-0 flex items-center justify-center rounded-lg transition-all duration-300';
 
 function FlipButton({
   frontText,
   backText,
-  transition = { type: 'spring', stiffness: 280, damping: 20 },
   className,
   frontClassName,
   backClassName,
@@ -35,70 +26,45 @@ function FlipButton({
   ...props
 }: FlipButtonProps) {
   const isVertical = from === 'top' || from === 'bottom';
-  const rotateAxis = isVertical ? 'rotateX' : 'rotateY';
+  const flipDirection =
+    from === 'top' || from === 'left' ? 'normal' : 'reverse';
 
-  const frontOffset = from === 'top' || from === 'left' ? '50%' : '-50%';
-  const backOffset = from === 'top' || from === 'left' ? '-50%' : '50%';
-
-  const buildVariant = (
-    opacity: number,
-    rotation: number,
-    offset: string | null = null,
-  ): Variant => ({
-    opacity,
-    [rotateAxis]: rotation,
-    ...(isVertical && offset !== null ? { y: offset } : {}),
-    ...(!isVertical && offset !== null ? { x: offset } : {}),
-  });
-
-  const frontVariants = {
-    initial: buildVariant(1, 0, '0%'),
-    hover: buildVariant(0, 90, frontOffset),
-  };
-
-  const backVariants = {
-    initial: buildVariant(0, 90, backOffset),
-    hover: buildVariant(1, 0, '0%'),
-  };
+  const flipClass = isVertical
+    ? `flip-button-vertical-${flipDirection}`
+    : `flip-button-horizontal-${flipDirection}`;
 
   return (
-    <motion.button
+    <button
       data-slot='flip-button'
-      initial='initial'
-      whileHover='hover'
-      whileTap={{ scale: 0.95 }}
       className={cn(
-        'relative inline-block h-10 cursor-pointer px-4 py-2 text-sm font-medium perspective-[1000px] focus:outline-none',
+        'flip-button group relative inline-block h-10 cursor-pointer px-4 py-2 text-sm font-medium [perspective:1000px] focus:outline-none active:scale-95',
+        flipClass,
         className,
       )}
-      {...(props as HTMLMotionProps<'button'>)}
+      {...props}
     >
-      <motion.span
+      <span
         data-slot='flip-button-front'
-        variants={frontVariants}
-        transition={transition}
         className={cn(
           DEFAULT_SPAN_CLASS_NAME,
-          'bg-neutral-100 text-black dark:text-white',
+          'flip-button-front bg-neutral-100 text-black dark:text-white',
           frontClassName,
         )}
       >
         {frontText}
-      </motion.span>
-      <motion.span
+      </span>
+      <span
         data-slot='flip-button-back'
-        variants={backVariants}
-        transition={transition}
         className={cn(
           DEFAULT_SPAN_CLASS_NAME,
-          'bg-brand-600 text-white',
+          'flip-button-back bg-brand-600 text-white',
           backClassName,
         )}
       >
         {backText}
-      </motion.span>
+      </span>
       <span className='invisible'>{frontText}</span>
-    </motion.button>
+    </button>
   );
 }
 

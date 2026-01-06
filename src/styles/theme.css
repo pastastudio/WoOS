@@ -75,6 +75,14 @@
   --color-black: rgb(10, 10, 10);
   --color-default-background: rgb(10, 10, 10);
 
+  /* Text Colors for Light/Dark Mode */
+  --color-text-light: rgb(10, 10, 10);
+  --color-text-dark: rgb(250, 250, 250);
+  --color-text-muted-light: rgb(115, 115, 115);
+  --color-text-muted-dark: rgb(163, 163, 163);
+  --color-border-light: rgb(229, 229, 229);
+  --color-border-dark: rgb(64, 64, 64);
+
   /* Box shadows */
   --shadow-sm: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
   --shadow-default: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
@@ -207,6 +215,12 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  color-scheme: light;
+
+  /* Theme-specific text colors */
+  --text-primary: var(--color-text-light);
+  --text-muted: var(--color-text-muted-light);
+  --border-color: var(--color-border-light);
 }
 
 .dark {
@@ -241,6 +255,12 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  color-scheme: dark;
+
+  /* Theme-specific text colors */
+  --text-primary: var(--color-text-dark);
+  --text-muted: var(--color-text-muted-dark);
+  --border-color: var(--color-border-dark);
 }
 
 @layer base {

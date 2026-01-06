@@ -1,6 +1,6 @@
-import { getLastModified } from '@/lib/modified';
+import { getLastModified } from '@/lib/git';
 import { getSiteUrl } from '@/lib/server-utils';
-import routes from '@/generated/routes';
+import routes from '@/lib/routes';
 import { type SitemapEntry } from '@/types';
 
 export default async function sitemap(): Promise<SitemapEntry[]> {
@@ -9,7 +9,6 @@ export default async function sitemap(): Promise<SitemapEntry[]> {
   const entries = await Promise.all(
     routes.map(async (item): Promise<SitemapEntry> => {
       const lastModified = await getLastModified(item.path);
-      console.log(baseUrl + item.resolved, lastModified);
 
       return {
         url: baseUrl + item.resolved,

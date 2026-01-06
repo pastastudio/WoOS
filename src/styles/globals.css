@@ -48,3 +48,141 @@ main {
 footer {
   grid-area: footer;
 }
+/* =====================================================
+   Animations (replacing framer-motion)
+===================================================== */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(-3px);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+/* =====================================================
+   Flip Button Animations
+===================================================== */
+
+.flip-button {
+  transform-style: preserve-3d;
+}
+
+.flip-button-front,
+.flip-button-back {
+  backface-visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Vertical flip (top/bottom) */
+.flip-button-vertical-normal .flip-button-front {
+  transform: rotateX(0deg) translateY(0);
+}
+
+.flip-button-vertical-normal:hover .flip-button-front {
+  transform: rotateX(90deg) translateY(50%);
+  opacity: 0;
+}
+
+.flip-button-vertical-normal .flip-button-back {
+  transform: rotateX(90deg) translateY(-50%);
+  opacity: 0;
+}
+
+.flip-button-vertical-normal:hover .flip-button-back {
+  transform: rotateX(0deg) translateY(0);
+  opacity: 1;
+}
+
+.flip-button-vertical-reverse .flip-button-front {
+  transform: rotateX(0deg) translateY(0);
+}
+
+.flip-button-vertical-reverse:hover .flip-button-front {
+  transform: rotateX(-90deg) translateY(-50%);
+  opacity: 0;
+}
+
+.flip-button-vertical-reverse .flip-button-back {
+  transform: rotateX(-90deg) translateY(50%);
+  opacity: 0;
+}
+
+.flip-button-vertical-reverse:hover .flip-button-back {
+  transform: rotateX(0deg) translateY(0);
+  opacity: 1;
+}
+
+/* Horizontal flip (left/right) */
+.flip-button-horizontal-normal .flip-button-front {
+  transform: rotateY(0deg) translateX(0);
+}
+
+.flip-button-horizontal-normal:hover .flip-button-front {
+  transform: rotateY(90deg) translateX(50%);
+  opacity: 0;
+}
+
+.flip-button-horizontal-normal .flip-button-back {
+  transform: rotateY(90deg) translateX(-50%);
+  opacity: 0;
+}
+
+.flip-button-horizontal-normal:hover .flip-button-back {
+  transform: rotateY(0deg) translateX(0);
+  opacity: 1;
+}
+
+.flip-button-horizontal-reverse .flip-button-front {
+  transform: rotateY(0deg) translateX(0);
+}
+
+.flip-button-horizontal-reverse:hover .flip-button-front {
+  transform: rotateY(-90deg) translateX(-50%);
+  opacity: 0;
+}
+
+.flip-button-horizontal-reverse .flip-button-back {
+  transform: rotateY(-90deg) translateX(50%);
+  opacity: 0;
+}
+
+.flip-button-horizontal-reverse:hover .flip-button-back {
+  transform: rotateY(0deg) translateX(0);
+  opacity: 1;
+}
