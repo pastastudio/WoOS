@@ -25,6 +25,12 @@ jobs:
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
 
+      - name: Approve Dependabot PR
+        run: gh pr review --approve "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       # Enable auto-merge for safe updates (minor/patch only)
       # Major updates require manual review
       # Zusätzlich: Security-Updates (Dependabot Alerts) automatisch mergen
@@ -37,7 +43,7 @@ jobs:
           steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
           steps.metadata.outputs.alert-state != ''
             )
-        run: gh pr merge --auto --squash "$PR_URL"
+        run: gh pr merge --squash "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
