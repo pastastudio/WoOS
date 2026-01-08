@@ -16,7 +16,7 @@ jobs:
   dependabot:
     runs-on: ubuntu-latest
     # Only run for Dependabot PRs
-    if: github.actor == 'dependabot[bot]'
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
     steps:
       # Fetch metadata about the dependency update
       - name: Fetch Dependabot metadata
@@ -30,7 +30,7 @@ jobs:
       # Zusätzlich: Security-Updates (Dependabot Alerts) automatisch mergen
       - name: Enable auto-merge for minor/patch and security updates
         if: >
-          github.actor == 'dependabot[bot]' &&
+          github.event.pull_request.user.login == 'dependabot[bot]' &&
           !github.event.pull_request.draft &&
             (
           steps.metadata.outputs.update-type == 'version-update:semver-minor' ||
