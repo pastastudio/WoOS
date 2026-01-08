@@ -1,13 +1,17 @@
-name: 'Issue Labeler'
+name: Label Issues
 
+# Trigger: Runs when an issue is opened or edited
+# Automatically applies labels based on issue content using .github/issue-labeler.yml
 on:
   issues:
     types: [opened, edited]
 
 jobs:
-  label:
+  auto-label:
+    name: Auto-label issues
     runs-on: ubuntu-latest
     steps:
+      # Apply labels based on issue title and body content
       - name: Label issue
         uses: github/issue-labeler@v3.4
         with:

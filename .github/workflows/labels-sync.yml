@@ -1,8 +1,12 @@
-name: Label sync
+name: Sync Labels
+
+# Trigger: Runs daily at midnight, manually, or when .github/labels.yml changes
+# Syncs repository labels with the configuration in .github/labels.yml
+# Creates, updates, or removes labels to match the configuration
 on:
   schedule:
-    - cron: '0 0 * * *'
-  workflow_dispatch:
+    - cron: '0 0 * * *' # Daily at midnight UTC
+  workflow_dispatch: # Allow manual trigger
   push:
     branches:
       - main
@@ -10,18 +14,20 @@ on:
       - '.github/labels.yml'
 
 permissions:
-  issues: write
+  issues: write # Required to manage labels
 
 jobs:
   label-sync:
-    name: Label sync
+    name: Sync labels
     runs-on: ubuntu-latest
+    # Only run in the main repository (not in forks)
     if: github.repository_owner == 'copiedcopypasta'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
-      - name: Label sync
+      # Sync labels based on .github/labels.yml configuration
+      - name: Sync labels
         uses: crazy-max/ghaction-github-labeler@v5
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}

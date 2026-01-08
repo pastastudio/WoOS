@@ -1,26 +1,42 @@
 name: Dependabot Auto-merge
 
+# Trigger: Runs when Dependabot opens or updates a PR
+# Automatically merges minor and patch version updates
+# Only runs for PRs created by dependabot[bot]
 on:
-  pull_request:
-    types: [opened, synchronize]
+  pull_request_target:
+    # auch bei Reopen/Änderungen/etc. reagieren
+    types: [opened, reopened, synchronize, edited]
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: write # Required to merge PRs
+  pull-requests: write # Required to enable auto-merge
 
 jobs:
   dependabot:
     runs-on: ubuntu-latest
+    # Only run for Dependabot PRs
     if: github.actor == 'dependabot[bot]'
     steps:
-      - name: Dependabot metadata
+      # Fetch metadata about the dependency update
+      - name: Fetch Dependabot metadata
         id: metadata
         uses: dependabot/fetch-metadata@v2
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
 
-      - name: Enable auto-merge for Dependabot PRs
-        if: steps.metadata.outputs.update-type == 'version-update:semver-minor' || steps.metadata.outputs.update-type == 'version-update:semver-patch'
+      # Enable auto-merge for safe updates (minor/patch only)
+      # Major updates require manual review
+      # Zusätzlich: Security-Updates (Dependabot Alerts) automatisch mergen
+      - name: Enable auto-merge for minor/patch and security updates
+        if: >
+          github.actor == 'dependabot[bot]' &&
+          !github.event.pull_request.draft &&
+            (
+          steps.metadata.outputs. update-type == 'version-update:semver-minor' ||
+          steps.metadata.outputs. update-type == 'version-update:semver-patch' ||
+          steps.metadata.outputs.alert-state != ''
+            )
         run: gh pr merge --auto --squash "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}

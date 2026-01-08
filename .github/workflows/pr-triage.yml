@@ -1,27 +1,32 @@
-name: 'PR Triage'
+name: PR Validation
 
+# Trigger: Runs on PR open, edit, reopen, and sync
+# Title validation runs on pull_request (safer - untrusted code)
+# Auto-labeling runs on pull_request_target (needs write access)
 on:
   pull_request_target:
     types:
       - opened
-      - edited
       - reopened
       - synchronize
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
 
 permissions:
   contents: read
   pull-requests: write
 
 jobs:
-  label:
-    name: Label
-    if: github.event.action != 'edited'
+  # Auto-label PRs based on changed files (needs pull_request_target for write access)
+  auto-label:
+    name: Auto-label
+    if: github.event_name == 'pull_request_target'
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
     steps:
-      - name: Label pull request
+      - name: Apply labels based on changed files
         uses: actions/labeler@v5
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
@@ -29,19 +34,29 @@ jobs:
           dot: true
           sync-labels: true
 
+  # Validate PR title follows conventional commit format (runs on pull_request for security)
   validate-title:
     name: Validate title
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - name: Validate pull request title
+      - name: Check conventional commit format
         env:
           TITLE: ${{ github.event.pull_request.title }}
         run: |
+          # Format: type(scope)?: description
+          # Example: feat(api): add new endpoint
           REGEX="^(revert: )?(chore|build|ci|ui|api|docs|feat|fix|perf|refactor|revert|style|test|types)(\(.+\))?!?: .{1,72}$"
 
-          echo "Title: \"$TITLE\""
+          echo "Validating PR title: \"$TITLE\""
 
           if [[ ! "$TITLE" =~ $REGEX ]]; then
-            echo "❌ PR title does not match the required format!"
+            echo "❌ PR title does not match conventional commit format!"
+            echo "Expected format: type(scope)?: description"
+            echo "Examples: feat(api): add endpoint, fix: resolve bug"
             exit 1
           fi
+
+          echo "✅ PR title is valid"

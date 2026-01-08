@@ -1,0 +1,44 @@
+changelog:
+  categories:
+    - title: Features
+      labels:
+        - feature request
+        - ui
+        - api
+        - styles
+        - utility
+        - interactions
+        - typings
+    - title: Bug Fixes
+      labels:
+        - bug
+        - error handling
+    - title: Security
+      labels:
+        - security
+    - title: Infrastructure & CI
+      labels:
+        - infra
+        - ci
+        - build
+        - caching
+        - dependencies
+        - dependabot
+    - title: Tests
+      labels:
+        - tests
+    - title: Maintenance
+      labels:
+        - chore
+    - title: Other Changes
+      labels:
+        - '*'
+  exclude:
+    labels:
+      - blocked
+      - duplicate
+      - invalid
+      - wontfix
+      - in progress
+      - review requested
+      - merge ready
