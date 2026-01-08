@@ -33,8 +33,8 @@ jobs:
           github.actor == 'dependabot[bot]' &&
           !github.event.pull_request.draft &&
             (
-          steps.metadata.outputs. update-type == 'version-update:semver-minor' ||
-          steps.metadata.outputs. update-type == 'version-update:semver-patch' ||
+          steps.metadata.outputs.update-type == 'version-update:semver-minor' ||
+          steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
           steps.metadata.outputs.alert-state != ''
             )
         run: gh pr merge --auto --squash "$PR_URL"
