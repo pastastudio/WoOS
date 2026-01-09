@@ -7,22 +7,58 @@ generator client {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
-}
-
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  authorId  Int
-  author    User    @relation(fields: [authorId], references: [id])
+  id           BigInt     @id
+  username     String     @default("unknown")
+  nickname     String?
+  displayname  String?
+  avatar_hash  String?
+  created_at   DateTime   @default(now())
+  accent_color Int?
+  verified     Boolean    @default(false)
+  role         Role       @default(USER)
+  locale_sys   Locale     @default(EN)
+  locale_pref  Locale?
+  feedback     Feedback[]
+  ratings      Rating[]
+  settings     Settings?
 }
 
 model Feedback {
-  id      Int    @id @default(autoincrement())
-  content String
+  id      String @id @default(cuid())
+  context String @default("")
+  user    User   @relation(fields: [userId], references: [id])
+  userId  BigInt
+}
+
+model Rating {
+  id      String  @id @default(cuid())
+  context String?
+  site    Site
+  score   Int     @default(1)
+  user    User    @relation(fields: [userId], references: [id])
+  userId  BigInt
+}
+
+model Settings {
+  id     String @id @default(uuid())
+  user   User   @relation(fields: [userId], references: [id])
+  userId BigInt @unique
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Site {
+  SITE_1_PLACEHOLDER
+  SITE_2_PLACEHOLDER
+  SITE_3_PLACEHOLDER
+  SITE_4_PLACEHOLDER
+  SITE_5_PLACEHOLDER
+}
+
+enum Locale {
+  EN
+  DE
 }
