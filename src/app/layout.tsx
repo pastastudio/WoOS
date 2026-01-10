@@ -5,6 +5,7 @@ import '@/styles/globals.css';
 import Footer, { FooterProps } from '@/components/Footer';
 import Navbar, { NavbarProps } from '@/components/Navbar';
 import { ThemeProvider } from '@/components/theme-provider';
+import { CustomCursor } from '@/components/ui/base/cursor';
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
@@ -115,6 +116,7 @@ export default function RootLayout({
           height: '100%',
         }}
       >
+        <CustomCursor variation='crystal-scepter-4' enableGlow enableSparkles />
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
           <Navbar {...navbar} />
           {children}
