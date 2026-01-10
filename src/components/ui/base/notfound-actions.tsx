@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft, Home } from 'lucide-react';
+import { ArrowLeftSolid, HomeSolid } from '@2hoch1/pixel-icon-library-react';
 import { FlipButton } from '@/components/ui/shadcn-io/flip-button';
 
 export default function NotFoundActions({
@@ -19,7 +19,7 @@ export default function NotFoundActions({
       <FlipButton
         onClick={() => router.back()}
         frontText={backText}
-        backText={<ArrowLeft className='inline' size={16} />}
+        backText={<ArrowLeftSolid className='inline' size={16} />}
         from='left'
         frontClassName='bg-neutral-100'
         backClassName='bg-error-500 text-white'
@@ -28,7 +28,7 @@ export default function NotFoundActions({
       <Link href='/'>
         <FlipButton
           frontText={homeText}
-          backText={<Home className='inline' size={16} />}
+          backText={<HomeSolid className='inline' size={16} />}
           frontClassName='bg-neutral-100'
           backClassName='bg-error-500 text-white'
         />

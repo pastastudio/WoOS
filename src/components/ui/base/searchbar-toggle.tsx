@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { Search } from 'lucide-react';
+import Search from '@/assets/icons/magnifying-glass.svg';
 import { SearchBarDialog } from '@/components/ui/base/searchbar';
 import {
   Tooltip,

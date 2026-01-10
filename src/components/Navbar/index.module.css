@@ -118,9 +118,12 @@
 
 .profileButton {
   position: relative;
+  background-color: rgba(119, 119, 119, 0.1);
+  border-radius: 100%;
 }
 
 .profileButton:hover {
   background-color: rgba(255, 255, 255, 0.1);
   color: inherit;
+  border-radius: 20%;
 }

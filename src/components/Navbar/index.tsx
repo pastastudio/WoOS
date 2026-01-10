@@ -2,7 +2,7 @@ import { ReactElement, Fragment } from 'react';
 import type { Links } from '@/types/index';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, CircleUserRound } from 'lucide-react';
+import { ExternalLinkSolid, UserSolid } from '@2hoch1/pixel-icon-library-react';
 
 import LogoSvg from '@/assets/logo.svg';
 import BannerSvg from '@/assets/banner.svg';
@@ -64,7 +64,7 @@ const LoginButton = (): ReactElement => {
   return (
     <Link href='' passHref>
       <Button variant='ghost' className={styles.loginButton}>
-        Login <ExternalLink />
+        Login <ExternalLinkSolid />
       </Button>
     </Link>
   );
@@ -82,7 +82,7 @@ const ProfileButton = (): ReactElement => {
         className={styles.profileButton}
         aria-label='Profil öffnen'
       >
-        <CircleUserRound />
+        <UserSolid />
       </Button>
     </Link>
   );
@@ -142,7 +142,7 @@ export default function Navbar({
   frontColor,
   fixed,
 }: NavbarProps): ReactElement {
-  const session = ''; // Replace with actual session logic
+  const session = 'i'; // Replace with actual session logic
 
   // Build navbar classes
   const navbarClasses = [
