@@ -1,4 +1,4 @@
-import { SearchX } from 'lucide-react';
+import { SearchSolid } from '@2hoch1/pixel-icon-library-react';
 import ErrorLayout from '@/layouts/ErrorLayout';
 import NotFoundActions from '@/components/ui/base/notfound-actions';
 
@@ -17,7 +17,7 @@ export default function NotFound() {
     <ErrorLayout>
       <div className='flex flex-col items-center gap-4 text-center'>
         <div className='animate-bounce'>
-          <SearchX className='text-error-500 h-12 w-12' />
+          <SearchSolid className='text-error-500 h-12 w-12' />
         </div>
 
         <h1 className='text-2xl font-semibold text-neutral-900'>

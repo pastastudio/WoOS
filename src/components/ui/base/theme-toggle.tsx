@@ -1,6 +1,8 @@
 'use client';
 import * as React from 'react';
-import { Moon, Sun, Laptop } from 'lucide-react';
+import Moon from '@/assets/icons/moon.svg';
+import Sun from '@/assets/icons/sun.svg';
+import Laptop from '@/assets/icons/laptop.svg';
 import { useTheme } from 'next-themes';
 
 import {

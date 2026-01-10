@@ -2,7 +2,11 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Lock, ArrowLeft, Home } from 'lucide-react';
+import {
+  LockSolid,
+  ArrowLeftSolid,
+  HomeSolid,
+} from '@2hoch1/pixel-icon-library-react';
 import ErrorLayout from '@/layouts/ErrorLayout';
 import { FlipButton } from '@/components/ui/shadcn-io/flip-button';
 
@@ -23,7 +27,7 @@ export default function Unauthorized() {
     <ErrorLayout>
       <div className='animate-fade-in flex flex-col items-center gap-4 text-center'>
         <div className='animate-float'>
-          <Lock className='text-error-500 h-12 w-12' />
+          <LockSolid className='text-error-500 h-12 w-12' />
         </div>
 
         <h1 className='text-2xl font-semibold text-neutral-900'>
@@ -38,7 +42,7 @@ export default function Unauthorized() {
           <FlipButton
             onClick={() => router.back()}
             frontText={UNAUTHORIZED_CONFIG.buttons.back}
-            backText={<ArrowLeft className='inline' size={16} />}
+            backText={<ArrowLeftSolid className='inline' size={16} />}
             from='left'
             frontClassName='bg-neutral-100'
             backClassName='bg-error-500 text-white'
@@ -47,7 +51,7 @@ export default function Unauthorized() {
           <Link href='/'>
             <FlipButton
               frontText={UNAUTHORIZED_CONFIG.buttons.home}
-              backText={<Home className='inline' size={16} />}
+              backText={<HomeSolid className='inline' size={16} />}
               frontClassName='bg-neutral-100'
               backClassName='bg-error-500 text-white'
             />
