@@ -1,0 +1,40 @@
+{
+  "forbidden": {
+    "buttons": {
+      "back": "Zurück",
+      "home": "Home"
+    },
+    "description": "Du hast keine Berechtigung, um auf diese Seite zuzugreifen.",
+    "title": "Zugriff verweigert"
+  },
+
+  "globalError": {
+    "buttons": {
+      "home": "Startseite",
+      "retry": "Erneut versuchen"
+    },
+    "description": "Keine Sorge das kann mal passieren. Du kannst es erneut versuchen oder zur Startseite zurückkehren.",
+    "title": "Etwas ist schiefgelaufen"
+  },
+
+  "loading": {
+    "message": "Wird geladen…"
+  },
+  "notFound": {
+    "buttons": {
+      "back": "Zurück",
+      "home": "Home"
+    },
+    "description": "Die Seite, die du suchst, ist leider nicht verfügbar. Sie wurde entweder entfernt oder an einen neuen Ort verschoben.",
+    "title": "Seite nicht gefunden"
+  },
+
+  "unauthorized": {
+    "buttons": {
+      "back": "Zurück",
+      "home": "Home"
+    },
+    "description": "Du benötigst Authentifizierung, um auf diese Seite zuzugreifen. Bitte melde dich an.",
+    "title": "Zugriff verweigert"
+  }
+}

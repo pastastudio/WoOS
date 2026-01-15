@@ -1,7 +1,7 @@
 'use client';
 
-import React, { ReactElement } from 'react';
 import { Button } from '@/components/ui/button';
+import React, { ReactElement } from 'react';
 
 interface BannerProps {
   position: 'top' | 'bottom';

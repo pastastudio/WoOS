@@ -1,6 +1,5 @@
 'use client';
 
-import * as React from 'react';
 import { Select as SelectPrimitive } from '@base-ui/react/select';
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 
@@ -202,8 +201,8 @@ export {
   SelectGroup,
   SelectItem,
   SelectLabel,
+  SelectPositioner,
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-  SelectPositioner,
 };

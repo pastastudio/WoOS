@@ -5,6 +5,7 @@
   "jsonRecursiveSort": true,
   "jsxSingleQuote": true,
   "plugins": [
+    "prettier-plugin-organize-imports",
     "prettier-plugin-tailwindcss",
     "prettier-plugin-sort-json",
     "prettier-plugin-packagejson"

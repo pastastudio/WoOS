@@ -1,11 +1,11 @@
-import React from 'react';
-import { Metadata } from 'next';
-import { getSiteUrl } from '@/lib/server-utils';
-import '@/styles/globals.css';
-import Footer, { FooterProps } from '@/components/Footer';
-import Navbar, { NavbarProps } from '@/components/Navbar';
+import { SmoothScrollProvider } from '@/components/scroll-provider';
 import { ThemeProvider } from '@/components/theme-provider';
 import { CustomCursor } from '@/components/ui/base/cursor';
+import { getSiteUrl } from '@/lib/server-utils';
+import '@/styles/globals.css';
+import { Metadata } from 'next';
+import React from 'react';
+import { geist, jersey10, pixelifySans } from './fonts';
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     description: 'Wizard of OS – Tools, Utilities & Magic für dein System.',
     images: [
       {
-        url: '/favicon/og-default.jpg', // Optional: kannst du später ersetzen
+        url: '/favicon/og-default.jpg',
         width: 1200,
         height: 630,
         alt: 'Wizard of OS – Open Graph Bild',
@@ -42,8 +42,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Wizard of OS',
     description: 'Wizard of OS – Tools, Utilities & Magic für dein System.',
-    images: ['/twitter-default.jpg'], // optional
-    creator: '@deinTwitterHandle', // optional
+    images: ['/twitter-default.jpg'],
+    creator: '@deinTwitterHandle',
   },
 
   robots: {
@@ -52,75 +52,19 @@ export const metadata: Metadata = {
   },
 };
 
-const navbar: NavbarProps = {
-  logo: true,
-  logoUrl: '/',
-  links: [
-    { label: 'Quests', href: '/quests' },
-    { label: 'Informations', href: '/informations' },
-    { label: 'Analytics', href: '/analytics' },
-  ],
-  searchBar: true,
-  darkModeToggle: true,
-  loginButton: true,
-  borderLine: true,
-  fixed: false,
-};
-
-const footer: FooterProps = {
-  links: {
-    resources: [
-      { label: 'Quests', href: '/quests' },
-      { label: 'Tests', href: '/tests' },
-      { label: 'FAQ', href: '/faq' },
-      { label: 'Source Code', href: 'https://github.com/copiedcopypasta/dmwt' },
-    ],
-    legal: [
-      { label: 'Impressum', href: '/impressum' },
-      { label: 'Datenschutz', href: '/datenschutz' },
-      { label: 'Cookie-Einstellungen', href: '/cookie-settings' },
-      { label: 'Lizenzen', href: '/lizenzen' },
-      { label: 'Nutzerbindungen', href: '/nutzerbindungen' },
-    ],
-    about: [
-      { label: 'Über uns', href: '/about' },
-      { label: 'Hochschule', href: 'https://www.reutlingen-university.de/' },
-      { label: 'Barrierefreiheit', href: '/barrierefreiheit' },
-    ],
-    social: [
-      { label: 'Feedback', href: '/feedback' },
-      { label: 'Kontakt', href: '/contact' },
-    ],
-  },
-  sozials: [
-    { href: 'https://github.com', altText: 'GitHub' },
-    { href: 'https://youtube.com', altText: 'YouTube' },
-    { href: 'https://discord.com', altText: 'Discord' },
-  ],
-  logo: true,
-  banner: true,
-};
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang='de' suppressHydrationWarning style={{ height: '100vh' }}>
+    <html lang='de' suppressHydrationWarning>
       <body
-        className='min-h-screen'
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100%',
-        }}
+        className={`min-h-screen ${geist.variable} ${pixelifySans.variable} ${jersey10.variable}`}
       >
-        <CustomCursor variation='crystal-scepter-4' enableGlow enableSparkles />
+        <CustomCursor />
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-          <Navbar {...navbar} />
-          {children}
-          <Footer {...footer} />
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
         </ThemeProvider>
       </body>
     </html>
