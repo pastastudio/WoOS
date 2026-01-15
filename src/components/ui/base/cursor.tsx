@@ -1,9 +1,9 @@
 'use client';
 
-import Image from 'next/image';
+import CursorSparkels from '@/components/ui/base/cursor-sparkels';
 import { useTheme } from 'next-themes';
+import Image, { type StaticImageData } from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
-import { type StaticImageData } from 'next/image';
 
 import CrystalScepterOne from '@/assets/cursor/Crystal_Scepter_stage_1.png';
 import CrystalScepterTwo from '@/assets/cursor/Crystal_Scepter_stage_2.png';
@@ -55,12 +55,6 @@ export interface CustomCursorProps {
   variation?: CursorVariation;
   enableSparkles?: boolean;
   enableGlow?: boolean;
-}
-
-interface Sparkle {
-  id: number;
-  x: number;
-  y: number;
 }
 
 const CURSOR_SIZE = 22;
@@ -128,7 +122,6 @@ export function CustomCursor({
   const [domTheme, setDomTheme] = useState<'light' | 'dark' | null>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHoveringInteractive, setIsHoveringInteractive] = useState(false);
-  const [sparkles, setSparkles] = useState<Sparkle[]>([]);
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -200,33 +193,12 @@ export function CustomCursor({
   }, []);
 
   useEffect(() => {
-    let sparkleCounter = 0;
-    let moveCounter = 0;
-
     const handleMouseMove = (e: MouseEvent) => {
       const hoveringInteractive = detectInteractive(e.clientX, e.clientY);
 
       setPosition({ x: e.clientX, y: e.clientY });
       setIsHoveringInteractive(hoveringInteractive);
       setIsVisible(true);
-
-      if (enableSparkles && moveCounter % 3 === 0) {
-        setTimeout(() => {
-          const newSparkle: Sparkle = {
-            id: sparkleCounter++,
-            x: e.clientX + (Math.random() - 0.5) * 25,
-            y: e.clientY + (Math.random() - 0.5) * 25,
-          };
-
-          setSparkles((prev) => [...prev, newSparkle]);
-
-          setTimeout(() => {
-            setSparkles((prev) => prev.filter((s) => s.id !== newSparkle.id));
-          }, 600);
-        }, 50);
-      }
-
-      moveCounter++;
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -235,40 +207,13 @@ export function CustomCursor({
     };
   }, [enableSparkles, sparkleColor]);
 
-  useEffect(() => {
-    if (!enableSparkles) {
-      setSparkles([]);
-    }
-  }, [enableSparkles]);
-
-  useEffect(() => {
-    if (!isVisible) {
-      setSparkles([]);
-    }
-  }, [isVisible]);
-
   return (
     <>
-      {enableSparkles &&
-        sparkles.map((sparkle) => (
-          <div
-            key={sparkle.id}
-            className='pointer-events-none fixed z-[9998] animate-ping opacity-70'
-            style={{
-              left: sparkle.x,
-              top: sparkle.y,
-              width: '3px',
-              height: '3px',
-              background: sparkleColor,
-              clipPath:
-                'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
-              boxShadow: `0 0 6px ${sparkleColor}`,
-              transform: `rotate(${Math.random() * 360}deg)`,
-            }}
-          />
-        ))}
+      {enableSparkles && isVisible && (
+        <CursorSparkels size={12} color={sparkleColor} />
+      )}
       <span
-        className='pointer-events-none fixed z-[9999] drop-shadow-lg'
+        className='dmwt-custom-cursor pointer-events-none fixed z-[2147483647] drop-shadow-lg'
         style={{
           left: position.x,
           top: position.y,

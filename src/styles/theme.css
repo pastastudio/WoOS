@@ -3,6 +3,7 @@
 
 @import './z-index.css';
 @import './typography.css';
+@import './scrollbar.css';
 
 @theme {
   /* Brand Colors */

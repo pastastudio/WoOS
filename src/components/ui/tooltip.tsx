@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Tooltip as TooltipPrimitive } from '@base-ui/react/tooltip';
 
 import { cn } from '@/lib/utils';
@@ -86,8 +85,8 @@ function TooltipArrow({ className, ...props }: TooltipPrimitive.Arrow.Props) {
 
 export {
   Tooltip,
-  TooltipTrigger,
   TooltipContent,
-  TooltipProvider,
   TooltipPositioner,
+  TooltipProvider,
+  TooltipTrigger,
 };

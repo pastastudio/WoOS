@@ -1,6 +1,6 @@
-import Image, { StaticImageData } from 'next/image';
-import { LockSolid } from '@2hoch1/pixel-icon-library-react';
 import { cn } from '@/lib/utils';
+import { LockSolid } from '@2hoch1/pixel-icon-library-react';
+import Image, { StaticImageData } from 'next/image';
 
 import CrystalScepterOne from '@/assets/cursor/Crystal_Scepter_stage_1.png';
 import CrystalScepterTwo from '@/assets/cursor/Crystal_Scepter_stage_2.png';

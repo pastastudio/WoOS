@@ -1,5 +1,4 @@
 import type { MetadataRoute } from 'next';
-import theme from '@/lib/theme';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
@@ -8,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Learn more about Operating Systems with Wizard of OS.',
     start_url: '/',
     display: 'standalone',
-    background_color: theme.backgroundColor,
-    theme_color: theme.themeColor,
+    background_color: '#000',
+    theme_color: '#000',
     icons: [
       {
         src: '/favicon/favicon.ico',
@@ -29,18 +28,6 @@ export default function manifest(): MetadataRoute.Manifest {
         src: '/favicon/apple-icon.png',
         sizes: 'any',
         type: 'image/png',
-      },
-      {
-        src: '/favicon/web-app-manifest-192x192.png',
-        sizes: '192x192',
-        type: 'image/png',
-        purpose: 'maskable',
-      },
-      {
-        src: '/favicon/web-app-manifest-512x512.png',
-        sizes: '512x512',
-        type: 'image/png',
-        purpose: 'maskable',
       },
     ],
   };

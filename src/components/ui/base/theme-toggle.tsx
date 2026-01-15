@@ -1,15 +1,15 @@
 'use client';
-import * as React from 'react';
+import Laptop from '@/assets/icons/laptop.svg';
 import Moon from '@/assets/icons/moon.svg';
 import Sun from '@/assets/icons/sun.svg';
-import Laptop from '@/assets/icons/laptop.svg';
 import { useTheme } from 'next-themes';
+import * as React from 'react';
 
 import {
   Tooltip,
-  TooltipTrigger,
   TooltipContent,
   TooltipPositioner,
+  TooltipTrigger,
 } from '@/components/ui/tooltip';
 
 export function ThemeToggle(): React.ReactElement {

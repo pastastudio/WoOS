@@ -6,6 +6,10 @@
   color: var(--color-brand-200);
   display: block;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: var(--z-base);
 }
 
 .wave {
@@ -27,6 +31,8 @@
   padding-right: 9rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
+  position: relative;
+  z-index: var(--z-content);
 }
 
 .contentGrid {

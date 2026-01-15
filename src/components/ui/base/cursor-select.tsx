@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 
 import InfoBox from '@/components/ui/base/info-box';
-import { Button } from '@/components/ui/button';
 import WandDisplay from '@/components/ui/base/wand-display';
+import { Button } from '@/components/ui/button';
 
 import LineSvg from '@/assets/line.svg';
 import {

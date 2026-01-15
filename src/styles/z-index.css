@@ -6,5 +6,6 @@
   --z-modal: 40;
   --z-popover: 50;
   --z-toast: 60;
-  --z-critical: 9999;
+  --z-critical: 998;
+  --z-mouse-cursor: 999;
 }

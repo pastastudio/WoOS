@@ -9,6 +9,7 @@
   height: auto;
   width: auto;
   padding: 1rem;
+  z-index: 100;
 }
 
 .navbar.fixed {
@@ -54,7 +55,7 @@
 .linksList {
   font-family: var(--font-pixelify);
   display: flex;
-  gap: 1rem;
+  gap: 3rem;
   font-size: 1.25rem;
   font-weight: 600;
   color: white;

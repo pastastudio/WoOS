@@ -1,4 +1,4 @@
-import { NextResponse, NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 export function proxy(request: NextRequest) {
   const url = request.nextUrl.clone();

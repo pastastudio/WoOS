@@ -1,0 +1,40 @@
+{
+  "forbidden": {
+    "buttons": {
+      "back": "Back",
+      "home": "Home"
+    },
+    "description": "You do not have permission to access this page.",
+    "title": "Access denied"
+  },
+
+  "globalError": {
+    "buttons": {
+      "home": "Homepage",
+      "retry": "Try again"
+    },
+    "description": "Don't worry, this can happen. You can try again or return to the homepage.",
+    "title": "Something went wrong"
+  },
+
+  "loading": {
+    "message": "Loading…"
+  },
+  "notFound": {
+    "buttons": {
+      "back": "Back",
+      "home": "Home"
+    },
+    "description": "The page you are looking for is not available. It has either been removed or moved to a new location.",
+    "title": "Page not found"
+  },
+
+  "unauthorized": {
+    "buttons": {
+      "back": "Back",
+      "home": "Home"
+    },
+    "description": "You need to authenticate to access this page. Please sign in.",
+    "title": "Access denied"
+  }
+}

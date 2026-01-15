@@ -1,7 +1,7 @@
 'use client';
 
-import { Spinner } from '@/components/ui/shadcn-io/spinner';
-import LoadingLayout from '@/layouts/LoadingLayout';
+import { Spinner } from '@/components/ui/spinner';
+import { SystemLayout } from '@/layouts/SystemLayout';
 
 const LOADING_CONFIG = {
   message: 'Wird geladen…',
@@ -9,19 +9,14 @@ const LOADING_CONFIG = {
 
 export default function Loading() {
   return (
-    <LoadingLayout>
+    <SystemLayout>
       <div className='animate-scale-in flex flex-col items-center gap-4'>
-        <Spinner
-          variant='infinite'
-          size={56}
-          className='text-brand-600'
-          aria-label='Ladevorgang läuft'
-        />
+        <Spinner />
 
         <p className='animate-pulse text-sm text-neutral-500'>
           {LOADING_CONFIG.message}
         </p>
       </div>
-    </LoadingLayout>
+    </SystemLayout>
   );
 }

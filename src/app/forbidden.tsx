@@ -1,14 +1,10 @@
 'use client';
 
+import { Button } from '@/components/ui/button';
+import { SystemLayout } from '@/layouts/SystemLayout';
+import { ExclamationTriangleSolid } from '@2hoch1/pixel-icon-library-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import {
-  ExclamationTriangleSolid,
-  ArrowLeftSolid,
-  HomeSolid,
-} from '@2hoch1/pixel-icon-library-react';
-import ErrorLayout from '@/layouts/ErrorLayout';
-import { FlipButton } from '@/components/ui/shadcn-io/flip-button';
 
 const FORBIDDEN_CONFIG = {
   title: 'Zugriff verweigert',
@@ -23,7 +19,7 @@ export default function Forbidden() {
   const router = useRouter();
 
   return (
-    <ErrorLayout>
+    <SystemLayout>
       <div className='animate-fade-in flex flex-col items-center gap-4 text-center'>
         <div className='animate-float'>
           <ExclamationTriangleSolid className='text-error-500 h-12 w-12' />
@@ -38,25 +34,15 @@ export default function Forbidden() {
         </p>
 
         <div className='mt-2 flex flex-wrap justify-center gap-3'>
-          <FlipButton
-            onClick={() => router.back()}
-            frontText={FORBIDDEN_CONFIG.buttons.back}
-            backText={<ArrowLeftSolid className='inline' size={16} />}
-            from='left'
-            frontClassName='bg-neutral-100'
-            backClassName='bg-error-500 text-white'
-          />
+          <Button onClick={() => router.back()}>
+            {FORBIDDEN_CONFIG.buttons.back}
+          </Button>
 
           <Link href='/'>
-            <FlipButton
-              frontText={FORBIDDEN_CONFIG.buttons.home}
-              backText={<HomeSolid className='inline' size={16} />}
-              frontClassName='bg-neutral-100'
-              backClassName='bg-error-500 text-white'
-            />
+            <Button>{FORBIDDEN_CONFIG.buttons.home}</Button>
           </Link>
         </div>
       </div>
-    </ErrorLayout>
+    </SystemLayout>
   );
 }
