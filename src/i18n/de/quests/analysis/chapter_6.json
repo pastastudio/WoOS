@@ -1,0 +1,47 @@
+{
+  "1": {
+    "_title": "Wie wichtig ist dir große Software- und Spieleunterstützung?",
+    "options": {
+      "_a": "Windows",
+      "_b": "Windows",
+      "_c": "auswerung durch Option C",
+      "_d": "auswerung durch Option D",
+      "_e": "auswerung durch Option E",
+      "a": "Extrem",
+      "b": "Sehr wichtig",
+      "c": "Wichtig",
+      "d": "Eher unwichtig",
+      "e": "Unwichtig"
+    }
+  },
+  "2": {
+    "_title": "Bevorzugst du ein offenes System mit vielen Anpassungsmöglichkeiten?",
+    "options": {
+      "_a": "Linux",
+      "_b": "Linux",
+      "_c": "auswerung durch Option C",
+      "_d": "auswerung durch Option D",
+      "_e": "auswerung durch Option E",
+      "a": "Extrem",
+      "b": "Sehr wichtig",
+      "c": "Wichtig",
+      "d": "Eher unwichtig",
+      "e": "Unwichtig"
+    }
+  },
+  "3": {
+    "_title": "Legst du Wert auf ein geschlossenes, stark integriertes Ökosystem?",
+    "options": {
+      "_a": "macOS",
+      "_b": "macOS",
+      "_c": "auswerung durch Option C",
+      "_d": "auswerung durch Option D",
+      "_e": "auswerung durch Option E",
+      "a": "Extrem",
+      "b": "Sehr wichtig",
+      "c": "Wichtig",
+      "d": "Eher unwichtig",
+      "e": "Unwichtig"
+    }
+  }
+}

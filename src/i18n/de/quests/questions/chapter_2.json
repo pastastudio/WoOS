@@ -1,0 +1,57 @@
+{
+  "1": {
+    "_title": " Welches OS wird nicht vom Nutzer Installiert?",
+    "options": {
+      "_a": "16",
+      "_b": "17",
+      "_c": "18",
+      "a": "Windows",
+      "b": "Linux",
+      "c": "MacOS"
+    }
+  },
+  "2": {
+    "_title": "Welches OS hat die Niedrigsten Mindestanforderungen?",
+    "options": {
+      "_a": "19",
+      "_b": "20",
+      "_c": "21",
+      "a": "Windows",
+      "b": "Linux",
+      "c": "MacOS"
+    }
+  },
+  "3": {
+    "_title": "Wann Braucht man viele Kerne auf seinem CPU?",
+    "options": {
+      "_a": "22",
+      "_b": "23",
+      "_c": "24",
+      "a": "Für Multitasking und parallele Verarbeitung",
+      "b": "Für hohe Taktfrequenzen",
+      "c": "Für bessere Grafikleistung"
+    }
+  },
+  "4": {
+    "_title": "Welche Betriebssysteme haben verhältnismäßig hohe Anforderungen an die GPU?",
+    "options": {
+      "_a": "25",
+      "_b": "26",
+      "_c": "27",
+      "a": "Windows",
+      "b": "Linux",
+      "c": "MacOS"
+    }
+  },
+  "5": {
+    "_title": "Welche Faktoren sind Für die Performance Von Speicher relevant?",
+    "options": {
+      "_a": "28",
+      "_b": "29",
+      "_c": "30",
+      "a": "Taktfrequenz und Latenz",
+      "b": "Schreibgeschwindichkeit und Kapazität",
+      "c": "Entfernung zum CPU"
+    }
+  }
+}

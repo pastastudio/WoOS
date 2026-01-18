@@ -1,0 +1,57 @@
+{
+  "1": {
+    "_title": "welche Vorteile hat es mehr Ram Slots zu haben als man braucht?",
+    "options": {
+      "_a": "31",
+      "_b": "32",
+      "_c": "33",
+      "a": "mehr Flexibilität beim Aufrüsten",
+      "b": "bessere Kühlung des Rams",
+      "c": "geringere Latenzzeiten"
+    }
+  },
+  "2": {
+    "_title": "Was ist ein Nachteil von Verlöteten Akkus in Notebooks?",
+    "options": {
+      "_a": "34",
+      "_b": "35",
+      "_c": "36",
+      "a": "nicht austauschbar",
+      "b": "höheres Gewicht",
+      "c": "geringere Kapazität"
+    }
+  },
+  "3": {
+    "_title": "Welchen Vorteil hat Ein Großes PC Gehäuse?",
+    "options": {
+      "_a": "37",
+      "_b": "38",
+      "_c": "39",
+      "a": "mehr potenzial für Erweiterungen",
+      "b": "bessere Kühlung der Komponenten",
+      "c": "geringere Geräuschentwicklung"
+    }
+  },
+  "4": {
+    "_title": "Was macht ein System wartbar und langlebig?",
+    "options": {
+      "_a": "40",
+      "_b": "41",
+      "_c": "42",
+      "a": "modulare Komponenten",
+      "b": "hochwertige Materialien",
+      "c": "RGB Beleuchtung"
+    }
+  },
+  "5": {
+    "_title": "Warum laufen ältere PCs oft gut mit Linux, aber nicht mit Windows 11?",
+    "options": {
+      "_a": "43",
+      "_b": "44",
+      "_c": "45",
+      "a": "weniger Hardwareanforderungen",
+      "b": "weil Linux schlechter optimiert ist",
+      "c": "weil Microsoft eine Geldgierige Firma ist"
+    }
+  }
+}

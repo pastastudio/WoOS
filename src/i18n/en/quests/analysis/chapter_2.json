@@ -1,0 +1,47 @@
+{
+  "1": {
+    "_title": "What is your computer mainly used for?",
+    "options": {
+      "_a": "Windows",
+      "_b": "Linux",
+      "_c": "macOS",
+      "_d": "Linux",
+      "_e": "Linux",
+      "a": "Gaming",
+      "b": "Office/Productivity",
+      "c": "Media editing",
+      "d": "Web browsing",
+      "e": "Other"
+    }
+  },
+  "2": {
+    "_title": "Do you like to install and configure software yourself or should everything \"just work\"?",
+    "options": {
+      "_a": "Linux",
+      "_b": "macOS",
+      "_c": "Windows",
+      "_d": "Linux for Dummies",
+      "_e": "Windows",
+      "a": "I like to install and configure software myself",
+      "b": "I prefer everything to \"just work\"",
+      "c": "I do both depending on the situation",
+      "d": "What is software?",
+      "e": "I just want to play"
+    }
+  },
+  "3": {
+    "_title": "Do you value always using the latest games and software?",
+    "options": {
+      "_a": "Windows",
+      "_b": "macOS",
+      "_c": "Linux",
+      "_d": "Linux",
+      "_e": "Linux",
+      "a": "I always want to play the latest games",
+      "b": "I use new demanding software",
+      "c": "It doesn't always have to be the newest as long as it works",
+      "d": "I only use older software and games",
+      "e": "I only use open-source software"
+    }
+  }
+}

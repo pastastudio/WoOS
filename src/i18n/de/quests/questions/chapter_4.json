@@ -1,0 +1,57 @@
+{
+  "1": {
+    "_title": "Weshalb ist Reparieren meist nachhaltiger als Recycling?",
+    "options": {
+      "_a": "46",
+      "_b": "47",
+      "_c": "48",
+      "a": "Recycling funktioniert nicht",
+      "b": "Sogar bei gutem Recycling gehen viele Ressourcen verloren",
+      "c": "Recycling ist zu teuer"
+    }
+  },
+  "2": {
+    "_title": "Was ist Das Prinzipielle Problem Beim Kauf von Neuen Geräten?",
+    "options": {
+      "_a": "49",
+      "_b": "50",
+      "_c": "51",
+      "a": "Neue Geräte sind immer schlechter verarbeitet",
+      "b": "Neue Geräte brauchen mehr Energie",
+      "c": "Die Herstellung neuer Geräte verbraucht viele Ressourcen"
+    }
+  },
+  "3": {
+    "_title": "Was zeichnet einen seriösen Refurbished-Händler aus?",
+    "options": {
+      "_a": "52",
+      "_b": "53",
+      "_c": "54",
+      "a": "billige Preise",
+      "b": "Garantie und Zertifikate",
+      "c": "schnelle Lieferung"
+    }
+  },
+  "4": {
+    "_title": "Warum sind bestimmte Gerätemodelle besser für Refurbished geeignet als andere?",
+    "options": {
+      "_a": "55",
+      "_b": "56",
+      "_c": "57",
+      "a": "für langlebige Modelle gibt es mehr Ersatzteile",
+      "b": "ältere Modelle sind immer besser",
+      "c": "neuere Modelle sind immer besser"
+    }
+  },
+  "5": {
+    "_title": "Welche Vorteile haben generalüberholte Geräte gegenüber Neukäufen?",
+    "options": {
+      "_a": "58",
+      "_b": "59",
+      "_c": "60",
+      "a": "schnellerer Versand",
+      "b": "Umweltfreundlicher",
+      "c": "Sofort verfügbar"
+    }
+  }
+}

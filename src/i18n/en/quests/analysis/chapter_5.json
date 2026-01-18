@@ -1,0 +1,47 @@
+{
+  "1": {
+    "_title": "Do you adjust system settings yourself or use default settings?",
+    "options": {
+      "_a": "macOS",
+      "_b": "Windows",
+      "_c": "Linux",
+      "_d": "Linux",
+      "_e": "Linux",
+      "a": "I mostly use default settings",
+      "b": "I only adjust a few settings",
+      "c": "I adjust some settings",
+      "d": "I adjust many settings",
+      "e": "I adjust all settings"
+    }
+  },
+  "2": {
+    "_title": "Is maximum battery life more important to you than performance on the go?",
+    "options": {
+      "_a": "evaluation through Option A",
+      "_b": "evaluation through Option B",
+      "_c": "evaluation through Option C",
+      "_d": "evaluation through Option D",
+      "_e": "evaluation through Option E",
+      "a": "Maximum battery life is more important to me than performance on the go",
+      "b": "I want good performance on the go too",
+      "c": "I want a balanced relationship between battery life and performance",
+      "d": "I always have an outlet nearby",
+      "e": "I don't want a laptop"
+    }
+  },
+  "3": {
+    "_title": "Do you want full control over background processes?",
+    "options": {
+      "_a": "Linux",
+      "_b": "Windows",
+      "_c": "macOS",
+      "_d": "evaluation through Option D",
+      "_e": "evaluation through Option E",
+      "a": "I want full control over background processes",
+      "b": "I want some control over background processes",
+      "c": "I'm not sure",
+      "d": "I want little control over background processes",
+      "e": "I don't want control over background processes"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "1": {
+    "_title": "Welche Stärken hat Windows im Vergleich zu anderen Betriebssystemen?",
+    "options": {
+      "_a": "76",
+      "_b": "77",
+      "_c": "78",
+      "a": "Große Verbreitung und Kompatibilität",
+      "b": "Benutzerfreundlichkeit",
+      "c": "hoher Resourcenverbrauch"
+    }
+  },
+  "2": {
+    "_title": "Wodurch zeichnet sich Linux besonders aus?",
+    "options": {
+      "_a": "79",
+      "_b": "80",
+      "_c": "81",
+      "a": "Open Source und Anpassungsfähigkeit",
+      "b": "Stabilität und Sicherheit",
+      "c": "Große Community und Unterstützung"
+    }
+  },
+  "3": {
+    "_title": "Welche Vorteile bietet macOS im Zusammenspiel mit Apple-Hardware?",
+    "options": {
+      "_a": "82",
+      "_b": "83",
+      "_c": "84",
+      "a": "Nahtlose Integration und Optimierung",
+      "b": "Hohe Sicherheit und Datenschutz",
+      "c": "Benutzerfreundliche Oberfläche"
+    }
+  },
+  "4": {
+    "_title": "Warum spielt Software-Kompatibilität bei der Betriebssystemwahl eine große Rolle?",
+    "options": {
+      "_a": "85",
+      "_b": "86",
+      "_c": "87",
+      "a": "Verfügbarkeit von Anwendungen",
+      "b": "Unterstützung für Hardware",
+      "c": "Integration mit anderen Systemen"
+    }
+  },
+  "5": {
+    "_title": "Inwiefern unterscheiden sich die Betriebssysteme beim Ressourcenverbrauch?",
+    "options": {
+      "_a": "88",
+      "_b": "89",
+      "_c": "90",
+      "a": "Windows hat in der Regel einen höheren Ressourcenverbrauch",
+      "b": "Linux ist oft ressourcenschonender",
+      "c": "macOS ist optimiert für Apple-Hardware"
+    }
+  }
+}

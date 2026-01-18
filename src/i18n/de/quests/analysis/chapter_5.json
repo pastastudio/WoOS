@@ -1,0 +1,47 @@
+{
+  "1": {
+    "_title": "Passt du Systemeinstellungen selbst an oder nutzt du Standardeinstellungen?",
+    "options": {
+      "_a": "Mac OS",
+      "_b": "Windows",
+      "_c": "Linux",
+      "_d": "Linux",
+      "_e": "Linux",
+      "a": "ich nutze meist Standardeinstellungen",
+      "b": "ich passe nur wenige Einstellungen an",
+      "c": "ich passe einige Einstellungen an",
+      "d": "ich passe viele Einstellungen an",
+      "e": "ich passe alle Einstellungen an"
+    }
+  },
+  "2": {
+    "_title": "Ist dir maximale Akkulaufzeit wichtiger als Leistung unterwegs?",
+    "options": {
+      "_a": "auswerung durch Option A",
+      "_b": "auswerung durch Option B",
+      "_c": "auswerung durch Option C",
+      "_d": "auswerung durch Option D",
+      "_e": "auswerung durch Option E",
+      "a": "mir ist maximale Akkulaufzeit wichtiger als Leistung unterwegs",
+      "b": "ich will auch unterwegs gute Leistung",
+      "c": "ich will ein ausgewogenes Verhältnis zwischen Akkulaufzeit und Leistung",
+      "d": "Ich habe immer eine Steckdose in der Nähe",
+      "e": "Ich will keinen Laptop"
+    }
+  },
+  "3": {
+    "_title": "Möchtest du volle Kontrolle über Hintergrundprozesse haben?",
+    "options": {
+      "_a": "Linux",
+      "_b": "Windows",
+      "_c": "Mac OS",
+      "_d": "auswerung durch Option D",
+      "_e": "auswerung durch Option E",
+      "a": "ich möchte volle Kontrolle über Hintergrundprozesse haben",
+      "b": "ich möchte einige Kontrolle über Hintergrundprozesse haben",
+      "c": "ich bin mir unsicher",
+      "d": "ich möchte wenig Kontrolle über Hintergrundprozesse haben",
+      "e": "ich möchte keine Kontrolle über Hintergrundprozesse haben"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "1": {
+    "_title": "Welche PC_Komponente Verbraucht am Meisten Strom Unter Last?",
+    "options": {
+      "_a": "1",
+      "_b": "2",
+      "_c": "3",
+      "a": "RAM",
+      "b": "Grafikkarte",
+      "c": "Prozessor"
+    }
+  },
+  "2": {
+    "_title": "Auf was lässt die Kernanzahl eines Prozessors Rückschlüsse Ziehen?",
+    "options": {
+      "_a": "4",
+      "_b": "5",
+      "_c": "6",
+      "a": "Mögliche Multitasking Leistung",
+      "b": "Taktfrequenz",
+      "c": "Grafikleistung"
+    }
+  },
+  "3": {
+    "_title": "Was versteht man unter der Volllast einer Grafikkarte?",
+    "options": {
+      "_a": "7",
+      "_b": "8",
+      "_c": "9",
+      "a": "hellste mögliche Farbdarstellung",
+      "b": "maximaler Stromverbrauch bei hoher Auslastung",
+      "c": "maximale Auflösung"
+    }
+  },
+  "4": {
+    "_title": "Weshalb ist die CPU trotz geringerer Wattzahl oft ein relevanterer Faktor für den Stromverbrauch eines PCs?",
+    "options": {
+      "_a": "10",
+      "_b": "11",
+      "_c": "12",
+      "a": "Weil sie ständig arbeitet",
+      "b": "Weil sie mehr Kerne hat",
+      "c": "Weil sie teurer ist"
+    }
+  },
+  "5": {
+    "_title": "Warum sind ältere Komponenten oft ineffizienter als moderne Modelle mit ähnlicher Leistung?",
+    "options": {
+      "_a": "13",
+      "_b": "14",
+      "_c": "15",
+      "a": "Andere Fertigungstechnologien",
+      "b": "Höherer Preis",
+      "c": "moderne Designs"
+    }
+  }
+}
