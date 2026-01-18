@@ -60,7 +60,7 @@ const SystemLayout = ({
     <>
       <Navbar {...navbar} />
       <main>
-        <div className='flex min-h-screen w-full flex-1 items-center justify-center'>
+        <div className='flex min-h-screen w-full flex-1 items-center justify-center bg-white dark:bg-black'>
           {children}
         </div>
       </main>
