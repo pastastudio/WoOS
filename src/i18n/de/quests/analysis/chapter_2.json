@@ -1,0 +1,47 @@
+{
+  "1": {
+    "_title": "Wofür nutzt du deinen Computer hauptsächlich?",
+    "options": {
+      "_a": "Windows",
+      "_b": "Linux",
+      "_c": "Mac OS",
+      "_d": "Linux",
+      "_e": "Linux",
+      "a": "Gaming",
+      "b": "Office/Produktivität",
+      "c": "Medienbearbeitung",
+      "d": "Web-Browsing",
+      "e": "Sonstiges"
+    }
+  },
+  "2": {
+    "_title": "Installierst und konfigurierst du Software gern selbst oder soll alles „einfach funktionieren“?",
+    "options": {
+      "_a": "Linux",
+      "_b": "Mac OS",
+      "_c": "Windows",
+      "_d": "Linux für Dummies",
+      "_e": "Windows",
+      "a": "Ich installiere und konfiguriere Software gern selbst",
+      "b": "Ich bevorzuge es, wenn alles „einfach funktioniert“",
+      "c": "Ich mache beides je nach Situation",
+      "d": "Was ist Software?",
+      "e": "ich will nur spielen"
+    }
+  },
+  "3": {
+    "_title": "Legst du wert darauf immer die neuesten Games und Software zu nutzen?",
+    "options": {
+      "_a": "Windows",
+      "_b": "MAC OS",
+      "_c": "Linux",
+      "_d": "Linux",
+      "_e": "Linux",
+      "a": "Ich will immer die neuesten Games Spielen",
+      "b": "ich nutzte neue anspruchsvolle Software",
+      "c": "Es muss nicht immer das Neueste sein, solange es funktioniert",
+      "d": "Ich nutze nur ältere Software und Games",
+      "e": "Ich nutze nur Open-Source-Software"
+    }
+  }
+}

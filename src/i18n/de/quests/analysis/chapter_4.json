@@ -1,0 +1,47 @@
+{
+  "1": {
+    "_title": "Würdest du ein generalüberholtes Gerät einem Neugerät vorziehen?",
+    "options": {
+      "_a": "Linux",
+      "_b": "Mac OS",
+      "_c": "Windows",
+      "_d": "Linux",
+      "_e": "Mac OS",
+      "a": "ich würde generalüberholtes Gerät vorziehen",
+      "b": "ich will ein Neugerät",
+      "c": "kommt auf den Preis an",
+      "d": "ich kaufe nur gebrauchte Geräte",
+      "e": "ich kaufe nur Neugeräte"
+    }
+  },
+  "2": {
+    "_title": "Ist dir Nachhaltigkeit wichtiger als das neueste Design oder Top-Leistung?",
+    "options": {
+      "_a": "Linux",
+      "_b": "Mac OS",
+      "_c": "Windows",
+      "_d": "Linux",
+      "_e": "Linux",
+      "a": "Nachhaltigkeit ist mir wichtiger",
+      "b": "Das neueste Design ist mir wichtiger",
+      "c": "Top-Leistung ist mir wichtiger",
+      "d": "Ich achte auf ein gutes Preis-Leistungs-Verhältnis",
+      "e": "Ich habe keine Präferenz"
+    }
+  },
+  "3": {
+    "_title": "Würdest du ein Gerät verkaufen oder weitergeben, statt es ungenutzt liegen zu lassen?",
+    "options": {
+      "_a": "Windows",
+      "_b": "Linux",
+      "_c": "Mac OS",
+      "_d": "Linux",
+      "_e": "Linux",
+      "a": "Ich würde ein Gerät verkaufen",
+      "b": "Ich würde ein Gerät weitergeben",
+      "c": "Ich lasse Geräte ungenutzt liegen",
+      "d": "Ich weiß es nicht",
+      "e": "Ich nutze alte Geräte anders weiter"
+    }
+  }
+}

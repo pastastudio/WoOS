@@ -1,0 +1,47 @@
+{
+  "1": {
+    "_title": "Would you prefer a refurbished device over a new one?",
+    "options": {
+      "_a": "Linux",
+      "_b": "macOS",
+      "_c": "Windows",
+      "_d": "Linux",
+      "_e": "macOS",
+      "a": "I would prefer a refurbished device",
+      "b": "I want a new device",
+      "c": "It depends on the price",
+      "d": "I only buy used devices",
+      "e": "I only buy new devices"
+    }
+  },
+  "2": {
+    "_title": "Is sustainability more important to you than the latest design or top performance?",
+    "options": {
+      "_a": "Linux",
+      "_b": "macOS",
+      "_c": "Windows",
+      "_d": "Linux",
+      "_e": "Linux",
+      "a": "Sustainability is more important to me",
+      "b": "The latest design is more important to me",
+      "c": "Top performance is more important to me",
+      "d": "I focus on good value for money",
+      "e": "I have no preference"
+    }
+  },
+  "3": {
+    "_title": "Would you sell or give away a device instead of letting it sit unused?",
+    "options": {
+      "_a": "Windows",
+      "_b": "Linux",
+      "_c": "macOS",
+      "_d": "Linux",
+      "_e": "Linux",
+      "a": "I would sell a device",
+      "b": "I would give away a device",
+      "c": "I let devices sit unused",
+      "d": "I don't know",
+      "e": "I repurpose old devices differently"
+    }
+  }
+}

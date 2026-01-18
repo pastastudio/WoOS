@@ -1,0 +1,57 @@
+{
+  "1": {
+    "_title": "Warum sind Bildschirmschoner aus Energiesicht problematisch?",
+    "options": {
+      "_a": "61",
+      "_b": "62",
+      "_c": "63",
+      "a": "weil sie mehr Strom verbrauchen als den bildschirm auszuschalten",
+      "b": "weil sie den Bildschirm nicht ausschalten",
+      "c": "weil sie den Stromverbrauch nicht beeinflussen"
+    }
+  },
+  "2": {
+    "_title": "Wie beeinflussen Autostart-Programme den Stromverbrauch?",
+    "options": {
+      "_a": "64",
+      "_b": "65",
+      "_c": "66",
+      "a": "Negativ, da sie Ressourcen im Hintergrund nutzen",
+      "b": "gar nicht",
+      "c": "positiv, da sie den Computer schneller machen"
+    }
+  },
+  "3": {
+    "_title": "Welche Nachteile können zu aggressive Energiespareinstellungen haben?",
+    "options": {
+      "_a": "67",
+      "_b": "68",
+      "_c": "69",
+      "a": "leistungsabfall bei Nutzung",
+      "b": "zu geringe Stromrechnung",
+      "c": "schäden der Hardware"
+    }
+  },
+  "4": {
+    "_title": "Warum haben Laptops unterschiedliche Energiemodi je nach Stromquelle?",
+    "options": {
+      "_a": "70",
+      "_b": "71",
+      "_c": "72",
+      "a": "um im Akkubetrieb Strom zu sparen",
+      "b": "um die Leistung zu maximieren",
+      "c": "um die Bildschirmhelligkeit zu erhöhen"
+    }
+  },
+  "5": {
+    "_title": "Was bewirken Energiesparmodi im Betriebssystem konkret?",
+    "options": {
+      "_a": "73",
+      "_b": "74",
+      "_c": "75",
+      "a": "Reduzieren die Bildschirmhelligkeit",
+      "b": "Drosseln die Prozessorleistung",
+      "c": "Schalten nicht benötigte Hardwarekomponenten ab"
+    }
+  }
+}

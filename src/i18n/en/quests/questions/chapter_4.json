@@ -1,0 +1,57 @@
+{
+  "1": {
+    "_title": "Why is repair usually more sustainable than recycling?",
+    "options": {
+      "_a": "46",
+      "_b": "47",
+      "_c": "48",
+      "a": "Recycling doesn't work",
+      "b": "Even with good recycling, many resources are lost",
+      "c": "Recycling is too expensive"
+    }
+  },
+  "2": {
+    "_title": "What is the fundamental problem with buying new devices?",
+    "options": {
+      "_a": "49",
+      "_b": "50",
+      "_c": "51",
+      "a": "New devices are always poorly made",
+      "b": "New devices consume more energy",
+      "c": "Manufacturing new devices consumes many resources"
+    }
+  },
+  "3": {
+    "_title": "What characterizes a reputable refurbished seller?",
+    "options": {
+      "_a": "52",
+      "_b": "53",
+      "_c": "54",
+      "a": "Cheap prices",
+      "b": "Warranty and certificates",
+      "c": "Fast delivery"
+    }
+  },
+  "4": {
+    "_title": "Why are certain device models more suitable for refurbished than others?",
+    "options": {
+      "_a": "55",
+      "_b": "56",
+      "_c": "57",
+      "a": "For durable models there are more spare parts",
+      "b": "Older models are always better",
+      "c": "Newer models are always better"
+    }
+  },
+  "5": {
+    "_title": "What are the advantages of refurbished devices over new purchases?",
+    "options": {
+      "_a": "58",
+      "_b": "59",
+      "_c": "60",
+      "a": "Faster shipping",
+      "b": "More environmentally friendly",
+      "c": "Immediately available"
+    }
+  }
+}

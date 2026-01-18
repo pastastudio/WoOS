@@ -1,0 +1,57 @@
+{
+  "1": {
+    "_title": "What are Windows' strengths compared to other operating systems?",
+    "options": {
+      "_a": "76",
+      "_b": "77",
+      "_c": "78",
+      "a": "Wide distribution and compatibility",
+      "b": "User-friendliness",
+      "c": "High resource consumption"
+    }
+  },
+  "2": {
+    "_title": "What particularly distinguishes Linux?",
+    "options": {
+      "_a": "79",
+      "_b": "80",
+      "_c": "81",
+      "a": "Open source and adaptability",
+      "b": "Stability and security",
+      "c": "Large community and support"
+    }
+  },
+  "3": {
+    "_title": "What advantages does macOS offer in combination with Apple hardware?",
+    "options": {
+      "_a": "82",
+      "_b": "83",
+      "_c": "84",
+      "a": "Seamless integration and optimization",
+      "b": "High security and data protection",
+      "c": "User-friendly interface"
+    }
+  },
+  "4": {
+    "_title": "Why does software compatibility play a major role in operating system selection?",
+    "options": {
+      "_a": "85",
+      "_b": "86",
+      "_c": "87",
+      "a": "Availability of applications",
+      "b": "Hardware support",
+      "c": "Integration with other systems"
+    }
+  },
+  "5": {
+    "_title": "How do the operating systems differ in terms of resource consumption?",
+    "options": {
+      "_a": "88",
+      "_b": "89",
+      "_c": "90",
+      "a": "Windows typically has higher resource consumption",
+      "b": "Linux is often more resource-efficient",
+      "c": "macOS is optimized for Apple hardware"
+    }
+  }
+}

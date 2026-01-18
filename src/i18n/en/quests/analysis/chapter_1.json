@@ -1,0 +1,47 @@
+{
+  "1": {
+    "_title": "Do you play a lot or do you mainly use your PC for surfing and office work?",
+    "options": {
+      "_a": "Windows",
+      "_b": "mini-PC/NUC",
+      "_c": "Windows/Linux Hybrid",
+      "_d": "macOS",
+      "_e": "Linux",
+      "a": "I mainly use my PC for gaming",
+      "b": "I primarily use my PC for simple applications like browsing and office work",
+      "c": "I use my PC for a balanced mix of gaming and simple applications",
+      "d": "I mainly use my PC for creative work like video or image editing",
+      "e": "I use my PC for other purposes"
+    }
+  },
+  "2": {
+    "_title": "Is a quiet and cool PC more important to you than maximum performance?",
+    "options": {
+      "_a": "Linux",
+      "_b": "macOS",
+      "_c": "Windows",
+      "_d": "Linux",
+      "_e": "macOS",
+      "a": "Yes, a quiet and cool PC is more important to me",
+      "b": "No, maximum performance is more important to me",
+      "c": "I prefer a balanced balance between performance and noise",
+      "d": "I have no preference",
+      "e": "I'm not sure, but it has to look stylish"
+    }
+  },
+  "3": {
+    "_title": "Would you reduce performance if it significantly saves electricity?",
+    "options": {
+      "_a": "Linux",
+      "_b": "macOS",
+      "_c": "Windows",
+      "_d": "Linux",
+      "_e": "Linux",
+      "a": "Yes, I would reduce performance to save electricity",
+      "b": "No, I would not reduce performance even if electricity is saved",
+      "c": "I'm not sure if I would reduce performance",
+      "d": "I would only reduce performance under certain conditions",
+      "e": "I have no opinion on this"
+    }
+  }
+}

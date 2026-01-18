@@ -1,0 +1,47 @@
+{
+  "1": {
+    "_title": "Spielst du viel oder nutzt du den PC eher fürs Surfen und Office?",
+    "options": {
+      "_a": "Windows",
+      "_b": "mini-PC/Nuc",
+      "_c": "Windows/Linux Hybrid",
+      "_d": "MAC OS",
+      "_e": "Linux",
+      "a": "Ich nutze meinen PC hauptsächlich für Spiele",
+      "b": "Ich nutze meinen PC überwiegend für einfache Anwendungen wie Surfen und Office",
+      "c": "Ich nutze meinen PC für eine ausgewogene Mischung aus Spielen und einfachen Anwendungen",
+      "d": "Ich nutze meinen PC hauptsächlich für kreative Arbeiten wie Video- oder Bildbearbeitung",
+      "e": "Ich nutze meinen PC für andere Zwecke"
+    }
+  },
+  "2": {
+    "_title": "Ist dir ein möglichst leiser und kühler PC wichtiger als maximale Leistung?",
+    "options": {
+      "_a": "Linux",
+      "_b": "MAC OS",
+      "_c": "Windows",
+      "_d": "Linux",
+      "_e": "MAC OS",
+      "a": "Ja, ein leiser und kühler PC ist mir wichtiger",
+      "b": "Nein, maximale Leistung ist mir wichtiger",
+      "c": "Ich bevorzuge eine ausgewogene Balance zwischen Leistung und Lautstärke",
+      "d": "Ich habe keine Präferenz",
+      "e": "Ich bin mir nicht sicher, aber er mus stylisch aussehen"
+    }
+  },
+  "3": {
+    "_title": "Würdest du Leistung reduzieren, wenn dadurch deutlich Strom gespart wird?",
+    "options": {
+      "_a": "Linux",
+      "_b": "MAC OS",
+      "_c": "Windows",
+      "_d": "Linux",
+      "_e": "Linux",
+      "a": "Ja, ich würde Leistung reduzieren, um Strom zu sparen",
+      "b": "Nein, ich würde Leistung nicht reduzieren, auch wenn Strom gespart wird",
+      "c": "Ich bin mir unsicher, ob ich Leistung reduzieren würde",
+      "d": "Ich würde Leistung nur unter bestimmten Bedingungen reduzieren",
+      "e": "Ich habe keine Meinung dazu"
+    }
+  }
+}

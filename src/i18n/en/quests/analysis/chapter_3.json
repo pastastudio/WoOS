@@ -1,0 +1,47 @@
+{
+  "1": {
+    "_title": "How important is it to you to be able to exchange or upgrade components yourself?",
+    "options": {
+      "_a": "macOS",
+      "_b": "macOS",
+      "_c": "Windows/Linux",
+      "_d": "Windows/Linux",
+      "_e": "Windows/Linux",
+      "a": "No interest",
+      "b": "Low interest",
+      "c": "Moderate interest",
+      "d": "High interest",
+      "e": "Very high interest"
+    }
+  },
+  "2": {
+    "_title": "Would you continue to use an older device if it is technically sufficient?",
+    "options": {
+      "_a": "macOS",
+      "_b": "macOS",
+      "_c": "Linux",
+      "_d": "Linux",
+      "_e": "Linux",
+      "a": "Probably not",
+      "b": "Rather not",
+      "c": "Maybe",
+      "d": "Rather yes",
+      "e": "Definitely"
+    }
+  },
+  "3": {
+    "_title": "Would you be willing to learn a new operating system to use a device longer?",
+    "options": {
+      "_a": "macOS",
+      "_b": "macOS",
+      "_c": "Linux",
+      "_d": "Linux",
+      "_e": "Linux",
+      "a": "No interest",
+      "b": "Low interest",
+      "c": "Moderate interest",
+      "d": "High interest",
+      "e": "Very high interest"
+    }
+  }
+}

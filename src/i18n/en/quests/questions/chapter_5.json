@@ -1,0 +1,57 @@
+{
+  "1": {
+    "_title": "Why are screensavers problematic from an energy perspective?",
+    "options": {
+      "_a": "61",
+      "_b": "62",
+      "_c": "63",
+      "a": "Because they consume more power than turning off the screen",
+      "b": "Because they don't turn off the screen",
+      "c": "Because they don't affect power consumption"
+    }
+  },
+  "2": {
+    "_title": "How do autostart programs affect power consumption?",
+    "options": {
+      "_a": "64",
+      "_b": "65",
+      "_c": "66",
+      "a": "Negatively, as they use resources in the background",
+      "b": "Not at all",
+      "c": "Positively, as they make the computer faster"
+    }
+  },
+  "3": {
+    "_title": "What disadvantages can overly aggressive energy-saving settings have?",
+    "options": {
+      "_a": "67",
+      "_b": "68",
+      "_c": "69",
+      "a": "Performance loss during use",
+      "b": "Too low electricity bill",
+      "c": "Hardware damage"
+    }
+  },
+  "4": {
+    "_title": "Why do laptops have different power modes depending on the power source?",
+    "options": {
+      "_a": "70",
+      "_b": "71",
+      "_c": "72",
+      "a": "To save power in battery operation",
+      "b": "To maximize performance",
+      "c": "To increase screen brightness"
+    }
+  },
+  "5": {
+    "_title": "What do power saving modes in the operating system do concretely?",
+    "options": {
+      "_a": "73",
+      "_b": "74",
+      "_c": "75",
+      "a": "Reduce screen brightness",
+      "b": "Throttle processor performance",
+      "c": "Turn off unused hardware components"
+    }
+  }
+}

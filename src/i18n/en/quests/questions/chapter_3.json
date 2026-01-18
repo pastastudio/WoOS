@@ -1,0 +1,57 @@
+{
+  "1": {
+    "_title": "What are the advantages of having more RAM slots than needed?",
+    "options": {
+      "_a": "31",
+      "_b": "32",
+      "_c": "33",
+      "a": "More flexibility when upgrading",
+      "b": "Better cooling of RAM",
+      "c": "Lower latency times"
+    }
+  },
+  "2": {
+    "_title": "What is a disadvantage of soldered batteries in notebooks?",
+    "options": {
+      "_a": "34",
+      "_b": "35",
+      "_c": "36",
+      "a": "Not replaceable",
+      "b": "Higher weight",
+      "c": "Lower capacity"
+    }
+  },
+  "3": {
+    "_title": "What is an advantage of a large PC case?",
+    "options": {
+      "_a": "37",
+      "_b": "38",
+      "_c": "39",
+      "a": "More potential for upgrades",
+      "b": "Better cooling of components",
+      "c": "Lower noise levels"
+    }
+  },
+  "4": {
+    "_title": "What makes a system maintainable and long-lasting?",
+    "options": {
+      "_a": "40",
+      "_b": "41",
+      "_c": "42",
+      "a": "Modular components",
+      "b": "High-quality materials",
+      "c": "RGB lighting"
+    }
+  },
+  "5": {
+    "_title": "Why do older PCs often work well with Linux but not with Windows 11?",
+    "options": {
+      "_a": "43",
+      "_b": "44",
+      "_c": "45",
+      "a": "Lower hardware requirements",
+      "b": "Because Linux is poorly optimized",
+      "c": "Because Microsoft is a greedy company"
+    }
+  }
+}
