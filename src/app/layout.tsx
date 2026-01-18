@@ -60,7 +60,7 @@ export default function RootLayout({
   return (
     <html lang='de' suppressHydrationWarning>
       <body
-        className={`min-h-screen ${geist.variable} ${pixelifySans.variable} ${jersey10.variable}`}
+        className={`${geist.variable} ${pixelifySans.variable} ${jersey10.variable}`}
       >
         <CustomCursor />
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
