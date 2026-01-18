@@ -33,37 +33,37 @@ function ParallaxLayer({ children }: { children: React.ReactNode }) {
 const PARALLAX_LAYERS = [
   {
     speed: '2',
-    image: '/keyart/index-0.png',
+    image: '/keyart/alive/index-0.png',
     className:
       'fixed block h-[800px] w-full bg-[#161A24] bg-[length:auto_700px] bg-bottom bg-center bg-repeat-x',
   },
   {
     speed: '7',
-    image: '/keyart/index-1.png',
+    image: '/keyart/alive/index-1.png',
     className:
       'absolute block h-[850px] w-full bg-[length:auto_700px] bg-bottom bg-center bg-repeat-x',
   },
   {
     speed: '12',
-    image: '/keyart/index-2.png',
+    image: '/keyart/alive/index-2.png',
     className:
       'absolute block h-[900px] w-full bg-[length:auto_700px] bg-bottom bg-center bg-repeat-x',
   },
   {
     speed: '17',
-    image: '/keyart/index-3.png',
+    image: '/keyart/alive/index-3.png',
     className:
       'absolute block h-[900px] w-full bg-[length:auto_700px] bg-bottom bg-center bg-repeat-x',
   },
   {
     speed: '21',
-    image: '/keyart/index-4.png',
+    image: '/keyart/alive/index-4.png',
     className:
       'absolute block h-[900px] w-full bg-[length:auto_700px] bg-bottom bg-center bg-repeat-x',
   },
   {
     speed: '30',
-    image: '/keyart/index-5.png',
+    image: '/keyart/alive/index-5.png',
     className:
       'absolute block h-[900px] w-full bg-[length:auto_700px] bg-bottom bg-center bg-repeat-x',
   },
@@ -82,7 +82,7 @@ function ParallaxWindow() {
           />
         ))}
       </ParallaxLayer>
-      <div className="absolute block h-[900px] w-full bg-[url('/keyart/index-6.png')] bg-[length:auto_700px] bg-bottom bg-center bg-repeat-x" />
+      <div className="absolute block h-[900px] w-full bg-[url('/keyart/alive/index-6.png')] bg-[length:auto_700px] bg-bottom bg-center bg-repeat-x" />
     </div>
   );
 }
