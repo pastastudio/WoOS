@@ -18,7 +18,7 @@ export default async function Layout({
     logoUrl: `/${lang}`,
     links: [
       { label: dict.nav.quests, href: `/${lang}/quests` },
-      { label: dict.nav.info, href: `/${lang}/info/chapter_1` },
+      { label: dict.nav.info, href: `/${lang}/information/chapter_1` },
       {
         label: dict.nav.docs,
         href: `https://github.com/copiedcopypasta/dmwt_WoOS/blob/main/README.md`,

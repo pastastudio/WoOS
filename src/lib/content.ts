@@ -3,7 +3,7 @@ import path from 'path';
 
 export type RouteEntry = {
   lang: string;
-  section: 'info' | 'docs';
+  section: 'information' | 'docs';
   slug: string; // slug used in URL and navigation
   title?: string; // title from frontmatter
 };
@@ -46,7 +46,7 @@ function readFrontmatterTitle(filePath: string): string | undefined {
   return undefined;
 }
 
-function listContentFiles(locale: string, section: 'info' | 'docs') {
+function listContentFiles(locale: string, section: 'information' | 'docs') {
   const dirPath = path.join(CONTENT_DIR, locale, section);
   if (!fs.existsSync(dirPath)) return [] as string[];
   return fs
@@ -85,7 +85,7 @@ export function getRootContent(locale: string, slug: string) {
 
 export function getContent(
   locale: string,
-  section: 'info' | 'docs',
+  section: 'information' | 'docs',
   slug: string,
 ) {
   // slug may be a frontmatter filename; resolve by scanning files
@@ -107,7 +107,7 @@ export function getContent(
 
 export function getAllSlugs(
   lang: string,
-  section: 'info' | 'docs',
+  section: 'information' | 'docs',
 ): string[] {
   return listContentFiles(lang, section).map((file) => {
     const fmName = readFrontmatterFilename(file);
@@ -117,7 +117,7 @@ export function getAllSlugs(
 
 export function getAllRoutes(
   lang: string,
-  section: 'info' | 'docs',
+  section: 'information' | 'docs',
 ): RouteEntry[] {
   return listContentFiles(lang, section).map((file) => ({
     lang,
@@ -129,7 +129,7 @@ export function getAllRoutes(
 
 export function getPageRoute(
   lang: string,
-  section: 'info' | 'docs',
+  section: 'information' | 'docs',
   slug: string,
 ): RouteEntry {
   const files = listContentFiles(lang, section);

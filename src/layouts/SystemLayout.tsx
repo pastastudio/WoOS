@@ -2,24 +2,24 @@
 
 import Footer, { FooterProps } from '@/components/Footer';
 import Navbar, { NavbarProps } from '@/components/Navbar';
-import { useParams } from 'next/navigation';
+import { SupportedLanguage } from '@/lib/language';
 import { ReactNode } from 'react';
+
+interface SystemLayoutProps {
+  children: ReactNode;
+  lang?: SupportedLanguage;
+}
 
 const SystemLayout = ({
   children,
-}: Readonly<{
-  children: ReactNode;
-}>) => {
-  const params = useParams<{ lang?: string }>();
-  const rawLang = params?.lang;
-  const lang = Array.isArray(rawLang) ? rawLang[0] : rawLang || 'en';
-
+  lang = 'en',
+}: Readonly<SystemLayoutProps>) => {
   const navbar: NavbarProps = {
     logo: true,
     logoUrl: `/${lang}`,
     links: [
       { label: 'Quests', href: `/${lang}/quests` },
-      { label: 'Informations', href: `/${lang}/info/chapter_1` },
+      { label: 'Informations', href: `/${lang}/information/chapter_1` },
       {
         label: 'Documentation',
         href: 'https://github.com/copiedcopypasta/dmwt_WoOS/blob/main/README.md',

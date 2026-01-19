@@ -1,5 +1,6 @@
 import { MarkdownContentWrapper } from '@/components/ui/base/markdown-content-wrapper';
 import { MarkdownToc } from '@/components/ui/base/markdown-toc';
+import { PagePreload } from '@/components/withPagePreload';
 import { MarkdownLayout } from '@/layouts/MarkdownLayout';
 import {
   getAllRoutes,
@@ -13,7 +14,7 @@ import { notFound, redirect } from 'next/navigation';
 
 async function generateNavigationSidebar(
   locale: string,
-  section: 'info' | 'docs',
+  section: 'information' | 'docs',
   currentSlug: string,
 ) {
   const routes = await getAllRoutes(locale, section);
@@ -54,7 +55,7 @@ function getCircularNavUrl(
   routes: RouteEntry[],
   currentSlug: string,
   locale: string,
-  section: 'info' | 'docs',
+  section: 'information' | 'docs',
 ) {
   if (!routes?.length) return '#';
   const currentIndex = routes.findIndex((r) => r.slug === currentSlug);
@@ -75,7 +76,7 @@ interface PageProps {
 
 export default async function Page({ params }: PageProps) {
   const { lang, slug } = await params;
-  const section: 'info' | 'docs' = 'info';
+  const section: 'information' | 'docs' = 'information';
 
   try {
     getPageRoute(lang, section, slug);
@@ -113,22 +114,24 @@ export default async function Page({ params }: PageProps) {
   );
 
   return (
-    <MarkdownLayout
-      leftSidebar={navigationSidebar}
-      content={
-        <MarkdownContentWrapper
-          title={(frontmatter as { title?: string } | undefined)?.title}
-          description={
-            (frontmatter as { description?: string } | undefined)?.description
-          }
-          badges={(frontmatter as { badges?: string[] } | undefined)?.badges}
-          prevUrl={prevUrl}
-          nextUrl={nextUrl}
-        >
-          {Content}
-        </MarkdownContentWrapper>
-      }
-      rightSidebar={<MarkdownToc toc={toc} />}
-    />
+    <PagePreload>
+      <MarkdownLayout
+        leftSidebar={navigationSidebar}
+        content={
+          <MarkdownContentWrapper
+            title={(frontmatter as { title?: string } | undefined)?.title}
+            description={
+              (frontmatter as { description?: string } | undefined)?.description
+            }
+            badges={(frontmatter as { badges?: string[] } | undefined)?.badges}
+            prevUrl={prevUrl}
+            nextUrl={nextUrl}
+          >
+            {Content}
+          </MarkdownContentWrapper>
+        }
+        rightSidebar={<MarkdownToc toc={toc} />}
+      />
+    </PagePreload>
   );
 }

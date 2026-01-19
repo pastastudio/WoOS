@@ -1,6 +1,7 @@
 'use client';
 
-import { setLanguageCookie } from '@/app/actions';
+import { setLanguageCookie } from '@/lib/i18n';
+import { extractLanguageFromPathname, SupportedLanguage } from '@/lib/language';
 import type { Sozials } from '@/types/index';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -48,8 +49,8 @@ const getIcon = (href: string): ReactElement | null => {
  * Language data constant
  */
 const LANGUAGES = [
-  { value: 'de', label: 'Deutsch', flag: '🇩🇪' },
-  { value: 'en', label: 'English', flag: '🇬🇧' },
+  { value: 'de' as const, label: 'Deutsch', flag: '🇩🇪' },
+  { value: 'en' as const, label: 'English', flag: '🇬🇧' },
 ] as const;
 
 /**
@@ -64,16 +65,17 @@ export default function FooterSozials({
   const router = useRouter();
   const pathname = usePathname();
 
-  const initialLang = pathname.split('/')[1] || 'en';
-  const [selectedLanguage, setSelectedLanguage] = useState(initialLang);
+  const initialLang = extractLanguageFromPathname(pathname);
+  const [selectedLanguage, setSelectedLanguage] =
+    useState<SupportedLanguage>(initialLang);
 
   const selectedLang = LANGUAGES.find(
     (lang) => lang.value === selectedLanguage,
   );
 
   const handleLanguageChange = async (value: string | null) => {
-    if (value == null) return;
-    setSelectedLanguage(value);
+    if (value == null || !['en', 'de'].includes(value)) return;
+    setSelectedLanguage(value as SupportedLanguage);
 
     // Set the cookie server-side
     await setLanguageCookie(value);

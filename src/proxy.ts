@@ -1,12 +1,29 @@
+import {
+  DEFAULT_LANGUAGE,
+  SUPPORTED_LANGUAGES,
+  type SupportedLanguage,
+} from '@/lib/language';
 import { NextRequest, NextResponse } from 'next/server';
 
-const locales = ['en', 'de'];
-const defaultLocale = 'en';
+/**
+ * Determines the user's preferred language based on:
+ * 1. Cookie preference (persistent across sessions)
+ * 2. Accept-Language header (system/browser preference)
+ * 3. Default language fallback
+ *
+ * This centralized logic ensures consistent language detection
+ * across all routing and components.
+ */
+function isSupportedLanguage(
+  lang: string | null | undefined,
+): lang is SupportedLanguage {
+  return !!lang && SUPPORTED_LANGUAGES.includes(lang as SupportedLanguage);
+}
 
 function getLocale(request: NextRequest): string {
-  // 1. Check for preferred_language cookie
+  // 1. Check for preferred_language cookie (highest priority)
   const cookieLocale = request.cookies.get('preferred_language')?.value;
-  if (cookieLocale && locales.includes(cookieLocale)) {
+  if (isSupportedLanguage(cookieLocale)) {
     return cookieLocale;
   }
 
@@ -21,19 +38,20 @@ function getLocale(request: NextRequest): string {
     });
 
     for (const lang of languages) {
-      if (locales.includes(lang)) {
+      if (isSupportedLanguage(lang)) {
         return lang;
       }
     }
   }
 
   // 3. Fall back to default locale
-  return defaultLocale;
+  return DEFAULT_LANGUAGE;
 }
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Skip middleware for static assets, API routes, and files
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
@@ -42,7 +60,8 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const hasLocale = locales.some(
+  // Check if pathname already has a language prefix
+  const hasLocale = SUPPORTED_LANGUAGES.some(
     (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
   );
 
@@ -50,11 +69,12 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Determine user's preferred language and redirect
   const selectedLocale = getLocale(request);
   request.nextUrl.pathname = `/${selectedLocale}${pathname}`;
   const response = NextResponse.redirect(request.nextUrl);
 
-  // Set the cookie for future requests
+  // Persist language preference in cookie for future requests
   response.cookies.set('preferred_language', selectedLocale, {
     maxAge: 365 * 24 * 60 * 60, // 1 year
     path: '/',

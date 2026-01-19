@@ -1,3 +1,4 @@
+import { PreloadProvider } from '@/components/PreloadProvider';
 import { SmoothScrollProvider } from '@/components/scroll-provider';
 import { ThemeProvider } from '@/components/theme-provider';
 import { CustomCursor } from '@/components/ui/base/cursor';
@@ -57,10 +58,10 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<Record<string, never>>;
+  params: Promise<{ lang?: string }>;
 }) {
-  await params;
-  const lang = 'en';
+  const { lang: paramLang } = await params;
+  const lang = paramLang || 'en';
 
   return (
     <html lang={lang} suppressHydrationWarning>
@@ -69,7 +70,9 @@ export default async function RootLayout({
       >
         <CustomCursor />
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-          <SmoothScrollProvider>{children}</SmoothScrollProvider>
+          <SmoothScrollProvider>
+            <PreloadProvider>{children}</PreloadProvider>
+          </SmoothScrollProvider>
         </ThemeProvider>
       </body>
     </html>
