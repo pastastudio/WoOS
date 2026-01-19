@@ -12,7 +12,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@assets/*": ["./src/assets/*"],
-      "@contents/*": ["./src/de/*"]
+      "@content/*": ["./content/*"],
+      "@dic/*": ["./src/i18n/*"]
     },
     "plugins": [
       {

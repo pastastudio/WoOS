@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "quests": "Quests",
+    "info": "Informationen",
+    "docs": "Dokumentation"
+  },
+  "footer": {
+    "resources": {
+      "title": "Ressourcen",
+      "tests": "Tests",
+      "analytics": "Analysen",
+      "source": "Quellcode"
+    },
+    "legal": {
+      "title": "Rechtliches",
+      "imprint": "Impressum",
+      "privacy": "Datenschutz",
+      "cookies": "Cookie-Einstellungen",
+      "licenses": "Lizenz",
+      "bindings": "Nutzerbindungen"
+    },
+    "about": {
+      "title": "Über",
+      "us": "Über uns",
+      "university": "Hochschule",
+      "accessibility": "Barrierefreiheit"
+    },
+    "social": {
+      "title": "Sozial",
+      "feedback": "Feedback",
+      "contact": "Kontakt",
+      "faq": "FAQ"
+    }
+  },
+  "home": {
+    "title": "Willkommen",
+    "description": "Dies ist die deutsche Version"
+  },
+  "other": {
+    "socialText": "Soziales",
+    "languageText": "Sprache"
+  }
+}

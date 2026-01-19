@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 export type RouteEntry = {
-  locale: string;
+  lang: string;
   section: 'info' | 'docs';
   slug: string; // slug used in URL and navigation
   title?: string; // title from frontmatter
@@ -106,21 +106,21 @@ export function getContent(
 }
 
 export function getAllSlugs(
-  locale: string,
+  lang: string,
   section: 'info' | 'docs',
 ): string[] {
-  return listContentFiles(locale, section).map((file) => {
+  return listContentFiles(lang, section).map((file) => {
     const fmName = readFrontmatterFilename(file);
     return fmName ?? path.basename(file, '.mdx');
   });
 }
 
 export function getAllRoutes(
-  locale: string,
+  lang: string,
   section: 'info' | 'docs',
 ): RouteEntry[] {
-  return listContentFiles(locale, section).map((file) => ({
-    locale,
+  return listContentFiles(lang, section).map((file) => ({
+    lang,
     section,
     slug: readFrontmatterFilename(file) ?? path.basename(file, '.mdx'),
     title: readFrontmatterTitle(file),
@@ -128,11 +128,11 @@ export function getAllRoutes(
 }
 
 export function getPageRoute(
-  locale: string,
+  lang: string,
   section: 'info' | 'docs',
   slug: string,
 ): RouteEntry {
-  const files = listContentFiles(locale, section);
+  const files = listContentFiles(lang, section);
   const match = files.find((file) => {
     const fmName = readFrontmatterFilename(file);
     const fallbackSlug = path.basename(file, '.mdx');
@@ -145,5 +145,5 @@ export function getPageRoute(
 
   const resolvedSlug =
     readFrontmatterFilename(match) ?? path.basename(match, '.mdx');
-  return { locale, section, slug: resolvedSlug };
+  return { lang, section, slug: resolvedSlug };
 }

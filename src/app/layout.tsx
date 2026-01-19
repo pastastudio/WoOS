@@ -52,13 +52,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<Record<string, never>>;
 }) {
+  await params;
+  const lang = 'en';
+
   return (
-    <html lang='de' suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <body
         className={`${geist.variable} ${pixelifySans.variable} ${jersey10.variable}`}
       >

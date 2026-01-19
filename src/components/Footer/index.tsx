@@ -20,6 +20,9 @@ export interface LinkCategorys {
 export interface FooterProps {
   links?: LinkCategorys;
   sozials?: Sozials[];
+  socialsText?: { key: string; title: string};
+  languageText?: { key: string; title: string};
+  categories?: { key: string; title: string}[];
   logo?: boolean;
   banner?: boolean;
   showWave?: boolean;
@@ -43,6 +46,9 @@ export interface FooterProps {
 export default function Footer({
   links,
   sozials,
+  socialsText,
+  languageText,
+  categories,
   logo = false,
   banner = true,
   showWave = true,
@@ -68,11 +74,11 @@ export default function Footer({
       >
         <div className={styles.contentGrid}>
           {/* Sozials Section */}
-          <FooterSozials logo={logo} sozials={sozials} />
+          <FooterSozials logo={logo} sozials={sozials} socialText = {socialsText} languageText={languageText}/>
 
           {/* Links Section */}
           <div className={styles.linksWrapper}>
-            <FooterLinks links={links} />
+            <FooterLinks links={links} categories={categories} />
           </div>
 
           {/* Banner Section */}

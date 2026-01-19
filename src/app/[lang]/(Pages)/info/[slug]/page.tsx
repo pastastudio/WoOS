@@ -32,9 +32,9 @@ async function generateNavigationSidebar(
           {routes.map((route) => {
             const isActive = route.slug === currentSlug;
             return (
-              <li key={`${route.locale}-${route.section}-${route.slug}`}>
+              <li key={`${route.lang}-${route.section}-${route.slug}`}>
                 <Link
-                  href={`/${route.locale}/${route.section}/${route.slug}`}
+                  href={`/${route.lang}/${route.section}/${route.slug}`}
                   className='hover:text-foreground/80 transition-colors'
                   style={isActive ? { color: '#00a63e' } : undefined}
                 >
@@ -70,20 +70,20 @@ function getCircularNavUrl(
 }
 
 interface PageProps {
-  params: Promise<{ locale: string; slug: string }>;
+  params: Promise<{ lang: string; slug: string }>;
 }
 
 export default async function Page({ params }: PageProps) {
-  const { locale, slug } = await params;
+  const { lang, slug } = await params;
   const section: 'info' | 'docs' = 'info';
 
   try {
-    getPageRoute(locale, section, slug);
+    getPageRoute(lang, section, slug);
   } catch {
     notFound();
   }
 
-  const { source, filePath } = await getContent(locale, section, slug);
+  const { source, filePath } = await getContent(lang, section, slug);
   const {
     body: Content,
     toc,
@@ -96,18 +96,18 @@ export default async function Page({ params }: PageProps) {
 
   // Redirect old file-based slugs to frontmatter-based ones
   if (header.filename && header.filename !== slug) {
-    redirect(`/${locale}/${section}/${header.filename}`);
+    redirect(`/${lang}/${section}/${header.filename}`);
   }
 
-  const routes = await getAllRoutes(locale, section);
+  const routes = await getAllRoutes(lang, section);
 
   // Get circular navigation URLs
-  const prevUrl = getCircularNavUrl('prev', routes, slug, locale, section);
-  const nextUrl = getCircularNavUrl('next', routes, slug, locale, section);
+  const prevUrl = getCircularNavUrl('prev', routes, slug, lang, section);
+  const nextUrl = getCircularNavUrl('next', routes, slug, lang, section);
 
   // Generate sidebar content
   const navigationSidebar = await generateNavigationSidebar(
-    locale,
+    lang,
     section,
     slug,
   );

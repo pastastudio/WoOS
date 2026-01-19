@@ -1,6 +1,7 @@
 'use client';
 
 import type { TableOfContents } from '@/lib/markdown';
+import Link from 'next/link';
 
 interface MarkdownTocProps {
   toc?: TableOfContents;
@@ -28,12 +29,12 @@ export function MarkdownToc({ toc, className = '' }: MarkdownTocProps) {
                   : 'pl-12';
           return (
             <li key={item.url} className={paddingClass}>
-              <a
+              <Link
                 href={item.url}
                 className='hover:text-foreground cursor-pointer transition-colors'
               >
                 {item.title}
-              </a>
+              </Link>
             </li>
           );
         })}
