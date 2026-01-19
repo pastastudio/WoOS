@@ -1,26 +1,45 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { Discord, Github, Google } from '@2hoch1/pixel-icon-library-react';
 
+// TODO: Auth provider components - commented out
+// Uncomment and wire up when next-auth is ready
+
 function DiscordProvider() {
   return (
-    <Button className='w-full bg-[#5865F2] text-white hover:bg-[#4752C4]'>
-      <Discord /> Discord
+    <Button disabled className='w-full bg-[#5865F2] text-white cursor-not-allowed opacity-50 hover:bg-[#5865F2]'>
+      <Discord /> Discord (Coming Soon)
     </Button>
   );
+  // TODO: Re-enable when auth is ready:
+  // return (
+  //   <form action={loginDiscord}>
+  //     <Button type='submit' className='w-full bg-[#5865F2] text-white hover:bg-[#4752C4]'>
+  //       <Discord /> Discord
+  //     </Button>
+  //   </form>
+  // );
 }
 
 function GitHubProvider() {
   return (
-    <Button className='w-full bg-[#1A1A1A] text-white hover:bg-[#333333] dark:bg-[#E4E4E4] dark:text-black dark:hover:bg-[#C6C6C6]'>
-      <Github /> GitHub
+    <Button
+      disabled
+      className='w-full bg-gray-400 text-white cursor-not-allowed opacity-50 hover:bg-gray-400'
+    >
+      <Github /> GitHub (Coming Soon)
     </Button>
   );
 }
 
 function GoogleProvider() {
   return (
-    <Button className='w-full bg-[#0085F8] text-white hover:bg-[#006CD1]'>
-      <Google /> Google
+    <Button
+      disabled
+      className='w-full bg-gray-400 text-white cursor-not-allowed opacity-50 hover:bg-gray-400'
+    >
+      <Google /> Google (Coming Soon)
     </Button>
   );
 }

@@ -12,7 +12,6 @@ if (!process.env.PRISMA_DATABASE_URL) {
     const file = path.join(root, envPath);
     if (fs.existsSync(file)) {
       dotenv.config({ path: file });
-      break;
     }
   }
 }

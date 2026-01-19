@@ -1,0 +1,10 @@
+{
+  "continue": "Continue",
+  "description": "Progress through each chapter in order. Completing one unlocks the next. Your latest unlocked chapter is always just a click away.",
+  "status": {
+    "completed": "Completed",
+    "locked": "Locked",
+    "ready": "Ready"
+  },
+  "title": "Quests"
+}

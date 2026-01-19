@@ -68,7 +68,7 @@ export default async function RootLayout({
       <body
         className={`${geist.variable} ${pixelifySans.variable} ${jersey10.variable}`}
       >
-        <CustomCursor />
+        <CustomCursor variation='flowerstaff-4' enableGlow enableSparkles />
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
           <SmoothScrollProvider>
             <PreloadProvider>{children}</PreloadProvider>

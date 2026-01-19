@@ -60,6 +60,11 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Skip auth logic for NextAuth routes to avoid redirect loops
+  if (pathname.startsWith('/api/auth')) {
+    return NextResponse.next();
+  }
+
   // Check if pathname already has a language prefix
   const hasLocale = SUPPORTED_LANGUAGES.some(
     (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),

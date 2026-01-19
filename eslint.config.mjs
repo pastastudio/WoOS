@@ -38,6 +38,13 @@ export default [
     },
   },
   {
+    files: ['src/components/ui/base/spinner.tsx', 'src/components/ui/base/question-overview.tsx'],
+    rules: {
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'off',
+    },
+  },
+  {
     ignores: [
       'node_modules/**',
       '.next/**',

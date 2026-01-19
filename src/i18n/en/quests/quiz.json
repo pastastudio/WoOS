@@ -1,0 +1,18 @@
+{
+  "analyze": "Review Results",
+  "analyzeMessage": "You've answered all {technicalCount} technical and {personalCount} personal questions for Chapter {chapter}. Here's a summary of your answers.",
+  "backToQuests": "Back to Quests",
+  "complete": "Quiz Complete!",
+  "completeMessage": "You've completed all {total} questions for Chapter {chapter}. Your answers have been saved.",
+  "finish": "Finish",
+  "loading": "Loading...",
+  "next": "Next",
+  "noQuestions": "No questions available for this chapter.",
+  "personalPhase": "Personal Questions",
+  "previous": "Previous",
+  "progressLabel": "Question {current} of {total}",
+  "startPersonal": "Start Personal Questions",
+  "technicalPhase": "Technical Questions",
+  "transitionMessage": "Great job! You've answered all {technicalCount} technical questions. Now let's move on to {personalCount} personal questions to better understand your preferences.",
+  "transitionTitle": "Technical Questions Complete!"
+}

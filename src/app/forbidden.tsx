@@ -1,22 +1,22 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import deSystemFiles from '@/i18n/de/system_files.json';
+import enSystemFiles from '@/i18n/en/system_files.json';
 import { SystemLayout } from '@/layouts/SystemLayout';
 import { ExclamationTriangleSolid } from '@2hoch1/pixel-icon-library-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-const FORBIDDEN_CONFIG = {
-  title: 'Zugriff verweigert',
-  description: 'Du hast keine Berechtigung, um auf diese Seite zuzugreifen.',
-  buttons: {
-    back: 'Zurück',
-    home: 'Home',
-  },
-} as const;
+const systemFilesDict = {
+  de: deSystemFiles,
+  en: enSystemFiles,
+};
 
 export default function Forbidden() {
   const router = useRouter();
+  // Default to English for forbidden page at root level
+  const systemFiles = systemFilesDict.en;
 
   return (
     <SystemLayout>
@@ -26,20 +26,20 @@ export default function Forbidden() {
         </div>
 
         <h1 className='text-2xl font-semibold text-neutral-900'>
-          {FORBIDDEN_CONFIG.title}
+          {systemFiles.forbidden.title}
         </h1>
 
         <p className='max-w-sm text-neutral-500'>
-          {FORBIDDEN_CONFIG.description}
+          {systemFiles.forbidden.description}
         </p>
 
         <div className='mt-2 flex flex-wrap justify-center gap-3'>
           <Button onClick={() => router.back()}>
-            {FORBIDDEN_CONFIG.buttons.back}
+            {systemFiles.forbidden.buttons.back}
           </Button>
 
           <Link href='/'>
-            <Button>{FORBIDDEN_CONFIG.buttons.home}</Button>
+            <Button>{systemFiles.forbidden.buttons.home}</Button>
           </Link>
         </div>
       </div>

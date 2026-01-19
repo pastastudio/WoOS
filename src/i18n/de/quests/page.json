@@ -1,0 +1,10 @@
+{
+  "continue": "Fortsetzen",
+  "description": "Durchlaufe jedes Kapitel in Reihenfolge. Das Abschließen eines Kapitels schaltet das nächste frei. Dein zuletzt freigeschaltetes Kapitel ist immer nur einen Klick entfernt.",
+  "status": {
+    "completed": "Abgeschlossen",
+    "locked": "Gesperrt",
+    "ready": "Bereit"
+  },
+  "title": "Quests"
+}

@@ -1,0 +1,18 @@
+{
+  "analyze": "Ergebnisse überprüfen",
+  "analyzeMessage": "Du hast alle {technicalCount} technischen und {personalCount} persönlichen Fragen für Kapitel {chapter} beantwortet. Hier ist eine Zusammenfassung deiner Antworten.",
+  "backToQuests": "Zurück zu Quests",
+  "complete": "Quiz abgeschlossen!",
+  "completeMessage": "Du hast alle {total} Fragen für Kapitel {chapter} beantwortet. Deine Antworten wurden gespeichert.",
+  "finish": "Fertig",
+  "loading": "Laden...",
+  "next": "Weiter",
+  "noQuestions": "Keine Fragen für dieses Kapitel verfügbar.",
+  "personalPhase": "Persönliche Fragen",
+  "previous": "Zurück",
+  "progressLabel": "Frage {current} von {total}",
+  "startPersonal": "Persönliche Fragen starten",
+  "technicalPhase": "Technische Fragen",
+  "transitionMessage": "Großartig! Du hast alle {technicalCount} technischen Fragen beantwortet. Jetzt weiter zu {personalCount} persönlichen Fragen, um deine Vorlieben besser kennenzulernen.",
+  "transitionTitle": "Technische Fragen abgeschlossen!"
+}
