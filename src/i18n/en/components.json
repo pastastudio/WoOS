@@ -1,1 +1,29 @@
-{}
+{
+  "footer": {
+    "about": "About",
+    "aboutUs": "About Us",
+    "accessibility": "Accessibility",
+    "analytics": "Analytics",
+    "contact": "Contact",
+    "cookieSettings": "Cookie Settings",
+    "datenschutz": "Privacy Policy",
+    "faq": "FAQ",
+    "feedback": "Feedback",
+    "impressum": "Impressum",
+    "language": "Language",
+    "legal": "Legal",
+    "licenses": "Licenses",
+    "resources": "Resources",
+    "social": "Social",
+    "socialMedia": "Social Media",
+    "sourceCode": "Source Code",
+    "tests": "Tests",
+    "university": "University",
+    "userBindings": "User Agreements"
+  },
+  "navbar": {
+    "documentation": "Documentation",
+    "information": "Information",
+    "quests": "Quests"
+  }
+}

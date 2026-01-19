@@ -6,6 +6,8 @@ import { Fragment, ReactElement } from 'react';
 
 import BannerSvg from '@/assets/banner.svg';
 import LogoSvg from '@/assets/logo.svg';
+// TODO: Uncomment when auth is ready
+// import { auth } from '@/auth';
 import { SearchBarToggle } from '@/components/ui/base/searchbar-toggle';
 import { ThemeToggle } from '@/components/ui/base/theme-toggle';
 
@@ -62,7 +64,7 @@ const NavLinks = ({ links }: { links: Links[] }): ReactElement => {
  */
 const LoginButton = (): ReactElement => {
   return (
-    <Link href='' passHref>
+    <Link href='/' passHref>
       <Button variant='ghost' className={styles.loginButton}>
         Login <ExternalLink />
       </Button>
@@ -100,14 +102,17 @@ const RightSection = ({
   searchBar?: boolean | null;
   darkModeToggle?: boolean | null;
   loginButton?: boolean | null;
-  session: string;
+  session: unknown;
 }): ReactElement => {
   const elements = [];
 
   if (searchBar) elements.push(<SearchBarToggle key='search' />);
   if (darkModeToggle) elements.push(<ThemeToggle key='theme' />);
-  if (session) elements.push(<ProfileButton key='profile' />);
-  else if (loginButton) elements.push(<LoginButton key='login' />);
+  if (session && typeof session === 'object' && 'user' in session) {
+    elements.push(<ProfileButton key='profile' />);
+  } else if (loginButton) {
+    elements.push(<LoginButton key='login' />);
+  }
 
   return (
     <div className={styles.rightSection}>
@@ -123,7 +128,7 @@ const RightSection = ({
   );
 };
 
-/**
+/**-
  * Navbar
  * Renders the navigation bar with optional logo, links, search bar, dark mode toggle, and login button.
  *
@@ -142,7 +147,9 @@ export default function Navbar({
   frontColor,
   fixed,
 }: NavbarProps): ReactElement {
-  const session = ''; // Replace with actual session logic
+  // TODO: Uncomment when auth is ready
+  // const session = await auth();
+  const session = null; // Placeholder
 
   // Build navbar classes
   const navbarClasses = [

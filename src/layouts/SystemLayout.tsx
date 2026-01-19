@@ -2,6 +2,8 @@
 
 import Footer, { FooterProps } from '@/components/Footer';
 import Navbar, { NavbarProps } from '@/components/Navbar';
+import deComponents from '@/i18n/de/components.json';
+import enComponents from '@/i18n/en/components.json';
 import { SupportedLanguage } from '@/lib/language';
 import { ReactNode } from 'react';
 
@@ -10,18 +12,28 @@ interface SystemLayoutProps {
   lang?: SupportedLanguage;
 }
 
+const componentsDict = {
+  de: deComponents,
+  en: enComponents,
+};
+
 const SystemLayout = ({
   children,
   lang = 'en',
 }: Readonly<SystemLayoutProps>) => {
+  const components = componentsDict[lang];
+
   const navbar: NavbarProps = {
     logo: true,
     logoUrl: `/${lang}`,
     links: [
-      { label: 'Quests', href: `/${lang}/quests` },
-      { label: 'Informations', href: `/${lang}/information/chapter_1` },
+      { label: components.navbar.quests, href: `/${lang}/quests` },
       {
-        label: 'Documentation',
+        label: components.navbar.information,
+        href: `/${lang}/information/chapter_1`,
+      },
+      {
+        label: components.navbar.documentation,
         href: 'https://github.com/copiedcopypasta/dmwt_WoOS/blob/main/README.md',
       },
     ],
@@ -36,31 +48,37 @@ const SystemLayout = ({
     links: {
       resources: [
         {
-          label: 'Tests',
+          label: components.footer.tests,
           href: 'https://github.com/copiedcopypasta/dmwt_WoOS/deployments',
         },
-        { label: 'Analytics', href: `/${lang}/analyze` },
+        { label: components.footer.analytics, href: `/${lang}/analyze` },
         {
-          label: 'Source Code',
+          label: components.footer.sourceCode,
           href: 'https://github.com/copiedcopypasta/dmwt',
         },
       ],
       legal: [
-        { label: 'Impressum', href: `/${lang}/legal` },
-        { label: 'Datenschutz', href: `/${lang}/legal` },
-        { label: 'Cookie-Einstellungen', href: `/${lang}/legal` },
-        { label: 'Lizenzen', href: `/${lang}/license` },
-        { label: 'Nutzerbindungen', href: `/${lang}/legal` },
+        { label: components.footer.impressum, href: `/${lang}/legal` },
+        { label: components.footer.datenschutz, href: `/${lang}/legal` },
+        { label: components.footer.cookieSettings, href: `/${lang}/legal` },
+        { label: components.footer.licenses, href: `/${lang}/license` },
+        { label: components.footer.userBindings, href: `/${lang}/legal` },
       ],
       about: [
-        { label: 'Über uns', href: 'https://github.com/copiedcopypasta/dmwt' },
-        { label: 'Hochschule', href: 'https://www.reutlingen-university.de/' },
-        { label: 'Barrierefreiheit', href: `/${lang}/legal` },
+        {
+          label: components.footer.aboutUs,
+          href: 'https://github.com/copiedcopypasta/dmwt',
+        },
+        {
+          label: components.footer.university,
+          href: 'https://www.reutlingen-university.de/',
+        },
+        { label: components.footer.accessibility, href: `/${lang}/legal` },
       ],
       social: [
-        { label: 'Feedback', href: `/${lang}/feedback` },
-        { label: 'Kontakt', href: `/${lang}/legal` },
-        { label: 'FAQ', href: `/${lang}/faq` },
+        { label: components.footer.feedback, href: `/${lang}/feedback` },
+        { label: components.footer.contact, href: `/${lang}/legal` },
+        { label: components.footer.faq, href: `/${lang}/faq` },
       ],
     },
     sozials: [
@@ -70,6 +88,14 @@ const SystemLayout = ({
     ],
     logo: true,
     banner: true,
+    categories: [
+      { key: 'resources', title: components.footer.resources },
+      { key: 'social', title: components.footer.social },
+      { key: 'about', title: components.footer.about },
+      { key: 'legal', title: components.footer.legal },
+    ],
+    socialsText: { key: 'socialText', title: components.footer.socialMedia },
+    languageText: { key: 'languageText', title: components.footer.language },
   };
 
   return (

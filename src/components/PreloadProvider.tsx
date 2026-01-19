@@ -14,7 +14,7 @@ export function PreloadProvider({ children }: { children: ReactNode }) {
 
   if (!isPreloaded) {
     return (
-      <div className='flex flex-col items-center justify-center gap-4 bg-white p-8 dark:bg-black'>
+      <div className='flex min-h-screen w-full flex-col items-center justify-center gap-4 bg-white p-8 dark:bg-black'>
         <Spinner />
         <p className='animate-pulse text-sm text-neutral-500'>Wird geladen…</p>
       </div>

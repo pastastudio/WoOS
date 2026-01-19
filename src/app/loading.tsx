@@ -1,40 +1,23 @@
 'use client';
 
+import deSystemFiles from '@/i18n/de/system_files.json';
+import enSystemFiles from '@/i18n/en/system_files.json';
 import { SystemLayout } from '@/layouts/SystemLayout';
-import Image from 'next/image';
 
-const LOADING_CONFIG = {
-  message: 'Wird geladen…',
-} as const;
+const systemFilesDict = {
+  de: deSystemFiles,
+  en: enSystemFiles,
+};
 
 export default function Loading() {
+  // Default to English for loading page at root level
+  const systemFiles = systemFilesDict.en;
+
   return (
     <SystemLayout lang='en'>
       <div className='animate-scale-in flex flex-col items-center gap-4'>
-        {/* Spinner images via next/image, kept unoptimized per request */}
-        <Image
-          src='/spinner-light.webp'
-          alt='Loading spinner'
-          width={64}
-          height={64}
-          unoptimized
-          priority
-          className='animate-spin dark:hidden'
-          style={{ filter: 'invert(0)' }}
-        />
-        <Image
-          src='/spinner-dark.webp'
-          alt='Loading spinner'
-          width={64}
-          height={64}
-          unoptimized
-          priority
-          className='hidden animate-spin dark:block'
-          style={{ filter: 'invert(1)' }}
-        />
-
         <p className='animate-pulse text-sm text-neutral-500'>
-          {LOADING_CONFIG.message}
+          {systemFiles.loading.message}
         </p>
       </div>
     </SystemLayout>

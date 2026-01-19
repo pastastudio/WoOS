@@ -1,18 +1,18 @@
 import NotFoundActions from '@/components/ui/base/notfound-actions';
+import deSystemFiles from '@/i18n/de/system_files.json';
+import enSystemFiles from '@/i18n/en/system_files.json';
 import { SystemLayout } from '@/layouts/SystemLayout';
 import { SearchSolid } from '@2hoch1/pixel-icon-library-react';
 
-const NOT_FOUND_CONFIG = {
-  title: 'Seite nicht gefunden',
-  description:
-    'Die Seite, die du suchst, ist leider nicht verfügbar. Sie wurde entweder entfernt oder an einen neuen Ort verschoben.',
-  buttons: {
-    back: 'Zurück',
-    home: 'Home',
-  },
-} as const;
+const systemFilesDict = {
+  de: deSystemFiles,
+  en: enSystemFiles,
+};
 
 export default function NotFound() {
+  // Default to English for 404 page at root level
+  const systemFiles = systemFilesDict.en;
+
   return (
     <SystemLayout>
       <div className='flex flex-col items-center gap-4 text-center'>
@@ -21,17 +21,17 @@ export default function NotFound() {
         </div>
 
         <h1 className='text-2xl font-semibold text-neutral-900'>
-          {NOT_FOUND_CONFIG.title}
+          {systemFiles.notFound.title}
         </h1>
 
         <p className='max-w-sm text-neutral-500'>
-          {NOT_FOUND_CONFIG.description}
+          {systemFiles.notFound.description}
         </p>
 
         <div className='mt-2 flex flex-wrap justify-center gap-3'>
           <NotFoundActions
-            backText={NOT_FOUND_CONFIG.buttons.back}
-            homeText={NOT_FOUND_CONFIG.buttons.home}
+            backText={systemFiles.notFound.buttons.back}
+            homeText={systemFiles.notFound.buttons.home}
           />
         </div>
       </div>
