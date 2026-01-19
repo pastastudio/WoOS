@@ -1,44 +1,62 @@
 {
-  "nav": {
-    "quests": "Quests",
-    "info": "Information",
-    "docs": "Documentation"
-  },
   "footer": {
-    "resources": {
-      "title": "Resources",
-      "tests": "Tests",
-      "analytics": "Analytics",
-      "source": "Source Code"
+    "about": {
+      "accessibility": "Accessibility",
+      "title": "About",
+      "university": "University",
+      "us": "About us"
     },
     "legal": {
-      "title": "Legal",
-      "imprint": "Imprint",
-      "privacy": "Privacy Policy",
+      "bindings": "User Agreements",
       "cookies": "Cookie Settings",
+      "imprint": "Imprint",
       "licenses": "License",
-      "bindings": "User Agreements"
+      "privacy": "Privacy Policy",
+      "title": "Legal"
     },
-    "about": {
-      "title": "About",
-      "us": "About us",
-      "university": "University",
-      "accessibility": "Accessibility"
+    "resources": {
+      "analytics": "Analytics",
+      "source": "Source Code",
+      "tests": "Tests",
+      "title": "Resources"
     },
     "social": {
-      "title": "Social",
-      "feedback": "Feedback",
       "contact": "Contact",
-      "faq": "FAQ"
+      "faq": "FAQ",
+      "feedback": "Feedback",
+      "title": "Social"
     }
   },
   "home": {
-    "title": "Welcome to the DMWT",
-    "subtitle": "Your gateway to quests and knowledge",
-    "description": "This is the English version"
+    "description": "This is the English version",
+    "infoBoxes": {
+      "hardware": {
+        "description": "What hardware do I need for my needs? What options do I have if my device no longer supports the latest Windows update? We show what to look for when buying and how to use your device as long as possible in a meaningful way.",
+        "title": "Hardware"
+      },
+      "quests": {
+        "description": "We want to show which operating systems exist and what their advantages and disadvantages are. With our analysis questions, we determine which operating system suits you best.",
+        "title": "Operating Systems"
+      },
+      "settings": {
+        "description": "Settings in the operating system and usage habits have an impact on the power consumption of your device. On the information page, you will learn how to make your digital everyday life more sustainable.",
+        "title": "Settings"
+      }
+    },
+    "intro": {
+      "part1": "Welcome to our website! In a world of uncertainty, we want to help you find the right path. We want to inform you about the possibilities of different operating systems and raise awareness for sustainable use.",
+      "part2": "Start an epic quest where you can test your knowledge. After completing the chapters, you unlock new wands and effects. At the end of the quest, you receive a recommendation for the operating system that suits you best.",
+      "part3": "Deepen your knowledge on our information page. Here you will find detailed explanations of the topics covered in the quest."
+    },
+    "title": "Introduction"
+  },
+  "nav": {
+    "docs": "Documentation",
+    "info": "Information",
+    "quests": "Quests"
   },
   "other": {
-    "socialText": "Socials",
-    "languageText": "Language"
+    "languageText": "Language",
+    "socialText": "Socials"
   }
 }

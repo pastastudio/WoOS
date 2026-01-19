@@ -1,5 +1,3 @@
-'use client';
-
 import Wave from '@/assets/wave.svg';
 import {
   FeedbackCarousel,
@@ -8,7 +6,23 @@ import {
   verifiedBadge,
 } from '@/components/ui/base/feedback-carousel';
 import { ParallaxWindow } from '@/components/ui/base/parallax-window';
+import { getDictionary } from '@/i18n/getDictionary';
 import Image from 'next/image';
+
+type HomeInfoBox = {
+  title: string;
+  description: string;
+};
+
+type HomeContent = {
+  title: string;
+  intro: {
+    part1: string;
+    part2: string;
+    part3: string;
+  };
+  infoBoxes: Record<string, HomeInfoBox>;
+};
 
 const feedbackData = [
   {
@@ -58,7 +72,12 @@ const feedbackData = [
   },
 ];
 
-export default function Page() {
+export default async function Page({ params }: { params: { lang: string } }) {
+  const { lang } = params;
+  const dict = await getDictionary(lang);
+  const homeContent = dict.home as HomeContent;
+  const infoBoxes = Object.values(homeContent.infoBoxes);
+
   return (
     <>
       <div className='block overflow-hidden'>
@@ -88,7 +107,29 @@ export default function Page() {
 
             {/* Content Section */}
             <div className='bg-[#2b542b] px-8 py-12'>
-              {/* Add content here */}
+              <div className='mx-auto max-w-4xl'>
+                <h2 className='mb-6 text-3xl font-bold text-white'>
+                  {homeContent.title}
+                </h2>
+                <div className='mb-8 space-y-4 text-white'>
+                  <p>{homeContent.intro.part1}</p>
+                  <p>{homeContent.intro.part2}</p>
+                  <p>{homeContent.intro.part3}</p>
+                </div>
+                <div className='grid grid-cols-1 gap-6 md:grid-cols-3'>
+                  {infoBoxes.map((box, index) => (
+                    <div
+                      key={index}
+                      className='rounded-lg border border-white/20 bg-white/5 p-6'
+                    >
+                      <h3 className='mb-3 text-xl font-semibold text-white'>
+                        {box.title}
+                      </h3>
+                      <p className='text-sm text-gray-200'>{box.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* Bottom Wave - Rotated 180 degrees */}

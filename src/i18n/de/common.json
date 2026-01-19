@@ -1,43 +1,62 @@
 {
-  "nav": {
-    "quests": "Quests",
-    "info": "Informationen",
-    "docs": "Dokumentation"
-  },
   "footer": {
-    "resources": {
-      "title": "Ressourcen",
-      "tests": "Tests",
-      "analytics": "Analysen",
-      "source": "Quellcode"
+    "about": {
+      "accessibility": "Barrierefreiheit",
+      "title": "Über",
+      "university": "Hochschule",
+      "us": "Über uns"
     },
     "legal": {
-      "title": "Rechtliches",
-      "imprint": "Impressum",
-      "privacy": "Datenschutz",
+      "bindings": "Nutzerbindungen",
       "cookies": "Cookie-Einstellungen",
+      "imprint": "Impressum",
       "licenses": "Lizenz",
-      "bindings": "Nutzerbindungen"
+      "privacy": "Datenschutz",
+      "title": "Rechtliches"
     },
-    "about": {
-      "title": "Über",
-      "us": "Über uns",
-      "university": "Hochschule",
-      "accessibility": "Barrierefreiheit"
+    "resources": {
+      "analytics": "Analysen",
+      "source": "Quellcode",
+      "tests": "Tests",
+      "title": "Ressourcen"
     },
     "social": {
-      "title": "Sozial",
-      "feedback": "Feedback",
       "contact": "Kontakt",
-      "faq": "FAQ"
+      "faq": "FAQ",
+      "feedback": "Feedback",
+      "title": "Sozial"
     }
   },
   "home": {
-    "title": "Willkommen",
-    "description": "Dies ist die deutsche Version"
+    "description": "Dies ist die deutsche Version",
+    "infoBoxes": {
+      "hardware": {
+        "description": "Welche Hardware brauche ich für meine Bedürfnisse? Was für Möglichkeiten habe ich wenn mein Gerät das neueste Windows Update nicht mehr unterstützt? Wir Zeigen Worauf man beim Kauf achten sollte und wie man sein Gerät möglichst lange sinnvoll nutzt.",
+        "title": "Hardware"
+      },
+      "quests": {
+        "description": "Wir wollen zeigen welche Betriebssysteme es gibt und welche Vor- und Nachteile sie haben. mit Unseren Analyse Fragen ermitteln wir welches Betriebssystem am besten zu ihnen passt.",
+        "title": "Betriebssysteme"
+      },
+      "settings": {
+        "description": "Einstellungen im Betriebssystem und Nutzungsgewohnheiten haben einen Einfluss auf den Stromverbrauch ihres Geräts. Auf der Informationsseite erfahren sie, wie sie ihren digitalen Alltag nachhaltiger gestalten können.",
+        "title": "Einstellungen"
+      }
+    },
+    "intro": {
+      "part1": "Willkommen auf unserer Webseite! in einer Welt von Ungewissheit wollen wir ihnen helfen, den richtigen Weg zu finden. Wir wollen Über die Möglichkeiten verschiedener Betriebssysteme informieren und für Nachhaltige Nutzung sensibilisieren.",
+      "part2": "Starten sie eine Epische Quest auf der sie ihr Wissen auf die Probe stellen Können. Nach dem Absolvieren der Kapitel schalten sie neue Zauberstäbe und Effekte frei. Am Ende der Quest bekommen sie eine Empfehlung für das Betriebssystem, das am besten zu ihnen Passt.",
+      "part3": "Vertiefen sie Ihr Wissen auf unserer Informationsseite. Hier Finden sie Detaillierte Erklärungen zu den Themen, die in der Quest behandelt werden."
+    },
+    "title": "Einführung"
+  },
+  "nav": {
+    "docs": "Dokumentation",
+    "info": "Informationen",
+    "quests": "Quests"
   },
   "other": {
-    "socialText": "Soziales",
-    "languageText": "Sprache"
+    "languageText": "Sprache",
+    "socialText": "Soziales"
   }
 }
