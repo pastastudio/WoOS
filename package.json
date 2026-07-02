@@ -61,7 +61,7 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-scroll-parallax": "^3.5.0",
-    "recharts": "^2.15.4",
+    "recharts": "^3.9.1",
     "simple-icons": "^16.1.0",
     "simple-parallax-js": "^6.3.3",
     "socket.io": "^4.8.3",
