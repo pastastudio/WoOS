@@ -23,7 +23,7 @@ interface WithPagePreloadProps {
  */
 export function withPagePreload<P extends WithPagePreloadProps>(
   Component: React.ComponentType<P>,
-  waitForPreload: boolean = true,
+  waitForPreload: boolean = true
 ) {
   return function PreloadWrapper(props: P) {
     const { isPreloaded } = useAssetPreloader();
@@ -37,11 +37,9 @@ export function withPagePreload<P extends WithPagePreloadProps>(
     if (!isPreloaded) {
       return (
         props.fallback || (
-          <div className='flex h-screen w-full flex-col items-center justify-center gap-4 bg-white dark:bg-black'>
+          <div className="flex h-screen w-full flex-col items-center justify-center gap-4 bg-white dark:bg-black">
             <Spinner />
-            <p className='animate-pulse text-sm text-neutral-500'>
-              Wird geladen…
-            </p>
+            <p className="animate-pulse text-sm text-neutral-500">Wird geladen…</p>
           </div>
         )
       );
@@ -63,23 +61,15 @@ export function withPagePreload<P extends WithPagePreloadProps>(
  * </PagePreload>
  * ```
  */
-export function PagePreload({
-  children,
-  fallback,
-}: {
-  children: ReactNode;
-  fallback?: ReactNode;
-}) {
+export function PagePreload({ children, fallback }: { children: ReactNode; fallback?: ReactNode }) {
   const { isPreloaded } = useAssetPreloader();
 
   if (!isPreloaded) {
     return (
       fallback || (
-        <div className='flex h-screen w-full flex-col items-center justify-center gap-4 bg-white dark:bg-black'>
+        <div className="flex h-screen w-full flex-col items-center justify-center gap-4 bg-white dark:bg-black">
           <Spinner />
-          <p className='animate-pulse text-sm text-neutral-500'>
-            Wird geladen…
-          </p>
+          <p className="animate-pulse text-sm text-neutral-500">Wird geladen…</p>
         </div>
       )
     );

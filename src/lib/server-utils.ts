@@ -74,9 +74,7 @@ export const packageUtils = {
     // - git+https://github.com/owner/repo.git
     // - https://github.com/owner/repo
     // - git@github.com:owner/repo.git
-    const match = repoUrl.match(
-      /github\.com[/:]([\w-]+)\/([\w-]+?)(?:\.git)?$/,
-    );
+    const match = repoUrl.match(/github\.com[/:]([\w-]+)\/([\w-]+?)(?:\.git)?$/);
 
     if (!match) {
       console.warn(`Could not parse GitHub repository from: ${repoUrl}`);

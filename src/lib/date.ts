@@ -21,9 +21,7 @@ const MINUTES_IN_YEAR = MINUTES_IN_MONTH * 12;
  */
 const formatRelative = (value: number, unit: string, isFuture: boolean) => {
   const pluralizedUnit = value === 1 ? unit : `${unit}s`;
-  return isFuture
-    ? `in ${value} ${pluralizedUnit}`
-    : `${value} ${pluralizedUnit} ago`;
+  return isFuture ? `in ${value} ${pluralizedUnit}` : `${value} ${pluralizedUnit} ago`;
 };
 
 /**
@@ -37,41 +35,21 @@ export const getDateCompare = (after: Date) => {
   const compareInMinutes = Math.abs(differenceInMinutes(currDate, after));
 
   if (compareInMinutes < 1) {
-    return formatRelative(
-      Math.abs(differenceInSeconds(currDate, after)),
-      'second',
-      isFuture,
-    );
+    return formatRelative(Math.abs(differenceInSeconds(currDate, after)), 'second', isFuture);
   }
   if (compareInMinutes < MINUTES_IN_HOUR) {
     return formatRelative(compareInMinutes, 'minute', isFuture);
   }
   if (compareInMinutes < MINUTES_IN_DAY) {
-    return formatRelative(
-      Math.abs(differenceInHours(currDate, after)),
-      'hour',
-      isFuture,
-    );
+    return formatRelative(Math.abs(differenceInHours(currDate, after)), 'hour', isFuture);
   }
   if (compareInMinutes < MINUTES_IN_MONTH) {
-    return formatRelative(
-      Math.abs(differenceInDays(currDate, after)),
-      'day',
-      isFuture,
-    );
+    return formatRelative(Math.abs(differenceInDays(currDate, after)), 'day', isFuture);
   }
   if (compareInMinutes < MINUTES_IN_YEAR) {
-    return formatRelative(
-      Math.abs(differenceInMonths(currDate, after)),
-      'month',
-      isFuture,
-    );
+    return formatRelative(Math.abs(differenceInMonths(currDate, after)), 'month', isFuture);
   }
-  return formatRelative(
-    Math.abs(differenceInYears(currDate, after)),
-    'year',
-    isFuture,
-  );
+  return formatRelative(Math.abs(differenceInYears(currDate, after)), 'year', isFuture);
 };
 
 /**

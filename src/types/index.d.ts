@@ -27,14 +27,7 @@ export type ChildrenProps = {
 export type SitemapEntry = {
   url: string;
   lastModified: string;
-  changeFrequency?:
-    | 'always'
-    | 'hourly'
-    | 'daily'
-    | 'weekly'
-    | 'monthly'
-    | 'yearly'
-    | 'never';
+  changeFrequency?: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
   priority?: number;
 };
 

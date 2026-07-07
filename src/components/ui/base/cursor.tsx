@@ -87,9 +87,7 @@ const resolveGlowColor = (variation: CursorVariation): string => {
   if (variation.startsWith('crystal-scepter')) return 'rgba(255, 215, 0, 0.65)';
   if (variation.startsWith('fire-snake')) return 'rgba(56, 189, 248, 0.6)';
   if (variation.startsWith('flowerstaff')) return 'rgba(236, 72, 153, 0.6)';
-  return variation === 'default-black'
-    ? 'rgba(0, 0, 0, 0.4)'
-    : 'rgba(255, 255, 255, 0.55)';
+  return variation === 'default-black' ? 'rgba(0, 0, 0, 0.4)' : 'rgba(255, 255, 255, 0.55)';
 };
 
 const detectInteractive = (x: number, y: number): boolean => {
@@ -141,25 +139,16 @@ export function CustomCursor({
     return () => observer.disconnect();
   }, []);
 
-  const themeMode = useMemo(
-    () => resolvedTheme ?? domTheme ?? 'light',
-    [domTheme, resolvedTheme],
-  );
+  const themeMode = useMemo(() => resolvedTheme ?? domTheme ?? 'light', [domTheme, resolvedTheme]);
 
   const activeVariation: CursorVariation = useMemo(() => {
     if (variation) return variation;
     return themeMode === 'dark' ? 'default-white' : 'default-black';
   }, [variation, themeMode]);
 
-  const sparkleColor = useMemo(
-    () => resolveSparkleColor(activeVariation),
-    [activeVariation],
-  );
+  const sparkleColor = useMemo(() => resolveSparkleColor(activeVariation), [activeVariation]);
 
-  const glowColor = useMemo(
-    () => resolveGlowColor(activeVariation),
-    [activeVariation],
-  );
+  const glowColor = useMemo(() => resolveGlowColor(activeVariation), [activeVariation]);
 
   useEffect(() => {
     const handleLeave = () => setIsVisible(false);
@@ -209,11 +198,9 @@ export function CustomCursor({
 
   return (
     <>
-      {enableSparkles && isVisible && (
-        <CursorSparkels size={12} color={sparkleColor} />
-      )}
+      {enableSparkles && isVisible && <CursorSparkels size={12} color={sparkleColor} />}
       <span
-        className='dmwt-custom-cursor pointer-events-none fixed z-[2147483647] drop-shadow-lg'
+        className="dmwt-custom-cursor pointer-events-none fixed z-[2147483647] drop-shadow-lg"
         style={{
           left: position.x,
           top: position.y,
@@ -223,7 +210,7 @@ export function CustomCursor({
       >
         <Image
           src={cursorImages[activeVariation]}
-          alt='cursor'
+          alt="cursor"
           width={CURSOR_SIZE}
           height={CURSOR_SIZE}
           priority

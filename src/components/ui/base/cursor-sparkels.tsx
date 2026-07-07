@@ -26,10 +26,7 @@ export interface CursorSparkelsProps {
  * <CursorSparkels size={12} color="#FFD700" />
  * ```
  */
-export default function CursorSparkels({
-  size = 12,
-  color = '#facc15',
-}: CursorSparkelsProps) {
+export default function CursorSparkels({ size = 12, color = '#facc15' }: CursorSparkelsProps) {
   const [sparkles, setSparkles] = useState<Sparkle[]>([]);
   const minStarPoints = 4;
   const maxStarPoints = 6;
@@ -42,13 +39,10 @@ export default function CursorSparkels({
     const handleMouseMove = (e: MouseEvent) => {
       if (moveCounter % spawnRate === 0) {
         setTimeout(() => {
-          const shapeType: 'star' | 'circle' =
-            Math.random() > 0.5 ? 'star' : 'circle';
+          const shapeType: 'star' | 'circle' = Math.random() > 0.5 ? 'star' : 'circle';
           const points =
             shapeType === 'star'
-              ? Math.floor(
-                  Math.random() * (maxStarPoints - minStarPoints + 1),
-                ) + minStarPoints
+              ? Math.floor(Math.random() * (maxStarPoints - minStarPoints + 1)) + minStarPoints
               : undefined;
           const shapeSize = shapeType === 'star' ? size / 4 : size / 5;
 
@@ -61,10 +55,10 @@ export default function CursorSparkels({
             size: shapeSize,
           };
 
-          setSparkles((prev) => [...prev, newSparkle]);
+          setSparkles(prev => [...prev, newSparkle]);
 
           setTimeout(() => {
-            setSparkles((prev) => prev.filter((s) => s.id !== newSparkle.id));
+            setSparkles(prev => prev.filter(s => s.id !== newSparkle.id));
           }, 600);
         }, 50);
       }
@@ -80,10 +74,10 @@ export default function CursorSparkels({
 
   return (
     <>
-      {sparkles.map((sparkle) => (
+      {sparkles.map(sparkle => (
         <div
           key={sparkle.id}
-          className='pointer-events-none fixed z-[2147483646] animate-ping opacity-70'
+          className="pointer-events-none fixed z-[2147483646] animate-ping opacity-70"
           style={{
             left: sparkle.x,
             top: sparkle.y,
@@ -91,11 +85,7 @@ export default function CursorSparkels({
           }}
         >
           {sparkle.shapeType === 'star' ? (
-            <StarShape
-              size={sparkle.size}
-              color={color}
-              points={sparkle.points || 5}
-            />
+            <StarShape size={sparkle.size} color={color} points={sparkle.points || 5} />
           ) : (
             <CircleForm size={sparkle.size} color={color} />
           )}

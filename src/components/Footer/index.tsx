@@ -20,9 +20,9 @@ export interface LinkCategorys {
 export interface FooterProps {
   links?: LinkCategorys;
   sozials?: Sozials[];
-  socialsText?: { key: string; title: string};
-  languageText?: { key: string; title: string};
-  categories?: { key: string; title: string}[];
+  socialsText?: { key: string; title: string };
+  languageText?: { key: string; title: string };
+  categories?: { key: string; title: string }[];
   logo?: boolean;
   banner?: boolean;
   showWave?: boolean;
@@ -59,22 +59,21 @@ export default function Footer({
     <footer>
       {/* Wave Decoration */}
       {showWave && (
-        <div
-          className={styles.waveWrapper}
-          style={{ backgroundColor: waveBackgroundColor }}
-        >
+        <div className={styles.waveWrapper} style={{ backgroundColor: waveBackgroundColor }}>
           <Wave className={styles.wave} style={{ color: color }} />
         </div>
       )}
 
       {/* Main Footer Content */}
-      <div
-        className={styles.footerContainer}
-        style={{ backgroundColor: color }}
-      >
+      <div className={styles.footerContainer} style={{ backgroundColor: color }}>
         <div className={styles.contentGrid}>
           {/* Sozials Section */}
-          <FooterSozials logo={logo} sozials={sozials} socialText = {socialsText} languageText={languageText}/>
+          <FooterSozials
+            logo={logo}
+            sozials={sozials}
+            socialText={socialsText}
+            languageText={languageText}
+          />
 
           {/* Links Section */}
           <div className={styles.linksWrapper}>

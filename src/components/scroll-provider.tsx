@@ -3,11 +3,7 @@
 import Lenis from 'lenis';
 import { useEffect } from 'react';
 
-export function SmoothScrollProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const lenis = new Lenis({
       smoothWheel: true,

@@ -5,10 +5,7 @@ interface MarkdownSidebarProps {
   className?: string;
 }
 
-export function MarkdownSidebar({
-  children,
-  className = '',
-}: MarkdownSidebarProps) {
+export function MarkdownSidebar({ children, className = '' }: MarkdownSidebarProps) {
   return (
     <div className={className}>
       <aside>{children}</aside>

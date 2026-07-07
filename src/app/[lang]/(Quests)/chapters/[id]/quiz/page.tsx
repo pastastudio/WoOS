@@ -76,22 +76,16 @@ export default function QuizPage() {
   const [loading, setLoading] = useState(true);
 
   // State: Phase management
-  const [phase, setPhase] = useState<
-    'technical' | 'transition' | 'personal' | 'analyze'
-  >('technical');
+  const [phase, setPhase] = useState<'technical' | 'transition' | 'personal' | 'analyze'>(
+    'technical'
+  );
 
   // State: Answer storage for each phase
-  const [technicalAnswers, setTechnicalAnswers] = useState<
-    Record<number, string>
-  >({});
-  const [personalAnswers, setPersonalAnswers] = useState<
-    Record<number, string>
-  >({});
+  const [technicalAnswers, setTechnicalAnswers] = useState<Record<number, string>>({});
+  const [personalAnswers, setPersonalAnswers] = useState<Record<number, string>>({});
 
   // State: Track answered questions to prevent re-answering
-  const [answeredQuestions, setAnsweredQuestions] = useState<Set<number>>(
-    new Set(),
-  );
+  const [answeredQuestions, setAnsweredQuestions] = useState<Set<number>>(new Set());
 
   /**
    * Load questions and translations when component mounts
@@ -152,15 +146,15 @@ export default function QuizPage() {
   const handleNext = () => {
     if (selectedAnswer) {
       // Mark question as answered
-      setAnsweredQuestions((prev) => new Set(prev).add(currentQuestionIndex));
+      setAnsweredQuestions(prev => new Set(prev).add(currentQuestionIndex));
 
       if (phase === 'technical') {
-        setTechnicalAnswers((prev) => ({
+        setTechnicalAnswers(prev => ({
           ...prev,
           [currentQuestionIndex]: selectedAnswer,
         }));
       } else if (phase === 'personal') {
-        setPersonalAnswers((prev) => ({
+        setPersonalAnswers(prev => ({
           ...prev,
           [currentQuestionIndex]: selectedAnswer,
         }));
@@ -201,10 +195,7 @@ export default function QuizPage() {
    * Handle navigating to previous question (blocked if answered)
    */
   const handlePrevious = () => {
-    if (
-      currentQuestionIndex > 0 &&
-      !answeredQuestions.has(currentQuestionIndex - 1)
-    ) {
+    if (currentQuestionIndex > 0 && !answeredQuestions.has(currentQuestionIndex - 1)) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
       setSelectedAnswer(null);
     }
@@ -214,21 +205,17 @@ export default function QuizPage() {
    * Save answers to database and mark chapter as completed
    */
   const saveAnswersToDatabase = async () => {
-    const quizAnswers = Object.entries(technicalAnswers).map(
-      ([index, answer]) => ({
-        questionIndex: parseInt(index),
-        answer,
-        chapter: parseInt(chapter),
-      }),
-    );
+    const quizAnswers = Object.entries(technicalAnswers).map(([index, answer]) => ({
+      questionIndex: parseInt(index),
+      answer,
+      chapter: parseInt(chapter),
+    }));
 
-    const analysisAnswers = Object.entries(personalAnswers).map(
-      ([index, answer]) => ({
-        questionIndex: parseInt(index),
-        answer,
-        chapter: parseInt(chapter),
-      }),
-    );
+    const analysisAnswers = Object.entries(personalAnswers).map(([index, answer]) => ({
+      questionIndex: parseInt(index),
+      answer,
+      chapter: parseInt(chapter),
+    }));
 
     console.log('Quiz Answers (for scoring):', quizAnswers);
     console.log('Analysis Answers (for profiling):', analysisAnswers);
@@ -256,8 +243,8 @@ export default function QuizPage() {
   // Loading state
   if (loading || !t) {
     return (
-      <div className='flex min-h-screen items-center justify-center'>
-        <p className='text-lg'>{t?.loading || 'Loading...'}</p>
+      <div className="flex min-h-screen items-center justify-center">
+        <p className="text-lg">{t?.loading || 'Loading...'}</p>
       </div>
     );
   }
@@ -265,17 +252,14 @@ export default function QuizPage() {
   // Completion state
   if (isComplete) {
     return (
-      <div className='flex min-h-screen flex-col items-center justify-center gap-6 px-6'>
-        <h1 className='text-4xl font-bold'>{t.complete}</h1>
-        <p className='text-muted-foreground max-w-md text-center'>
+      <div className="flex min-h-screen flex-col items-center justify-center gap-6 px-6">
+        <h1 className="text-4xl font-bold">{t.complete}</h1>
+        <p className="text-muted-foreground max-w-md text-center">
           {t.completeMessage
-            .replace(
-              '{total}',
-              (questions.length + analysisQuestions.length).toString(),
-            )
+            .replace('{total}', (questions.length + analysisQuestions.length).toString())
             .replace('{chapter}', chapter)}
         </p>
-        <Button size='lg' onClick={() => router.push(`/${lang}/quests`)}>
+        <Button size="lg" onClick={() => router.push(`/${lang}/quests`)}>
           {t.backToQuests}
         </Button>
       </div>
@@ -285,8 +269,8 @@ export default function QuizPage() {
   // Error state
   if (!currentQuestion && phase !== 'transition' && phase !== 'analyze') {
     return (
-      <div className='flex min-h-screen items-center justify-center'>
-        <p className='text-lg'>{t.noQuestions}</p>
+      <div className="flex min-h-screen items-center justify-center">
+        <p className="text-lg">{t.noQuestions}</p>
       </div>
     );
   }
@@ -295,7 +279,7 @@ export default function QuizPage() {
    * Extract answer option keys
    */
   const optionKeys = Object.keys(currentQuestion?.options || {}).filter(
-    (key) => !key.startsWith('_'),
+    key => !key.startsWith('_')
   ) as Array<keyof QuestionOption>;
 
   /**
@@ -303,29 +287,29 @@ export default function QuizPage() {
    */
   if (phase === 'transition') {
     return (
-      <div className='flex min-h-screen flex-col items-center justify-center gap-6 px-6'>
-        <div className='border-primary/20 bg-primary/10 rounded-full border p-4'>
+      <div className="flex min-h-screen flex-col items-center justify-center gap-6 px-6">
+        <div className="border-primary/20 bg-primary/10 rounded-full border p-4">
           <svg
-            className='text-primary size-12'
-            fill='none'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
+            className="text-primary size-12"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
           >
             <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
+              strokeLinecap="round"
+              strokeLinejoin="round"
               strokeWidth={2}
-              d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
         </div>
-        <h1 className='text-3xl font-bold'>{t.transitionTitle}</h1>
-        <p className='text-muted-foreground max-w-md text-center'>
+        <h1 className="text-3xl font-bold">{t.transitionTitle}</h1>
+        <p className="text-muted-foreground max-w-md text-center">
           {t.transitionMessage
             .replace('{technicalCount}', questions.length.toString())
             .replace('{personalCount}', analysisQuestions.length.toString())}
         </p>
-        <Button size='lg' onClick={handleStartPersonalQuestions}>
+        <Button size="lg" onClick={handleStartPersonalQuestions}>
           {t.startPersonal}
         </Button>
       </div>
@@ -337,10 +321,10 @@ export default function QuizPage() {
    */
   if (phase === 'analyze') {
     return (
-      <div className='flex min-h-screen flex-col items-center justify-center gap-8 px-6'>
-        <div className='w-full max-w-3xl text-center'>
-          <h1 className='mb-4 text-4xl font-bold'>{t.analyze}</h1>
-          <p className='text-muted-foreground mb-8'>
+      <div className="flex min-h-screen flex-col items-center justify-center gap-8 px-6">
+        <div className="w-full max-w-3xl text-center">
+          <h1 className="mb-4 text-4xl font-bold">{t.analyze}</h1>
+          <p className="text-muted-foreground mb-8">
             {t.analyzeMessage
               .replace('{technicalCount}', questions.length.toString())
               .replace('{personalCount}', analysisQuestions.length.toString())
@@ -349,55 +333,47 @@ export default function QuizPage() {
         </div>
 
         {/* Answer Summary */}
-        <Card className='w-full max-w-3xl p-8'>
-          <h2 className='mb-6 text-2xl font-bold'>{t.technicalPhase}</h2>
-          <div className='mb-8 space-y-2'>
+        <Card className="w-full max-w-3xl p-8">
+          <h2 className="mb-6 text-2xl font-bold">{t.technicalPhase}</h2>
+          <div className="mb-8 space-y-2">
             {questions.map((_, index) => (
               <div
                 key={`tech-${index}`}
-                className='text-muted-foreground flex items-center justify-between'
+                className="text-muted-foreground flex items-center justify-between"
               >
                 <span>
                   {t.progressLabel
                     .replace('{current}', (index + 1).toString())
                     .replace('{total}', questions.length.toString())}
                 </span>
-                <span className='text-primary font-medium'>
-                  {technicalAnswers[index]
-                    ? technicalAnswers[index].toUpperCase()
-                    : '—'}
+                <span className="text-primary font-medium">
+                  {technicalAnswers[index] ? technicalAnswers[index].toUpperCase() : '—'}
                 </span>
               </div>
             ))}
           </div>
 
-          <h2 className='mt-8 mb-6 text-2xl font-bold'>{t.personalPhase}</h2>
-          <div className='space-y-2'>
+          <h2 className="mt-8 mb-6 text-2xl font-bold">{t.personalPhase}</h2>
+          <div className="space-y-2">
             {analysisQuestions.map((_, index) => (
               <div
                 key={`personal-${index}`}
-                className='text-muted-foreground flex items-center justify-between'
+                className="text-muted-foreground flex items-center justify-between"
               >
                 <span>
                   {t.progressLabel
                     .replace('{current}', (index + 1).toString())
                     .replace('{total}', analysisQuestions.length.toString())}
                 </span>
-                <span className='text-primary font-medium'>
-                  {personalAnswers[index]
-                    ? personalAnswers[index].toUpperCase()
-                    : '—'}
+                <span className="text-primary font-medium">
+                  {personalAnswers[index] ? personalAnswers[index].toUpperCase() : '—'}
                 </span>
               </div>
             ))}
           </div>
         </Card>
 
-        <Button
-          size='lg'
-          onClick={handleCompleteAnalyze}
-          className='min-w-[200px]'
-        >
+        <Button size="lg" onClick={handleCompleteAnalyze} className="min-w-[200px]">
           {t.finish}
         </Button>
       </div>
@@ -408,22 +384,22 @@ export default function QuizPage() {
    * Main quiz interface
    */
   return (
-    <div className='flex min-h-screen flex-col items-center justify-center gap-8 px-6 py-12'>
+    <div className="flex min-h-screen flex-col items-center justify-center gap-8 px-6 py-12">
       {/* Progress indicator */}
-      <div className='w-full max-w-3xl'>
-        <div className='mb-2 flex items-center justify-between text-sm'>
-          <span className='text-muted-foreground'>
+      <div className="w-full max-w-3xl">
+        <div className="mb-2 flex items-center justify-between text-sm">
+          <span className="text-muted-foreground">
             {t.progressLabel
               .replace('{current}', (currentQuestionIndex + 1).toString())
               .replace('{total}', totalInPhase.toString())}
           </span>
-          <span className='font-medium'>
+          <span className="font-medium">
             {phase === 'technical' ? t.technicalPhase : t.personalPhase}
           </span>
         </div>
-        <div className='bg-muted h-2 w-full overflow-hidden rounded-full'>
+        <div className="bg-muted h-2 w-full overflow-hidden rounded-full">
           <div
-            className='bg-primary h-full transition-all duration-300'
+            className="bg-primary h-full transition-all duration-300"
             style={{
               width: `${((currentQuestionIndex + 1) / totalInPhase) * 100}%`,
             }}
@@ -432,14 +408,12 @@ export default function QuizPage() {
       </div>
 
       {/* Question card */}
-      <Card className='w-full max-w-3xl p-8'>
-        <h2 className='mb-8 text-2xl leading-tight font-bold'>
-          {currentQuestion._title}
-        </h2>
+      <Card className="w-full max-w-3xl p-8">
+        <h2 className="mb-8 text-2xl leading-tight font-bold">{currentQuestion._title}</h2>
 
         {/* Answer options */}
-        <div className='flex flex-col gap-4'>
-          {optionKeys.map((optionKey) => {
+        <div className="flex flex-col gap-4">
+          {optionKeys.map(optionKey => {
             const isSelected = selectedAnswer === optionKey;
             const isAnswered = answeredQuestions.has(currentQuestionIndex);
             return (
@@ -450,34 +424,27 @@ export default function QuizPage() {
                 className={cn(
                   'hover:bg-accent hover:text-accent-foreground border-input flex items-start gap-4 rounded-lg border p-4 text-left transition-all',
                   isSelected && 'border-primary ring-primary/60 ring-2',
-                  isAnswered && 'cursor-not-allowed opacity-75',
+                  isAnswered && 'cursor-not-allowed opacity-75'
                 )}
               >
                 <div
                   className={cn(
                     'border-input flex size-6 shrink-0 items-center justify-center rounded-full border',
-                    isSelected && 'border-primary bg-primary text-white',
+                    isSelected && 'border-primary bg-primary text-white'
                   )}
                 >
                   {isSelected && (
-                    <svg
-                      className='size-4'
-                      fill='none'
-                      viewBox='0 0 24 24'
-                      stroke='currentColor'
-                    >
+                    <svg className="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         strokeWidth={2}
-                        d='M5 13l4 4L19 7'
+                        d="M5 13l4 4L19 7"
                       />
                     </svg>
                   )}
                 </div>
-                <span className='flex-1'>
-                  {currentQuestion.options[optionKey]}
-                </span>
+                <span className="flex-1">{currentQuestion.options[optionKey]}</span>
               </button>
             );
           })}
@@ -485,24 +452,16 @@ export default function QuizPage() {
       </Card>
 
       {/* Navigation buttons */}
-      <div className='flex w-full max-w-3xl items-center justify-between'>
+      <div className="flex w-full max-w-3xl items-center justify-between">
         <Button
-          variant='outline'
-          size='lg'
+          variant="outline"
+          size="lg"
           onClick={handlePrevious}
-          disabled={
-            currentQuestionIndex === 0 ||
-            answeredQuestions.has(currentQuestionIndex - 1)
-          }
+          disabled={currentQuestionIndex === 0 || answeredQuestions.has(currentQuestionIndex - 1)}
         >
           {t.previous}
         </Button>
-        <Button
-          size='lg'
-          onClick={handleNext}
-          disabled={!selectedAnswer}
-          className='min-w-[120px]'
-        >
+        <Button size="lg" onClick={handleNext} disabled={!selectedAnswer} className="min-w-[120px]">
           {currentQuestionIndex === totalInPhase - 1 ? t.finish : t.next}
         </Button>
       </div>

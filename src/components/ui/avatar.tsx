@@ -4,11 +4,8 @@ import { Avatar as AvatarPrimitive } from '@base-ui/react/avatar';
 function Avatar({ className, ...props }: AvatarPrimitive.Root.Props) {
   return (
     <AvatarPrimitive.Root
-      data-slot='avatar'
-      className={cn(
-        'relative flex size-8 shrink-0 overflow-hidden rounded-full',
-        className,
-      )}
+      data-slot="avatar"
+      className={cn('relative flex size-8 shrink-0 overflow-hidden rounded-full', className)}
       {...props}
     />
   );
@@ -17,23 +14,20 @@ function Avatar({ className, ...props }: AvatarPrimitive.Root.Props) {
 function AvatarImage({ className, ...props }: AvatarPrimitive.Image.Props) {
   return (
     <AvatarPrimitive.Image
-      data-slot='avatar-image'
+      data-slot="avatar-image"
       className={cn('aspect-square size-full', className)}
       {...props}
     />
   );
 }
 
-function AvatarFallback({
-  className,
-  ...props
-}: AvatarPrimitive.Fallback.Props) {
+function AvatarFallback({ className, ...props }: AvatarPrimitive.Fallback.Props) {
   return (
     <AvatarPrimitive.Fallback
-      data-slot='avatar-fallback'
+      data-slot="avatar-fallback"
       className={cn(
         'bg-muted flex size-full items-center justify-center rounded-full text-sm',
-        className,
+        className
       )}
       {...props}
     />

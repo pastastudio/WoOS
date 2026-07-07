@@ -30,8 +30,8 @@ export function useAssetPreloader(assets: PreloadAsset[] = getDefaultAssets()) {
 
     const preloadAssets = async () => {
       try {
-        const preloadPromises = assets.map((asset) => {
-          return new Promise<void>((resolve) => {
+        const preloadPromises = assets.map(asset => {
+          return new Promise<void>(resolve => {
             if (asset.type === 'image') {
               const img = new Image();
 

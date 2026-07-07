@@ -59,22 +59,9 @@ export function InfoBox({
   const theme = variants[variant];
 
   return (
-    <div
-      className={cn(
-        'rounded-md border p-4 text-sm',
-        theme.bg,
-        theme.border,
-        className,
-      )}
-    >
+    <div className={cn('rounded-md border p-4 text-sm', theme.bg, theme.border, className)}>
       <p className={cn('text-base font-semibold', theme.title)}>{title}</p>
-      <div
-        className={cn(
-          'mt-1 text-xs leading-relaxed',
-          theme.text,
-          bodyClassName,
-        )}
-      >
+      <div className={cn('mt-1 text-xs leading-relaxed', theme.text, bodyClassName)}>
         {children}
       </div>
     </div>

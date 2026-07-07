@@ -43,9 +43,7 @@ export default async function Page({ params }: PageProps) {
       content={
         <MarkdownContentWrapper
           title={(frontmatter as { title?: string } | undefined)?.title}
-          description={
-            (frontmatter as { description?: string } | undefined)?.description
-          }
+          description={(frontmatter as { description?: string } | undefined)?.description}
           badges={(frontmatter as { badges?: string[] } | undefined)?.badges}
           showHeader={false}
           showInfo={true}

@@ -8,7 +8,10 @@ import { Discord, Github, Google } from '@2hoch1/pixel-icon-library-react';
 
 function DiscordProvider() {
   return (
-    <Button disabled className='w-full bg-[#5865F2] text-white cursor-not-allowed opacity-50 hover:bg-[#5865F2]'>
+    <Button
+      disabled
+      className="w-full cursor-not-allowed bg-[#5865F2] text-white opacity-50 hover:bg-[#5865F2]"
+    >
       <Discord /> Discord (Coming Soon)
     </Button>
   );
@@ -26,7 +29,7 @@ function GitHubProvider() {
   return (
     <Button
       disabled
-      className='w-full bg-gray-400 text-white cursor-not-allowed opacity-50 hover:bg-gray-400'
+      className="w-full cursor-not-allowed bg-gray-400 text-white opacity-50 hover:bg-gray-400"
     >
       <Github /> GitHub (Coming Soon)
     </Button>
@@ -37,7 +40,7 @@ function GoogleProvider() {
   return (
     <Button
       disabled
-      className='w-full bg-gray-400 text-white cursor-not-allowed opacity-50 hover:bg-gray-400'
+      className="w-full cursor-not-allowed bg-gray-400 text-white opacity-50 hover:bg-gray-400"
     >
       <Google /> Google (Coming Soon)
     </Button>

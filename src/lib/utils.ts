@@ -48,7 +48,7 @@ export const stringUtils = {
     return str
       .toLowerCase()
       .split(' ')
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
   },
 
@@ -58,7 +58,7 @@ export const stringUtils = {
   getInitials(name: string, maxLength = 2): string {
     return name
       .split(' ')
-      .map((word) => word.charAt(0))
+      .map(word => word.charAt(0))
       .join('')
       .toUpperCase()
       .slice(0, maxLength);
@@ -156,7 +156,7 @@ export const arrayUtils = {
         groups[key].push(item);
         return groups;
       },
-      {} as Record<string, T[]>,
+      {} as Record<string, T[]>
     );
   },
 };
@@ -177,7 +177,7 @@ export const objectUtils = {
    */
   pick<T extends object, K extends keyof T>(obj: T, keys: K[]): Pick<T, K> {
     const result = {} as Pick<T, K>;
-    keys.forEach((key) => {
+    keys.forEach(key => {
       if (key in obj) {
         result[key] = obj[key];
       }
@@ -190,7 +190,7 @@ export const objectUtils = {
    */
   omit<T extends object, K extends keyof T>(obj: T, keys: K[]): Omit<T, K> {
     const result = { ...obj };
-    keys.forEach((key) => {
+    keys.forEach(key => {
       delete result[key];
     });
     return result;
@@ -202,13 +202,13 @@ export const objectUtils = {
   deepMerge<T extends object>(target: T, source: Partial<T>): T {
     const output = { ...target };
     if (isObject(target) && isObject(source)) {
-      Object.keys(source).forEach((key) => {
+      Object.keys(source).forEach(key => {
         const sourceValue = source[key as keyof T];
         const targetValue = target[key as keyof T];
         if (isObject(sourceValue) && isObject(targetValue)) {
           (output as Record<string, unknown>)[key] = objectUtils.deepMerge(
             targetValue as object,
-            sourceValue as object,
+            sourceValue as object
           );
         } else {
           (output as Record<string, unknown>)[key] = sourceValue;
@@ -272,14 +272,12 @@ export const randomUtils = {
    */
   randomString(length: number, charset = 'alphanumeric'): string {
     const charsets = {
-      alphanumeric:
-        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
+      alphanumeric: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
       alpha: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
       numeric: '0123456789',
       hex: '0123456789abcdef',
     };
-    const chars =
-      charsets[charset as keyof typeof charsets] || charsets.alphanumeric;
+    const chars = charsets[charset as keyof typeof charsets] || charsets.alphanumeric;
     let result = '';
     for (let i = 0; i < length; i++) {
       result += chars.charAt(Math.floor(Math.random() * chars.length));
@@ -339,8 +337,7 @@ export const domUtils = {
     return (
       rect.top >= 0 &&
       rect.left >= 0 &&
-      rect.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
       rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
   },
@@ -351,7 +348,7 @@ export const domUtils = {
  */
 export function debounce<T extends (...args: unknown[]) => unknown>(
   func: T,
-  wait: number,
+  wait: number
 ): (...args: Parameters<T>) => void {
   let timeout: NodeJS.Timeout | null = null;
 
@@ -371,7 +368,7 @@ export function debounce<T extends (...args: unknown[]) => unknown>(
  */
 export function throttle<T extends (...args: unknown[]) => unknown>(
   func: T,
-  wait: number,
+  wait: number
 ): (...args: Parameters<T>) => void {
   let inThrottle: boolean;
 

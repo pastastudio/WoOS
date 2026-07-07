@@ -1,13 +1,6 @@
 'use client';
 
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from 'lucide-react';
+import { Calculator, Calendar, CreditCard, Settings, Smile, User } from 'lucide-react';
 import * as React from 'react';
 
 import {
@@ -26,16 +19,13 @@ export interface SearchBarDialogProps {
   onOpenChange: (open: boolean) => void;
 }
 
-export function SearchBarDialog({
-  open,
-  onOpenChange,
-}: SearchBarDialogProps): React.ReactElement {
+export function SearchBarDialog({ open, onOpenChange }: SearchBarDialogProps): React.ReactElement {
   return (
     <CommandDialog open={open} onOpenChange={onOpenChange}>
-      <CommandInput placeholder='Suche oder Befehle eingeben...' />
+      <CommandInput placeholder="Suche oder Befehle eingeben..." />
       <CommandList>
         <CommandEmpty>Keine Ergebnisse gefunden.</CommandEmpty>
-        <CommandGroup heading='Vorschläge'>
+        <CommandGroup heading="Vorschläge">
           <CommandItem>
             <Calendar />
             <span>Kalender</span>
@@ -50,7 +40,7 @@ export function SearchBarDialog({
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />
-        <CommandGroup heading='Einstellungen'>
+        <CommandGroup heading="Einstellungen">
           <CommandItem>
             <User />
             <span>Profil</span>

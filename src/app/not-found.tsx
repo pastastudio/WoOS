@@ -15,20 +15,16 @@ export default function NotFound() {
 
   return (
     <SystemLayout>
-      <div className='flex flex-col items-center gap-4 text-center'>
-        <div className='animate-bounce'>
-          <SearchSolid className='text-error-500 h-12 w-12' />
+      <div className="flex flex-col items-center gap-4 text-center">
+        <div className="animate-bounce">
+          <SearchSolid className="text-error-500 h-12 w-12" />
         </div>
 
-        <h1 className='text-2xl font-semibold text-neutral-900'>
-          {systemFiles.notFound.title}
-        </h1>
+        <h1 className="text-2xl font-semibold text-neutral-900">{systemFiles.notFound.title}</h1>
 
-        <p className='max-w-sm text-neutral-500'>
-          {systemFiles.notFound.description}
-        </p>
+        <p className="max-w-sm text-neutral-500">{systemFiles.notFound.description}</p>
 
-        <div className='mt-2 flex flex-wrap justify-center gap-3'>
+        <div className="mt-2 flex flex-wrap justify-center gap-3">
           <NotFoundActions
             backText={systemFiles.notFound.buttons.back}
             homeText={systemFiles.notFound.buttons.home}

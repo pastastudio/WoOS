@@ -17,7 +17,7 @@ export function HappyRateing() {
     <div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className='cursor-pointer'
+      className="cursor-pointer"
     >
       {isHovered ? <HappyFilled /> : <Happy />}
     </div>
@@ -31,7 +31,7 @@ export function AlrightRateing() {
     <div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className='cursor-pointer'
+      className="cursor-pointer"
     >
       {isHovered ? <AlrightFilled /> : <Alright />}
     </div>
@@ -45,7 +45,7 @@ export function OkayRateing() {
     <div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className='cursor-pointer'
+      className="cursor-pointer"
     >
       {isHovered ? <OkayFilled /> : <Okay />}
     </div>
@@ -59,7 +59,7 @@ export function NotHappyRateing() {
     <div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className='cursor-pointer'
+      className="cursor-pointer"
     >
       {isHovered ? <NotHappyFilled /> : <NotHappy />}
     </div>

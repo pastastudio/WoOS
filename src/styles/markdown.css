@@ -114,17 +114,8 @@
 .markdown pre,
 .markdown .markdown-pre {
   background:
-    radial-gradient(
-      circle at 20% 20%,
-      rgba(56, 189, 248, 0.1),
-      transparent 45%
-    ),
-    radial-gradient(
-      circle at 80% 0%,
-      rgba(129, 140, 248, 0.1),
-      transparent 35%
-    ),
-    #0b1220;
+    radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.1), transparent 45%),
+    radial-gradient(circle at 80% 0%, rgba(129, 140, 248, 0.1), transparent 35%), #0b1220;
   border: 1px solid rgba(226, 232, 240, 0.08);
   border-radius: 0.85rem;
   padding: 1rem 1.1rem;

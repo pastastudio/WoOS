@@ -15,11 +15,7 @@ interface AnalyzeChartProps {
   macosPercentage: number;
 }
 
-function AnalyzeChart({
-  windowsPercentage,
-  linuxPercentage,
-  macosPercentage,
-}: AnalyzeChartProps) {
+function AnalyzeChart({ windowsPercentage, linuxPercentage, macosPercentage }: AnalyzeChartProps) {
   const chartData = [
     {
       os: 'windows',
@@ -49,24 +45,19 @@ function AnalyzeChart({
   } satisfies ChartConfig;
 
   return (
-    <div className='bg-background w-full max-w-xl rounded-md border p-4'>
+    <div className="bg-background w-full max-w-xl rounded-md border p-4">
       <ChartContainer config={chartConfig}>
         <BarChart accessibilityLayer data={chartData}>
           <CartesianGrid vertical={false} />
           <XAxis
             axisLine={false}
-            dataKey='os'
-            tickFormatter={(value) =>
-              chartConfig[value as keyof typeof chartConfig]?.label
-            }
+            dataKey="os"
+            tickFormatter={value => chartConfig[value as keyof typeof chartConfig]?.label}
             tickLine={false}
             tickMargin={10}
           />
-          <ChartTooltip
-            content={<ChartTooltipContent hideLabel />}
-            cursor={false}
-          />
-          <Bar dataKey='percentage' radius={8} strokeWidth={2} />
+          <ChartTooltip content={<ChartTooltipContent hideLabel />} cursor={false} />
+          <Bar dataKey="percentage" radius={8} strokeWidth={2} />
         </BarChart>
       </ChartContainer>
     </div>

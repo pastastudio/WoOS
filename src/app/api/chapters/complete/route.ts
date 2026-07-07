@@ -5,17 +5,13 @@ export async function POST(request: Request) {
     const { chapter } = await request.json();
 
     if (!chapter || typeof chapter !== 'number') {
-      return Response.json(
-        { error: 'Invalid chapter number' },
-        { status: 400 },
-      );
+      return Response.json({ error: 'Invalid chapter number' }, { status: 400 });
     }
 
     const cookieStore = await cookies();
 
     // Get existing completed chapters
-    const completedCookie =
-      cookieStore.get('completed_chapters')?.value || '[]';
+    const completedCookie = cookieStore.get('completed_chapters')?.value || '[]';
     let completedChapters: number[] = [];
 
     try {
@@ -46,9 +42,6 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     console.error('Error saving chapter completion:', error);
-    return Response.json(
-      { error: 'Failed to save chapter completion' },
-      { status: 500 },
-    );
+    return Response.json({ error: 'Failed to save chapter completion' }, { status: 500 });
   }
 }

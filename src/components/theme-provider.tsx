@@ -22,8 +22,8 @@ export function ThemeProvider({
       {...props}
       enableSystem={true}
       disableTransitionOnChange
-      storageKey='theme-preference'
-      attribute='class'
+      storageKey="theme-preference"
+      attribute="class"
     >
       {children}
     </NextThemesProvider>

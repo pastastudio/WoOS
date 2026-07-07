@@ -22,11 +22,7 @@ interface BannerProps {
  *
  * Return: ReactElement
  */
-export default function Banner({
-  position,
-  message,
-  color,
-}: BannerProps): ReactElement {
+export default function Banner({ position, message, color }: BannerProps): ReactElement {
   const [isVisible, setIsVisible] = React.useState(true);
   const handleClose = () => setIsVisible(false);
   // Banner should be responsive; width handled via CSS (Tailwind classes)
@@ -51,7 +47,7 @@ export default function Banner({
         <div
           className={`pointer-events-auto mx-auto flex w-4/6 max-w-4xl flex-col items-center gap-2 rounded border bg-[var(--banner-color)]/100 p-3`}
         >
-          <div className='text-center'>{message}</div>
+          <div className="text-center">{message}</div>
           <Button onClick={handleClose} />
         </div>
       </div>

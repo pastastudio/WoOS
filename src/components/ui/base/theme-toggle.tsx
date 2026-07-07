@@ -31,24 +31,24 @@ export function ThemeToggle(): React.ReactElement {
     <Tooltip delay={500}>
       <TooltipTrigger
         onClick={onToggle}
-        className='focus-visible:ring-ring hover:bg-accent relative inline-flex items-center justify-center rounded-md p-2 p-3 transition-colors focus-visible:ring-1 focus-visible:outline-none dark:hover:bg-white/10'
-        aria-label='Theme umschalten'
+        className="focus-visible:ring-ring hover:bg-accent relative inline-flex items-center justify-center rounded-md p-2 p-3 transition-colors focus-visible:ring-1 focus-visible:outline-none dark:hover:bg-white/10"
+        aria-label="Theme umschalten"
       >
         {mounted ? (
           currentSetting === 'system' ? (
-            <Laptop className='h-4 w-4' />
+            <Laptop className="h-4 w-4" />
           ) : currentSetting === 'dark' ? (
-            <Moon className='h-4 w-4' />
+            <Moon className="h-4 w-4" />
           ) : (
-            <Sun className='h-4 w-4' />
+            <Sun className="h-4 w-4" />
           )
         ) : (
-          <Sun className='h-4 w-4' />
+          <Sun className="h-4 w-4" />
         )}
-        <span className='sr-only'>Theme umschalten</span>
+        <span className="sr-only">Theme umschalten</span>
       </TooltipTrigger>
       <TooltipPositioner>
-        <TooltipContent className='bg-white text-black [&_[data-slot=tooltip-arrow]]:bg-white [&_[data-slot=tooltip-arrow]]:fill-white'>
+        <TooltipContent className="bg-white text-black [&_[data-slot=tooltip-arrow]]:bg-white [&_[data-slot=tooltip-arrow]]:fill-white">
           <p>Toggle Theme</p>
         </TooltipContent>
       </TooltipPositioner>

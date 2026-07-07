@@ -17,7 +17,7 @@ export default function NotFoundActions({
     <>
       <Button onClick={() => router.back()}>{backText}</Button>
 
-      <Link href='/'>
+      <Link href="/">
         <Button>{homeText}</Button>
       </Link>
     </>
