@@ -1,4 +1,4 @@
 {
-  "*": "prettier --ignore-unknown --write",
-  "src/**/*.{mjs,js,cjs,ts,tsx}": ["eslint --fix", "prettier --write"]
+  "*.{ts,tsx,js,jsx}": ["prettier --write", "eslint --fix"],
+  "*.{json,md,yaml,yml,css}": ["prettier --write"]
 }

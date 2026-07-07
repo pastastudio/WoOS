@@ -39,7 +39,7 @@ function stripFrontmatter(source: string): {
   const content = normalized.slice(frontmatterMatch[0].length);
   const header: HeaderMeta = {};
 
-  frontmatterRaw.split('\n').forEach((line) => {
+  frontmatterRaw.split('\n').forEach(line => {
     const [key, ...rest] = line.split(':');
     if (!key || rest.length === 0) return;
     const value = rest
@@ -63,7 +63,7 @@ export function extractTableOfContents(source: string): TableOfContents {
   const headings: TableOfContents = [];
   const lines = content.split('\n');
 
-  lines.forEach((line) => {
+  lines.forEach(line => {
     const match = line.match(/^(#{1,4})\s+(.+)$/);
     if (match) {
       const depth = match[1].length;
@@ -77,9 +77,7 @@ export function extractTableOfContents(source: string): TableOfContents {
   return headings;
 }
 
-export async function compileMdx<
-  Frontmatter extends object = Record<string, unknown>,
->({
+export async function compileMdx<Frontmatter extends object = Record<string, unknown>>({
   source,
 }: {
   source: string;
@@ -106,16 +104,13 @@ export async function compileMdx<
 
   const header: HeaderMeta = {
     title:
-      ((frontmatter as Record<string, unknown>).title as string | undefined) ??
-      parsedHeader.title,
+      ((frontmatter as Record<string, unknown>).title as string | undefined) ?? parsedHeader.title,
     description:
-      ((frontmatter as Record<string, unknown>).description as
-        | string
-        | undefined) ?? parsedHeader.description,
+      ((frontmatter as Record<string, unknown>).description as string | undefined) ??
+      parsedHeader.description,
     filename:
-      ((frontmatter as Record<string, unknown>).filename as
-        | string
-        | undefined) ?? parsedHeader.filename,
+      ((frontmatter as Record<string, unknown>).filename as string | undefined) ??
+      parsedHeader.filename,
   };
 
   return {

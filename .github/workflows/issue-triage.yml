@@ -1,17 +1,21 @@
-name: Label Issues
+name: Issue Triage
 
-# Trigger: Runs when an issue is opened or edited
-# Automatically applies labels based on issue content using .github/issue-labeler.yml
 on:
   issues:
-    types: [opened, edited]
+    types: [opened, edited, reopened]
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: issue-${{ github.event.issue.number }}
+  cancel-in-progress: true
 
 jobs:
-  auto-label:
-    name: Auto-label issues
+  label:
     runs-on: ubuntu-latest
     steps:
-      # Apply labels based on issue title and body content
       - name: Label issue
         uses: github/issue-labeler@v3.4
         with:

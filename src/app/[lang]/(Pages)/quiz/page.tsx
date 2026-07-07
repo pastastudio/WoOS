@@ -75,17 +75,11 @@ export default function QuizPage() {
   const [loading, setLoading] = useState(true); // True while loading questions from JSON
 
   // State: Phase management (technical -> transition -> personal)
-  const [phase, setPhase] = useState<'technical' | 'transition' | 'personal'>(
-    'technical',
-  );
+  const [phase, setPhase] = useState<'technical' | 'transition' | 'personal'>('technical');
 
   // State: Separate answer storage for each phase
-  const [technicalAnswers, setTechnicalAnswers] = useState<
-    Record<number, string>
-  >({}); // Answers to technical questions
-  const [personalAnswers, setPersonalAnswers] = useState<
-    Record<number, string>
-  >({}); // Answers to personal questions
+  const [technicalAnswers, setTechnicalAnswers] = useState<Record<number, string>>({}); // Answers to technical questions
+  const [personalAnswers, setPersonalAnswers] = useState<Record<number, string>>({}); // Answers to personal questions
 
   /**
    * Load questions when component mounts or chapter/locale changes
@@ -155,13 +149,13 @@ export default function QuizPage() {
       // Save answer to appropriate answer storage based on current phase
       if (phase === 'technical') {
         // Technical phase: save to technicalAnswers state
-        setTechnicalAnswers((prev) => ({
+        setTechnicalAnswers(prev => ({
           ...prev,
           [currentQuestionIndex]: selectedAnswer,
         }));
       } else {
         // Personal phase: save to personalAnswers state
-        setPersonalAnswers((prev) => ({
+        setPersonalAnswers(prev => ({
           ...prev,
           [currentQuestionIndex]: selectedAnswer,
         }));
@@ -215,21 +209,17 @@ export default function QuizPage() {
    */
   const saveAnswersToDatabase = async () => {
     // Convert technical and personal answers
-    const quizAnswers = Object.entries(technicalAnswers).map(
-      ([index, answer]) => ({
-        questionIndex: parseInt(index),
-        answer,
-        chapter: parseInt(chapter),
-      }),
-    );
+    const quizAnswers = Object.entries(technicalAnswers).map(([index, answer]) => ({
+      questionIndex: parseInt(index),
+      answer,
+      chapter: parseInt(chapter),
+    }));
 
-    const analysisAnswers = Object.entries(personalAnswers).map(
-      ([index, answer]) => ({
-        questionIndex: parseInt(index),
-        answer,
-        chapter: parseInt(chapter),
-      }),
-    );
+    const analysisAnswers = Object.entries(personalAnswers).map(([index, answer]) => ({
+      questionIndex: parseInt(index),
+      answer,
+      chapter: parseInt(chapter),
+    }));
 
     console.log('Quiz Answers (for scoring):', quizAnswers);
     console.log('Analysis Answers (for profiling):', analysisAnswers);
@@ -244,8 +234,8 @@ export default function QuizPage() {
   // Loading state: Show while questions are being fetched from JSON files
   if (loading) {
     return (
-      <div className='flex min-h-screen items-center justify-center'>
-        <p className='text-lg'>Loading questions...</p>
+      <div className="flex min-h-screen items-center justify-center">
+        <p className="text-lg">Loading questions...</p>
       </div>
     );
   }
@@ -253,15 +243,14 @@ export default function QuizPage() {
   // Completion state: Show after all questions (technical + personal) are answered
   if (isComplete) {
     return (
-      <div className='flex min-h-screen flex-col items-center justify-center gap-6 px-6'>
-        <h1 className='text-4xl font-bold'>Quiz Complete!</h1>
-        <p className='text-muted-foreground max-w-md text-center'>
-          You&apos;ve completed all{' '}
-          {questions.length + analysisQuestions.length} questions for Chapter{' '}
-          {chapter}. Your answers have been saved.
+      <div className="flex min-h-screen flex-col items-center justify-center gap-6 px-6">
+        <h1 className="text-4xl font-bold">Quiz Complete!</h1>
+        <p className="text-muted-foreground max-w-md text-center">
+          You&apos;ve completed all {questions.length + analysisQuestions.length} questions for
+          Chapter {chapter}. Your answers have been saved.
         </p>
         {/* Navigate back to quests page */}
-        <Button size='lg' onClick={() => (window.location.href = '/quests')}>
+        <Button size="lg" onClick={() => (window.location.href = '/quests')}>
           Back to Quests
         </Button>
       </div>
@@ -271,8 +260,8 @@ export default function QuizPage() {
   // Error state: Show if no questions are loaded for current phase
   if (!currentQuestion) {
     return (
-      <div className='flex min-h-screen items-center justify-center'>
-        <p className='text-lg'>No questions available for this chapter.</p>
+      <div className="flex min-h-screen items-center justify-center">
+        <p className="text-lg">No questions available for this chapter.</p>
       </div>
     );
   }
@@ -283,7 +272,7 @@ export default function QuizPage() {
    * Result: ['a', 'b', 'c'] or ['a', 'b', 'c', 'd', 'e'] depending on question
    */
   const optionKeys = Object.keys(currentQuestion.options).filter(
-    (key) => !key.startsWith('_'),
+    key => !key.startsWith('_')
   ) as Array<keyof QuestionOption>;
 
   /**
@@ -293,29 +282,29 @@ export default function QuizPage() {
    */
   if (phase === 'transition') {
     return (
-      <div className='flex min-h-screen flex-col items-center justify-center gap-6 px-6'>
-        <div className='bg-primary/10 border-primary/20 rounded-full border p-4'>
+      <div className="flex min-h-screen flex-col items-center justify-center gap-6 px-6">
+        <div className="bg-primary/10 border-primary/20 rounded-full border p-4">
           <svg
-            className='text-primary size-12'
-            fill='none'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
+            className="text-primary size-12"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
           >
             <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
+              strokeLinecap="round"
+              strokeLinejoin="round"
               strokeWidth={2}
-              d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
         </div>
-        <h1 className='text-3xl font-bold'>Technical Questions Complete!</h1>
-        <p className='text-muted-foreground max-w-md text-center'>
-          Great job! You&apos;ve answered all {questions.length} technical
-          questions. Now let&apos;s move on to {analysisQuestions.length}{' '}
-          personal questions to help us understand your preferences better.
+        <h1 className="text-3xl font-bold">Technical Questions Complete!</h1>
+        <p className="text-muted-foreground max-w-md text-center">
+          Great job! You&apos;ve answered all {questions.length} technical questions. Now let&apos;s
+          move on to {analysisQuestions.length} personal questions to help us understand your
+          preferences better.
         </p>
-        <Button size='lg' onClick={handleStartPersonalQuestions}>
+        <Button size="lg" onClick={handleStartPersonalQuestions}>
           Start Personal Questions
         </Button>
       </div>
@@ -327,22 +316,20 @@ export default function QuizPage() {
    * Shows current question with answer options and navigation
    */
   return (
-    <div className='flex min-h-screen flex-col items-center justify-center gap-8 px-6 py-12'>
+    <div className="flex min-h-screen flex-col items-center justify-center gap-8 px-6 py-12">
       {/* Progress indicator: Shows current position within phase and phase type */}
-      <div className='w-full max-w-3xl'>
-        <div className='mb-2 flex items-center justify-between text-sm'>
-          <span className='text-muted-foreground'>
+      <div className="w-full max-w-3xl">
+        <div className="mb-2 flex items-center justify-between text-sm">
+          <span className="text-muted-foreground">
             Question {currentQuestionIndex + 1} of {totalInPhase}
           </span>
-          <span className='font-medium'>
-            {phase === 'technical'
-              ? ' Technical Questions'
-              : ' Personal Questions'}
+          <span className="font-medium">
+            {phase === 'technical' ? ' Technical Questions' : ' Personal Questions'}
           </span>
         </div>
-        <div className='bg-muted h-2 w-full overflow-hidden rounded-full'>
+        <div className="bg-muted h-2 w-full overflow-hidden rounded-full">
           <div
-            className='bg-primary h-full transition-all duration-300'
+            className="bg-primary h-full transition-all duration-300"
             style={{
               width: `${((currentQuestionIndex + 1) / totalInPhase) * 100}%`,
             }}
@@ -351,14 +338,12 @@ export default function QuizPage() {
       </div>
 
       {/* Question card */}
-      <Card className='w-full max-w-3xl p-8'>
-        <h2 className='mb-8 text-2xl leading-tight font-bold'>
-          {currentQuestion._title}
-        </h2>
+      <Card className="w-full max-w-3xl p-8">
+        <h2 className="mb-8 text-2xl leading-tight font-bold">{currentQuestion._title}</h2>
 
         {/* Answer options */}
-        <div className='flex flex-col gap-4'>
-          {optionKeys.map((optionKey) => {
+        <div className="flex flex-col gap-4">
+          {optionKeys.map(optionKey => {
             const isSelected = selectedAnswer === optionKey;
             return (
               <button
@@ -366,34 +351,27 @@ export default function QuizPage() {
                 onClick={() => handleAnswerSelect(optionKey)}
                 className={cn(
                   'border-input hover:bg-accent hover:text-accent-foreground flex items-start gap-4 rounded-lg border p-4 text-left transition-all',
-                  isSelected && 'ring-primary/60 border-primary ring-2',
+                  isSelected && 'ring-primary/60 border-primary ring-2'
                 )}
               >
                 <div
                   className={cn(
                     'border-input flex size-6 shrink-0 items-center justify-center rounded-full border',
-                    isSelected && 'bg-primary border-primary text-white',
+                    isSelected && 'bg-primary border-primary text-white'
                   )}
                 >
                   {isSelected && (
-                    <svg
-                      className='size-4'
-                      fill='none'
-                      viewBox='0 0 24 24'
-                      stroke='currentColor'
-                    >
+                    <svg className="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         strokeWidth={2}
-                        d='M5 13l4 4L19 7'
+                        d="M5 13l4 4L19 7"
                       />
                     </svg>
                   )}
                 </div>
-                <span className='flex-1'>
-                  {currentQuestion.options[optionKey]}
-                </span>
+                <span className="flex-1">{currentQuestion.options[optionKey]}</span>
               </button>
             );
           })}
@@ -401,21 +379,16 @@ export default function QuizPage() {
       </Card>
 
       {/* Navigation buttons */}
-      <div className='flex w-full max-w-3xl items-center justify-between'>
+      <div className="flex w-full max-w-3xl items-center justify-between">
         <Button
-          variant='outline'
-          size='lg'
+          variant="outline"
+          size="lg"
           onClick={handlePrevious}
           disabled={currentQuestionIndex === 0}
         >
           Previous
         </Button>
-        <Button
-          size='lg'
-          onClick={handleNext}
-          disabled={!selectedAnswer}
-          className='min-w-[120px]'
-        >
+        <Button size="lg" onClick={handleNext} disabled={!selectedAnswer} className="min-w-[120px]">
           {currentQuestionIndex === totalInPhase - 1 ? 'Finish' : 'Next'}
         </Button>
       </div>

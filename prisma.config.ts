@@ -31,8 +31,6 @@ export default defineConfig({
     // This is fine for `prisma generate` which only reads the schema
     // Important: do NOT use prisma/config env() here because it throws
     // when the variable is missing. We want a safe fallback for CI.
-    url:
-      process.env.PRISMA_DATABASE_URL ||
-      'postgresql://dummy:dummy@localhost:5432/dummy',
+    url: process.env.PRISMA_DATABASE_URL || 'postgresql://dummy:dummy@localhost:5432/dummy',
   },
 });

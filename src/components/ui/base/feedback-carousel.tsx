@@ -8,18 +8,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import {
-  ThumbsdownSolid,
-  ThumbsupSolid,
-  UserCheckSolid,
-} from '@2hoch1/pixel-icon-library-react';
+import { ThumbsdownSolid, ThumbsupSolid, UserCheckSolid } from '@2hoch1/pixel-icon-library-react';
 import Autoplay from 'embla-carousel-autoplay';
 import * as React from 'react';
 
 const verifiedBadge = {
   label: (
-    <div className='flex items-center gap-1'>
-      <UserCheckSolid className='size-3' />
+    <div className="flex items-center gap-1">
+      <UserCheckSolid className="size-3" />
       Verified
     </div>
   ),
@@ -29,8 +25,8 @@ const verifiedBadge = {
 
 const positiveBadge = {
   label: (
-    <div className='flex items-center gap-1'>
-      <ThumbsupSolid className='size-3' />
+    <div className="flex items-center gap-1">
+      <ThumbsupSolid className="size-3" />
       Positive
     </div>
   ),
@@ -40,8 +36,8 @@ const positiveBadge = {
 
 const negativeBadge = {
   label: (
-    <div className='flex items-center gap-1'>
-      <ThumbsdownSolid className='size-3' />
+    <div className="flex items-center gap-1">
+      <ThumbsdownSolid className="size-3" />
       Negative
     </div>
   ),
@@ -67,21 +63,19 @@ interface FeedbackCarouselProps {
 }
 
 function FeedbackCarousel({ feedbackData }: FeedbackCarouselProps) {
-  const plugin = React.useRef(
-    Autoplay({ delay: 6000, stopOnInteraction: true }),
-  );
+  const plugin = React.useRef(Autoplay({ delay: 6000, stopOnInteraction: true }));
 
   return (
     <Carousel
       plugins={[plugin.current]}
       opts={{ loop: true }}
-      className='w-full max-w-6xl'
+      className="w-full max-w-6xl"
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
     >
       <CarouselContent>
         {feedbackData.map((feedback, index) => (
-          <CarouselItem key={index} className='md:basis-1/3'>
+          <CarouselItem key={index} className="md:basis-1/3">
             <FeedbackCard
               author={feedback.author}
               description={feedback.description}

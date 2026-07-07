@@ -14,10 +14,10 @@ export function MarkdownToc({ toc, className = '' }: MarkdownTocProps) {
   }
 
   return (
-    <nav aria-label='On this page' className={className}>
-      <h2 className='text-foreground mb-3 text-base font-bold'>On This Page</h2>
-      <ul className='text-muted-foreground space-y-2 text-sm'>
-        {toc.map((item) => {
+    <nav aria-label="On this page" className={className}>
+      <h2 className="text-foreground mb-3 text-base font-bold">On This Page</h2>
+      <ul className="text-muted-foreground space-y-2 text-sm">
+        {toc.map(item => {
           // Add left padding based on heading depth (h2+ gets indentation)
           const paddingClass =
             item.depth === 1
@@ -31,7 +31,7 @@ export function MarkdownToc({ toc, className = '' }: MarkdownTocProps) {
             <li key={item.url} className={paddingClass}>
               <Link
                 href={item.url}
-                className='hover:text-foreground cursor-pointer transition-colors'
+                className="hover:text-foreground cursor-pointer transition-colors"
               >
                 {item.title}
               </Link>

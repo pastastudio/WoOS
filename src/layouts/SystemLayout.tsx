@@ -17,10 +17,7 @@ const componentsDict = {
   en: enComponents,
 };
 
-const SystemLayout = ({
-  children,
-  lang = 'en',
-}: Readonly<SystemLayoutProps>) => {
+const SystemLayout = ({ children, lang = 'en' }: Readonly<SystemLayoutProps>) => {
   const components = componentsDict[lang];
 
   const navbar: NavbarProps = {
@@ -102,7 +99,7 @@ const SystemLayout = ({
     <>
       <Navbar {...navbar} />
       <main>
-        <div className='flex min-h-screen w-full flex-1 items-center justify-center bg-white dark:bg-black'>
+        <div className="flex min-h-screen w-full flex-1 items-center justify-center bg-white dark:bg-black">
           {children}
         </div>
       </main>

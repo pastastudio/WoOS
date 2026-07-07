@@ -77,17 +77,17 @@ export default function WandDisplay({
       className={cn(
         'relative aspect-square overflow-hidden rounded border',
         'border-border/70 bg-muted/40',
-        className,
+        className
       )}
     >
       <Image
         src={src}
         alt={alt}
         fill
-        sizes='100vw'
+        sizes="100vw"
         className={cn(
           'object-contain p-6 transition-all',
-          locked && 'opacity-80 blur-[1px] brightness-90',
+          locked && 'opacity-80 blur-[1px] brightness-90'
         )}
         style={{
           transform: `rotate(${rotation}deg) translate(${offsetX}px, ${offsetY}px) scale(${size})`,
@@ -96,9 +96,9 @@ export default function WandDisplay({
       />
 
       {locked && (
-        <div className='pointer-events-none absolute inset-0 grid place-items-center'>
-          <div className='flex h-14 w-14 items-center justify-center rounded-md'>
-            <LockSolid className='h-10 w-10 text-white/90' />
+        <div className="pointer-events-none absolute inset-0 grid place-items-center">
+          <div className="flex h-14 w-14 items-center justify-center rounded-md">
+            <LockSolid className="h-10 w-10 text-white/90" />
           </div>
         </div>
       )}

@@ -34,20 +34,10 @@ function MarkdownLayout({
         justifyItems: hasSidebars ? undefined : 'center',
       }}
     >
-      {hasLeft && (
-        <MarkdownSidebar className='sticky top-20 h-fit'>
-          {leftSidebar}
-        </MarkdownSidebar>
-      )}
-      {hasSidebars ? (
-        content
-      ) : (
-        <div className='w-full max-w-4xl'>{content}</div>
-      )}
+      {hasLeft && <MarkdownSidebar className="sticky top-20 h-fit">{leftSidebar}</MarkdownSidebar>}
+      {hasSidebars ? content : <div className="w-full max-w-4xl">{content}</div>}
       {hasRight && (
-        <MarkdownSidebar className='sticky top-20 h-fit'>
-          {rightSidebar}
-        </MarkdownSidebar>
+        <MarkdownSidebar className="sticky top-20 h-fit">{rightSidebar}</MarkdownSidebar>
       )}
     </div>
   );

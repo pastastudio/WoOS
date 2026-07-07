@@ -21,10 +21,7 @@ interface FooterLinksProps {
 /**
  * Renders the footer links section
  */
-export default function FooterLinks({
-  links,
-  categories,
-}: FooterLinksProps): ReactElement {
+export default function FooterLinks({ links, categories }: FooterLinksProps): ReactElement {
   if (!links) return <div className={styles.linksContainer} />;
   if (!categories) return <div className={styles.linksContainer} />;
 
@@ -39,7 +36,7 @@ export default function FooterLinks({
           <div key={key} className={styles.linkCategory}>
             <h3 className={styles.categoryTitle}>{title}</h3>
             <ul className={styles.linkList}>
-              {categoryLinks.map((link) => (
+              {categoryLinks.map(link => (
                 <li key={`${key}-${link.label}`}>
                   <Link href={link.href} className={styles.link}>
                     {link.label}

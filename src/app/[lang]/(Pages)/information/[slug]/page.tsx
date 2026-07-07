@@ -2,12 +2,7 @@ import { MarkdownContentWrapper } from '@/components/ui/base/markdown-content-wr
 import { MarkdownToc } from '@/components/ui/base/markdown-toc';
 import { PagePreload } from '@/components/withPagePreload';
 import { MarkdownLayout } from '@/layouts/MarkdownLayout';
-import {
-  getAllRoutes,
-  getContent,
-  getPageRoute,
-  type RouteEntry,
-} from '@/lib/content';
+import { getAllRoutes, getContent, getPageRoute, type RouteEntry } from '@/lib/content';
 import { compileMdx } from '@/lib/markdown';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
@@ -15,7 +10,7 @@ import { notFound, redirect } from 'next/navigation';
 async function generateNavigationSidebar(
   locale: string,
   section: 'information' | 'docs',
-  currentSlug: string,
+  currentSlug: string
 ) {
   const routes = await getAllRoutes(locale, section);
 
@@ -25,18 +20,16 @@ async function generateNavigationSidebar(
 
   return (
     <nav>
-      <h2 className='text-foreground mb-2 text-base font-semibold'>
-        Navigation
-      </h2>
-      <div className='flex flex-col items-end'>
-        <ul className='text-muted-foreground space-y-3 pl-3 text-sm'>
-          {routes.map((route) => {
+      <h2 className="text-foreground mb-2 text-base font-semibold">Navigation</h2>
+      <div className="flex flex-col items-end">
+        <ul className="text-muted-foreground space-y-3 pl-3 text-sm">
+          {routes.map(route => {
             const isActive = route.slug === currentSlug;
             return (
               <li key={`${route.lang}-${route.section}-${route.slug}`}>
                 <Link
                   href={`/${route.lang}/${route.section}/${route.slug}`}
-                  className='hover:text-foreground/80 transition-colors'
+                  className="hover:text-foreground/80 transition-colors"
                   style={isActive ? { color: '#00a63e' } : undefined}
                 >
                   {route.title || route.slug}
@@ -55,10 +48,10 @@ function getCircularNavUrl(
   routes: RouteEntry[],
   currentSlug: string,
   locale: string,
-  section: 'information' | 'docs',
+  section: 'information' | 'docs'
 ) {
   if (!routes?.length) return '#';
-  const currentIndex = routes.findIndex((r) => r.slug === currentSlug);
+  const currentIndex = routes.findIndex(r => r.slug === currentSlug);
   if (currentIndex === -1) return '#';
 
   let nextIndex;
@@ -107,11 +100,7 @@ export default async function Page({ params }: PageProps) {
   const nextUrl = getCircularNavUrl('next', routes, slug, lang, section);
 
   // Generate sidebar content
-  const navigationSidebar = await generateNavigationSidebar(
-    lang,
-    section,
-    slug,
-  );
+  const navigationSidebar = await generateNavigationSidebar(lang, section, slug);
 
   return (
     <PagePreload>
@@ -120,9 +109,7 @@ export default async function Page({ params }: PageProps) {
         content={
           <MarkdownContentWrapper
             title={(frontmatter as { title?: string } | undefined)?.title}
-            description={
-              (frontmatter as { description?: string } | undefined)?.description
-            }
+            description={(frontmatter as { description?: string } | undefined)?.description}
             badges={(frontmatter as { badges?: string[] } | undefined)?.badges}
             prevUrl={prevUrl}
             nextUrl={nextUrl}

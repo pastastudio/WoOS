@@ -12,14 +12,12 @@ interface FooterBannerProps {
 /**
  * Renders the footer banner section
  */
-export default function FooterBanner({
-  banner,
-}: FooterBannerProps): ReactElement | null {
+export default function FooterBanner({ banner }: FooterBannerProps): ReactElement | null {
   if (!banner) return null;
 
   return (
     <div className={styles.bannerWrapper}>
-      <Banner aria-label='Footer Banner' className={styles.banner} />
+      <Banner aria-label="Footer Banner" className={styles.banner} />
     </div>
   );
 }

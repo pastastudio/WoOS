@@ -30,15 +30,11 @@ async function getUserQuizProgress(): Promise<{ completedCount: number }> {
  */
 async function getChapterMetadata(
   locale: string,
-  chapterNumber: number,
+  chapterNumber: number
 ): Promise<{ title: string; description: string }> {
   try {
     // Reads the chapter_X.mdx file from content/{locale}/info/
-    const { source } = getContent(
-      locale,
-      'information',
-      `chapter_${chapterNumber}`,
-    );
+    const { source } = getContent(locale, 'information', `chapter_${chapterNumber}`);
     // Extracts frontmatter (title, description) from the MDX file
     const { frontmatter } = await compileMdx<ChapterFrontmatter>({ source });
     return {
@@ -89,7 +85,7 @@ export default async function Page() {
 
   // Load chapter metadata (title and description) from all 6 chapter files
   const chaptersData = await Promise.all(
-    [1, 2, 3, 4, 5, 6].map((num) => getChapterMetadata(locale, num)),
+    [1, 2, 3, 4, 5, 6].map(num => getChapterMetadata(locale, num))
   );
 
   /**
@@ -111,20 +107,16 @@ export default async function Page() {
   return (
     <>
       <ParallaxWindow />
-      <div className='relative z-[100] w-full bg-black pb-20'>
-        <div className='flex flex-col items-center gap-10 px-6 py-12'>
+      <div className="relative z-[100] w-full bg-black pb-20">
+        <div className="flex flex-col items-center gap-10 px-6 py-12">
           {/* Page header with title and description */}
-          <div className='flex max-w-3xl flex-col items-center gap-3 text-center'>
-            <h1 className='text-4xl font-bold tracking-tight'>{t.title}</h1>
-            <p className='text-muted-foreground'>{t.description}</p>
+          <div className="flex max-w-3xl flex-col items-center gap-3 text-center">
+            <h1 className="text-4xl font-bold tracking-tight">{t.title}</h1>
+            <p className="text-muted-foreground">{t.description}</p>
           </div>
 
           {/* Chapter timeline component */}
-          <QuestionOverview
-            quizzes={quizzes}
-            completedCount={completedCount}
-            translations={t}
-          />
+          <QuestionOverview quizzes={quizzes} completedCount={completedCount} translations={t} />
         </div>
       </div>
     </>

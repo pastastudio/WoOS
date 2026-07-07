@@ -14,11 +14,9 @@ export default function Loading() {
   const systemFiles = systemFilesDict.en;
 
   return (
-    <SystemLayout lang='en'>
-      <div className='animate-scale-in flex flex-col items-center gap-4'>
-        <p className='animate-pulse text-sm text-neutral-500'>
-          {systemFiles.loading.message}
-        </p>
+    <SystemLayout lang="en">
+      <div className="animate-scale-in flex flex-col items-center gap-4">
+        <p className="animate-pulse text-sm text-neutral-500">{systemFiles.loading.message}</p>
       </div>
     </SystemLayout>
   );

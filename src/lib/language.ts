@@ -16,13 +16,8 @@ export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
  * @param lang - Language to validate
  * @returns true if language is supported, false otherwise
  */
-export function isValidLanguage(
-  lang: string | unknown,
-): lang is SupportedLanguage {
-  return (
-    typeof lang === 'string' &&
-    SUPPORTED_LANGUAGES.includes(lang as SupportedLanguage)
-  );
+export function isValidLanguage(lang: string | unknown): lang is SupportedLanguage {
+  return typeof lang === 'string' && SUPPORTED_LANGUAGES.includes(lang as SupportedLanguage);
 }
 
 /**
@@ -30,9 +25,7 @@ export function isValidLanguage(
  * @param lang - Raw language from URL params
  * @returns Valid language code or default
  */
-export function getLanguageFromParams(
-  lang: string | string[] | undefined,
-): SupportedLanguage {
+export function getLanguageFromParams(lang: string | string[] | undefined): SupportedLanguage {
   const normalizedLang = Array.isArray(lang) ? lang[0] : lang;
   return isValidLanguage(normalizedLang) ? normalizedLang : DEFAULT_LANGUAGE;
 }
@@ -55,9 +48,7 @@ export function getLanguageName(lang: SupportedLanguage): string {
  * @param current - Current language
  * @returns The other supported language
  */
-export function getAlternateLanguage(
-  current: SupportedLanguage,
-): SupportedLanguage {
+export function getAlternateLanguage(current: SupportedLanguage): SupportedLanguage {
   return current === 'en' ? 'de' : 'en';
 }
 
@@ -67,10 +58,7 @@ export function getAlternateLanguage(
  * @param lang - Target language
  * @returns Full path with language prefix
  */
-export function buildLocalizedPath(
-  path: string,
-  lang: SupportedLanguage,
-): string {
+export function buildLocalizedPath(path: string, lang: SupportedLanguage): string {
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
   return `/${lang}${cleanPath}`;
 }
@@ -80,9 +68,7 @@ export function buildLocalizedPath(
  * @param pathname - Full pathname
  * @returns Language code or default
  */
-export function extractLanguageFromPathname(
-  pathname: string,
-): SupportedLanguage {
+export function extractLanguageFromPathname(pathname: string): SupportedLanguage {
   const segments = pathname.split('/').filter(Boolean);
   const firstSegment = segments[0];
   return getLanguageFromParams(firstSegment);

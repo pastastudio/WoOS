@@ -8,7 +8,7 @@ function ParallaxLayer({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      {React.Children.map(children, (child) => {
+      {React.Children.map(children, child => {
         if (!React.isValidElement(child)) return child;
 
         const element = child as React.ReactElement<{
@@ -71,7 +71,7 @@ const PARALLAX_LAYERS = [
 
 function ParallaxWindow() {
   return (
-    <div className='relative z-0 block h-[800px]'>
+    <div className="relative z-0 block h-[800px]">
       <ParallaxLayer>
         {PARALLAX_LAYERS.map((layer, index) => (
           <div

@@ -46,53 +46,48 @@ export function MarkdownContent({
   return (
     <div className={`flex w-full min-w-0 flex-col gap-5 p-5 ${className}`}>
       {showHeader && (
-        <div className='flex items-center justify-between'>
+        <div className="flex items-center justify-between">
           <Breadcrumb>
-            <BreadcrumbList className='text-base'>
+            <BreadcrumbList className="text-base">
               <BreadcrumbItem>
-                <BreadcrumbLink render={<Link href='/' />}>Home</BreadcrumbLink>
+                <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbLink
-                  render={<Link href='/de/information/chapter_1' />}
-                >
+                <BreadcrumbLink render={<Link href="/de/information/chapter_1" />}>
                   Information
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbPage
-                  className='font-medium'
-                  style={{ color: '#00a63e' }}
-                >
+                <BreadcrumbPage className="font-medium" style={{ color: '#00a63e' }}>
                   {title}
                 </BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <div className='flex gap-2'>
+          <div className="flex gap-2">
             {prevUrl && (
               <Link href={prevUrl}>
-                <Button variant='outline' size='sm'>
+                <Button variant="outline" size="sm">
                   <AngleLeft />
                 </Button>
               </Link>
             )}
             {!prevUrl && (
-              <Button onClick={onBack} variant='outline' size='sm'>
+              <Button onClick={onBack} variant="outline" size="sm">
                 <AngleLeft />
               </Button>
             )}
             {nextUrl && (
               <Link href={nextUrl}>
-                <Button variant='outline' size='sm'>
+                <Button variant="outline" size="sm">
                   <AngleRight />
                 </Button>
               </Link>
             )}
             {!nextUrl && (
-              <Button onClick={onForward} variant='outline' size='sm'>
+              <Button onClick={onForward} variant="outline" size="sm">
                 <AngleRight />
               </Button>
             )}
@@ -102,28 +97,23 @@ export function MarkdownContent({
 
       {showInfo && (
         <>
-          <div className='py-10'>
-            <h1
-              className='mb-3 text-4xl font-bold'
-              style={{ color: '#00a63e' }}
-            >
+          <div className="py-10">
+            <h1 className="mb-3 text-4xl font-bold" style={{ color: '#00a63e' }}>
               {title}
             </h1>
             {badges.length > 0 && (
-              <div className='mb-3 flex gap-2'>
-                {badges.map((badge) => (
+              <div className="mb-3 flex gap-2">
+                {badges.map(badge => (
                   <span
                     key={badge}
-                    className='inline-block rounded-full bg-blue-900 px-3 py-1 text-sm text-blue-100'
+                    className="inline-block rounded-full bg-blue-900 px-3 py-1 text-sm text-blue-100"
                   >
                     {badge}
                   </span>
                 ))}
               </div>
             )}
-            {description && (
-              <p className='text-muted-foreground text-sm'>{description}</p>
-            )}
+            {description && <p className="text-muted-foreground text-sm">{description}</p>}
           </div>
 
           <Separator />
@@ -131,10 +121,10 @@ export function MarkdownContent({
       )}
 
       {/* Content: Markdown + Rating */}
-      <div className='flex flex-col gap-5 py-10'>
-        <article className='markdown'>{children}</article>
-        <div className='border p-5 text-center'>
-          <p className='text-gray-400'>Rating Component (Placeholder)</p>
+      <div className="flex flex-col gap-5 py-10">
+        <article className="markdown">{children}</article>
+        <div className="border p-5 text-center">
+          <p className="text-gray-400">Rating Component (Placeholder)</p>
         </div>
       </div>
 
@@ -142,18 +132,18 @@ export function MarkdownContent({
         <>
           <Separator />
 
-          <div className='flex gap-5 pt-10'>
+          <div className="flex gap-5 pt-10">
             {prevUrl ? (
               <Link
                 href={prevUrl}
-                className='border-input bg-background hover:bg-accent hover:text-accent-foreground flex h-12 flex-1 items-center justify-center rounded-md border text-base'
+                className="border-input bg-background hover:bg-accent hover:text-accent-foreground flex h-12 flex-1 items-center justify-center rounded-md border text-base"
               >
                 ← Back
               </Link>
             ) : (
               <button
                 onClick={onBack}
-                className='border-input bg-background hover:bg-accent hover:text-accent-foreground flex h-12 flex-1 items-center justify-center rounded-md border text-base'
+                className="border-input bg-background hover:bg-accent hover:text-accent-foreground flex h-12 flex-1 items-center justify-center rounded-md border text-base"
                 disabled={!onBack}
               >
                 ← Back
@@ -162,14 +152,14 @@ export function MarkdownContent({
             {nextUrl ? (
               <Link
                 href={nextUrl}
-                className='border-input bg-background hover:bg-accent hover:text-accent-foreground flex h-12 flex-1 items-center justify-center rounded-md border text-base'
+                className="border-input bg-background hover:bg-accent hover:text-accent-foreground flex h-12 flex-1 items-center justify-center rounded-md border text-base"
               >
                 Forward →
               </Link>
             ) : (
               <button
                 onClick={onForward}
-                className='border-input bg-background hover:bg-accent hover:text-accent-foreground flex h-12 flex-1 items-center justify-center rounded-md border text-base'
+                className="border-input bg-background hover:bg-accent hover:text-accent-foreground flex h-12 flex-1 items-center justify-center rounded-md border text-base"
                 disabled={!onForward}
               >
                 Forward →

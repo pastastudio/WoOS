@@ -38,19 +38,15 @@ interface QuestionOverviewProps {
  * Component displaying chapters in a timeline layout with alternating positions
  * Handles unlock state, completion tracking, and sequential navigation
  */
-export function QuestionOverview({
-  quizzes,
-  completedCount,
-  translations,
-}: QuestionOverviewProps) {
+export function QuestionOverview({ quizzes, completedCount, translations }: QuestionOverviewProps) {
   const [completedChapters, setCompletedChapters] = useState<number[]>([]);
 
   // Load completed chapters from cookies on client mount
-   
+
   useEffect(() => {
     const cookieValue = document.cookie
       .split('; ')
-      .find((row) => row.startsWith('completed_chapters='))
+      .find(row => row.startsWith('completed_chapters='))
       ?.split('=')[1];
 
     if (cookieValue) {
@@ -71,10 +67,10 @@ export function QuestionOverview({
   const lastUnlocked = quizzes[Math.max(unlockedCount - 1, 0)];
 
   return (
-    <div className='w-full max-w-4xl'>
-      <div className='relative flex flex-col gap-10'>
+    <div className="w-full max-w-4xl">
+      <div className="relative flex flex-col gap-10">
         {/* Vertical center line connecting all buttons */}
-        <div className='from-primary/30 via-muted-foreground/30 to-primary/30 absolute top-0 left-1/2 h-full w-px -translate-x-1/2 bg-gradient-to-b' />
+        <div className="from-primary/30 via-muted-foreground/30 to-primary/30 absolute top-0 left-1/2 h-full w-px -translate-x-1/2 bg-gradient-to-b" />
 
         {/* Map through all chapters and render buttons */}
         {quizzes.map((quiz, index) => {
@@ -92,40 +88,34 @@ export function QuestionOverview({
               key={quiz.id}
               className={cn(
                 'flex w-full items-center gap-6',
-                alignRight ? 'justify-end pr-10' : 'justify-start pl-10',
+                alignRight ? 'justify-end pr-10' : 'justify-start pl-10'
               )}
             >
               {/* Connector line from left button to center timeline */}
               {!alignRight && (
-                <div className='relative max-w-[50%] flex-1 text-right'>
-                  <div className='border-muted-foreground/40 absolute top-1/2 right-[-0.6rem] h-px w-10 -translate-y-1/2 border-t border-dashed' />
+                <div className="relative max-w-[50%] flex-1 text-right">
+                  <div className="border-muted-foreground/40 absolute top-1/2 right-[-0.6rem] h-px w-10 -translate-y-1/2 border-t border-dashed" />
                 </div>
               )}
 
               {/* Chapter button */}
-              <div className='relative z-10'>
+              <div className="relative z-10">
                 <Button
                   // Style changes based on unlock state and completion
-                  variant={
-                    isCompleted ? 'default' : isUnlocked ? 'default' : 'outline'
-                  }
-                  size='lg'
+                  variant={isCompleted ? 'default' : isUnlocked ? 'default' : 'outline'}
+                  size="lg"
                   disabled={!isUnlocked}
                   className={cn(
                     'h-auto w-[340px] flex-col items-start gap-0 px-5 py-4 text-left shadow-sm transition-transform',
                     isUnlocked && 'hover:-translate-y-0.5 hover:shadow-md',
                     isCompleted && 'bg-white text-black hover:bg-neutral-200',
-                    isNext && 'ring-primary/60 ring-2 ring-offset-2',
+                    isNext && 'ring-primary/60 ring-2 ring-offset-2'
                   )}
                 >
                   {/* Link with routing */}
-                  <Link
-                    href={quiz.href}
-                    prefetch={false}
-                    className='flex w-full flex-col gap-0'
-                  >
+                  <Link href={quiz.href} prefetch={false} className="flex w-full flex-col gap-0">
                     {/* Chapter title (wraps to multiple lines if too long) */}
-                    <span className='text-base leading-tight font-semibold break-words whitespace-normal'>
+                    <span className="text-base leading-tight font-semibold break-words whitespace-normal">
                       {quiz.title}
                     </span>
                     {/* Chapter description - only visible when unlocked */}
@@ -133,16 +123,14 @@ export function QuestionOverview({
                       <span
                         className={cn(
                           'mt-2 text-xs leading-relaxed break-words whitespace-normal',
-                          isCompleted
-                            ? 'text-black/60'
-                            : 'text-muted-foreground',
+                          isCompleted ? 'text-black/60' : 'text-muted-foreground'
                         )}
                       >
                         {quiz.blurb}
                       </span>
                     )}
                     {/* Status badge showing completion state */}
-                    <span className='mt-3 inline-flex items-center gap-2 text-xs font-medium'>
+                    <span className="mt-3 inline-flex items-center gap-2 text-xs font-medium">
                       {isCompleted && translations.status.completed}
                       {!isCompleted && isUnlocked && translations.status.ready}
                       {!isUnlocked && translations.status.locked}
@@ -153,8 +141,8 @@ export function QuestionOverview({
 
               {/* Connector line from right button to center timeline */}
               {alignRight && (
-                <div className='relative max-w-[50%] flex-1 text-left'>
-                  <div className='border-muted-foreground/40 absolute top-1/2 left-[-0.6rem] h-px w-10 -translate-y-1/2 border-t border-dashed' />
+                <div className="relative max-w-[50%] flex-1 text-left">
+                  <div className="border-muted-foreground/40 absolute top-1/2 left-[-0.6rem] h-px w-10 -translate-y-1/2 border-t border-dashed" />
                 </div>
               )}
             </div>
@@ -163,11 +151,8 @@ export function QuestionOverview({
       </div>
 
       {/* "Continue to latest" button - takes user to the most recently unlocked chapter */}
-      <div className='w-full pt-10'>
-        <Button
-          size='lg'
-          className='h-14 w-full text-base font-semibold shadow-md'
-        >
+      <div className="w-full pt-10">
+        <Button size="lg" className="h-14 w-full text-base font-semibold shadow-md">
           {/* Routes to the most recently unlocked chapter */}
           <Link href={lastUnlocked.href} prefetch={false}>
             {translations.continue}: {lastUnlocked.title}

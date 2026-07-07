@@ -51,8 +51,8 @@ function listContentFiles(locale: string, section: 'information' | 'docs') {
   if (!fs.existsSync(dirPath)) return [] as string[];
   return fs
     .readdirSync(dirPath)
-    .filter((file) => file.endsWith('.mdx'))
-    .map((file) => path.join(dirPath, file));
+    .filter(file => file.endsWith('.mdx'))
+    .map(file => path.join(dirPath, file));
 }
 
 function listRootContentFiles(locale: string) {
@@ -60,18 +60,16 @@ function listRootContentFiles(locale: string) {
   if (!fs.existsSync(dirPath)) return [] as string[];
   return fs
     .readdirSync(dirPath)
-    .filter((file) => file.endsWith('.mdx'))
-    .map((file) => path.join(dirPath, file));
+    .filter(file => file.endsWith('.mdx'))
+    .map(file => path.join(dirPath, file));
 }
 
 export function getRootContent(locale: string, slug: string) {
   const files = listRootContentFiles(locale);
-  const match = files.find((file) => {
+  const match = files.find(file => {
     const fmName = readFrontmatterFilename(file);
     const fallbackSlug = path.basename(file, '.mdx');
-    return (
-      fmName?.toLowerCase() === slug.toLowerCase() || fallbackSlug === slug
-    );
+    return fmName?.toLowerCase() === slug.toLowerCase() || fallbackSlug === slug;
   });
 
   if (!match) {
@@ -83,14 +81,10 @@ export function getRootContent(locale: string, slug: string) {
   return { source, filePath: match } as const;
 }
 
-export function getContent(
-  locale: string,
-  section: 'information' | 'docs',
-  slug: string,
-) {
+export function getContent(locale: string, section: 'information' | 'docs', slug: string) {
   // slug may be a frontmatter filename; resolve by scanning files
   const files = listContentFiles(locale, section);
-  const match = files.find((file) => {
+  const match = files.find(file => {
     const fmName = readFrontmatterFilename(file);
     const fallbackSlug = path.basename(file, '.mdx');
     return fmName === slug || fallbackSlug === slug;
@@ -105,21 +99,15 @@ export function getContent(
   return { source, filePath: match } as const;
 }
 
-export function getAllSlugs(
-  lang: string,
-  section: 'information' | 'docs',
-): string[] {
-  return listContentFiles(lang, section).map((file) => {
+export function getAllSlugs(lang: string, section: 'information' | 'docs'): string[] {
+  return listContentFiles(lang, section).map(file => {
     const fmName = readFrontmatterFilename(file);
     return fmName ?? path.basename(file, '.mdx');
   });
 }
 
-export function getAllRoutes(
-  lang: string,
-  section: 'information' | 'docs',
-): RouteEntry[] {
-  return listContentFiles(lang, section).map((file) => ({
+export function getAllRoutes(lang: string, section: 'information' | 'docs'): RouteEntry[] {
+  return listContentFiles(lang, section).map(file => ({
     lang,
     section,
     slug: readFrontmatterFilename(file) ?? path.basename(file, '.mdx'),
@@ -130,10 +118,10 @@ export function getAllRoutes(
 export function getPageRoute(
   lang: string,
   section: 'information' | 'docs',
-  slug: string,
+  slug: string
 ): RouteEntry {
   const files = listContentFiles(lang, section);
-  const match = files.find((file) => {
+  const match = files.find(file => {
     const fmName = readFrontmatterFilename(file);
     const fallbackSlug = path.basename(file, '.mdx');
     return fmName === slug || fallbackSlug === slug;
@@ -143,7 +131,6 @@ export function getPageRoute(
     throw new Error('Content not found');
   }
 
-  const resolvedSlug =
-    readFrontmatterFilename(match) ?? path.basename(match, '.mdx');
+  const resolvedSlug = readFrontmatterFilename(match) ?? path.basename(match, '.mdx');
   return { lang, section, slug: resolvedSlug };
 }

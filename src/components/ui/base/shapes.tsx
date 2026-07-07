@@ -32,9 +32,9 @@ export const StarShape = ({ size, color, points = 5 }: StarShapeProps) => {
     <svg
       width={size}
       height={size}
-      viewBox='0 0 24 24'
-      fill='none'
-      xmlns='http://www.w3.org/2000/svg'
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <path d={generateStarPath(points, outer, inner)} fill={color} />
     </svg>
@@ -46,11 +46,11 @@ export const CircleForm = ({ size, color }: ShapeProps) => {
     <svg
       width={size}
       height={size}
-      viewBox='0 0 24 24'
-      fill='none'
-      xmlns='http://www.w3.org/2000/svg'
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx='12' cy='12' r='10' fill={color} />
+      <circle cx="12" cy="12" r="10" fill={color} />
     </svg>
   );
 };

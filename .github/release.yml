@@ -1,44 +1,66 @@
 changelog:
+  exclude:
+    labels:
+      - dependencies
+      - dependabot
+      - in progress
+      - in review
+      - merge ready
+      - blocked
+      - discussion
+      - approved
+      - stale
+      - waiting for a response
+      - waiting for testers
+      - duplicate
+      - invalid
+      - wontfix
+      - AI pr
+      - bad pr
+      - released
+    authors:
+      - dependabot
+      - github-actions
   categories:
-    - title: Features
+    - title: Breaking Changes
       labels:
-        - feature request
-        - ui
-        - api
-        - styles
-        - utility
-        - interactions
-        - typings
-    - title: Bug Fixes
-      labels:
-        - bug
-        - error handling
+        - breaking change
+        - api changes
     - title: Security
       labels:
         - security
-    - title: Infrastructure & CI
+    - title: Features
       labels:
-        - infra
-        - ci
+        - feature request
+    - title: Bug Fixes
+      labels:
+        - bug
+    - title: Performance
+      labels:
+        - performance
+    - title: Documentation
+      labels:
+        - docs
+    - title: UI
+      labels:
+        - ui
+        - styles
+    - title: Infrastructure
+      labels:
         - build
-        - caching
-        - dependencies
-        - dependabot
+        - ci
+        - infra
     - title: Tests
       labels:
         - tests
     - title: Maintenance
       labels:
         - chore
+        - refactor
+        - typings
+        - error handling
+        - interactions
+        - utility
     - title: Other Changes
       labels:
         - '*'
-  exclude:
-    labels:
-      - blocked
-      - duplicate
-      - invalid
-      - wontfix
-      - in progress
-      - review requested
-      - merge ready

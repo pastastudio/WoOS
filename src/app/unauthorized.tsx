@@ -20,25 +20,21 @@ export default function Unauthorized() {
 
   return (
     <SystemLayout>
-      <div className='animate-fade-in flex flex-col items-center gap-4 text-center'>
-        <div className='animate-float'>
-          <LockSolid className='text-error-500 h-12 w-12' />
+      <div className="animate-fade-in flex flex-col items-center gap-4 text-center">
+        <div className="animate-float">
+          <LockSolid className="text-error-500 h-12 w-12" />
         </div>
 
-        <h1 className='text-2xl font-semibold text-neutral-900'>
+        <h1 className="text-2xl font-semibold text-neutral-900">
           {systemFiles.unauthorized.title}
         </h1>
 
-        <p className='max-w-sm text-neutral-500'>
-          {systemFiles.unauthorized.description}
-        </p>
+        <p className="max-w-sm text-neutral-500">{systemFiles.unauthorized.description}</p>
 
-        <div className='mt-2 flex flex-wrap justify-center gap-3'>
-          <Button onClick={() => router.back()}>
-            {systemFiles.unauthorized.buttons.back}
-          </Button>
+        <div className="mt-2 flex flex-wrap justify-center gap-3">
+          <Button onClick={() => router.back()}>{systemFiles.unauthorized.buttons.back}</Button>
 
-          <Link href='/'>
+          <Link href="/">
             <Button>{systemFiles.unauthorized.buttons.home}</Button>
           </Link>
         </div>

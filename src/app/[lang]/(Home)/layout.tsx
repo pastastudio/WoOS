@@ -91,7 +91,7 @@ export default async function Layout({
   };
 
   return (
-    <div className='bg-[#161a24]'>
+    <div className="bg-[#161a24]">
       <Navbar {...navbar} />
       <main>{children}</main>
       <Footer {...footer} />

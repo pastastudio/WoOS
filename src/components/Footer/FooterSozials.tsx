@@ -66,12 +66,9 @@ export default function FooterSozials({
   const pathname = usePathname();
 
   const initialLang = extractLanguageFromPathname(pathname);
-  const [selectedLanguage, setSelectedLanguage] =
-    useState<SupportedLanguage>(initialLang);
+  const [selectedLanguage, setSelectedLanguage] = useState<SupportedLanguage>(initialLang);
 
-  const selectedLang = LANGUAGES.find(
-    (lang) => lang.value === selectedLanguage,
-  );
+  const selectedLang = LANGUAGES.find(lang => lang.value === selectedLanguage);
 
   const handleLanguageChange = async (value: string | null) => {
     if (value == null || !['en', 'de'].includes(value)) return;
@@ -90,7 +87,7 @@ export default function FooterSozials({
       {/* Logo */}
       {logo && (
         <div className={styles.logoWrapper}>
-          <Link href='/' aria-label='Home'>
+          <Link href="/" aria-label="Home">
             <Logo className={styles.logo} />
           </Link>
         </div>
@@ -112,12 +109,8 @@ export default function FooterSozials({
           </SelectTrigger>
           <SelectContent className={styles.selectContent}>
             <SelectGroup>
-              {LANGUAGES.map((lang) => (
-                <SelectItem
-                  key={lang.value}
-                  value={lang.value}
-                  className={styles.selectItem}
-                >
+              {LANGUAGES.map(lang => (
+                <SelectItem key={lang.value} value={lang.value} className={styles.selectItem}>
                   <div className={styles.languageOption}>
                     <span>{lang.flag}</span>
                     <span>{lang.label}</span>

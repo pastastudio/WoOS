@@ -49,13 +49,12 @@ function DialogDemo() {
     introSections.forEach((_, index) => {
       const delay = BASE_DELAY_MS + index * FADE_MS;
       const timer = setTimeout(() => {
-        setVisibleCount((count) => Math.max(count, index + 1));
+        setVisibleCount(count => Math.max(count, index + 1));
       }, delay);
       timersRef.current.push(timer);
     });
 
-    const totalDelay =
-      BASE_DELAY_MS + introSections.length * FADE_MS + EXTRA_READY_MS;
+    const totalDelay = BASE_DELAY_MS + introSections.length * FADE_MS + EXTRA_READY_MS;
     const readyTimer = setTimeout(() => setContentReady(true), totalDelay);
     timersRef.current.push(readyTimer);
   };
@@ -82,30 +81,28 @@ function DialogDemo() {
     <>
       <Dialog open={primaryOpen} onOpenChange={setPrimaryOpen}>
         <DialogTrigger>
-          <Button variant='outline'>Open Dialog</Button>
+          <Button variant="outline">Open Dialog</Button>
         </DialogTrigger>
         <DialogContent
-          className='font-pixelify min-h-[790px] w-[670px] sm:max-w-[670px]'
+          className="font-pixelify min-h-[790px] w-[670px] sm:max-w-[670px]"
           showCloseButton={false}
         >
-          <div className='grid h-full grid-rows-[auto_1fr_auto]'>
-            <DialogHeader className='text-left'>
+          <div className="grid h-full grid-rows-[auto_1fr_auto]">
+            <DialogHeader className="text-left">
               <DialogTitle>Select your Wand</DialogTitle>
-              <DialogDescription>
-                A quick primer before you choose.
-              </DialogDescription>
-              <Separator className='mt-4' />
+              <DialogDescription>A quick primer before you choose.</DialogDescription>
+              <Separator className="mt-4" />
             </DialogHeader>
 
-            <div className='Content flex flex-1 items-center justify-center'>
-              <div className='flex min-h-[320px] w-full max-w-sm flex-col items-center justify-center gap-10 text-center text-lg sm:max-w-sm'>
+            <div className="Content flex flex-1 items-center justify-center">
+              <div className="flex min-h-[320px] w-full max-w-sm flex-col items-center justify-center gap-10 text-center text-lg sm:max-w-sm">
                 {(() => {
                   const lead = introSections[0];
                   const rest = introSections.slice(1);
                   return (
                     <>
                       <p
-                        className='text-2xl font-semibold text-white transition-opacity'
+                        className="text-2xl font-semibold text-white transition-opacity"
                         style={{
                           opacity: visibleCount > 0 ? 1 : 0,
                           transitionDelay: `0ms`,
@@ -114,14 +111,14 @@ function DialogDemo() {
                       >
                         {lead}
                       </p>
-                      <div className='grid w-full gap-4 pt-4 text-gray-300 transition-opacity'>
+                      <div className="grid w-full gap-4 pt-4 text-gray-300 transition-opacity">
                         {rest.map((text, index) => {
                           const overallIndex = index + 1;
                           const isVisible = overallIndex < visibleCount;
                           return (
                             <p
                               key={text}
-                              className='transition-opacity'
+                              className="transition-opacity"
                               style={{
                                 opacity: isVisible ? 1 : 0,
                                 transitionDelay: `${overallIndex * FADE_MS}ms`,
@@ -139,11 +136,11 @@ function DialogDemo() {
               </div>
             </div>
 
-            <DialogFooter className='justify-end'>
+            <DialogFooter className="justify-end">
               <Button
                 onClick={handleContinue}
                 disabled={!contentReady}
-                className='transition-opacity duration-500'
+                className="transition-opacity duration-500"
                 style={{
                   opacity: contentReady ? 1 : 0,
                   pointerEvents: contentReady ? 'auto' : 'none',
@@ -158,94 +155,80 @@ function DialogDemo() {
 
       <Dialog open={secondaryOpen} onOpenChange={setSecondaryOpen}>
         <form>
-          <DialogContent className='font-pixelify min-h-[790px] w-[670px] sm:max-w-[670px]'>
-            <div className='grid h-full grid-rows-[auto_1fr_auto]'>
-              <DialogHeader className='text-left'>
+          <DialogContent className="font-pixelify min-h-[790px] w-[670px] sm:max-w-[670px]">
+            <div className="grid h-full grid-rows-[auto_1fr_auto]">
+              <DialogHeader className="text-left">
                 <DialogTitle>Select your Wand</DialogTitle>
                 <DialogDescription>
-                  Make changes to your profile here. Click save when you&apos;re
-                  done.
+                  Make changes to your profile here. Click save when you&apos;re done.
                 </DialogDescription>
-                <Separator className='mt-4' />
+                <Separator className="mt-4" />
               </DialogHeader>
 
-              <div className='Content flex min-h-0 flex-1 flex-col gap-4 py-4'>
+              <div className="Content flex min-h-0 flex-1 flex-col gap-4 py-4">
                 <div
-                  id='first-wand-selection'
-                  className='border-border/50 bg-background/60 grid h-full min-h-0 grid-cols-[3fr_auto_1fr] gap-4 overflow-auto rounded-md border p-4'
+                  id="first-wand-selection"
+                  className="border-border/50 bg-background/60 grid h-full min-h-0 grid-cols-[3fr_auto_1fr] gap-4 overflow-auto rounded-md border p-4"
                 >
-                  <div className='border-border/50 grid h-full grid-cols-3 gap-4 rounded-md'>
-                    <div className='grid h-full grid-rows-[auto_auto_1fr_auto] gap-2 rounded-md'>
-                      <p className='text-foreground/70 px-1 text-center text-xs font-semibold'>
+                  <div className="border-border/50 grid h-full grid-cols-3 gap-4 rounded-md">
+                    <div className="grid h-full grid-rows-[auto_auto_1fr_auto] gap-2 rounded-md">
+                      <p className="text-foreground/70 px-1 text-center text-xs font-semibold">
                         Crystal Scepter
                       </p>
-                      <div className='relative aspect-square overflow-hidden rounded shadow-lg'>
-                        <WandDisplay
-                          variation='crystal-scepter-1'
-                          alt='Wand top'
-                        />
+                      <div className="relative aspect-square overflow-hidden rounded shadow-lg">
+                        <WandDisplay variation="crystal-scepter-1" alt="Wand top" />
                       </div>
-                      <div className='flex items-center justify-center rounded'>
-                        <LineSvg className='h-25 w-auto opacity-80' />
+                      <div className="flex items-center justify-center rounded">
+                        <LineSvg className="h-25 w-auto opacity-80" />
                       </div>
-                      <div className='relative aspect-square overflow-hidden rounded shadow-lg'>
+                      <div className="relative aspect-square overflow-hidden rounded shadow-lg">
                         <WandDisplay
-                          variation='crystal-scepter-4'
-                          alt='Wand bottom'
+                          variation="crystal-scepter-4"
+                          alt="Wand bottom"
                           locked={true}
                         />
                       </div>
                     </div>
 
-                    <div className='grid h-full grid-rows-[auto_auto_1fr_auto] gap-2 rounded-md'>
-                      <p className='text-foreground/70 px-1 text-center text-xs font-semibold'>
+                    <div className="grid h-full grid-rows-[auto_auto_1fr_auto] gap-2 rounded-md">
+                      <p className="text-foreground/70 px-1 text-center text-xs font-semibold">
                         Fire Snake
                       </p>
-                      <div className='relative aspect-square overflow-hidden rounded shadow-lg'>
-                        <WandDisplay variation='fire-snake-1' alt='Wand top' />
+                      <div className="relative aspect-square overflow-hidden rounded shadow-lg">
+                        <WandDisplay variation="fire-snake-1" alt="Wand top" />
                       </div>
-                      <div className='flex items-center justify-center rounded p-2 text-center text-sm'>
+                      <div className="flex items-center justify-center rounded p-2 text-center text-sm">
                         By completing quests you are able to level up styles!
                       </div>
-                      <div className='relative aspect-square overflow-hidden rounded shadow-lg'>
-                        <WandDisplay
-                          variation='fire-snake-4'
-                          alt='Wand bottom'
-                          locked={true}
-                        />
+                      <div className="relative aspect-square overflow-hidden rounded shadow-lg">
+                        <WandDisplay variation="fire-snake-4" alt="Wand bottom" locked={true} />
                       </div>
                     </div>
 
-                    <div className='grid h-full grid-rows-[auto_auto_1fr_auto] gap-2 rounded-md'>
-                      <p className='text-foreground/70 px-1 text-center text-xs font-semibold'>
+                    <div className="grid h-full grid-rows-[auto_auto_1fr_auto] gap-2 rounded-md">
+                      <p className="text-foreground/70 px-1 text-center text-xs font-semibold">
                         Flowerstaff
                       </p>
-                      <div className='relative aspect-square overflow-hidden rounded shadow-lg'>
-                        <WandDisplay variation='flowerstaff-1' alt='Wand top' />
+                      <div className="relative aspect-square overflow-hidden rounded shadow-lg">
+                        <WandDisplay variation="flowerstaff-1" alt="Wand top" />
                       </div>
-                      <div className='flex items-center justify-center rounded'>
-                        <LineSvg className='h-25 w-auto opacity-80' />
+                      <div className="flex items-center justify-center rounded">
+                        <LineSvg className="h-25 w-auto opacity-80" />
                       </div>
-                      <div className='relative aspect-square overflow-hidden rounded shadow-lg'>
-                        <WandDisplay
-                          variation='flowerstaff-4'
-                          alt='Wand bottom'
-                          locked={true}
-                        />
+                      <div className="relative aspect-square overflow-hidden rounded shadow-lg">
+                        <WandDisplay variation="flowerstaff-4" alt="Wand bottom" locked={true} />
                       </div>
                     </div>
                   </div>
 
-                  <Separator orientation='vertical' className='mx-1 ml-2' />
+                  <Separator orientation="vertical" className="mx-1 ml-2" />
 
-                  <div className='border-border/50 flex h-full flex-col items-center justify-center rounded-md'>
-                    <p className='text-foreground/70 mb-2 text-xs font-semibold'>
-                      Classic
-                    </p>
-                    <div className='relative aspect-square w-32 overflow-hidden rounded shadow-lg'>
+                  <div className="border-border/50 flex h-full flex-col items-center justify-center rounded-md">
+                    <p className="text-foreground/70 mb-2 text-xs font-semibold">Classic</p>
+                    <div className="relative aspect-square w-32 overflow-hidden rounded shadow-lg">
                       <WandDisplay
-                        variation='default-white'
-                        alt='Default Cursor'
+                        variation="default-white"
+                        alt="Default Cursor"
                         rotation={-30}
                         offsetX={-4}
                         offsetY={-7}
@@ -255,16 +238,16 @@ function DialogDemo() {
                   </div>
                 </div>
 
-                <InfoBox variant='info' title='Info'>
+                <InfoBox variant="info" title="Info">
                   Cursors can be changed anytime in your account settings.
                 </InfoBox>
               </div>
 
-              <DialogFooter className='justify-end'>
+              <DialogFooter className="justify-end">
                 <DialogClose>
-                  <Button variant='outline'>Cancel</Button>
+                  <Button variant="outline">Cancel</Button>
                 </DialogClose>
-                <Button type='submit'>Save changes</Button>
+                <Button type="submit">Save changes</Button>
               </DialogFooter>
             </div>
           </DialogContent>

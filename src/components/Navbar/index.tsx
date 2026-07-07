@@ -48,7 +48,7 @@ const LogoComponent = (): ReactElement => {
 const NavLinks = ({ links }: { links: Links[] }): ReactElement => {
   return (
     <ul className={styles.linksList}>
-      {links.map((link) => (
+      {links.map(link => (
         <li key={link.href} className={styles.linkItem}>
           <Link href={link.href} className={styles.link}>
             {link.label}
@@ -64,8 +64,8 @@ const NavLinks = ({ links }: { links: Links[] }): ReactElement => {
  */
 const LoginButton = (): ReactElement => {
   return (
-    <Link href='/' passHref>
-      <Button variant='ghost' className={styles.loginButton}>
+    <Link href="/" passHref>
+      <Button variant="ghost" className={styles.loginButton}>
         Login <ExternalLink />
       </Button>
     </Link>
@@ -77,12 +77,12 @@ const LoginButton = (): ReactElement => {
  */
 const ProfileButton = (): ReactElement => {
   return (
-    <Link href='/profile' passHref>
+    <Link href="/profile" passHref>
       <Button
-        variant='ghost'
-        size='icon'
+        variant="ghost"
+        size="icon"
         className={styles.profileButton}
-        aria-label='Profil öffnen'
+        aria-label="Profil öffnen"
       >
         <UserSolid />
       </Button>
@@ -106,12 +106,12 @@ const RightSection = ({
 }): ReactElement => {
   const elements = [];
 
-  if (searchBar) elements.push(<SearchBarToggle key='search' />);
-  if (darkModeToggle) elements.push(<ThemeToggle key='theme' />);
+  if (searchBar) elements.push(<SearchBarToggle key="search" />);
+  if (darkModeToggle) elements.push(<ThemeToggle key="theme" />);
   if (session && typeof session === 'object' && 'user' in session) {
-    elements.push(<ProfileButton key='profile' />);
+    elements.push(<ProfileButton key="profile" />);
   } else if (loginButton) {
-    elements.push(<LoginButton key='login' />);
+    elements.push(<LoginButton key="login" />);
   }
 
   return (
@@ -152,18 +152,13 @@ export default function Navbar({
   const session = null; // Placeholder
 
   // Build navbar classes
-  const navbarClasses = [
-    styles.navbar,
-    fixed && styles.fixed,
-    borderLine && styles.withBorder,
-  ]
+  const navbarClasses = [styles.navbar, fixed && styles.fixed, borderLine && styles.withBorder]
     .filter(Boolean)
     .join(' ');
 
   // Inline styles for dynamic colors
   const navbarStyles = {
-    backgroundColor:
-      backgroundColor === false ? 'transparent' : backgroundColor || '#0a0a0a',
+    backgroundColor: backgroundColor === false ? 'transparent' : backgroundColor || '#0a0a0a',
     color: frontColor || 'white',
   };
 
@@ -172,16 +167,14 @@ export default function Navbar({
       {/* Left Section: Logo */}
       <div>
         {logo && logoUrl && (
-          <Link href={logoUrl} aria-label='Home'>
+          <Link href={logoUrl} aria-label="Home">
             <LogoComponent />
           </Link>
         )}
       </div>
 
       {/* Center Section: Navigation Links */}
-      <nav className={styles.centerNav}>
-        {links && <NavLinks links={links} />}
-      </nav>
+      <nav className={styles.centerNav}>{links && <NavLinks links={links} />}</nav>
 
       {/* Right Section: Search, Theme Toggle, Login/Profile */}
       <RightSection

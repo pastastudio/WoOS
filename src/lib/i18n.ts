@@ -13,10 +13,10 @@ async function getDictionary(lang: string | SupportedLanguage) {
 
   switch (normalizedLang) {
     case 'de':
-      return import('@dic/de/common.json').then((m) => m.default);
+      return import('@dic/de/common.json').then(m => m.default);
     case 'en':
     default:
-      return import('@dic/en/common.json').then((m) => m.default);
+      return import('@dic/en/common.json').then(m => m.default);
   }
 }
 

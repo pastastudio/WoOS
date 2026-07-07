@@ -1,62 +1,48 @@
-name: PR Validation
+name: PR Triage
 
-# Trigger: Runs on PR open, edit, reopen, and sync
-# Title validation runs on pull_request (safer - untrusted code)
-# Auto-labeling runs on pull_request_target (needs write access)
 on:
   pull_request_target:
     types:
       - opened
-      - reopened
-      - synchronize
-  pull_request:
-    types:
-      - opened
       - edited
       - reopened
+      - synchronize
 
 permissions:
   contents: read
   pull-requests: write
 
+concurrency:
+  group: pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
-  # Auto-label PRs based on changed files (needs pull_request_target for write access)
-  auto-label:
-    name: Auto-label
-    if: github.event_name == 'pull_request_target'
+  label:
+    name: Label PR
+    if: github.event.action != 'edited'
     runs-on: ubuntu-latest
     steps:
-      - name: Apply labels based on changed files
-        uses: actions/labeler@v5
+      - name: Label pull request
+        uses: actions/labeler@v6
         with:
-          repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          configuration-path: .github/labeler.yml
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          configuration-path: .github/pr-labeler.yml
           dot: true
           sync-labels: true
 
-  # Validate PR title follows conventional commit format (runs on pull_request for security)
   validate-title:
     name: Validate title
-    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
-      - name: Check conventional commit format
+      - name: Validate pull request title
         env:
           TITLE: ${{ github.event.pull_request.title }}
         run: |
-          # Format: type(scope)?: description
-          # Example: feat(api): add new endpoint
-          REGEX="^(revert: )?(chore|build|ci|ui|api|docs|feat|fix|perf|refactor|revert|style|test|types)(\(.+\))?!?: .{1,72}$"
+          REGEX="^(revert: )?(feat|fix|docs|style|refactor|perf|test|build|ci|chore|types|infra)(\(.+\))?!?: .{1,72}$"
 
-          echo "Validating PR title: \"$TITLE\""
+          echo "Title: \"$TITLE\""
 
           if [[ ! "$TITLE" =~ $REGEX ]]; then
-            echo "❌ PR title does not match conventional commit format!"
-            echo "Expected format: type(scope)?: description"
-            echo "Examples: feat(api): add endpoint, fix: resolve bug"
+            echo "❌ PR title does not match the required format!"
             exit 1
           fi
-
-          echo "✅ PR title is valid"

@@ -1,0 +1,51 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Format
+        if: github.event_name == 'pull_request'
+        continue-on-error: true
+        timeout-minutes: 3
+        uses: lewagon/wait-on-check-action@v1.8.0
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          check-name: Format
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
+
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref || github.ref }}
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check formatting
+        run: npm run format:check
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build
+        run: npm run build

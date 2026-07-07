@@ -65,8 +65,8 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
   // Validate chapter ID
   if (isNaN(chapterId) || chapterId < 1 || chapterId > 6) {
     return (
-      <div className='flex min-h-screen flex-col items-center justify-center gap-4'>
-        <h1 className='text-2xl font-bold'>Kapitel nicht gefunden</h1>
+      <div className="flex min-h-screen flex-col items-center justify-center gap-4">
+        <h1 className="text-2xl font-bold">Kapitel nicht gefunden</h1>
       </div>
     );
   }
@@ -75,10 +75,8 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
   const questionsData = await getQuestionsData(lang, chapterId);
   if (!questionsData) {
     return (
-      <div className='flex min-h-screen flex-col items-center justify-center gap-4'>
-        <h1 className='text-2xl font-bold'>
-          Fragen konnten nicht geladen werden
-        </h1>
+      <div className="flex min-h-screen flex-col items-center justify-center gap-4">
+        <h1 className="text-2xl font-bold">Fragen konnten nicht geladen werden</h1>
       </div>
     );
   }
@@ -86,42 +84,34 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
   const { questions, analysis } = questionsData;
 
   return (
-    <div className='relative z-[100] min-h-screen w-full bg-black'>
-      <div className='flex flex-col items-center gap-8 px-6 py-12'>
+    <div className="relative z-[100] min-h-screen w-full bg-black">
+      <div className="flex flex-col items-center gap-8 px-6 py-12">
         {/* Chapter header */}
-        <div className='flex flex-col items-center gap-3 text-center'>
-          <h1 className='text-4xl font-bold tracking-tight'>
-            Kapitel {chapterId}
-          </h1>
-          <p className='text-muted-foreground max-w-2xl'>
-            Beantworte die Fragen zu diesem Kapitel
-          </p>
+        <div className="flex flex-col items-center gap-3 text-center">
+          <h1 className="text-4xl font-bold tracking-tight">Kapitel {chapterId}</h1>
+          <p className="text-muted-foreground max-w-2xl">Beantworte die Fragen zu diesem Kapitel</p>
         </div>
 
         {/* Questions summary */}
-        <div className='grid w-full max-w-2xl grid-cols-2 gap-4'>
-          <Card className='flex flex-col items-center gap-3 p-6'>
-            <div className='text-primary text-3xl font-bold'>
-              {questions.length}
-            </div>
-            <p className='text-muted-foreground text-sm'>Technische Fragen</p>
+        <div className="grid w-full max-w-2xl grid-cols-2 gap-4">
+          <Card className="flex flex-col items-center gap-3 p-6">
+            <div className="text-primary text-3xl font-bold">{questions.length}</div>
+            <p className="text-muted-foreground text-sm">Technische Fragen</p>
           </Card>
-          <Card className='flex flex-col items-center gap-3 p-6'>
-            <div className='text-primary text-3xl font-bold'>
-              {analysis.length}
-            </div>
-            <p className='text-muted-foreground text-sm'>Persönliche Fragen</p>
+          <Card className="flex flex-col items-center gap-3 p-6">
+            <div className="text-primary text-3xl font-bold">{analysis.length}</div>
+            <p className="text-muted-foreground text-sm">Persönliche Fragen</p>
           </Card>
         </div>
 
         {/* Start button */}
-        <div className='flex flex-col items-center gap-4'>
-          <p className='text-center text-neutral-400'>
-            Du wirst zuerst die technischen Fragen beantworten, dann die
-            persönlichen Fragen zur Profilierung.
+        <div className="flex flex-col items-center gap-4">
+          <p className="text-center text-neutral-400">
+            Du wirst zuerst die technischen Fragen beantworten, dann die persönlichen Fragen zur
+            Profilierung.
           </p>
           <a href={`/${lang}/chapters/${chapterId}/quiz`}>
-            <Button size='lg' className='px-8'>
+            <Button size="lg" className="px-8">
               Quiz starten
             </Button>
           </a>

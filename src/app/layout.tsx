@@ -65,11 +65,9 @@ export default async function RootLayout({
 
   return (
     <html lang={lang} suppressHydrationWarning>
-      <body
-        className={`${geist.variable} ${pixelifySans.variable} ${jersey10.variable}`}
-      >
-        <CustomCursor variation='flowerstaff-4' enableGlow enableSparkles />
-        <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+      <body className={`${geist.variable} ${pixelifySans.variable} ${jersey10.variable}`}>
+        <CustomCursor variation="flowerstaff-4" enableGlow enableSparkles />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <SmoothScrollProvider>
             <PreloadProvider>{children}</PreloadProvider>
           </SmoothScrollProvider>

@@ -80,52 +80,44 @@ export default async function Page({ params }: { params: { lang: string } }) {
 
   return (
     <>
-      <div className='block overflow-hidden'>
+      <div className="block overflow-hidden">
         <ParallaxWindow />
-        <div className='relative z-20 grid grid-cols-1 place-items-center gap-8 bg-black'>
-          <div id='deadSpaceBuffer' className='h-25 bg-black'></div>
-          <div className='h-100 p-8'>
-            <h1 className='text-center text-4xl font-bold text-white md:text-5xl lg:text-6xl'>
+        <div className="relative z-20 grid grid-cols-1 place-items-center gap-8 bg-black">
+          <div id="deadSpaceBuffer" className="h-25 bg-black"></div>
+          <div className="h-100 p-8">
+            <h1 className="text-center text-4xl font-bold text-white md:text-5xl lg:text-6xl">
               <Image
-                src='/Banner.png'
-                alt='DM-WT Logo'
+                src="/Banner.png"
+                alt="DM-WT Logo"
                 width={700}
                 height={100}
-                className='mx-auto'
+                className="mx-auto"
               />
             </h1>
-            <h2 className='font-pixelify mx-auto max-w-xl pt-4 text-center text-2xl'>
-              is an interactive platform for learning the fundamentals of
-              operating systems.
+            <h2 className="font-pixelify mx-auto max-w-xl pt-4 text-center text-2xl">
+              is an interactive platform for learning the fundamentals of operating systems.
             </h2>
           </div>
-          <div className='w-full py-8'>
+          <div className="w-full py-8">
             {/* Top Wave */}
-            <div className='overflow-hidden bg-black'>
-              <Wave className='w-full' style={{ color: '#2b542b' }} />
+            <div className="overflow-hidden bg-black">
+              <Wave className="w-full" style={{ color: '#2b542b' }} />
             </div>
 
             {/* Content Section */}
-            <div className='bg-[#2b542b] px-8 py-12'>
-              <div className='mx-auto max-w-4xl'>
-                <h2 className='mb-6 text-3xl font-bold text-white'>
-                  {homeContent.title}
-                </h2>
-                <div className='mb-8 space-y-4 text-white'>
+            <div className="bg-[#2b542b] px-8 py-12">
+              <div className="mx-auto max-w-4xl">
+                <h2 className="mb-6 text-3xl font-bold text-white">{homeContent.title}</h2>
+                <div className="mb-8 space-y-4 text-white">
                   <p>{homeContent.intro.part1}</p>
                   <p>{homeContent.intro.part2}</p>
                   <p>{homeContent.intro.part3}</p>
                 </div>
-                <div className='grid grid-cols-1 gap-6 md:grid-cols-3'>
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                   {infoBoxes.map((box, index) => (
-                    <div
-                      key={index}
-                      className='rounded-lg border border-white/20 bg-white/5 p-6'
-                    >
-                      <h3 className='mb-3 text-xl font-semibold text-white'>
-                        {box.title}
-                      </h3>
-                      <p className='text-sm text-gray-200'>{box.description}</p>
+                    <div key={index} className="rounded-lg border border-white/20 bg-white/5 p-6">
+                      <h3 className="mb-3 text-xl font-semibold text-white">{box.title}</h3>
+                      <p className="text-sm text-gray-200">{box.description}</p>
                     </div>
                   ))}
                 </div>
@@ -133,14 +125,11 @@ export default async function Page({ params }: { params: { lang: string } }) {
             </div>
 
             {/* Bottom Wave - Rotated 180 degrees */}
-            <div className='overflow-hidden bg-black'>
-              <Wave
-                className='w-full rotate-180 transform'
-                style={{ color: '#2b542b' }}
-              />
+            <div className="overflow-hidden bg-black">
+              <Wave className="w-full rotate-180 transform" style={{ color: '#2b542b' }} />
             </div>
           </div>
-          <div className='p-30'>
+          <div className="p-30">
             <FeedbackCarousel feedbackData={feedbackData} />
           </div>
         </div>

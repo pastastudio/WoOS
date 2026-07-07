@@ -15,11 +15,7 @@ interface QuestChartProps {
   totalQuestions: number;
 }
 
-function QuestChart({
-  correctAnswers,
-  wrongAnswers,
-  totalQuestions,
-}: QuestChartProps) {
+function QuestChart({ correctAnswers, wrongAnswers, totalQuestions }: QuestChartProps) {
   const chartData = [
     {
       label: 'Total Questions',
@@ -50,30 +46,27 @@ function QuestChart({
   } satisfies ChartConfig;
 
   return (
-    <div className='bg-background w-full max-w-xl rounded-md border p-4'>
+    <div className="bg-background w-full max-w-xl rounded-md border p-4">
       <ChartContainer config={chartConfig}>
         <BarChart
           accessibilityLayer
           data={chartData}
-          layout='vertical'
+          layout="vertical"
           margin={{
             left: 20,
           }}
         >
-          <XAxis dataKey='value' hide type='number' />
+          <XAxis dataKey="value" hide type="number" />
           <YAxis
             axisLine={false}
-            dataKey='label'
+            dataKey="label"
             tickLine={false}
             tickMargin={10}
-            type='category'
+            type="category"
             width={150}
           />
-          <ChartTooltip
-            content={<ChartTooltipContent hideLabel />}
-            cursor={false}
-          />
-          <Bar dataKey='value' radius={5} />
+          <ChartTooltip content={<ChartTooltipContent hideLabel />} cursor={false} />
+          <Bar dataKey="value" radius={5} />
         </BarChart>
       </ChartContainer>
     </div>
