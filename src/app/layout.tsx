@@ -1,8 +1,9 @@
-import { PreloadProvider } from '@/components/PreloadProvider';
-import { SmoothScrollProvider } from '@/components/scroll-provider';
-import { ThemeProvider } from '@/components/theme-provider';
 import { CustomCursor } from '@/components/ui/base/cursor';
 import { getSiteUrl } from '@/lib/server-utils';
+import { PreloadProvider } from '@/providers/preload-provider';
+import { QuizProvider } from '@/providers/quiz-provider';
+import { SmoothScrollProvider } from '@/providers/scroll-provider';
+import { ThemeProvider } from '@/providers/theme-provider';
 import '@/styles/globals.css';
 import { Metadata } from 'next';
 import React from 'react';
@@ -69,7 +70,9 @@ export default async function RootLayout({
         <CustomCursor variation="flowerstaff-4" enableGlow enableSparkles />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <SmoothScrollProvider>
-            <PreloadProvider>{children}</PreloadProvider>
+            <PreloadProvider>
+              <QuizProvider>{children}</QuizProvider>
+            </PreloadProvider>
           </SmoothScrollProvider>
         </ThemeProvider>
       </body>

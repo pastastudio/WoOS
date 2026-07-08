@@ -72,8 +72,8 @@ const feedbackData = [
   },
 ];
 
-export default async function Page({ params }: { params: { lang: string } }) {
-  const { lang } = params;
+export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
   const dict = await getDictionary(lang);
   const homeContent = dict.home as HomeContent;
   const infoBoxes = Object.values(homeContent.infoBoxes);
@@ -91,7 +91,7 @@ export default async function Page({ params }: { params: { lang: string } }) {
                 alt="DM-WT Logo"
                 width={700}
                 height={100}
-                className="mx-auto"
+                className="mx-auto h-auto w-auto"
               />
             </h1>
             <h2 className="font-pixelify mx-auto max-w-xl pt-4 text-center text-2xl">

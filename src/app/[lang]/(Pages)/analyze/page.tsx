@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Accordion,
   AccordionContent,
@@ -8,41 +10,62 @@ import { AnalyzeChart } from '@/components/ui/base/analyze-chart';
 import RadarMultiple from '@/components/ui/base/os-chart';
 import { QuestAnswers, type QuestAnswer } from '@/components/ui/base/quest-answers';
 import { QuestChart } from '@/components/ui/base/quest-chart';
+import { Button } from '@/components/ui/button';
+import { useQuizContext } from '@/context/quiz-context';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
-const questAnswersData: QuestAnswer[] = [
-  {
-    answer: 'correct',
-    question: 'What is React?',
-    chapterName: 'Introduction to React',
-    chapterIndex: 1,
-  },
-  {
-    answer: 'wrong',
-    question: 'How do you create a component?',
-    chapterName: 'Creating Components',
-    chapterIndex: 2,
-  },
-  {
-    answer: 'correct',
-    question: 'What are props?',
-    chapterName: 'Props and State',
-    chapterIndex: 3,
-  },
-  {
-    answer: 'wrong',
-    question: 'Explain hooks',
-    chapterName: 'React Hooks',
-    chapterIndex: 4,
-  },
-  {
-    answer: 'correct',
-    question: 'What is JSX?',
-    chapterName: 'JSX Basics',
-    chapterIndex: 5,
-  },
-];
+type OsCategory = 'windows' | 'linux' | 'macos';
+
+function normalizeOsCategory(value: string): OsCategory | null {
+  const lower = value.toLowerCase();
+  if (lower.includes('windows')) return 'windows';
+  if (lower.includes('linux')) return 'linux';
+  if (lower.includes('mac')) return 'macos';
+  return null;
+}
 
 export default function Page() {
+  const { state } = useQuizContext();
+  const { lang } = useParams() as { lang: string };
+
+  if (state.phase !== 'complete') {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center gap-6 px-6 text-center">
+        <h1 className="text-3xl font-bold">Take a quiz first</h1>
+        <p className="text-muted-foreground max-w-md">
+          Complete a chapter quiz to see your personalized analysis here.
+        </p>
+        <Link href={`/${lang}/quests`}>
+          <Button size="lg">Go to Quests</Button>
+        </Link>
+      </div>
+    );
+  }
+
+  const osCounts: Record<OsCategory, number> = { windows: 0, linux: 0, macos: 0 };
+  state.personalQuestions.forEach((question, index) => {
+    const answerKey = state.personalAnswers[index];
+    if (!answerKey) return;
+    const category = question.options[`_${answerKey}` as keyof typeof question.options];
+    const normalized = category ? normalizeOsCategory(category) : null;
+    if (normalized) osCounts[normalized] += 1;
+  });
+
+  const totalAnswered = osCounts.windows + osCounts.linux + osCounts.macos;
+  const toPercentage = (count: number) =>
+    totalAnswered ? Math.round((count / totalAnswered) * 100) : 0;
+
+  // TODO: no ground-truth correct-answer field exists in the question JSON yet
+  // (chapter_N.json's `_a/_b/_c` are opaque option ids, not correctness markers),
+  // so every answered question is shown as "correct" until real scoring is added.
+  const questAnswersData: QuestAnswer[] = state.technicalQuestions.map(question => ({
+    answer: 'correct',
+    question: question._title,
+    chapterName: `Chapter ${state.chapter ?? ''}`.trim(),
+    chapterIndex: state.chapter ?? 0,
+  }));
+
   return (
     <div className="flex flex-col items-center gap-8 py-12">
       <div className="flex flex-col items-center gap-4 text-center">
@@ -55,9 +78,20 @@ export default function Page() {
       <div>
         <h2>Your Quest Answers</h2>
       </div>
-      <QuestChart correctAnswers={7} wrongAnswers={3} totalQuestions={10} />
+      {/* TODO: correctAnswers/wrongAnswers can't be honestly split yet - see the
+          questAnswersData TODO above. Showing answered vs. total until real
+          scoring exists. */}
+      <QuestChart
+        correctAnswers={Object.keys(state.technicalAnswers).length}
+        wrongAnswers={0}
+        totalQuestions={state.technicalQuestions.length}
+      />
       <h2>We would suggest based on your answers to use:</h2>
-      <AnalyzeChart windowsPercentage={100} linuxPercentage={30} macosPercentage={20} />
+      <AnalyzeChart
+        windowsPercentage={toPercentage(osCounts.windows)}
+        linuxPercentage={toPercentage(osCounts.linux)}
+        macosPercentage={toPercentage(osCounts.macos)}
+      />
       <QuestAnswers answers={questAnswersData} />
       <p className="text-muted-foreground max-w-2xl text-xs">
         This data is calculated based on your answers.
