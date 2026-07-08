@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { getCompletedChapters } from '@/services/chapter-completion';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -42,21 +43,8 @@ export function QuestionOverview({ quizzes, completedCount, translations }: Ques
   const [completedChapters, setCompletedChapters] = useState<number[]>([]);
 
   // Load completed chapters from cookies on client mount
-
   useEffect(() => {
-    const cookieValue = document.cookie
-      .split('; ')
-      .find(row => row.startsWith('completed_chapters='))
-      ?.split('=')[1];
-
-    if (cookieValue) {
-      try {
-        const chapters = JSON.parse(decodeURIComponent(cookieValue));
-        setCompletedChapters(Array.isArray(chapters) ? chapters : []);
-      } catch (error) {
-        console.error('Failed to parse completed chapters cookie:', error);
-      }
-    }
+    setCompletedChapters(getCompletedChapters());
   }, []);
 
   // Calculate how many chapters are unlocked

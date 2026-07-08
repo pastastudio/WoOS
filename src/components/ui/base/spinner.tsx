@@ -16,6 +16,13 @@ export function Spinner() {
   const spinnerSrc = currentTheme === 'dark' ? '/spinner-dark.webp' : '/spinner-light.webp';
 
   return (
-    <Image src={spinnerSrc} alt="Spinner loading animation" width={240} height={240} priority />
+    <Image
+      src={spinnerSrc}
+      alt="Spinner loading animation"
+      width={240}
+      height={240}
+      priority
+      unoptimized
+    />
   );
 }

@@ -1,57 +1,12 @@
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-
-type QuestionOption = {
-  a: string;
-  b: string;
-  c: string;
-  d?: string;
-  e?: string;
-  _a: string;
-  _b: string;
-  _c: string;
-  _d?: string;
-  _e?: string;
-};
-
-type Question = {
-  _title: string;
-  options: QuestionOption;
-};
-
-type QuestionsData = Record<string, Question>;
+import { loadChapterQuestions } from '@/services/questions';
 
 interface ChapterPageProps {
   params: Promise<{
     id: string;
     lang: 'de' | 'en';
   }>;
-}
-
-/**
- * Load questions from JSON files based on chapter and locale
- */
-async function getQuestionsData(locale: string, chapterId: number) {
-  try {
-    // Load technical questions
-    const questionsModule = await import(
-      `@/i18n/${locale}/quests/questions/chapter_${chapterId}.json`
-    );
-    const questionsData: QuestionsData = questionsModule.default;
-    const questionsList = Object.values(questionsData);
-
-    // Load personal/analysis questions
-    const analysisModule = await import(
-      `@/i18n/${locale}/quests/analysis/chapter_${chapterId}.json`
-    );
-    const analysisData: QuestionsData = analysisModule.default;
-    const analysisList = Object.values(analysisData);
-
-    return { questions: questionsList, analysis: analysisList };
-  } catch (error) {
-    console.error(`Failed to load questions for chapter ${chapterId}:`, error);
-    return null;
-  }
 }
 
 /**
@@ -72,7 +27,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
   }
 
   // Load questions
-  const questionsData = await getQuestionsData(lang, chapterId);
+  const questionsData = await loadChapterQuestions(lang, chapterId);
   if (!questionsData) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center gap-4">

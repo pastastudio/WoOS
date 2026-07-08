@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { ParallaxWindow } from '@/components/ui/base/parallax-window';
 
-import { DiscordProvider, GitHubProvider, GoogleProvider } from '@/components/ui/base/provider';
+import { DiscordProvider, GitHubProvider, GoogleProvider } from '@/providers/provider';
 
 export default function Page() {
   return (
