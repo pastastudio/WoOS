@@ -2,6 +2,7 @@
 
 import { QuizFlow } from '@/components/quiz/quiz-flow';
 import { useQuizFlow } from '@/hooks/use-quiz-flow';
+import { useLocale } from '@/providers/locale-provider';
 import type { QuizFlowLabels } from '@/types/quiz';
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -9,7 +10,8 @@ import { useEffect, useState } from 'react';
 export default function QuizPage() {
   const params = useParams();
   const router = useRouter();
-  const { id, lang } = params as { id: string; lang: 'de' | 'en' };
+  const { id } = params as { id: string };
+  const lang = useLocale();
 
   const [labels, setLabels] = useState<QuizFlowLabels | null>(null);
 
@@ -61,8 +63,8 @@ export default function QuizPage() {
       onPrevious={quiz.handlePrevious}
       onStartPersonalQuestions={quiz.handleStartPersonalQuestions}
       onCompleteAnalyze={quiz.handleCompleteAnalyze}
-      onBackToQuests={() => router.push(`/${lang}/quests`)}
-      onViewAnalysis={() => router.push(`/${lang}/analyze`)}
+      onBackToQuests={() => router.push(`/quests`)}
+      onViewAnalysis={() => router.push(`/analyze`)}
     />
   );
 }

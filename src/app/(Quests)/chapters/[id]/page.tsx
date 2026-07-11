@@ -1,11 +1,11 @@
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { getLocale } from '@/lib/locale';
 import { loadChapterQuestions } from '@/services/questions';
 
 interface ChapterPageProps {
   params: Promise<{
     id: string;
-    lang: 'de' | 'en';
   }>;
 }
 
@@ -14,7 +14,8 @@ interface ChapterPageProps {
  * Displays technical questions and personal/analysis questions
  */
 export default async function ChapterPage({ params }: ChapterPageProps) {
-  const { id, lang } = await params;
+  const { id } = await params;
+  const lang = await getLocale();
   const chapterId = parseInt(id, 10);
 
   // Validate chapter ID
@@ -65,7 +66,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
             Du wirst zuerst die technischen Fragen beantworten, dann die persönlichen Fragen zur
             Profilierung.
           </p>
-          <a href={`/${lang}/chapters/${chapterId}/quiz`}>
+          <a href={`/chapters/${chapterId}/quiz`}>
             <Button size="lg" className="px-8">
               Quiz starten
             </Button>

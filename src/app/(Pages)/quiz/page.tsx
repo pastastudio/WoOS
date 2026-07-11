@@ -2,12 +2,13 @@
 
 import { QuizFlow, defaultQuizFlowLabels } from '@/components/quiz/quiz-flow';
 import { useQuizFlow } from '@/hooks/use-quiz-flow';
-import { useParams, useRouter, useSearchParams } from 'next/navigation';
+import { useLocale } from '@/providers/locale-provider';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function QuizPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const { lang } = useParams() as { lang: 'de' | 'en' };
+  const lang = useLocale();
   const chapter = searchParams.get('chapter') || '1';
 
   const quiz = useQuizFlow({ chapter, locale: lang, withAnalyzePhase: false });
@@ -33,8 +34,8 @@ export default function QuizPage() {
       onPrevious={quiz.handlePrevious}
       onStartPersonalQuestions={quiz.handleStartPersonalQuestions}
       onCompleteAnalyze={quiz.handleCompleteAnalyze}
-      onBackToQuests={() => router.push(`/${lang}/quests`)}
-      onViewAnalysis={() => router.push(`/${lang}/analyze`)}
+      onBackToQuests={() => router.push(`/quests`)}
+      onViewAnalysis={() => router.push(`/analyze`)}
     />
   );
 }

@@ -45,37 +45,28 @@ function getLocale(request: NextRequest): string {
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Skip middleware for static assets, API routes, and files
-  if (pathname.startsWith('/_next') || pathname.startsWith('/api') || pathname.includes('.')) {
+  // Skip locale resolution for static assets and files
+  if (pathname.startsWith('/_next') || pathname.includes('.')) {
     return NextResponse.next();
   }
 
-  // Skip auth logic for NextAuth routes to avoid redirect loops
-  if (pathname.startsWith('/api/auth')) {
-    return NextResponse.next();
-  }
-
-  // Check if pathname already has a language prefix
-  const hasLocale = SUPPORTED_LANGUAGES.some(
-    locale => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
-  );
-
-  if (hasLocale) {
-    return NextResponse.next();
-  }
-
-  // Determine user's preferred language and redirect
+  // Determine the user's preferred language without touching the URL
   const selectedLocale = getLocale(request);
-  request.nextUrl.pathname = `/${selectedLocale}${pathname}`;
-  const response = NextResponse.redirect(request.nextUrl);
+
+  // Forward the resolved locale to Server Components via a request header
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set('x-locale', selectedLocale);
+  const response = NextResponse.next({ request: { headers: requestHeaders } });
 
   // Persist language preference in cookie for future requests
-  response.cookies.set('preferred_language', selectedLocale, {
-    maxAge: 365 * 24 * 60 * 60, // 1 year
-    path: '/',
-    sameSite: 'lax',
-    httpOnly: false,
-  });
+  if (request.cookies.get('preferred_language')?.value !== selectedLocale) {
+    response.cookies.set('preferred_language', selectedLocale, {
+      maxAge: 365 * 24 * 60 * 60, // 1 year
+      path: '/',
+      sameSite: 'lax',
+      httpOnly: false,
+    });
+  }
 
   return response;
 }

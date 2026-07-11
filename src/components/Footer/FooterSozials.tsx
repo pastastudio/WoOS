@@ -1,10 +1,11 @@
 'use client';
 
 import { setLanguageCookie } from '@/lib/i18n';
-import { extractLanguageFromPathname, SupportedLanguage } from '@/lib/language';
+import { SupportedLanguage } from '@/lib/language';
+import { useLocale } from '@/providers/locale-provider';
 import type { Sozials } from '@/types/index';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { ReactElement, useState } from 'react';
 
 import Discord from '@/assets/icons/discord.svg';
@@ -63,9 +64,8 @@ export default function FooterSozials({
   languageText,
 }: FooterSozialsProps): ReactElement {
   const router = useRouter();
-  const pathname = usePathname();
+  const initialLang = useLocale();
 
-  const initialLang = extractLanguageFromPathname(pathname);
   const [selectedLanguage, setSelectedLanguage] = useState<SupportedLanguage>(initialLang);
 
   const selectedLang = LANGUAGES.find(lang => lang.value === selectedLanguage);
@@ -74,12 +74,9 @@ export default function FooterSozials({
     if (value == null || !['en', 'de'].includes(value)) return;
     setSelectedLanguage(value as SupportedLanguage);
 
-    // Set the cookie server-side
+    // Set the cookie server-side, then refresh so Server Components re-render with it
     await setLanguageCookie(value);
-
-    const parts = window.location.pathname.split('/');
-    parts[1] = value;
-    router.push(parts.join('/'));
+    router.refresh();
   };
 
   return (

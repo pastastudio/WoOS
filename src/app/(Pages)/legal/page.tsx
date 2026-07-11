@@ -1,16 +1,14 @@
 import { MarkdownContentWrapper } from '@/components/ui/base/markdown-content-wrapper';
+import { MarkdownToc } from '@/components/ui/base/markdown-toc';
 import { MarkdownLayout } from '@/layouts/MarkdownLayout';
 import { getRootContent } from '@/lib/content';
+import { getLocale } from '@/lib/locale';
 import { compileMdx } from '@/lib/markdown';
 import { notFound, redirect } from 'next/navigation';
 
-interface PageProps {
-  params: Promise<{ lang: string }>;
-}
-
-export default async function Page({ params }: PageProps) {
-  const { lang } = await params;
-  const slug = 'license';
+export default async function Page() {
+  const lang = await getLocale();
+  const slug = 'legal';
 
   let source: string;
   let filePath: string;
@@ -28,13 +26,14 @@ export default async function Page({ params }: PageProps) {
     body: Content,
     frontmatter,
     header,
+    toc,
   } = await compileMdx({
     source,
     filePath,
   });
 
   if (header.filename && header.filename.toLowerCase() !== slug) {
-    redirect(`/${lang}/${header.filename}`);
+    redirect(`/${header.filename}`);
   }
 
   return (
@@ -52,7 +51,7 @@ export default async function Page({ params }: PageProps) {
           {Content}
         </MarkdownContentWrapper>
       }
-      rightSidebar={' '}
+      rightSidebar={<MarkdownToc toc={toc} />}
     />
   );
 }

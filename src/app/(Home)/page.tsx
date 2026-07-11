@@ -7,6 +7,7 @@ import {
 } from '@/components/ui/base/feedback-carousel';
 import { ParallaxWindow } from '@/components/ui/base/parallax-window';
 import { getDictionary } from '@/i18n/getDictionary';
+import { getLocale } from '@/lib/locale';
 import Image from 'next/image';
 
 type HomeInfoBox = {
@@ -72,8 +73,8 @@ const feedbackData = [
   },
 ];
 
-export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
-  const { lang } = await params;
+export default async function Page() {
+  const lang = await getLocale();
   const dict = await getDictionary(lang);
   const homeContent = dict.home as HomeContent;
   const infoBoxes = Object.values(homeContent.infoBoxes);
