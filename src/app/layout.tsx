@@ -22,9 +22,12 @@ export const metadata: Metadata = {
   description: 'Wizard of OS – Tools, Utilities & Magic für dein System.',
 
   icons: {
-    icon: '/favicon/favicon.png',
-    apple: '/favicon/apple-icon.png',
-    shortcut: '/favicon/favicon.ico',
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
+    shortcut: '/favicon.ico',
   },
 
   openGraph: {
