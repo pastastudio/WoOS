@@ -1,24 +1,19 @@
 import Footer, { FooterProps } from '@/components/Footer';
 import Navbar, { NavbarProps } from '@/components/Navbar';
 import { getDictionary } from '@/lib/i18n';
+import { getLocale } from '@/lib/locale';
 import React from 'react';
 
-export default async function Layout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: Promise<{ lang: string }>;
-}) {
-  const { lang } = await params;
+export default async function Layout({ children }: { children: React.ReactNode }) {
+  const lang = await getLocale();
   const dict = await getDictionary(lang);
 
   const navbar: NavbarProps = {
     logo: true,
-    logoUrl: `/${lang}`,
+    logoUrl: `/`,
     links: [
-      { label: dict.nav.quests, href: `/${lang}/quests` },
-      { label: dict.nav.info, href: `/${lang}/information/chapter_1` },
+      { label: dict.nav.quests, href: `/quests` },
+      { label: dict.nav.info, href: `/information/chapter_1` },
       {
         label: dict.nav.docs,
         href: `https://github.com/copiedcopypasta/dmwt_WoOS/blob/main/README.md`,
@@ -40,7 +35,7 @@ export default async function Layout({
         },
         {
           label: dict.footer.resources.analytics,
-          href: `/${lang}/analyze`,
+          href: `/analyze`,
         },
         {
           label: dict.footer.resources.source,
@@ -48,10 +43,10 @@ export default async function Layout({
         },
       ],
       legal: [
-        { label: dict.footer.legal.imprint, href: `/${lang}/legal` },
-        { label: dict.footer.legal.privacy, href: `/${lang}/legal` },
-        { label: dict.footer.legal.licenses, href: `/${lang}/license` },
-        { label: dict.footer.legal.bindings, href: `/${lang}/legal` },
+        { label: dict.footer.legal.imprint, href: `/legal` },
+        { label: dict.footer.legal.privacy, href: `/legal` },
+        { label: dict.footer.legal.licenses, href: `/license` },
+        { label: dict.footer.legal.bindings, href: `/legal` },
       ],
       about: [
         {
@@ -64,13 +59,13 @@ export default async function Layout({
         },
         {
           label: dict.footer.about.accessibility,
-          href: `/${lang}/legal`,
+          href: `/legal`,
         },
       ],
       social: [
-        { label: dict.footer.social.feedback, href: `/${lang}/feedback` },
-        { label: dict.footer.social.contact, href: `/${lang}/legal` },
-        { label: dict.footer.social.faq, href: `/${lang}/faq` },
+        { label: dict.footer.social.feedback, href: `/feedback` },
+        { label: dict.footer.social.contact, href: `/legal` },
+        { label: dict.footer.social.faq, href: `/faq` },
       ],
     },
     sozials: [

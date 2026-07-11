@@ -1,5 +1,7 @@
 import { CustomCursor } from '@/components/ui/base/cursor';
+import { getLocale } from '@/lib/locale';
 import { getSiteUrl } from '@/lib/server-utils';
+import { LocaleProvider } from '@/providers/locale-provider';
 import { PreloadProvider } from '@/providers/preload-provider';
 import { QuizProvider } from '@/providers/quiz-provider';
 import { SmoothScrollProvider } from '@/providers/scroll-provider';
@@ -54,15 +56,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: Promise<{ lang?: string }>;
-}) {
-  const { lang: paramLang } = await params;
-  const lang = paramLang || 'en';
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const lang = await getLocale();
 
   return (
     <html lang={lang} suppressHydrationWarning>
@@ -71,7 +66,9 @@ export default async function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <SmoothScrollProvider>
             <PreloadProvider>
-              <QuizProvider>{children}</QuizProvider>
+              <QuizProvider>
+                <LocaleProvider locale={lang}>{children}</LocaleProvider>
+              </QuizProvider>
             </PreloadProvider>
           </SmoothScrollProvider>
         </ThemeProvider>

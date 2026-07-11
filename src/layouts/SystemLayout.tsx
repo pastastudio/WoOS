@@ -22,12 +22,12 @@ const SystemLayout = ({ children, lang = 'en' }: Readonly<SystemLayoutProps>) =>
 
   const navbar: NavbarProps = {
     logo: true,
-    logoUrl: `/${lang}`,
+    logoUrl: `/`,
     links: [
-      { label: components.navbar.quests, href: `/${lang}/quests` },
+      { label: components.navbar.quests, href: `/quests` },
       {
         label: components.navbar.information,
-        href: `/${lang}/information/chapter_1`,
+        href: `/information/chapter_1`,
       },
       {
         label: components.navbar.documentation,
@@ -48,18 +48,18 @@ const SystemLayout = ({ children, lang = 'en' }: Readonly<SystemLayoutProps>) =>
           label: components.footer.tests,
           href: 'https://github.com/copiedcopypasta/dmwt_WoOS/deployments',
         },
-        { label: components.footer.analytics, href: `/${lang}/analyze` },
+        { label: components.footer.analytics, href: `/analyze` },
         {
           label: components.footer.sourceCode,
           href: 'https://github.com/copiedcopypasta/dmwt',
         },
       ],
       legal: [
-        { label: components.footer.impressum, href: `/${lang}/legal` },
-        { label: components.footer.datenschutz, href: `/${lang}/legal` },
-        { label: components.footer.cookieSettings, href: `/${lang}/legal` },
-        { label: components.footer.licenses, href: `/${lang}/license` },
-        { label: components.footer.userBindings, href: `/${lang}/legal` },
+        { label: components.footer.impressum, href: `/legal` },
+        { label: components.footer.datenschutz, href: `/legal` },
+        { label: components.footer.cookieSettings, href: `/legal` },
+        { label: components.footer.licenses, href: `/license` },
+        { label: components.footer.userBindings, href: `/legal` },
       ],
       about: [
         {
@@ -70,12 +70,12 @@ const SystemLayout = ({ children, lang = 'en' }: Readonly<SystemLayoutProps>) =>
           label: components.footer.university,
           href: 'https://www.reutlingen-university.de/',
         },
-        { label: components.footer.accessibility, href: `/${lang}/legal` },
+        { label: components.footer.accessibility, href: `/legal` },
       ],
       social: [
-        { label: components.footer.feedback, href: `/${lang}/feedback` },
-        { label: components.footer.contact, href: `/${lang}/legal` },
-        { label: components.footer.faq, href: `/${lang}/faq` },
+        { label: components.footer.feedback, href: `/feedback` },
+        { label: components.footer.contact, href: `/legal` },
+        { label: components.footer.faq, href: `/faq` },
       ],
     },
     sozials: [

@@ -1,8 +1,8 @@
 ﻿import { ParallaxWindow } from '@/components/ui/base/parallax-window';
 import { QuestionOverview, Quiz } from '@/components/ui/base/question-overview';
-import { cookies } from 'next/headers';
 
 import { getContent } from '@/lib/content';
+import { getLocale } from '@/lib/locale';
 import { compileMdx } from '@/lib/markdown';
 type ChapterFrontmatter = {
   title: string;
@@ -51,18 +51,6 @@ async function getChapterMetadata(
 }
 
 /**
- * Detects the user's preferred language from browser cookies
- * Defaults to English ('en') if no locale preference is found
- * @returns User's preferred locale ('de' or 'en')
- */
-async function getLocale(): Promise<'de' | 'en'> {
-  const cookieStore = await cookies();
-  // Check for locale preference in cookies or default to 'en'
-  const locale = cookieStore.get('locale')?.value;
-  return locale === 'de' ? 'de' : 'en';
-}
-
-/**
  * Loads UI text translations for the page based on locale
  * Translations are stored in src/i18n/{locale}/quests/page.json
  * @param locale - Language locale ('de' or 'en')
@@ -96,7 +84,7 @@ export default async function Page() {
     id: index + 1,
     title: chapter.title,
     // Routes to chapters nested route with chapter number
-    href: `/${locale}/chapters/${index + 1}`,
+    href: `/chapters/${index + 1}`,
     blurb: chapter.description,
     slug: `chapter_${index + 1}`,
   }));

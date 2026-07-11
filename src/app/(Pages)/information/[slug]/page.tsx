@@ -3,6 +3,7 @@ import { MarkdownToc } from '@/components/ui/base/markdown-toc';
 import { PagePreload } from '@/components/withPagePreload';
 import { MarkdownLayout } from '@/layouts/MarkdownLayout';
 import { getAllRoutes, getContent, getPageRoute, type RouteEntry } from '@/lib/content';
+import { getLocale } from '@/lib/locale';
 import { compileMdx } from '@/lib/markdown';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
@@ -28,7 +29,7 @@ async function generateNavigationSidebar(
             return (
               <li key={`${route.lang}-${route.section}-${route.slug}`}>
                 <Link
-                  href={`/${route.lang}/${route.section}/${route.slug}`}
+                  href={`/${route.section}/${route.slug}`}
                   className="hover:text-foreground/80 transition-colors"
                   style={isActive ? { color: '#00a63e' } : undefined}
                 >
@@ -47,7 +48,6 @@ function getCircularNavUrl(
   direction: 'prev' | 'next',
   routes: RouteEntry[],
   currentSlug: string,
-  locale: string,
   section: 'information' | 'docs'
 ) {
   if (!routes?.length) return '#';
@@ -60,15 +60,16 @@ function getCircularNavUrl(
   } else {
     nextIndex = (currentIndex - 1 + routes.length) % routes.length;
   }
-  return `/${locale}/${section}/${routes[nextIndex]?.slug || '#'}`;
+  return `/${section}/${routes[nextIndex]?.slug || '#'}`;
 }
 
 interface PageProps {
-  params: Promise<{ lang: string; slug: string }>;
+  params: Promise<{ slug: string }>;
 }
 
 export default async function Page({ params }: PageProps) {
-  const { lang, slug } = await params;
+  const { slug } = await params;
+  const lang = await getLocale();
   const section: 'information' | 'docs' = 'information';
 
   try {
@@ -90,14 +91,14 @@ export default async function Page({ params }: PageProps) {
 
   // Redirect old file-based slugs to frontmatter-based ones
   if (header.filename && header.filename !== slug) {
-    redirect(`/${lang}/${section}/${header.filename}`);
+    redirect(`/${section}/${header.filename}`);
   }
 
   const routes = await getAllRoutes(lang, section);
 
   // Get circular navigation URLs
-  const prevUrl = getCircularNavUrl('prev', routes, slug, lang, section);
-  const nextUrl = getCircularNavUrl('next', routes, slug, lang, section);
+  const prevUrl = getCircularNavUrl('prev', routes, slug, section);
+  const nextUrl = getCircularNavUrl('next', routes, slug, section);
 
   // Generate sidebar content
   const navigationSidebar = await generateNavigationSidebar(lang, section, slug);

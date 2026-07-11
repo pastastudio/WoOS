@@ -13,7 +13,6 @@ import { QuestChart } from '@/components/ui/base/quest-chart';
 import { Button } from '@/components/ui/button';
 import { useQuizContext } from '@/context/quiz-context';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
 
 type OsCategory = 'windows' | 'linux' | 'macos';
 
@@ -27,7 +26,6 @@ function normalizeOsCategory(value: string): OsCategory | null {
 
 export default function Page() {
   const { state } = useQuizContext();
-  const { lang } = useParams() as { lang: string };
 
   if (state.phase !== 'complete') {
     return (
@@ -36,7 +34,7 @@ export default function Page() {
         <p className="text-muted-foreground max-w-md">
           Complete a chapter quiz to see your personalized analysis here.
         </p>
-        <Link href={`/${lang}/quests`}>
+        <Link href={`/quests`}>
           <Button size="lg">Go to Quests</Button>
         </Link>
       </div>
