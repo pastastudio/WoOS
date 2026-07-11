@@ -2,7 +2,7 @@
 
 <div align="center">
     <p>
-        <a href="https://site.ccp.2hoch1.dev/"><img src="public/Banner.png" alt="WoOS banner" width="500" /></a>
+        <a href="https://site.ccp.2hoch1.dev/"><img src="public/images/Banner.png" alt="WoOS banner" width="500" /></a>
     </p>
     <p>
         <a href="https://github.com/copiedcopypasta/dmwt_WoOS/actions/workflows/ci.yml"><img src="https://github.com/copiedcopypasta/dmwt_WoOS/actions/workflows/ci.yml/badge.svg" alt="Build" /></a>
