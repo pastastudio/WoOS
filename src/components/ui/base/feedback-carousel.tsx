@@ -20,7 +20,7 @@ const verifiedBadge = {
     </div>
   ),
   variant: 'secondary' as const,
-  className: 'bg-blue-500 text-white dark:bg-blue-600',
+  className: 'bg-blue-600 text-white',
 };
 
 const positiveBadge = {
@@ -31,7 +31,7 @@ const positiveBadge = {
     </div>
   ),
   variant: 'secondary' as const,
-  className: 'bg-green-500 text-white dark:bg-green-600',
+  className: 'bg-green-600 text-white',
 };
 
 const negativeBadge = {
@@ -42,7 +42,7 @@ const negativeBadge = {
     </div>
   ),
   variant: 'secondary' as const,
-  className: 'bg-red-500 text-white dark:bg-red-600',
+  className: 'bg-red-600 text-white',
 };
 
 interface FeedbackData {

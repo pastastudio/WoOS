@@ -1,7 +1,6 @@
 'use client';
 
 import CursorSparkels from '@/components/ui/base/cursor-sparkels';
-import { useTheme } from 'next-themes';
 import Image, { type StaticImageData } from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
 
@@ -23,7 +22,7 @@ import FlowerStaffFour from '@/assets/cursor/Flowerstaff_stage_4.png';
 /**
  * Available cursor variations including default cursors and themed wand stages.
  *
- * - `default-white` / `default-black`: Standard cursors that adapt to theme
+ * - `default-white` / `default-black`: Standard cursors
  * - `crystal-scepter-1` through `4`: Golden crystal scepter progression (gold sparkles/glow)
  * - `fire-snake-1` through `4`: Fire snake wand progression (blue sparkles/glow)
  * - `flowerstaff-1` through `4`: Flower staff progression (pink sparkles/glow)
@@ -47,7 +46,7 @@ export type CursorVariation =
 /**
  * Props for the CustomCursor component.
  *
- * @property variation - Cursor image variant to display. Defaults to theme-based (white for dark, black for light).
+ * @property variation - Cursor image variant to display. Defaults to 'default-white'.
  * @property enableSparkles - Show animated sparkles trailing the cursor. Color varies by variation. Default: false.
  * @property enableGlow - Apply a subtle glow effect around the cursor. Color varies by variation. Default: false.
  */
@@ -97,8 +96,8 @@ const detectInteractive = (x: number, y: number): boolean => {
 };
 
 /**
- * Custom cursor component with theme-aware defaults, interactive hover effects,
- * optional sparkles and glow. Hides when window loses focus or cursor leaves viewport.
+ * Custom cursor component with interactive hover effects, optional sparkles and glow.
+ * Hides when window loses focus or cursor leaves viewport.
  *
  * @example
  * ```tsx
@@ -112,43 +111,17 @@ const detectInteractive = (x: number, y: number): boolean => {
  * ```
  */
 export function CustomCursor({
-  variation,
+  variation = 'default-white',
   enableSparkles = false,
   enableGlow = false,
 }: CustomCursorProps) {
-  const { resolvedTheme } = useTheme();
-  const [domTheme, setDomTheme] = useState<'light' | 'dark' | null>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHoveringInteractive, setIsHoveringInteractive] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
 
-  useEffect(() => {
-    if (typeof document === 'undefined') return;
+  const sparkleColor = useMemo(() => resolveSparkleColor(variation), [variation]);
 
-    const root = document.documentElement;
-    const detectTheme = () => {
-      const isDark = root.classList.contains('dark');
-      setDomTheme(isDark ? 'dark' : 'light');
-    };
-
-    detectTheme();
-
-    const observer = new MutationObserver(detectTheme);
-    observer.observe(root, { attributes: true, attributeFilter: ['class'] });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const themeMode = useMemo(() => resolvedTheme ?? domTheme ?? 'light', [domTheme, resolvedTheme]);
-
-  const activeVariation: CursorVariation = useMemo(() => {
-    if (variation) return variation;
-    return themeMode === 'dark' ? 'default-white' : 'default-black';
-  }, [variation, themeMode]);
-
-  const sparkleColor = useMemo(() => resolveSparkleColor(activeVariation), [activeVariation]);
-
-  const glowColor = useMemo(() => resolveGlowColor(activeVariation), [activeVariation]);
+  const glowColor = useMemo(() => resolveGlowColor(variation), [variation]);
 
   useEffect(() => {
     const handleLeave = () => setIsVisible(false);
@@ -209,7 +182,7 @@ export function CustomCursor({
         }}
       >
         <Image
-          src={cursorImages[activeVariation]}
+          src={cursorImages[variation]}
           alt="cursor"
           width={CURSOR_SIZE}
           height={CURSOR_SIZE}

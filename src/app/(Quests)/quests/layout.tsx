@@ -20,7 +20,6 @@ export default async function Layout({ children }: { children: React.ReactNode }
       },
     ],
     searchBar: false,
-    darkModeToggle: true,
     loginButton: true,
     fixed: false,
     backgroundColor: '#161a24',

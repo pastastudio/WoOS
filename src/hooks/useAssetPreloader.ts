@@ -82,31 +82,21 @@ export function useAssetPreloader(assets: PreloadAsset[] = getDefaultAssets()) {
 
 /**
  * Gets default critical assets to preload
- * Includes parallax layers (both alive and dead variants for light/dark), cursor assets, and spinner images
+ * Includes parallax layers, cursor assets, and the spinner image
  */
 function getDefaultAssets(): PreloadAsset[] {
   return [
-    // Parallax background layers - ALIVE variant (light mode)
-    { src: '/keyart/alive/index-0.png', type: 'image', critical: true },
-    { src: '/keyart/alive/index-1.png', type: 'image', critical: true },
-    { src: '/keyart/alive/index-2.png', type: 'image', critical: true },
-    { src: '/keyart/alive/index-3.png', type: 'image', critical: true },
-    { src: '/keyart/alive/index-4.png', type: 'image', critical: true },
-    { src: '/keyart/alive/index-5.png', type: 'image', critical: true },
-    { src: '/keyart/alive/index-6.png', type: 'image', critical: true },
+    // Parallax background layers
+    { src: '/keyart/layer-0.png', type: 'image', critical: true },
+    { src: '/keyart/layer-1.png', type: 'image', critical: true },
+    { src: '/keyart/layer-2.png', type: 'image', critical: true },
+    { src: '/keyart/layer-3.png', type: 'image', critical: true },
+    { src: '/keyart/layer-4.png', type: 'image', critical: true },
+    { src: '/keyart/layer-5.png', type: 'image', critical: true },
+    { src: '/keyart/layer-6.png', type: 'image', critical: true },
 
-    // Parallax background layers - DEAD variant (dark mode)
-    { src: '/keyart/dead/index-0.png', type: 'image', critical: true },
-    { src: '/keyart/dead/index-1.png', type: 'image', critical: true },
-    { src: '/keyart/dead/index-2.png', type: 'image', critical: true },
-    { src: '/keyart/dead/index-3.png', type: 'image', critical: true },
-    { src: '/keyart/dead/index-4.png', type: 'image', critical: true },
-    { src: '/keyart/dead/index-5.png', type: 'image', critical: true },
-    { src: '/keyart/dead/index-6.png', type: 'image', critical: true },
-
-    // Spinner images (loading states)
-    { src: '/spinner-light.webp', type: 'image', critical: true },
-    { src: '/spinner-dark.webp', type: 'image', critical: true },
+    // Spinner image (loading state)
+    { src: '/images/spinner-dark.webp', type: 'image', critical: true },
 
     // Note: Cursor assets are handled dynamically by the cursor component
     // and don't need to be preloaded here
