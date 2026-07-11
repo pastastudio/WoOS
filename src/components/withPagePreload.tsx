@@ -37,7 +37,7 @@ export function withPagePreload<P extends WithPagePreloadProps>(
     if (!isPreloaded) {
       return (
         props.fallback || (
-          <div className="flex h-screen w-full flex-col items-center justify-center gap-4 bg-white dark:bg-black">
+          <div className="flex h-screen w-full flex-col items-center justify-center gap-4 bg-black">
             <Spinner />
             <p className="animate-pulse text-sm text-neutral-500">Wird geladen…</p>
           </div>
@@ -67,7 +67,7 @@ export function PagePreload({ children, fallback }: { children: ReactNode; fallb
   if (!isPreloaded) {
     return (
       fallback || (
-        <div className="flex h-screen w-full flex-col items-center justify-center gap-4 bg-white dark:bg-black">
+        <div className="flex h-screen w-full flex-col items-center justify-center gap-4 bg-black">
           <Spinner />
           <p className="animate-pulse text-sm text-neutral-500">Wird geladen…</p>
         </div>

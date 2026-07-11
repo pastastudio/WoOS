@@ -35,7 +35,6 @@ const SystemLayout = ({ children, lang = 'en' }: Readonly<SystemLayoutProps>) =>
       },
     ],
     searchBar: false,
-    darkModeToggle: true,
     loginButton: true,
     fixed: false,
     backgroundColor: 'false',
@@ -99,7 +98,7 @@ const SystemLayout = ({ children, lang = 'en' }: Readonly<SystemLayoutProps>) =>
     <>
       <Navbar {...navbar} />
       <main>
-        <div className="flex min-h-screen w-full flex-1 items-center justify-center bg-white dark:bg-black">
+        <div className="flex min-h-screen w-full flex-1 items-center justify-center bg-black">
           {children}
         </div>
       </main>

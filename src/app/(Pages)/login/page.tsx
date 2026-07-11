@@ -12,7 +12,7 @@ export default function Page() {
           <ParallaxWindow />
         </div>
         <div className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-sm">
-          <div className="mx-auto max-w-md rounded-lg bg-[#f9f9f9] p-10 text-center shadow-2xl dark:bg-[#171717]">
+          <div className="mx-auto max-w-md rounded-lg bg-[#171717] p-10 text-center shadow-2xl">
             <h1 className="text-2xl font-bold">Create an Account</h1>
             <p className="mt-1">We only support accounts via third party providers.</p>
             <div className="mx-auto mt-6 flex max-w-sm flex-col gap-3">

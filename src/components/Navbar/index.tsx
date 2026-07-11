@@ -9,7 +9,6 @@ import LogoSvg from '@/assets/logo.svg';
 // TODO: Uncomment when auth is ready
 // import { auth } from '@/auth';
 import { SearchBarToggle } from '@/components/ui/base/searchbar-toggle';
-import { ThemeToggle } from '@/components/ui/base/theme-toggle';
 
 import styles from './index.module.css';
 
@@ -18,7 +17,6 @@ export interface NavbarProps {
   logo?: boolean | null | undefined;
   links: Links[] | null | undefined;
   searchBar?: boolean | null | undefined;
-  darkModeToggle?: boolean | null | undefined;
   loginButton?: boolean | null | undefined;
   backgroundColor?: string | false | null | undefined;
   borderLine?: boolean | null | undefined;
@@ -95,19 +93,16 @@ const ProfileButton = (): ReactElement => {
  */
 const RightSection = ({
   searchBar,
-  darkModeToggle,
   loginButton,
   session,
 }: {
   searchBar?: boolean | null;
-  darkModeToggle?: boolean | null;
   loginButton?: boolean | null;
   session: unknown;
 }): ReactElement => {
   const elements = [];
 
   if (searchBar) elements.push(<SearchBarToggle key="search" />);
-  if (darkModeToggle) elements.push(<ThemeToggle key="theme" />);
   if (session && typeof session === 'object' && 'user' in session) {
     elements.push(<ProfileButton key="profile" />);
   } else if (loginButton) {
@@ -140,7 +135,6 @@ export default function Navbar({
   logo,
   links,
   searchBar,
-  darkModeToggle,
   loginButton,
   backgroundColor,
   borderLine,
@@ -177,12 +171,7 @@ export default function Navbar({
       <nav className={styles.centerNav}>{links && <NavLinks links={links} />}</nav>
 
       {/* Right Section: Search, Theme Toggle, Login/Profile */}
-      <RightSection
-        searchBar={searchBar}
-        darkModeToggle={darkModeToggle}
-        loginButton={loginButton}
-        session={session}
-      />
+      <RightSection searchBar={searchBar} loginButton={loginButton} session={session} />
     </header>
   );
 }

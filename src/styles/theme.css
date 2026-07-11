@@ -76,14 +76,6 @@
   --color-black: rgb(10, 10, 10);
   --color-default-background: rgb(10, 10, 10);
 
-  /* Text Colors for Light/Dark Mode */
-  --color-text-light: rgb(10, 10, 10);
-  --color-text-dark: rgb(250, 250, 250);
-  --color-text-muted-light: rgb(115, 115, 115);
-  --color-text-muted-dark: rgb(163, 163, 163);
-  --color-border-light: rgb(229, 229, 229);
-  --color-border-dark: rgb(64, 64, 64);
-
   /* Box shadows */
   --shadow-sm: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
   --shadow-default: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
@@ -200,46 +192,6 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-  color-scheme: light;
-
-  /* Theme-specific text colors */
-  --text-primary: var(--color-text-light);
-  --text-muted: var(--color-text-muted-light);
-  --border-color: var(--color-border-light);
-}
-
-.dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -273,10 +225,9 @@
   --sidebar-ring: oklch(0.556 0 0);
   color-scheme: dark;
 
-  /* Theme-specific text colors */
-  --text-primary: var(--color-text-dark);
-  --text-muted: var(--color-text-muted-dark);
-  --border-color: var(--color-border-dark);
+  --text-primary: var(--color-default-font);
+  --text-muted: var(--color-subtext-color);
+  --border-color: var(--color-neutral-border);
 }
 
 @layer base {
