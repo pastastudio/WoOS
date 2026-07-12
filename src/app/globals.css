@@ -1,0 +1,593 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@theme {
+  /* Brand Colors */
+  --color-brand-50: rgb(19, 40, 25);
+  --color-brand-100: rgb(22, 48, 29);
+  --color-brand-200: rgb(25, 57, 33);
+  --color-brand-300: rgb(29, 68, 39);
+  --color-brand-400: rgb(36, 85, 48);
+  --color-brand-500: rgb(47, 110, 59);
+  --color-brand-600: rgb(70, 167, 88);
+  --color-brand-700: rgb(85, 180, 103);
+  --color-brand-800: rgb(99, 193, 116);
+  --color-brand-900: rgb(229, 251, 235);
+
+  /* Neutral Colors */
+  --color-neutral-0: rgb(10, 10, 10);
+  --color-neutral-50: rgb(23, 23, 23);
+  --color-neutral-100: rgb(38, 38, 38);
+  --color-neutral-200: rgb(64, 64, 64);
+  --color-neutral-300: rgb(82, 82, 82);
+  --color-neutral-400: rgb(115, 115, 115);
+  --color-neutral-500: rgb(163, 163, 163);
+  --color-neutral-600: rgb(212, 212, 212);
+  --color-neutral-700: rgb(229, 229, 229);
+  --color-neutral-800: rgb(245, 245, 245);
+  --color-neutral-900: rgb(250, 250, 250);
+  --color-neutral-950: rgb(255, 255, 255);
+
+  /* Error Colors */
+  --color-error-50: rgb(60, 24, 39);
+  --color-error-100: rgb(72, 26, 45);
+  --color-error-200: rgb(84, 27, 51);
+  --color-error-300: rgb(100, 29, 59);
+  --color-error-400: rgb(128, 29, 69);
+  --color-error-500: rgb(174, 25, 85);
+  --color-error-600: rgb(233, 61, 130);
+  --color-error-700: rgb(240, 79, 136);
+  --color-error-800: rgb(247, 97, 144);
+  --color-error-900: rgb(254, 236, 244);
+
+  /* Warning Colors */
+  --color-warning-50: rgb(52, 28, 0);
+  --color-warning-100: rgb(63, 34, 0);
+  --color-warning-200: rgb(74, 41, 0);
+  --color-warning-300: rgb(87, 51, 0);
+  --color-warning-400: rgb(105, 63, 5);
+  --color-warning-500: rgb(130, 78, 0);
+  --color-warning-600: rgb(255, 178, 36);
+  --color-warning-700: rgb(255, 203, 71);
+  --color-warning-800: rgb(241, 161, 13);
+  --color-warning-900: rgb(254, 243, 221);
+
+  /* Success Colors */
+  --color-success-50: rgb(19, 40, 25);
+  --color-success-100: rgb(22, 48, 29);
+  --color-success-200: rgb(25, 57, 33);
+  --color-success-300: rgb(29, 68, 39);
+  --color-success-400: rgb(36, 85, 48);
+  --color-success-500: rgb(47, 110, 59);
+  --color-success-600: rgb(70, 167, 88);
+  --color-success-700: rgb(85, 180, 103);
+  --color-success-800: rgb(99, 193, 116);
+  --color-success-900: rgb(229, 251, 235);
+
+  /* Semantic Colors */
+  --color-brand-primary: rgb(70, 167, 88);
+  --color-default-font: rgb(250, 250, 250);
+  --color-subtext-color: rgb(163, 163, 163);
+  --color-neutral-border: rgb(64, 64, 64);
+  --color-black: rgb(10, 10, 10);
+  --color-default-background: rgb(10, 10, 10);
+
+  /* Brand & decorative accent colors (no semantic-token equivalent) */
+  --color-chrome-background: #161a24;
+  --color-footer-brand: #2b542b;
+  --color-brand-windows: #0078d4;
+  --color-brand-linux: #fcc624;
+  --color-brand-macos: #a2aaad;
+  --color-brand-discord: #5865f2;
+  --color-decorative-gold: #facc15;
+  --color-decorative-amber: #ffd700;
+  --color-decorative-sky: #38bdf8;
+  --color-decorative-pink: #ec4899;
+  --color-markdown-accent: #00a63e;
+
+  /* Box shadows */
+  --shadow-sm: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  --shadow-default: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0px 4px 16px -2px rgba(0, 0, 0, 0.08), 0px 2px 4px -1px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0px 12px 32px -4px rgba(0, 0, 0, 0.08), 0px 4px 8px -2px rgba(0, 0, 0, 0.08);
+  --shadow-overlay: 0px 12px 32px -4px rgba(0, 0, 0, 0.08), 0px 4px 8px -2px rgba(0, 0, 0, 0.08);
+  --shadow-card-inset:
+    0px 1px 0px 1px #00000005, 0px 4px 6px #00000005, inset 0px 0px 12px 6px #111;
+  --gradient-card-dark: linear-gradient(#242424 0%, #121212 65.62%);
+
+  /* Border radiuses */
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --spacing-112: 28rem;
+  --spacing-144: 36rem;
+  --spacing-192: 48rem;
+  --spacing-256: 64rem;
+  --spacing-320: 80rem;
+}
+
+/* Container */
+@utility container {
+  padding-left: 16px;
+  padding-right: 16px;
+
+  @media (width >= theme(--breakpoint-sm)) {
+    padding-left: calc((100vw + 16px - 640px) / 2);
+    padding-right: calc((100vw + 16px - 640px) / 2);
+  }
+
+  @media (width >= theme(--breakpoint-md)) {
+    padding-left: calc((100vw + 16px - 768px) / 2);
+    padding-right: calc((100vw + 16px - 768px) / 2);
+  }
+
+  @media (width >= theme(--breakpoint-lg)) {
+    padding-left: calc((100vw + 16px - 1024px) / 2);
+    padding-right: calc((100vw + 16px - 1024px) / 2);
+  }
+
+  @media (width >= theme(--breakpoint-xl)) {
+    padding-left: calc((100vw + 16px - 1280px) / 2);
+    padding-right: calc((100vw + 16px - 1280px) / 2);
+  }
+
+  @media (width >= theme(--breakpoint-2xl)) {
+    padding-left: calc((100vw + 16px - 1536px) / 2);
+    padding-right: calc((100vw + 16px - 1536px) / 2);
+  }
+}
+
+@custom-variant mobile (@media (max-width: 767px));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --animate-accordion-collapse: accordion-collapse var(--tw-duration, 200ms) ease-out;
+  --animate-accordion-expand: accordion-expand var(--tw-duration, 200ms) ease-out;
+  @keyframes accordion-collapse {
+    from {
+      height: var(--accordion-panel-height, auto);
+    }
+    to {
+      height: 0;
+    }
+  }
+  @keyframes accordion-expand {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--accordion-panel-height, auto);
+    }
+  }
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-pixelify);
+}
+
+:root {
+  --radius: 0.45rem;
+  /* Dark is the app's only theme (no toggle exists to ever apply a
+     `.dark` class), so these are the actual dark-mode values directly —
+     merged in from what used to be a dead, never-applied `.dark` block. */
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.448 0.119 151.328);
+  --primary-foreground: oklch(0.982 0.018 155.826);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.871 0.15 154.449);
+  --chart-2: oklch(0.723 0.219 149.579);
+  --chart-3: oklch(0.627 0.194 149.214);
+  --chart-4: oklch(0.527 0.154 150.069);
+  --chart-5: oklch(0.448 0.119 151.328);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.723 0.219 149.579);
+  --sidebar-primary-foreground: oklch(0.982 0.018 155.826);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+  color-scheme: dark;
+
+  --text-primary: var(--color-default-font);
+  --text-muted: var(--color-subtext-color);
+  --border-color: var(--color-neutral-border);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-mono;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+
+/* Typography */
+:root {
+  /* Font sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.115rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+
+  /* Line heights */
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+}
+
+/* Markdown prose tokens (consumed via var() inside .markdown rules below) */
+:root {
+  --markdown-heading: #f8fafc;
+  --markdown-body-text: #e5e7eb;
+  --markdown-p-text: #d1d5db;
+  --markdown-link: #bfdbfe;
+  --markdown-link-hover: #e0f2fe;
+  --markdown-link-border: rgba(191, 219, 254, 0.5);
+  --markdown-link-hover-border: rgba(224, 242, 254, 0.75);
+  --markdown-blockquote-text: #cbd5e1;
+  --markdown-code-bg: rgba(15, 23, 42, 0.75);
+  --markdown-code-text: #e2e8f0;
+  --markdown-pre-bg-glow-1: rgba(56, 189, 248, 0.1);
+  --markdown-pre-bg-glow-2: rgba(129, 140, 248, 0.1);
+  --markdown-pre-bg-base: #0b1220;
+  --markdown-border-subtle: rgba(226, 232, 240, 0.08);
+  --markdown-border-medium: rgba(226, 232, 240, 0.1);
+  --markdown-border-strong: rgba(226, 232, 240, 0.15);
+  --markdown-border-img: rgba(226, 232, 240, 0.12);
+  --markdown-zebra-bg: rgba(148, 163, 184, 0.05);
+  --markdown-shadow-pre: 0 16px 40px rgba(0, 0, 0, 0.35);
+  --markdown-shadow-img: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* Optional global defaults */
+body {
+  font-size: var(--text-base);
+  color: var(--foreground);
+}
+
+@layer components {
+  .font-pixelify {
+    font-family: var(--font-pixelify);
+    font-size: var(--text-base);
+    font-weight: 400;
+  }
+}
+
+/* Markdown */
+.markdown {
+  color: var(--markdown-body-text);
+  line-height: 1.75;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6,
+.markdown .markdown-h1,
+.markdown .markdown-h2,
+.markdown .markdown-h3,
+.markdown .markdown-h4,
+.markdown .markdown-h5,
+.markdown .markdown-h6 {
+  color: var(--markdown-heading);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 0;
+  font-weight: 700;
+}
+
+.markdown h1,
+.markdown .markdown-h1 {
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.markdown h2,
+.markdown .markdown-h2 {
+  font-size: 1.75rem;
+  margin-top: 1.75rem;
+}
+
+.markdown h3,
+.markdown .markdown-h3 {
+  font-size: 1.375rem;
+  margin-top: 1.25rem;
+}
+
+.markdown h4,
+.markdown .markdown-h4 {
+  font-size: 1.15rem;
+  margin-top: 1rem;
+}
+
+.markdown p,
+.markdown .markdown-p {
+  margin: 0;
+  color: var(--markdown-p-text);
+}
+
+.markdown a,
+.markdown .markdown-link {
+  color: var(--markdown-link);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--markdown-link-border);
+  transition:
+    color 150ms ease,
+    border-color 150ms ease;
+}
+
+.markdown a:hover,
+.markdown .markdown-link:hover {
+  color: var(--markdown-link-hover);
+  border-color: var(--markdown-link-hover-border);
+}
+
+.markdown ul,
+.markdown .markdown-ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.markdown ol,
+.markdown .markdown-ol {
+  list-style: decimal;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.markdown li,
+.markdown .markdown-li {
+  color: var(--markdown-p-text);
+}
+
+.markdown blockquote,
+.markdown .markdown-blockquote {
+  border-left: 3px solid var(--color-decorative-sky);
+  background: linear-gradient(90deg, var(--markdown-pre-bg-glow-1), transparent);
+  padding: 0.75rem 1rem;
+  margin: 0;
+  color: var(--markdown-blockquote-text);
+  border-radius: 0;
+}
+
+.markdown code,
+.markdown .markdown-code {
+  background: var(--markdown-code-bg);
+  color: var(--markdown-code-text);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0;
+  font-size: 0.95em;
+  border: 1px solid var(--markdown-border-subtle);
+}
+
+.markdown pre,
+.markdown .markdown-pre {
+  background:
+    radial-gradient(circle at 20% 20%, var(--markdown-pre-bg-glow-1), transparent 45%),
+    radial-gradient(circle at 80% 0%, var(--markdown-pre-bg-glow-2), transparent 35%),
+    var(--markdown-pre-bg-base);
+  border: 1px solid var(--markdown-border-subtle);
+  border-radius: 0;
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  box-shadow: var(--markdown-shadow-pre);
+}
+
+.markdown hr {
+  border: none;
+  border-top: 1px solid var(--markdown-border-strong);
+  margin: 1.5rem 0;
+}
+
+.markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--markdown-border-strong);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.markdown th,
+.markdown td {
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid var(--markdown-border-medium);
+  text-align: left;
+  color: var(--markdown-body-text);
+}
+
+.markdown tr:nth-child(2n) td {
+  background: var(--markdown-zebra-bg);
+}
+
+.markdown img,
+.markdown .markdown-img {
+  max-width: 100%;
+  border-radius: 0;
+  border: 1px solid var(--markdown-border-img);
+  box-shadow: var(--markdown-shadow-img);
+}
+
+.markdown a.heading-anchor {
+  color: inherit;
+  text-decoration: none;
+  border: none;
+  position: relative;
+}
+
+.markdown a.heading-anchor::after {
+  content: '#';
+  opacity: 0;
+  margin-left: 0.35rem;
+  font-size: 0.85em;
+  color: var(--color-decorative-sky);
+  transition:
+    opacity 120ms ease,
+    transform 120ms ease;
+  transform: translateY(-2px);
+}
+
+.markdown a.heading-anchor:hover::after {
+  opacity: 0.9;
+  transform: translateY(-2px) translateX(2px);
+}
+
+.markdown .callout {
+  border-radius: 0;
+  padding: 1rem;
+  border: 1px solid var(--markdown-border-subtle);
+}
+
+/* Z-index scale */
+:root {
+  --z-base: 0;
+  --z-content: 10;
+  --z-header: 20;
+  --z-dropdown: 30;
+  --z-modal: 40;
+  --z-popover: 50;
+  --z-toast: 60;
+  --z-critical: 998;
+  --z-mouse-cursor: 999;
+}
+
+/* Scrollbar */
+:root {
+  --sb-size: 8px;
+  --sb-track: rgba(255, 255, 255, 0.04);
+  --sb-thumb: rgba(255, 255, 255, 0.12);
+  --sb-thumb-hover: rgba(255, 255, 255, 0.22);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--sb-thumb) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: var(--sb-size);
+  height: var(--sb-size);
+}
+
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--sb-thumb);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  min-height: 20px;
+  transition:
+    background-color 0.16s linear,
+    transform 0.12s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover,
+*::-webkit-scrollbar-thumb:active {
+  background-color: var(--sb-thumb-hover);
+  transform: scale(1.08);
+}
+*:focus::-webkit-scrollbar-thumb {
+  transform: scale(1.12);
+}
+
+@media (pointer: coarse) {
+  :root {
+    --sb-size: 12px;
+  }
+}
+
+.no-custom-scrollbar *::-webkit-scrollbar,
+.no-custom-scrollbar * {
+  scrollbar-width: auto;
+  scrollbar-color: initial;
+}
+
+/* App-wide resets */
+html,
+body,
+* {
+  cursor: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-default-background);
+}
