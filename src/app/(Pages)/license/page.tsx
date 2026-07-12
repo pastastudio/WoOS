@@ -1,4 +1,4 @@
-import { MarkdownContentWrapper } from '@/components/ui/base/markdown-content-wrapper';
+import { MarkdownContent } from '@/components/markdown/markdown-content';
 import { MarkdownLayout } from '@/layouts/MarkdownLayout';
 import { getRootContent } from '@/lib/content';
 import { getLocale } from '@/lib/locale';
@@ -18,7 +18,6 @@ export default async function Page() {
     filePath = result.filePath;
   } catch {
     notFound();
-    return null;
   }
 
   const {
@@ -38,7 +37,7 @@ export default async function Page() {
     <MarkdownLayout
       leftSidebar={' '}
       content={
-        <MarkdownContentWrapper
+        <MarkdownContent
           title={(frontmatter as { title?: string } | undefined)?.title}
           description={(frontmatter as { description?: string } | undefined)?.description}
           badges={(frontmatter as { badges?: string[] } | undefined)?.badges}
@@ -47,7 +46,7 @@ export default async function Page() {
           showFooter={false}
         >
           {Content}
-        </MarkdownContentWrapper>
+        </MarkdownContent>
       }
       rightSidebar={' '}
     />

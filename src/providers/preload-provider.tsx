@@ -1,6 +1,6 @@
 'use client';
 
-import { Spinner } from '@/components/ui/base/spinner';
+import { LoadingScreen } from '@/components/loading/loading-screen';
 import { useAssetPreloader } from '@/hooks/useAssetPreloader';
 import { ReactNode } from 'react';
 
@@ -13,12 +13,7 @@ export function PreloadProvider({ children }: { children: ReactNode }) {
   const { isPreloaded } = useAssetPreloader();
 
   if (!isPreloaded) {
-    return (
-      <div className="flex min-h-screen w-full flex-col items-center justify-center gap-4 bg-black p-8">
-        <Spinner />
-        <p className="animate-pulse text-sm text-neutral-500">Wird geladen…</p>
-      </div>
-    );
+    return <LoadingScreen className="min-h-screen p-8" />;
   }
 
   return <>{children}</>;
