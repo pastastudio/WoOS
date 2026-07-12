@@ -1,6 +1,7 @@
 'use client';
 
-import CursorSparkels from '@/components/ui/base/cursor-sparkels';
+import { CURSOR_GLOW_COLORS, CURSOR_SPARKLE_COLORS } from '@/components/cursor/cursor-colors';
+import CursorSparkels from '@/components/cursor/cursor-sparkels';
 import Image, { type StaticImageData } from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
 
@@ -76,17 +77,19 @@ const cursorImages: Record<CursorVariation, StaticImageData> = {
 };
 
 const resolveSparkleColor = (variation: CursorVariation): string => {
-  if (variation.startsWith('crystal-scepter')) return '#FFD700';
-  if (variation.startsWith('fire-snake')) return '#38bdf8';
-  if (variation.startsWith('flowerstaff')) return '#ec4899';
-  return '#facc15';
+  if (variation.startsWith('crystal-scepter')) return CURSOR_SPARKLE_COLORS.crystalScepter;
+  if (variation.startsWith('fire-snake')) return CURSOR_SPARKLE_COLORS.fireSnake;
+  if (variation.startsWith('flowerstaff')) return CURSOR_SPARKLE_COLORS.flowerstaff;
+  return CURSOR_SPARKLE_COLORS.default;
 };
 
 const resolveGlowColor = (variation: CursorVariation): string => {
-  if (variation.startsWith('crystal-scepter')) return 'rgba(255, 215, 0, 0.65)';
-  if (variation.startsWith('fire-snake')) return 'rgba(56, 189, 248, 0.6)';
-  if (variation.startsWith('flowerstaff')) return 'rgba(236, 72, 153, 0.6)';
-  return variation === 'default-black' ? 'rgba(0, 0, 0, 0.4)' : 'rgba(255, 255, 255, 0.55)';
+  if (variation.startsWith('crystal-scepter')) return CURSOR_GLOW_COLORS.crystalScepter;
+  if (variation.startsWith('fire-snake')) return CURSOR_GLOW_COLORS.fireSnake;
+  if (variation.startsWith('flowerstaff')) return CURSOR_GLOW_COLORS.flowerstaff;
+  return variation === 'default-black'
+    ? CURSOR_GLOW_COLORS.defaultBlack
+    : CURSOR_GLOW_COLORS.defaultWhite;
 };
 
 const detectInteractive = (x: number, y: number): boolean => {
@@ -101,7 +104,7 @@ const detectInteractive = (x: number, y: number): boolean => {
  *
  * @example
  * ```tsx
- * import { CustomCursor } from '@/components/ui/base/cursor';
+ * import { CustomCursor } from '@/components/cursor/cursor';
  *
  * <CustomCursor
  *   variation="crystal-scepter-3"

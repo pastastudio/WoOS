@@ -75,7 +75,7 @@ export default function WandDisplay({
   return (
     <div
       className={cn(
-        'relative aspect-square overflow-hidden rounded border',
+        'relative aspect-square overflow-hidden rounded-none border',
         'border-border/70 bg-muted/40',
         className
       )}
@@ -97,8 +97,8 @@ export default function WandDisplay({
 
       {locked && (
         <div className="pointer-events-none absolute inset-0 grid place-items-center">
-          <div className="flex h-14 w-14 items-center justify-center rounded-md">
-            <LockSolid className="h-10 w-10 text-white/90" />
+          <div className="flex h-14 w-14 items-center justify-center rounded-none">
+            <LockSolid className="text-foreground/90 h-10 w-10" />
           </div>
         </div>
       )}
