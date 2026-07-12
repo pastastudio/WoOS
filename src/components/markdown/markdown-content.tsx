@@ -52,15 +52,11 @@ export function MarkdownContent({
           <Breadcrumb>
             <BreadcrumbList className="text-base">
               <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link href="/">Home</Link>
-                </BreadcrumbLink>
+                <BreadcrumbLink render={<Link href="/">Home</Link>} />
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link href="/information/chapter_1">Information</Link>
-                </BreadcrumbLink>
+                <BreadcrumbLink render={<Link href="/information/chapter_1">Information</Link>} />
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>

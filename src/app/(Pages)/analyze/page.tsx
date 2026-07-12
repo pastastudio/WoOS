@@ -78,7 +78,7 @@ export default function Page() {
       </p>
       <RadarMultiple />
       <h2>Narratives of Users</h2>
-      <Accordion type="single" collapsible className="w-full max-w-2xl">
+      <Accordion className="w-full max-w-2xl">
         <AccordionItem value="windows">
           <AccordionTrigger>Windows</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4">
