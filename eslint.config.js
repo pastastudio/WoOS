@@ -30,7 +30,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ['src/components/ui/base/spinner.tsx', 'src/components/ui/base/question-overview.tsx'],
+    files: ['src/components/loading/image-spinner.tsx', 'src/components/question-overview.tsx'],
     rules: {
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/set-state-in-effect': 'off',

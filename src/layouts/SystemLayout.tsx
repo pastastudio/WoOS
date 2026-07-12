@@ -1,7 +1,7 @@
 'use client';
 
-import Footer, { FooterProps } from '@/components/Footer';
-import Navbar, { NavbarProps } from '@/components/Navbar';
+import Footer, { FooterProps } from '@/layouts/Footer';
+import Navbar, { NavbarProps } from '@/layouts/Navbar';
 import deComponents from '@/i18n/de/components.json';
 import enComponents from '@/i18n/en/components.json';
 import { SupportedLanguage } from '@/lib/language';
@@ -98,7 +98,7 @@ const SystemLayout = ({ children, lang = 'en' }: Readonly<SystemLayoutProps>) =>
     <>
       <Navbar {...navbar} />
       <main>
-        <div className="flex min-h-screen w-full flex-1 items-center justify-center bg-black">
+        <div className="bg-background flex min-h-screen w-full flex-1 items-center justify-center">
           {children}
         </div>
       </main>
