@@ -46,7 +46,7 @@ function CursorSkeletonRow({ name, accent, detail }: SkeletonCursor) {
     <Card className="border-muted-foreground/20 bg-muted/30 border-dashed shadow-none">
       <CardHeader className="flex flex-row items-start gap-4">
         <div
-          className={`size-12 rounded-lg bg-gradient-to-br ${accent} opacity-80 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.35)] blur-[0.4px]`}
+          className={`size-12 rounded-none bg-gradient-to-br ${accent} opacity-80 shadow-lg blur-[0.4px]`}
         />
         <div className="flex-1 space-y-1.5">
           <CardTitle className="flex items-center gap-2 text-base">
@@ -62,9 +62,9 @@ function CursorSkeletonRow({ name, accent, detail }: SkeletonCursor) {
         </div>
       </CardHeader>
       <CardContent className="grid gap-2 sm:grid-cols-3">
-        <div className="bg-foreground/10 h-8 rounded-md" />
-        <div className="bg-foreground/10 h-8 rounded-md" />
-        <div className="bg-foreground/10 hidden h-8 rounded-md sm:block" />
+        <div className="bg-foreground/10 h-8 rounded-none" />
+        <div className="bg-foreground/10 h-8 rounded-none" />
+        <div className="bg-foreground/10 hidden h-8 rounded-none sm:block" />
       </CardContent>
     </Card>
   );
@@ -75,8 +75,8 @@ export default function CursorSelectSkeleton() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <div className="from-background to-muted/50 flex items-center gap-3 rounded-xl border bg-gradient-to-br p-4 shadow-sm">
-        <div className="bg-muted/50 grid size-12 place-items-center rounded-lg border">
+      <div className="from-background to-muted/50 flex items-center gap-3 rounded-none border bg-gradient-to-br p-4 shadow-sm">
+        <div className="bg-muted/50 grid size-12 place-items-center rounded-none border">
           <MousePointer2 className="text-muted-foreground size-5" />
         </div>
         <div className="flex-1 space-y-1">

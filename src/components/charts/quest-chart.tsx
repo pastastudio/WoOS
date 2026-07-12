@@ -37,16 +37,16 @@ function QuestChart({ correctAnswers, wrongAnswers, totalQuestions }: QuestChart
     },
     correct: {
       label: 'Correct Answers',
-      color: '#22c55e', // Green
+      color: 'var(--chart-2)',
     },
     wrong: {
       label: 'Wrong Answers',
-      color: '#ef4444', // Red
+      color: 'var(--destructive)',
     },
   } satisfies ChartConfig;
 
   return (
-    <div className="bg-background w-full max-w-xl rounded-md border p-4">
+    <div className="bg-background w-full max-w-xl rounded-none border p-4">
       <ChartContainer config={chartConfig}>
         <BarChart
           accessibilityLayer
@@ -66,7 +66,7 @@ function QuestChart({ correctAnswers, wrongAnswers, totalQuestions }: QuestChart
             width={150}
           />
           <ChartTooltip content={<ChartTooltipContent hideLabel />} cursor={false} />
-          <Bar dataKey="value" radius={5} />
+          <Bar dataKey="value" radius={0} />
         </BarChart>
       </ChartContainer>
     </div>

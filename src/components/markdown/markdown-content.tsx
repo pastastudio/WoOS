@@ -14,6 +14,8 @@ import { AngleLeft, AngleRight } from '@2hoch1/pixel-icon-library-react';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 
+import { MARKDOWN_ACTIVE_COLOR } from './markdown-colors';
+
 interface MarkdownContentProps {
   title?: string;
   description?: string;
@@ -54,13 +56,13 @@ export function MarkdownContent({
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbLink render={<Link href="/de/information/chapter_1" />}>
+                <BreadcrumbLink render={<Link href="/information/chapter_1" />}>
                   Information
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbPage className="font-medium" style={{ color: '#00a63e' }}>
+                <BreadcrumbPage className="font-medium" style={{ color: MARKDOWN_ACTIVE_COLOR }}>
                   {title}
                 </BreadcrumbPage>
               </BreadcrumbItem>
@@ -98,7 +100,7 @@ export function MarkdownContent({
       {showInfo && (
         <>
           <div className="py-10">
-            <h1 className="mb-3 text-4xl font-bold" style={{ color: '#00a63e' }}>
+            <h1 className="mb-3 text-4xl font-bold" style={{ color: MARKDOWN_ACTIVE_COLOR }}>
               {title}
             </h1>
             {badges.length > 0 && (
@@ -106,7 +108,7 @@ export function MarkdownContent({
                 {badges.map(badge => (
                   <span
                     key={badge}
-                    className="inline-block rounded-full bg-blue-900 px-3 py-1 text-sm text-blue-100"
+                    className="bg-secondary text-secondary-foreground inline-block rounded-full px-3 py-1 text-sm"
                   >
                     {badge}
                   </span>
@@ -124,7 +126,7 @@ export function MarkdownContent({
       <div className="flex flex-col gap-5 py-10">
         <article className="markdown">{children}</article>
         <div className="border p-5 text-center">
-          <p className="text-gray-400">Rating Component (Placeholder)</p>
+          <p className="text-muted-foreground">Rating Component (Placeholder)</p>
         </div>
       </div>
 
@@ -136,14 +138,14 @@ export function MarkdownContent({
             {prevUrl ? (
               <Link
                 href={prevUrl}
-                className="border-input bg-background hover:bg-accent hover:text-accent-foreground flex h-12 flex-1 items-center justify-center rounded-md border text-base"
+                className="border-input bg-background hover:bg-accent hover:text-accent-foreground flex h-12 flex-1 items-center justify-center rounded-none border text-base"
               >
                 ← Back
               </Link>
             ) : (
               <button
                 onClick={onBack}
-                className="border-input bg-background hover:bg-accent hover:text-accent-foreground flex h-12 flex-1 items-center justify-center rounded-md border text-base"
+                className="border-input bg-background hover:bg-accent hover:text-accent-foreground flex h-12 flex-1 items-center justify-center rounded-none border text-base"
                 disabled={!onBack}
               >
                 ← Back
@@ -152,14 +154,14 @@ export function MarkdownContent({
             {nextUrl ? (
               <Link
                 href={nextUrl}
-                className="border-input bg-background hover:bg-accent hover:text-accent-foreground flex h-12 flex-1 items-center justify-center rounded-md border text-base"
+                className="border-input bg-background hover:bg-accent hover:text-accent-foreground flex h-12 flex-1 items-center justify-center rounded-none border text-base"
               >
                 Forward →
               </Link>
             ) : (
               <button
                 onClick={onForward}
-                className="border-input bg-background hover:bg-accent hover:text-accent-foreground flex h-12 flex-1 items-center justify-center rounded-md border text-base"
+                className="border-input bg-background hover:bg-accent hover:text-accent-foreground flex h-12 flex-1 items-center justify-center rounded-none border text-base"
                 disabled={!onForward}
               >
                 Forward →

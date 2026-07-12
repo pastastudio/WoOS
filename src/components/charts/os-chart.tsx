@@ -13,6 +13,8 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart';
 
+import { OS_BRAND_COLORS } from './os-colors';
+
 const chartData = [
   { month: 'Individualisation', Windows: 60, Linux: 100, MacOS: 50 },
   { month: 'Data Privacy', Windows: 40, Linux: 90, MacOS: 70 },
@@ -25,15 +27,15 @@ const chartData = [
 const chartConfig = {
   Windows: {
     label: 'Windows',
-    color: '#0078D4', // Microsoft Blue
+    color: OS_BRAND_COLORS.windows,
   },
   Linux: {
     label: 'Linux',
-    color: '#FCC624', // Linux Yellow
+    color: OS_BRAND_COLORS.linux,
   },
   MacOS: {
     label: 'MacOS',
-    color: '#A2AAAD', // Apple Gray
+    color: OS_BRAND_COLORS.macos,
   },
 } satisfies ChartConfig;
 
@@ -103,27 +105,27 @@ function RadarMultiple() {
             {visibility.Windows && (
               <Radar
                 dataKey="Windows"
-                fill="#0078D4"
+                fill={OS_BRAND_COLORS.windows}
                 fillOpacity={0.6}
-                stroke="#0078D4"
+                stroke={OS_BRAND_COLORS.windows}
                 strokeWidth={2}
               />
             )}
             {visibility.Linux && (
               <Radar
                 dataKey="Linux"
-                fill="#FCC624"
+                fill={OS_BRAND_COLORS.linux}
                 fillOpacity={0.6}
-                stroke="#FCC624"
+                stroke={OS_BRAND_COLORS.linux}
                 strokeWidth={2}
               />
             )}
             {visibility.MacOS && (
               <Radar
                 dataKey="MacOS"
-                fill="#A2AAAD"
+                fill={OS_BRAND_COLORS.macos}
                 fillOpacity={0.6}
-                stroke="#A2AAAD"
+                stroke={OS_BRAND_COLORS.macos}
                 strokeWidth={2}
               />
             )}

@@ -1,6 +1,7 @@
 'use client';
 
-import { CircleForm, StarShape } from '@/components/ui/base/shapes';
+import { CURSOR_SPARKLE_COLORS } from '@/components/cursor/cursor-colors';
+import { CircleForm, StarShape } from '@/components/cursor/shapes';
 import { useEffect, useState } from 'react';
 
 interface Sparkle {
@@ -26,7 +27,10 @@ export interface CursorSparkelsProps {
  * <CursorSparkels size={12} color="#FFD700" />
  * ```
  */
-export default function CursorSparkels({ size = 12, color = '#facc15' }: CursorSparkelsProps) {
+export default function CursorSparkels({
+  size = 12,
+  color = CURSOR_SPARKLE_COLORS.default,
+}: CursorSparkelsProps) {
   const [sparkles, setSparkles] = useState<Sparkle[]>([]);
   const minStarPoints = 4;
   const maxStarPoints = 6;

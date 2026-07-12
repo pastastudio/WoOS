@@ -1,6 +1,6 @@
 'use client';
 
-import { FeedbackCard } from '@/components/ui/base/feedback-card';
+import { FeedbackCard } from '@/components/feedback/feedback-card';
 import {
   Carousel,
   CarouselContent,
@@ -14,35 +14,35 @@ import * as React from 'react';
 
 const verifiedBadge = {
   label: (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center gap-1 px-1">
       <UserCheckSolid className="size-3" />
       Verified
     </div>
   ),
   variant: 'secondary' as const,
-  className: 'bg-blue-600 text-white',
+  className: 'bg-primary text-primary-foreground',
 };
 
 const positiveBadge = {
   label: (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center gap-1 px-1">
       <ThumbsupSolid className="size-3" />
       Positive
     </div>
   ),
   variant: 'secondary' as const,
-  className: 'bg-green-600 text-white',
+  className: 'bg-success-600 text-white',
 };
 
 const negativeBadge = {
   label: (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center gap-1 px-1">
       <ThumbsdownSolid className="size-3" />
       Negative
     </div>
   ),
   variant: 'secondary' as const,
-  className: 'bg-red-600 text-white',
+  className: 'bg-error-600 text-white',
 };
 
 interface FeedbackData {

@@ -9,6 +9,8 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart';
 
+import { OS_BRAND_COLORS } from './os-colors';
+
 interface AnalyzeChartProps {
   windowsPercentage: number;
   linuxPercentage: number;
@@ -32,20 +34,20 @@ function AnalyzeChart({ windowsPercentage, linuxPercentage, macosPercentage }: A
     },
     windows: {
       label: 'Windows',
-      color: '#0078D4', // Microsoft Blue
+      color: OS_BRAND_COLORS.windows,
     },
     linux: {
       label: 'Linux',
-      color: '#FCC624', // Linux Yellow
+      color: OS_BRAND_COLORS.linux,
     },
     macos: {
       label: 'macOS',
-      color: '#555555', // Apple Gray
+      color: OS_BRAND_COLORS.macos,
     },
   } satisfies ChartConfig;
 
   return (
-    <div className="bg-background w-full max-w-xl rounded-md border p-4">
+    <div className="bg-background w-full max-w-xl rounded-none border p-4">
       <ChartContainer config={chartConfig}>
         <BarChart accessibilityLayer data={chartData}>
           <CartesianGrid vertical={false} />
@@ -57,7 +59,7 @@ function AnalyzeChart({ windowsPercentage, linuxPercentage, macosPercentage }: A
             tickMargin={10}
           />
           <ChartTooltip content={<ChartTooltipContent hideLabel />} cursor={false} />
-          <Bar dataKey="percentage" radius={8} strokeWidth={2} />
+          <Bar dataKey="percentage" radius={0} strokeWidth={2} />
         </BarChart>
       </ChartContainer>
     </div>

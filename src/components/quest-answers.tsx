@@ -43,7 +43,9 @@ function QuestAnswers({ answers }: QuestAnswersProps) {
             <TableCell className="px-4 font-medium">
               <span
                 className={`inline-flex w-18 items-center justify-center rounded-full px-3 py-1 text-sm font-medium ${
-                  answer.answer === 'correct' ? 'bg-green-600 text-white' : 'bg-red-600 text-white'
+                  answer.answer === 'correct'
+                    ? 'bg-success-600 text-white'
+                    : 'bg-error-600 text-white'
                 }`}
               >
                 {answer.answer}
