@@ -4,8 +4,8 @@ import {
   negativeBadge,
   positiveBadge,
   verifiedBadge,
-} from '@/components/ui/base/feedback-carousel';
-import { ParallaxWindow } from '@/components/ui/base/parallax-window';
+} from '@/components/feedback/feedback-carousel';
+import { ParallaxWindow } from '@/components/parallax-window';
 import { getDictionary } from '@/i18n/getDictionary';
 import { getLocale } from '@/lib/locale';
 import Image from 'next/image';
@@ -83,10 +83,10 @@ export default async function Page() {
     <>
       <div className="block overflow-hidden">
         <ParallaxWindow />
-        <div className="relative z-20 grid grid-cols-1 place-items-center gap-8 bg-black">
-          <div id="deadSpaceBuffer" className="h-25 bg-black"></div>
+        <div className="bg-background relative z-20 grid grid-cols-1 place-items-center gap-8">
+          <div id="deadSpaceBuffer" className="bg-background h-25"></div>
           <div className="h-100 p-8">
-            <h1 className="text-center text-4xl font-bold text-white md:text-5xl lg:text-6xl">
+            <h1 className="text-foreground text-center text-4xl font-bold md:text-5xl">
               <Image
                 src="/images/Banner.png"
                 alt="DM-WT Logo"
@@ -101,24 +101,24 @@ export default async function Page() {
           </div>
           <div className="w-full py-8">
             {/* Top Wave */}
-            <div className="overflow-hidden bg-black">
-              <Wave className="w-full" style={{ color: '#2b542b' }} />
+            <div className="bg-background overflow-hidden">
+              <Wave className="w-full" style={{ color: 'var(--color-footer-brand)' }} />
             </div>
 
             {/* Content Section */}
-            <div className="bg-[#2b542b] px-8 py-12">
+            <div className="bg-footer-brand px-8 py-12">
               <div className="mx-auto max-w-4xl">
-                <h2 className="mb-6 text-3xl font-bold text-white">{homeContent.title}</h2>
-                <div className="mb-8 space-y-4 text-white">
+                <h2 className="text-foreground mb-6 text-3xl font-bold">{homeContent.title}</h2>
+                <div className="text-foreground mb-8 space-y-4">
                   <p>{homeContent.intro.part1}</p>
                   <p>{homeContent.intro.part2}</p>
                   <p>{homeContent.intro.part3}</p>
                 </div>
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                   {infoBoxes.map((box, index) => (
-                    <div key={index} className="rounded-lg border border-white/20 bg-white/5 p-6">
-                      <h3 className="mb-3 text-xl font-semibold text-white">{box.title}</h3>
-                      <p className="text-sm text-gray-200">{box.description}</p>
+                    <div key={index} className="rounded-none border border-white/20 bg-white/5 p-6">
+                      <h3 className="text-foreground mb-3 text-xl font-semibold">{box.title}</h3>
+                      <p className="text-muted-foreground text-sm">{box.description}</p>
                     </div>
                   ))}
                 </div>
@@ -126,8 +126,11 @@ export default async function Page() {
             </div>
 
             {/* Bottom Wave - Rotated 180 degrees */}
-            <div className="overflow-hidden bg-black">
-              <Wave className="w-full rotate-180 transform" style={{ color: '#2b542b' }} />
+            <div className="bg-background overflow-hidden">
+              <Wave
+                className="w-full rotate-180 transform"
+                style={{ color: 'var(--color-footer-brand)' }}
+              />
             </div>
           </div>
           <div className="p-30">

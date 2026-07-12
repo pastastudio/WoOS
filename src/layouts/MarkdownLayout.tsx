@@ -1,4 +1,4 @@
-import { MarkdownSidebar } from '@/components/ui/base/markdown-sidebar';
+import { MarkdownSidebar } from '@/components/markdown/markdown-sidebar';
 import { ReactNode } from 'react';
 
 interface MarkdownLayoutProps {

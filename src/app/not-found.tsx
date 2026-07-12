@@ -1,4 +1,4 @@
-import NotFoundActions from '@/components/ui/base/notfound-actions';
+import NotFoundActions from '@/components/notfound-actions';
 import deSystemFiles from '@/i18n/de/system_files.json';
 import enSystemFiles from '@/i18n/en/system_files.json';
 import { SystemLayout } from '@/layouts/SystemLayout';
@@ -20,9 +20,9 @@ export default function NotFound() {
           <SearchSolid className="text-error-500 h-12 w-12" />
         </div>
 
-        <h1 className="text-2xl font-semibold text-neutral-900">{systemFiles.notFound.title}</h1>
+        <h1 className="text-foreground text-2xl font-semibold">{systemFiles.notFound.title}</h1>
 
-        <p className="max-w-sm text-neutral-500">{systemFiles.notFound.description}</p>
+        <p className="text-muted-foreground max-w-sm">{systemFiles.notFound.description}</p>
 
         <div className="mt-2 flex flex-wrap justify-center gap-3">
           <NotFoundActions
