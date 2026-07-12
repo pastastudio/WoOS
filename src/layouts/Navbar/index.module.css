@@ -21,7 +21,7 @@
 }
 
 .navbar.withBorder {
-  border-bottom: 1px solid rgb(31, 31, 31);
+  border-bottom: 1px solid var(--border);
 }
 
 /* ============================================================================
@@ -35,7 +35,7 @@
 }
 
 .logoContainer:hover {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--muted-foreground);
 }
 
 .logoSvg {
@@ -58,7 +58,7 @@
   gap: 3rem;
   font-size: 1.25rem;
   font-weight: 600;
-  color: white;
+  color: var(--color-default-font);
 }
 
 .linkItem {
@@ -66,7 +66,7 @@
 }
 
 .link:hover {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--muted-foreground);
 }
 
 /* ============================================================================
@@ -96,7 +96,7 @@
 .separator {
   width: 1px;
   height: 1.3rem;
-  background-color: rgba(126, 126, 126, 0.2);
+  background-color: var(--border);
   margin: 0 0.25rem;
 }
 
@@ -106,25 +106,6 @@
 
 .loginButton {
   font-family: var(--font-pixelify);
-  background-color: rgba(255, 255, 255, 0.9);
   font-weight: 600;
-  color: black;
   margin-left: 0.5rem;
-}
-
-.loginButton:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: inherit;
-}
-
-.profileButton {
-  position: relative;
-  background-color: rgba(119, 119, 119, 0.1);
-  border-radius: 100%;
-}
-
-.profileButton:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: inherit;
-  border-radius: 20%;
 }
