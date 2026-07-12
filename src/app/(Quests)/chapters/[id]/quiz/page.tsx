@@ -1,6 +1,6 @@
 'use client';
 
-import { QuizFlow } from '@/components/quiz/quiz-flow';
+import { defaultQuizFlowLabels, QuizFlow } from '@/layouts/Quiz/quiz-flow';
 import { useQuizFlow } from '@/hooks/use-quiz-flow';
 import { useLocale } from '@/providers/locale-provider';
 import type { QuizFlowLabels } from '@/types/quiz';
@@ -21,7 +21,11 @@ export default function QuizPage() {
       .then(module => {
         if (!cancelled) setLabels(module.default as QuizFlowLabels);
       })
-      .catch(error => console.error('Failed to load quiz translations:', error));
+      .catch(error => {
+        console.error('Failed to load quiz translations:', error);
+        // Fall back to the built-in labels instead of hanging on "Loading..." forever.
+        if (!cancelled) setLabels(defaultQuizFlowLabels);
+      });
     return () => {
       cancelled = true;
     };

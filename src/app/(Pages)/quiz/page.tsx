@@ -1,6 +1,6 @@
 'use client';
 
-import { QuizFlow, defaultQuizFlowLabels } from '@/components/quiz/quiz-flow';
+import { QuizFlow, defaultQuizFlowLabels } from '@/layouts/Quiz/quiz-flow';
 import { useQuizFlow } from '@/hooks/use-quiz-flow';
 import { useLocale } from '@/providers/locale-provider';
 import { useRouter, useSearchParams } from 'next/navigation';
