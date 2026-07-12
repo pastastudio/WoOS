@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-export function Spinner() {
+export function ImageSpinner() {
   return (
     <Image
       src="/images/spinner-dark.webp"

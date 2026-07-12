@@ -3,6 +3,8 @@
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import * as React from 'react';
 
+import { SITE_CHROME_BACKGROUND_CLASS } from '@/layouts/site-chrome';
+
 function ParallaxLayer({ children }: { children: React.ReactNode }) {
   const scrollY = useScrollPosition();
 
@@ -34,8 +36,7 @@ const PARALLAX_LAYERS = [
   {
     speed: '2',
     image: '/keyart/layer-0.png',
-    className:
-      'fixed block h-[800px] w-full bg-[#161A24] bg-[length:auto_700px] bg-bottom bg-center bg-repeat-x',
+    className: `fixed block h-[800px] w-full ${SITE_CHROME_BACKGROUND_CLASS} bg-[length:auto_700px] bg-bottom bg-center bg-repeat-x`,
   },
   {
     speed: '7',

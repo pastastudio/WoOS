@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import * as React from 'react';
 
 import { Badge } from '@/components/ui/badge';
@@ -44,7 +45,7 @@ function FeedbackCard({
       <Card
         data-slot="feedback-card"
         className={cn(
-          'border-border m-4 max-h-[264px] max-w-[419px] cursor-pointer overflow-hidden rounded-xl border p-4 shadow-md transition-shadow hover:shadow-lg',
+          'm-4 max-h-[264px] max-w-[419px] cursor-pointer overflow-hidden rounded-none p-4',
           className
         )}
         onClick={() => setOpen(true)}
@@ -53,9 +54,9 @@ function FeedbackCard({
         {/* Header Section with Author and Badges */}
         <div className="border-border flex items-start justify-between gap-5 border-b pb-3">
           <div className="flex items-center gap-2">
-            <Badge className="shrink-0 rounded-full ps-[3px] text-xs" variant="outline">
+            <Badge className="shrink-0 ps-[3px] text-xs" variant="outline">
               {author.avatarUrl && (
-                <img
+                <Image
                   src={author.avatarUrl}
                   alt={author.name}
                   className="h-4 w-4 rounded-full"
@@ -65,7 +66,7 @@ function FeedbackCard({
               )}
               <span>{author.name}</span>
             </Badge>
-            {wand && <img src={wand} alt="" className="h-4 w-4" height={16} width={16} />}
+            {wand && <Image src={wand} alt="" className="h-4 w-4" height={16} width={16} />}
           </div>
           {badges && badges.length > 0 && (
             <div className="flex flex-wrap justify-end gap-1.5">
@@ -86,15 +87,7 @@ function FeedbackCard({
         {(description || children) && (
           <CardContent className="px-0 pt-0">
             {description && (
-              <div
-                className="text-foreground/70 overflow-hidden text-xs leading-relaxed"
-                style={{
-                  display: '-webkit-box',
-                  WebkitLineClamp: 6,
-                  WebkitBoxOrient: 'vertical',
-                  overflow: 'hidden',
-                }}
-              >
+              <div className="text-foreground/70 line-clamp-6 text-xs leading-relaxed">
                 {description}
               </div>
             )}
@@ -115,9 +108,9 @@ function FeedbackCard({
           <DialogHeader className="border-border mb-3 border-b pb-3">
             <DialogTitle className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2">
-                <Badge className="rounded-full ps-[3px] text-sm" variant="outline">
+                <Badge className="ps-[3px] text-sm" variant="outline">
                   {author.avatarUrl && (
-                    <img
+                    <Image
                       src={author.avatarUrl}
                       alt={author.name}
                       className="h-5 w-5 rounded-full"
@@ -127,9 +120,7 @@ function FeedbackCard({
                   )}
                   <span>{author.name}</span>
                 </Badge>
-                {wand && (
-                  <img src={wand} alt="" className="h-5 w-5 rounded-full" height={20} width={20} />
-                )}
+                {wand && <Image src={wand} alt="" className="h-5 w-5" height={20} width={20} />}
               </div>
               {badges && badges.length > 0 && (
                 <div className="flex flex-wrap gap-1.5">
@@ -146,11 +137,9 @@ function FeedbackCard({
               )}
             </DialogTitle>
           </DialogHeader>
-          <DialogDescription>
-            <div className="text-foreground/80 text-sm leading-relaxed whitespace-pre-wrap">
-              {description}
-              {children}
-            </div>
+          <DialogDescription className="text-foreground/80 whitespace-pre-wrap">
+            {description}
+            {children}
           </DialogDescription>
           {footer && (
             <div className="text-muted-foreground mt-4 border-t pt-4 text-xs">{footer}</div>

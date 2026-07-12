@@ -45,7 +45,7 @@ export default function Banner({ position, message, color }: BannerProps): React
         className={`fixed inset-x-0 ${wrapperPositionClass} pointer-events-none z-50 flex justify-center`}
       >
         <div
-          className={`pointer-events-auto mx-auto flex w-4/6 max-w-4xl flex-col items-center gap-2 rounded border bg-[var(--banner-color)]/100 p-3`}
+          className={`pointer-events-auto mx-auto flex w-4/6 max-w-4xl flex-col items-center gap-2 rounded-none border bg-[var(--banner-color)]/100 p-3`}
         >
           <div className="text-center">{message}</div>
           <Button onClick={handleClose} />

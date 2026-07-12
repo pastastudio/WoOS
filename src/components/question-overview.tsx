@@ -35,6 +35,27 @@ interface QuestionOverviewProps {
   };
 }
 
+interface ChapterStatus {
+  isUnlocked: boolean;
+  isCompleted: boolean;
+  isNext: boolean;
+  alignRight: boolean;
+}
+
+/** Derives a chapter's timeline display state: unlock/completion/highlight/alignment. */
+function deriveChapterStatus(
+  index: number,
+  unlockedCount: number,
+  completedChapters: number[]
+): ChapterStatus {
+  const isUnlocked = index < unlockedCount;
+  const isCompleted = completedChapters.includes(index + 1);
+  const isNext = index === unlockedCount - 1 && !isCompleted;
+  const alignRight = index % 2 === 1;
+
+  return { isUnlocked, isCompleted, isNext, alignRight };
+}
+
 /**
  * Component displaying chapters in a timeline layout with alternating positions
  * Handles unlock state, completion tracking, and sequential navigation
@@ -62,14 +83,11 @@ export function QuestionOverview({ quizzes, completedCount, translations }: Ques
 
         {/* Map through all chapters and render buttons */}
         {quizzes.map((quiz, index) => {
-          // Determine unlock state: chapters unlock sequentially
-          const isUnlocked = index < unlockedCount;
-          // Check if chapter is completed from cookie
-          const isCompleted = completedChapters.includes(index + 1);
-          // Highlight the next available chapter
-          const isNext = index === unlockedCount - 1 && !isCompleted;
-          // Alternate button positions (left/right) for visual interest
-          const alignRight = index % 2 === 1;
+          const { isUnlocked, isCompleted, isNext, alignRight } = deriveChapterStatus(
+            index,
+            unlockedCount,
+            completedChapters
+          );
 
           return (
             <div
@@ -96,7 +114,9 @@ export function QuestionOverview({ quizzes, completedCount, translations }: Ques
                   className={cn(
                     'h-auto w-[340px] flex-col items-start gap-0 px-5 py-4 text-left shadow-sm transition-transform',
                     isUnlocked && 'hover:-translate-y-0.5 hover:shadow-md',
-                    isCompleted && 'bg-white text-black hover:bg-neutral-200',
+                    // neutral-* is an inverted scale in this app (low = dark, high = light),
+                    // so the hover shade must use a *high* number to stay light like bg-white.
+                    isCompleted && 'bg-white text-black hover:bg-neutral-800',
                     isNext && 'ring-primary/60 ring-2 ring-offset-2'
                   )}
                 >
