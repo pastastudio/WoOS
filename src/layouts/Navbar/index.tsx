@@ -8,7 +8,7 @@ import BannerSvg from '@/assets/banner.svg';
 import LogoSvg from '@/assets/logo.svg';
 // TODO: Uncomment when auth is ready
 // import { auth } from '@/auth';
-import { SearchBarToggle } from '@/components/ui/base/searchbar-toggle';
+import { SearchBarToggle } from '@/components/searchbar-toggle';
 
 import styles from './index.module.css';
 
@@ -76,12 +76,7 @@ const LoginButton = (): ReactElement => {
 const ProfileButton = (): ReactElement => {
   return (
     <Link href="/profile" passHref>
-      <Button
-        variant="ghost"
-        size="icon"
-        className={styles.profileButton}
-        aria-label="Profil öffnen"
-      >
+      <Button variant="ghost" size="icon" aria-label="Profil öffnen">
         <UserSolid />
       </Button>
     </Link>
@@ -152,8 +147,9 @@ export default function Navbar({
 
   // Inline styles for dynamic colors
   const navbarStyles = {
-    backgroundColor: backgroundColor === false ? 'transparent' : backgroundColor || '#0a0a0a',
-    color: frontColor || 'white',
+    backgroundColor:
+      backgroundColor === false ? 'transparent' : backgroundColor || 'var(--background)',
+    color: frontColor || 'var(--foreground)',
   };
 
   return (
@@ -170,7 +166,7 @@ export default function Navbar({
       {/* Center Section: Navigation Links */}
       <nav className={styles.centerNav}>{links && <NavLinks links={links} />}</nav>
 
-      {/* Right Section: Search, Theme Toggle, Login/Profile */}
+      {/* Right Section: Search, Login/Profile */}
       <RightSection searchBar={searchBar} loginButton={loginButton} session={session} />
     </header>
   );

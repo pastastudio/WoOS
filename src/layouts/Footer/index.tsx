@@ -39,8 +39,8 @@ export interface FooterProps {
  * @param {boolean} props.logo - Whether to display the logo.
  * @param {boolean} props.banner - Whether to display the banner (defaults to true).
  * @param {boolean} props.showWave - Whether to display the wave decoration (defaults to true).
- * @param {string} props.color - The background color for the footer and wave color (defaults to #2b542b).
- * @param {string} props.waveBackgroundColor - The background color for the wave section (defaults to black).
+ * @param {string} props.color - The background color for the footer and wave color (defaults to the footer brand token).
+ * @param {string} props.waveBackgroundColor - The background color for the wave section (defaults to the app background token).
  * @returns {ReactElement} The Footer component.
  */
 export default function Footer({
@@ -52,8 +52,8 @@ export default function Footer({
   logo = false,
   banner = true,
   showWave = true,
-  color = '#2b542b',
-  waveBackgroundColor = '#0a0a0a',
+  color = 'var(--color-footer-brand)',
+  waveBackgroundColor = 'var(--background)',
 }: FooterProps): ReactElement {
   return (
     <footer>
