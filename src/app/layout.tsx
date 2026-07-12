@@ -1,14 +1,15 @@
-import { CustomCursor } from '@/components/ui/base/cursor';
+import { CustomCursor } from '@/components/cursor/cursor';
 import { getLocale } from '@/lib/locale';
 import { getSiteUrl } from '@/lib/server-utils';
 import { LocaleProvider } from '@/providers/locale-provider';
 import { PreloadProvider } from '@/providers/preload-provider';
 import { QuizProvider } from '@/providers/quiz-provider';
 import { SmoothScrollProvider } from '@/providers/scroll-provider';
-import '@/styles/globals.css';
+import { TooltipProvider } from '@/components/ui/tooltip';
+import './globals.css';
 import { Metadata } from 'next';
 import React from 'react';
-import { geist, jersey10, pixelifySans } from './fonts';
+import { fontVariables } from './fonts';
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
@@ -62,16 +63,18 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const lang = await getLocale();
 
   return (
-    <html lang={lang} suppressHydrationWarning>
-      <body className={`${geist.variable} ${pixelifySans.variable} ${jersey10.variable}`}>
+    <html lang={lang} suppressHydrationWarning className={fontVariables}>
+      <body>
         <CustomCursor variation="flowerstaff-4" enableGlow enableSparkles />
-        <SmoothScrollProvider>
-          <PreloadProvider>
-            <QuizProvider>
-              <LocaleProvider locale={lang}>{children}</LocaleProvider>
-            </QuizProvider>
-          </PreloadProvider>
-        </SmoothScrollProvider>
+        <TooltipProvider>
+          <SmoothScrollProvider>
+            <PreloadProvider>
+              <QuizProvider>
+                <LocaleProvider locale={lang}>{children}</LocaleProvider>
+              </QuizProvider>
+            </PreloadProvider>
+          </SmoothScrollProvider>
+        </TooltipProvider>
       </body>
     </html>
   );

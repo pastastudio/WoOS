@@ -25,9 +25,9 @@ export default function Forbidden() {
           <ExclamationTriangleSolid className="text-error-500 h-12 w-12" />
         </div>
 
-        <h1 className="text-2xl font-semibold text-neutral-900">{systemFiles.forbidden.title}</h1>
+        <h1 className="text-foreground text-2xl font-semibold">{systemFiles.forbidden.title}</h1>
 
-        <p className="max-w-sm text-neutral-500">{systemFiles.forbidden.description}</p>
+        <p className="text-muted-foreground max-w-sm">{systemFiles.forbidden.description}</p>
 
         <div className="mt-2 flex flex-wrap justify-center gap-3">
           <Button onClick={() => router.back()}>{systemFiles.forbidden.buttons.back}</Button>

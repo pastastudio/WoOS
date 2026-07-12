@@ -1,6 +1,6 @@
 'use client';
 
-import { Spinner } from '@/components/ui/base/spinner';
+import { LoadingScreen } from '@/components/loading/loading-screen';
 import { useAssetPreloader } from '@/hooks/useAssetPreloader';
 import { ReactNode } from 'react';
 
@@ -35,14 +35,7 @@ export function withPagePreload<P extends WithPagePreloadProps>(
 
     // While preloading, show fallback UI
     if (!isPreloaded) {
-      return (
-        props.fallback || (
-          <div className="flex h-screen w-full flex-col items-center justify-center gap-4 bg-black">
-            <Spinner />
-            <p className="animate-pulse text-sm text-neutral-500">Wird geladen…</p>
-          </div>
-        )
-      );
+      return props.fallback || <LoadingScreen />;
     }
 
     // Once preloaded, render the actual component
@@ -65,14 +58,7 @@ export function PagePreload({ children, fallback }: { children: ReactNode; fallb
   const { isPreloaded } = useAssetPreloader();
 
   if (!isPreloaded) {
-    return (
-      fallback || (
-        <div className="flex h-screen w-full flex-col items-center justify-center gap-4 bg-black">
-          <Spinner />
-          <p className="animate-pulse text-sm text-neutral-500">Wird geladen…</p>
-        </div>
-      )
-    );
+    return fallback || <LoadingScreen />;
   }
 
   return <>{children}</>;

@@ -6,23 +6,14 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { AnalyzeChart } from '@/components/ui/base/analyze-chart';
-import RadarMultiple from '@/components/ui/base/os-chart';
-import { QuestAnswers, type QuestAnswer } from '@/components/ui/base/quest-answers';
-import { QuestChart } from '@/components/ui/base/quest-chart';
+import { AnalyzeChart } from '@/components/charts/analyze-chart';
+import RadarMultiple from '@/components/charts/os-chart';
+import { QuestAnswers, type QuestAnswer } from '@/components/quest-answers';
+import { QuestChart } from '@/components/charts/quest-chart';
 import { Button } from '@/components/ui/button';
 import { useQuizContext } from '@/context/quiz-context';
+import { computeOsCounts, toPercentage } from '@/lib/analyze';
 import Link from 'next/link';
-
-type OsCategory = 'windows' | 'linux' | 'macos';
-
-function normalizeOsCategory(value: string): OsCategory | null {
-  const lower = value.toLowerCase();
-  if (lower.includes('windows')) return 'windows';
-  if (lower.includes('linux')) return 'linux';
-  if (lower.includes('mac')) return 'macos';
-  return null;
-}
 
 export default function Page() {
   const { state } = useQuizContext();
@@ -41,18 +32,9 @@ export default function Page() {
     );
   }
 
-  const osCounts: Record<OsCategory, number> = { windows: 0, linux: 0, macos: 0 };
-  state.personalQuestions.forEach((question, index) => {
-    const answerKey = state.personalAnswers[index];
-    if (!answerKey) return;
-    const category = question.options[`_${answerKey}` as keyof typeof question.options];
-    const normalized = category ? normalizeOsCategory(category) : null;
-    if (normalized) osCounts[normalized] += 1;
-  });
-
+  const osCounts = computeOsCounts(state.personalQuestions, state.personalAnswers);
   const totalAnswered = osCounts.windows + osCounts.linux + osCounts.macos;
-  const toPercentage = (count: number) =>
-    totalAnswered ? Math.round((count / totalAnswered) * 100) : 0;
+  const percentage = (count: number) => toPercentage(count, totalAnswered);
 
   // TODO: no ground-truth correct-answer field exists in the question JSON yet
   // (chapter_N.json's `_a/_b/_c` are opaque option ids, not correctness markers),
@@ -86,9 +68,9 @@ export default function Page() {
       />
       <h2>We would suggest based on your answers to use:</h2>
       <AnalyzeChart
-        windowsPercentage={toPercentage(osCounts.windows)}
-        linuxPercentage={toPercentage(osCounts.linux)}
-        macosPercentage={toPercentage(osCounts.macos)}
+        windowsPercentage={percentage(osCounts.windows)}
+        linuxPercentage={percentage(osCounts.linux)}
+        macosPercentage={percentage(osCounts.macos)}
       />
       <QuestAnswers answers={questAnswersData} />
       <p className="text-muted-foreground max-w-2xl text-xs">

@@ -10,7 +10,7 @@ function DiscordProvider() {
   return (
     <Button
       disabled
-      className="w-full cursor-not-allowed bg-[#5865F2] text-white opacity-50 hover:bg-[#5865F2]"
+      className="bg-brand-discord hover:bg-brand-discord w-full cursor-not-allowed text-white opacity-50"
     >
       <Discord /> Discord (Coming Soon)
     </Button>
@@ -18,7 +18,7 @@ function DiscordProvider() {
   // TODO: Re-enable when auth is ready:
   // return (
   //   <form action={loginDiscord}>
-  //     <Button type='submit' className='w-full bg-[#5865F2] text-white hover:bg-[#4752C4]'>
+  //     <Button type='submit' className='w-full bg-brand-discord text-white hover:bg-[#4752C4]'>
   //       <Discord /> Discord
   //     </Button>
   //   </form>
@@ -29,7 +29,7 @@ function GitHubProvider() {
   return (
     <Button
       disabled
-      className="w-full cursor-not-allowed bg-gray-400 text-white opacity-50 hover:bg-gray-400"
+      className="bg-muted hover:bg-muted text-muted-foreground w-full cursor-not-allowed opacity-50"
     >
       <Github /> GitHub (Coming Soon)
     </Button>
@@ -40,7 +40,7 @@ function GoogleProvider() {
   return (
     <Button
       disabled
-      className="w-full cursor-not-allowed bg-gray-400 text-white opacity-50 hover:bg-gray-400"
+      className="bg-muted hover:bg-muted text-muted-foreground w-full cursor-not-allowed opacity-50"
     >
       <Google /> Google (Coming Soon)
     </Button>

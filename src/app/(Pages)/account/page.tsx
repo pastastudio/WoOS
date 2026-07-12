@@ -1,5 +1,6 @@
 'use client';
 
+import { ColorSelectField } from '@/components/account/color-select-field';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
@@ -12,13 +13,6 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useState } from 'react';
 
@@ -28,7 +22,7 @@ export default function Page() {
   return (
     <div className="grid grid-cols-[auto_1fr] gap-8">
       {/* Sidebar */}
-      <div className="bg-muted w-48 rounded-lg p-4">
+      <div className="bg-muted w-48 rounded-none p-4">
         <Tabs value={activeTab} onValueChange={setActiveTab} orientation="vertical">
           <TabsList className="flex h-auto w-full flex-col gap-2">
             <TabsTrigger
@@ -107,45 +101,9 @@ export default function Page() {
               <CardContent className="grid gap-6">
                 <div className="grid gap-3">
                   <div className="grid grid-cols-3 gap-4">
-                    <div>
-                      <Label htmlFor="headers">Headers</Label>
-                      <Select>
-                        <SelectTrigger id="headers">
-                          <SelectValue placeholder="Select color" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="red">Red</SelectItem>
-                          <SelectItem value="blue">Blue</SelectItem>
-                          <SelectItem value="green">Green</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div>
-                      <Label htmlFor="sections">Sections</Label>
-                      <Select>
-                        <SelectTrigger id="sections">
-                          <SelectValue placeholder="Select color" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="red">Red</SelectItem>
-                          <SelectItem value="blue">Blue</SelectItem>
-                          <SelectItem value="green">Green</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div>
-                      <Label htmlFor="text">Text</Label>
-                      <Select>
-                        <SelectTrigger id="text">
-                          <SelectValue placeholder="Select color" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="red">Red</SelectItem>
-                          <SelectItem value="blue">Blue</SelectItem>
-                          <SelectItem value="green">Green</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
+                    <ColorSelectField id="headers" label="Headers" />
+                    <ColorSelectField id="sections" label="Sections" />
+                    <ColorSelectField id="text" label="Text" />
                   </div>
                 </div>
                 <div className="grid gap-3">

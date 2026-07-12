@@ -16,7 +16,7 @@ export default function Loading() {
   return (
     <SystemLayout lang="en">
       <div className="animate-scale-in flex flex-col items-center gap-4">
-        <p className="animate-pulse text-sm text-neutral-500">{systemFiles.loading.message}</p>
+        <p className="text-muted-foreground animate-pulse text-sm">{systemFiles.loading.message}</p>
       </div>
     </SystemLayout>
   );

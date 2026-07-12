@@ -1,67 +1,13 @@
-import { MarkdownContentWrapper } from '@/components/ui/base/markdown-content-wrapper';
-import { MarkdownToc } from '@/components/ui/base/markdown-toc';
+import { generateNavigationSidebar } from '@/components/markdown/navigation-sidebar';
+import { MarkdownContent } from '@/components/markdown/markdown-content';
+import { MarkdownToc } from '@/components/markdown/markdown-toc';
 import { PagePreload } from '@/components/withPagePreload';
 import { MarkdownLayout } from '@/layouts/MarkdownLayout';
-import { getAllRoutes, getContent, getPageRoute, type RouteEntry } from '@/lib/content';
+import { getAllRoutes, getContent, getPageRoute } from '@/lib/content';
+import { getCircularNavUrl } from '@/lib/information-nav';
 import { getLocale } from '@/lib/locale';
 import { compileMdx } from '@/lib/markdown';
-import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
-
-async function generateNavigationSidebar(
-  locale: string,
-  section: 'information' | 'docs',
-  currentSlug: string
-) {
-  const routes = await getAllRoutes(locale, section);
-
-  if (!routes?.length) {
-    return <p>No entries yet.</p>;
-  }
-
-  return (
-    <nav>
-      <h2 className="text-foreground mb-2 text-base font-semibold">Navigation</h2>
-      <div className="flex flex-col items-end">
-        <ul className="text-muted-foreground space-y-3 pl-3 text-sm">
-          {routes.map(route => {
-            const isActive = route.slug === currentSlug;
-            return (
-              <li key={`${route.lang}-${route.section}-${route.slug}`}>
-                <Link
-                  href={`/${route.section}/${route.slug}`}
-                  className="hover:text-foreground/80 transition-colors"
-                  style={isActive ? { color: '#00a63e' } : undefined}
-                >
-                  {route.title || route.slug}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </nav>
-  );
-}
-
-function getCircularNavUrl(
-  direction: 'prev' | 'next',
-  routes: RouteEntry[],
-  currentSlug: string,
-  section: 'information' | 'docs'
-) {
-  if (!routes?.length) return '#';
-  const currentIndex = routes.findIndex(r => r.slug === currentSlug);
-  if (currentIndex === -1) return '#';
-
-  let nextIndex;
-  if (direction === 'next') {
-    nextIndex = (currentIndex + 1) % routes.length;
-  } else {
-    nextIndex = (currentIndex - 1 + routes.length) % routes.length;
-  }
-  return `/${section}/${routes[nextIndex]?.slug || '#'}`;
-}
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -108,7 +54,7 @@ export default async function Page({ params }: PageProps) {
       <MarkdownLayout
         leftSidebar={navigationSidebar}
         content={
-          <MarkdownContentWrapper
+          <MarkdownContent
             title={(frontmatter as { title?: string } | undefined)?.title}
             description={(frontmatter as { description?: string } | undefined)?.description}
             badges={(frontmatter as { badges?: string[] } | undefined)?.badges}
@@ -116,7 +62,7 @@ export default async function Page({ params }: PageProps) {
             nextUrl={nextUrl}
           >
             {Content}
-          </MarkdownContentWrapper>
+          </MarkdownContent>
         }
         rightSidebar={<MarkdownToc toc={toc} />}
       />
