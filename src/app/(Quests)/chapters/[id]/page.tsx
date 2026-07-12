@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { getLocale } from '@/lib/locale';
@@ -40,7 +42,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
   const { questions, analysis } = questionsData;
 
   return (
-    <div className="relative z-[100] min-h-screen w-full bg-black">
+    <div className="bg-background relative z-[100] min-h-screen w-full">
       <div className="flex flex-col items-center gap-8 px-6 py-12">
         {/* Chapter header */}
         <div className="flex flex-col items-center gap-3 text-center">
@@ -62,15 +64,15 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
 
         {/* Start button */}
         <div className="flex flex-col items-center gap-4">
-          <p className="text-center text-neutral-400">
+          <p className="text-muted-foreground text-center">
             Du wirst zuerst die technischen Fragen beantworten, dann die persönlichen Fragen zur
             Profilierung.
           </p>
-          <a href={`/chapters/${chapterId}/quiz`}>
+          <Link href={`/chapters/${chapterId}/quiz`}>
             <Button size="lg" className="px-8">
               Quiz starten
             </Button>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
