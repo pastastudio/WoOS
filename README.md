@@ -5,10 +5,10 @@
         <a href="https://site.ccp.2hoch1.dev/"><img src="public/images/Banner.png" alt="WoOS banner" width="500" /></a>
     </p>
     <p>
-        <a href="https://github.com/copiedcopypasta/dmwt_WoOS/actions/workflows/ci.yml"><img src="https://github.com/copiedcopypasta/dmwt_WoOS/actions/workflows/ci.yml/badge.svg" alt="Build" /></a>
-        <a href="https://github.com/copiedcopypasta/dmwt_WoOS/deployments/Production"><img src="https://img.shields.io/badge/deployment-Production-blue" alt="Production Deployment" /></a>
-        <img src="https://img.shields.io/github/package-json/dependency-version/copiedcopypasta/dmwt_WoOS/react" alt="React Version" />
-        <img src="https://img.shields.io/github/package-json/dependency-version/copiedcopypasta/dmwt_WoOS/next" alt="Next.js Version" />
+        <a href="https://github.com/pastastudio/WoOS/actions/workflows/tests.yml"><img src="https://github.com/pastastudio/WoOS/actions/workflows/tests.yml/badge.svg" alt="Build" /></a>
+        <a href="https://github.com/pastastudio/WoOS/deployments/Production"><img src="https://img.shields.io/badge/deployment-Production-blue" alt="Production Deployment" /></a>
+        <img src="https://img.shields.io/github/package-json/dependency-version/pastastudio/WoOS/react" alt="React Version" />
+        <img src="https://img.shields.io/github/package-json/dependency-version/pastastudio/WoOS/next" alt="Next.js Version" />
     </p>
 </div>
 
