@@ -68,7 +68,7 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
             Du wirst zuerst die technischen Fragen beantworten, dann die persönlichen Fragen zur
             Profilierung.
           </p>
-          <Link href={`/chapters/${chapterId}/quiz`}>
+          <Link href={`/quests/chapters/${chapterId}/quiz`}>
             <Button size="lg" className="px-8">
               Quiz starten
             </Button>

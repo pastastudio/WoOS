@@ -21,13 +21,13 @@ export default async function Page() {
 
   /**
    * Build the quizzes array with routing information
-   * Routes to: /chapters/{chapter_number} to match new nested route structure
+   * Routes to: /quests/chapters/{chapter_number} to match new nested route structure
    */
   const quizzes: Quiz[] = chaptersData.map((chapter, index) => ({
     id: index + 1,
     title: chapter.title,
     // Routes to chapters nested route with chapter number
-    href: `/chapters/${index + 1}`,
+    href: `/quests/chapters/${index + 1}`,
     blurb: chapter.description,
     slug: `chapter_${index + 1}`,
   }));

@@ -42,7 +42,7 @@ const SystemLayout = ({ children, lang = 'en' }: Readonly<SystemLayoutProps>) =>
           label: components.footer.tests,
           href: 'https://github.com/copiedcopypasta/dmwt_WoOS/deployments',
         },
-        { label: components.footer.analytics, href: `/analyze` },
+        { label: components.footer.analytics, href: `/quests/analyze` },
         {
           label: components.footer.sourceCode,
           href: 'https://github.com/copiedcopypasta/dmwt',

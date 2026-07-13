@@ -39,7 +39,7 @@ export function getSiteNavFooterProps(
         },
         {
           label: dict.footer.resources.analytics,
-          href: `/analyze`,
+          href: `/quests/analyze`,
         },
         {
           label: dict.footer.resources.source,
