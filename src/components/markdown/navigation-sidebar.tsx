@@ -5,7 +5,7 @@ import Link from 'next/link';
 /** Renders the "you are here" navigation list for a markdown section (information/docs). */
 export async function generateNavigationSidebar(
   locale: string,
-  section: 'information' | 'docs',
+  section: 'docs',
   currentSlug: string
 ) {
   const routes = await getAllRoutes(locale, section);

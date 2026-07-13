@@ -5,7 +5,7 @@ export function getCircularNavUrl(
   direction: 'prev' | 'next',
   routes: RouteEntry[],
   currentSlug: string,
-  section: 'information' | 'docs'
+  section: 'docs'
 ) {
   if (!routes?.length) return '#';
   const currentIndex = routes.findIndex(r => r.slug === currentSlug);

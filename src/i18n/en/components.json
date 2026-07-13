@@ -23,7 +23,7 @@
   },
   "navbar": {
     "documentation": "Documentation",
-    "information": "Information",
+    "home": "Home",
     "quests": "Quests"
   }
 }
