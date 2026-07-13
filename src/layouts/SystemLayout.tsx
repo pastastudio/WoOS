@@ -5,6 +5,7 @@ import Navbar, { NavbarProps } from '@/layouts/Navbar';
 import deComponents from '@/i18n/de/components.json';
 import enComponents from '@/i18n/en/components.json';
 import { SupportedLanguage } from '@/lib/language';
+import { BookHeartSolid, HomeSolid, SparklesSolid } from '@2hoch1/pixel-icon-library-react';
 import { ReactNode } from 'react';
 
 interface SystemLayoutProps {
@@ -21,18 +22,12 @@ const SystemLayout = ({ children, lang = 'en' }: Readonly<SystemLayoutProps>) =>
   const components = componentsDict[lang];
 
   const navbar: NavbarProps = {
-    logo: true,
+    logo: false,
     logoUrl: `/`,
     links: [
-      { label: components.navbar.quests, href: `/quests` },
-      {
-        label: components.navbar.information,
-        href: `/information/chapter_1`,
-      },
-      {
-        label: components.navbar.documentation,
-        href: 'https://github.com/copiedcopypasta/dmwt_WoOS/blob/main/README.md',
-      },
+      { label: components.navbar.home, href: `/`, icon: HomeSolid },
+      { label: components.navbar.quests, href: `/quests`, icon: SparklesSolid },
+      { label: components.navbar.documentation, href: `/docs/chapter_1`, icon: BookHeartSolid },
     ],
     searchBar: false,
     loginButton: true,
@@ -57,7 +52,7 @@ const SystemLayout = ({ children, lang = 'en' }: Readonly<SystemLayoutProps>) =>
         { label: components.footer.impressum, href: `/legal` },
         { label: components.footer.datenschutz, href: `/legal` },
         { label: components.footer.cookieSettings, href: `/legal` },
-        { label: components.footer.licenses, href: `/license` },
+        { label: components.footer.licenses, href: `/legal` },
         { label: components.footer.userBindings, href: `/legal` },
       ],
       about: [
@@ -74,7 +69,6 @@ const SystemLayout = ({ children, lang = 'en' }: Readonly<SystemLayoutProps>) =>
       social: [
         { label: components.footer.feedback, href: `/feedback` },
         { label: components.footer.contact, href: `/legal` },
-        { label: components.footer.faq, href: `/faq` },
       ],
     },
     sozials: [

@@ -93,7 +93,7 @@ export const packageUtils = {
       const cnamePath = path.join(process.cwd(), 'CNAME');
 
       if (!fs.existsSync(cnamePath)) {
-        console.warn('CNAME file not found');
+        // Expected in local dev / non-GitHub-Pages deployments; not an error.
         return null;
       }
 
