@@ -68,7 +68,7 @@ export default function QuizPage() {
       onStartPersonalQuestions={quiz.handleStartPersonalQuestions}
       onCompleteAnalyze={quiz.handleCompleteAnalyze}
       onBackToQuests={() => router.push(`/quests`)}
-      onViewAnalysis={() => router.push(`/analyze`)}
+      onViewAnalysis={() => router.push(`/quests/analyze`)}
     />
   );
 }
