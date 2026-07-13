@@ -1,6 +1,7 @@
 import type { getDictionary } from '@/lib/i18n';
 import type { FooterProps } from '@/layouts/Footer';
 import type { NavbarProps } from '@/layouts/Navbar';
+import { BookHeartSolid, HomeSolid, SparklesSolid } from '@2hoch1/pixel-icon-library-react';
 
 type Dictionary = Awaited<ReturnType<typeof getDictionary>>;
 
@@ -16,15 +17,12 @@ export function getSiteNavFooterProps(
   options?: { withBackground?: boolean }
 ): { navbar: NavbarProps; footer: FooterProps } {
   const navbar: NavbarProps = {
-    logo: true,
+    logo: false,
     logoUrl: `/`,
     links: [
-      { label: dict.nav.quests, href: `/quests` },
-      { label: dict.nav.info, href: `/information/chapter_1` },
-      {
-        label: dict.nav.docs,
-        href: `https://github.com/copiedcopypasta/dmwt_WoOS/blob/main/README.md`,
-      },
+      { label: dict.nav.home, href: `/`, icon: HomeSolid },
+      { label: dict.nav.quests, href: `/quests`, icon: SparklesSolid },
+      { label: dict.nav.docs, href: `/docs/chapter_1`, icon: BookHeartSolid },
     ],
     searchBar: false,
     loginButton: true,
@@ -51,7 +49,7 @@ export function getSiteNavFooterProps(
       legal: [
         { label: dict.footer.legal.imprint, href: `/legal` },
         { label: dict.footer.legal.privacy, href: `/legal` },
-        { label: dict.footer.legal.licenses, href: `/license` },
+        { label: dict.footer.legal.licenses, href: `/legal` },
         { label: dict.footer.legal.bindings, href: `/legal` },
       ],
       about: [
@@ -71,7 +69,6 @@ export function getSiteNavFooterProps(
       social: [
         { label: dict.footer.social.feedback, href: `/feedback` },
         { label: dict.footer.social.contact, href: `/legal` },
-        { label: dict.footer.social.faq, href: `/faq` },
       ],
     },
     sozials: [

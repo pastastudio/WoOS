@@ -41,7 +41,7 @@
     "version": "changeset version"
   },
   "dependencies": {
-    "@2hoch1/pixel-icon-library-react": "^1.1.1",
+    "@2hoch1/pixel-icon-library-react": "^2.0.1",
     "@auth/prisma-adapter": "^2.11.1",
     "@base-ui/react": "^1.1.0",
     "@prisma/client": "^7.8.0",

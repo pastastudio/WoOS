@@ -3,7 +3,7 @@ import path from 'path';
 
 export type RouteEntry = {
   lang: string;
-  section: 'information' | 'docs';
+  section: 'docs';
   slug: string; // slug used in URL and navigation
   title?: string; // title from frontmatter
 };
@@ -46,7 +46,7 @@ function readFrontmatterTitle(filePath: string): string | undefined {
   return undefined;
 }
 
-function listContentFiles(locale: string, section: 'information' | 'docs') {
+function listContentFiles(locale: string, section: 'docs') {
   const dirPath = path.join(CONTENT_DIR, locale, section);
   if (!fs.existsSync(dirPath)) return [] as string[];
   return fs
@@ -81,7 +81,7 @@ export function getRootContent(locale: string, slug: string) {
   return { source, filePath: match } as const;
 }
 
-export function getContent(locale: string, section: 'information' | 'docs', slug: string) {
+export function getContent(locale: string, section: 'docs', slug: string) {
   // slug may be a frontmatter filename; resolve by scanning files
   const files = listContentFiles(locale, section);
   const match = files.find(file => {
@@ -99,14 +99,14 @@ export function getContent(locale: string, section: 'information' | 'docs', slug
   return { source, filePath: match } as const;
 }
 
-export function getAllSlugs(lang: string, section: 'information' | 'docs'): string[] {
+export function getAllSlugs(lang: string, section: 'docs'): string[] {
   return listContentFiles(lang, section).map(file => {
     const fmName = readFrontmatterFilename(file);
     return fmName ?? path.basename(file, '.mdx');
   });
 }
 
-export function getAllRoutes(lang: string, section: 'information' | 'docs'): RouteEntry[] {
+export function getAllRoutes(lang: string, section: 'docs'): RouteEntry[] {
   return listContentFiles(lang, section).map(file => ({
     lang,
     section,
@@ -115,11 +115,7 @@ export function getAllRoutes(lang: string, section: 'information' | 'docs'): Rou
   }));
 }
 
-export function getPageRoute(
-  lang: string,
-  section: 'information' | 'docs',
-  slug: string
-): RouteEntry {
+export function getPageRoute(lang: string, section: 'docs', slug: string): RouteEntry {
   const files = listContentFiles(lang, section);
   const match = files.find(file => {
     const fmName = readFrontmatterFilename(file);

@@ -56,7 +56,7 @@ export function MarkdownContent({
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbLink render={<Link href="/information/chapter_1">Information</Link>} />
+                <BreadcrumbLink render={<Link href="/docs/chapter_1">Docs</Link>} />
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>

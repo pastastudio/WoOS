@@ -16,7 +16,7 @@ interface PageProps {
 export default async function Page({ params }: PageProps) {
   const { slug } = await params;
   const lang = await getLocale();
-  const section: 'information' | 'docs' = 'information';
+  const section = 'docs' as const;
 
   try {
     getPageRoute(lang, section, slug);
