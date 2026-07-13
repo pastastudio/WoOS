@@ -106,9 +106,9 @@ function FeedbackCard({
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-h-[80vh] max-w-2xl overflow-y-auto" showCloseButton={false}>
           <DialogHeader className="border-border mb-3 border-b pb-3">
-            <DialogTitle className="flex items-center justify-between gap-2">
-              <div className="flex items-center gap-2">
-                <Badge className="ps-[3px] text-sm" variant="outline">
+            <DialogTitle className="grid w-full min-w-0 grid-cols-[minmax(0,1fr)_auto] items-start gap-x-3 gap-y-1">
+              <div className="min-w-0">
+                <Badge className="max-w-full min-w-0 shrink ps-[3px] text-sm" variant="outline">
                   {author.avatarUrl && (
                     <Image
                       src={author.avatarUrl}
@@ -118,17 +118,17 @@ function FeedbackCard({
                       width={20}
                     />
                   )}
-                  <span>{author.name}</span>
+                  <span className="min-w-0 truncate">{author.name}</span>
                 </Badge>
                 {wand && <Image src={wand} alt="" className="h-5 w-5" height={20} width={20} />}
               </div>
               {badges && badges.length > 0 && (
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex shrink-0 flex-nowrap gap-1.5">
                   {badges.map((badge, index) => (
                     <Badge
                       key={index}
                       variant={badge.variant || 'secondary'}
-                      className={cn('shrink-0 text-xs', badge.className)}
+                      className={cn('shrink-0 text-xs whitespace-nowrap', badge.className)}
                     >
                       {badge.label}
                     </Badge>
