@@ -1,5 +1,5 @@
-import Footer from '@/layouts/Footer';
-import Navbar from '@/layouts/Navbar';
+import Footer from '@/layouts/FooterLayout';
+import Navbar from '@/layouts/NavbarLayout';
 import { getSiteNavFooterProps, SITE_CHROME_BACKGROUND_CLASS } from '@/layouts/site-chrome';
 import { getDictionary } from '@/lib/i18n';
 import { getLocale } from '@/lib/locale';

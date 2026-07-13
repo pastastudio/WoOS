@@ -1,6 +1,6 @@
 import type { getDictionary } from '@/lib/i18n';
-import type { FooterProps } from '@/layouts/Footer';
-import type { NavbarProps } from '@/layouts/Navbar';
+import type { FooterProps } from '@/layouts/FooterLayout';
+import type { NavbarProps } from '@/layouts/NavbarLayout';
 import { BookHeartSolid, HomeSolid, SparklesSolid } from '@2hoch1/pixel-icon-library-react';
 
 type Dictionary = Awaited<ReturnType<typeof getDictionary>>;

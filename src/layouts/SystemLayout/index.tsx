@@ -1,7 +1,7 @@
 'use client';
 
-import Footer, { FooterProps } from '@/layouts/Footer';
-import Navbar, { NavbarProps } from '@/layouts/Navbar';
+import Footer, { FooterProps } from '@/layouts/FooterLayout';
+import Navbar, { NavbarProps } from '@/layouts/NavbarLayout';
 import deComponents from '@/i18n/de/components.json';
 import enComponents from '@/i18n/en/components.json';
 import { SupportedLanguage } from '@/lib/language';

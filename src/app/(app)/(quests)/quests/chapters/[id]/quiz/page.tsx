@@ -1,6 +1,6 @@
 'use client';
 
-import { defaultQuizFlowLabels, QuizFlow } from '@/layouts/Quiz/quiz-flow';
+import { defaultQuizFlowLabels, QuizFlow } from '@/layouts/QuizLayout';
 import { useQuizFlow } from '@/hooks/use-quiz-flow';
 import { useLocale } from '@/providers/locale-provider';
 import type { QuizFlowLabels } from '@/types/quiz';
