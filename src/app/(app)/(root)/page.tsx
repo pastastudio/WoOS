@@ -28,48 +28,66 @@ type HomeContent = {
 const feedbackData = [
   {
     author: {
-      name: 'Craemon',
+      name: 'Misi Multari',
       avatarUrl: '/images/Logo.png',
     },
     description:
-      'TIch bin seit Ende 2023 Kunde bei Nexo und nutze hauptsächlich KVM-Server. Schon damals mit den Xeon KVMs war ich sehr zufrieden – mittlerweile bin ich auf nen Ryzen KVM (R7 7950X3D) umgestiegen und der läuft sogar noch besser als mein Kühlschrank haha Nexo setzt bei der Hardware nur auf Top-Niveau (finde ich zumindest), insbesondere bei den CPUs. Seit Kurzem nutze ich auch einen größeren Webspace und kann auch dort nur Positives berichten – stabil, schnell und zuverlässig. Der Support ist ebenfalls prima. Wenn es mal zu Problemen oder einer Downtime kommen, kümmert sich der Inhaber schnell und engagiert darum, dass alles wieder läuft - Sowas sollten sich andere Hoster mal als Beispiel nehmen^^ All-in-One: Ich bin absolut zufrieden. So einen Hoster wie Nexo findet man heutzutage gar nicht mehr :D',
-    badges: [verifiedBadge, negativeBadge],
-  },
-  {
-    author: {
-      name: 'MaxUser',
-      avatarUrl: '/images/Logo.png',
-    },
-    description:
-      'Excellent service and support! The team responds quickly to any questions or issues. The infrastructure is reliable and the performance is outstanding. Highly recommended for anyone looking for professional hosting solutions. I have been very impressed with the quality of service provided.',
+      'As someone who mainly uses Windows for everyday stuff, I liked how the home page explains the idea fast. The structure is clear, the visual design feels intentional, and the intro makes the whole thing easy to get into without overexplaining it.',
     badges: [verifiedBadge, positiveBadge],
   },
   {
     author: {
-      name: 'TechPro',
+      name: 'Hans Constantin Dorade',
       avatarUrl: '/images/Logo.png',
     },
     description:
-      'Very happy with the services. The technical team is knowledgeable and always ready to help. The system uptime is impressive and the customer support is beyond expectations. Great value for money. Would definitely recommend to other businesses.',
-    badges: [positiveBadge],
-  },
-  {
-    author: {
-      name: 'DevExpert',
-      avatarUrl: '/images/Logo.png',
-    },
-    description:
-      'Outstanding performance and reliability. The infrastructure is top-notch and the support team is incredibly responsive. They solved all my issues quickly and professionally. This is exactly what I was looking for in a hosting provider.',
+      'As a Linux power user, I actually appreciated the way the site treats operating systems as a real choice instead of a one-size-fits-all answer. The analysis flow makes sense, and the chapter questions push people to think about trade-offs instead of just chasing the “best” option.',
     badges: [verifiedBadge, positiveBadge],
   },
   {
     author: {
-      name: 'CloudUser',
+      name: 'Arthur Philip',
       avatarUrl: '/images/Logo.png',
     },
     description:
-      'Best hosting experience I have had so far. Fast deployment, excellent documentation, and responsive support team. The pricing is competitive and the service quality is exceptional. I recommend this to all my colleagues.',
+      'I’m mostly here for the gaming angle, so the OS comparison chart immediately caught my eye. The Windows, Linux, and macOS toggles are useful, and the strengths chart is fast to scan. Gaming still feels a bit too simplified, but the comparison itself is solid.',
     badges: [positiveBadge],
+  },
+  {
+    author: {
+      name: 'Sofia Greco',
+      avatarUrl: '/images/Logo.png',
+    },
+    description:
+      'I like the sustainability angle because it speaks to how I actually use a laptop day to day. The hardware and settings sections are practical, and the site connects operating-system choices with longer device life instead of treating it as just theory.',
+    badges: [verifiedBadge, positiveBadge],
+  },
+  {
+    author: {
+      name: 'Muster Maxmann',
+      avatarUrl: '/images/Logo.png',
+    },
+    description:
+      'As a student, I like the chapter and quest structure because it gives the site a proper learning path. It feels active instead of static, and the short sections make it easy to keep going without getting lost.',
+    badges: [positiveBadge],
+  },
+  {
+    author: {
+      name: 'John Smith',
+      avatarUrl: '/images/Logo.png',
+    },
+    description:
+      'The narrative sections for Windows, Linux, and macOS feel pretty balanced from a regular user point of view. I like that each system gets its own profile, and the explanations are understandable without assuming too much background knowledge.',
+    badges: [verifiedBadge, positiveBadge],
+  },
+  {
+    author: {
+      name: 'Begench Amanov',
+      avatarUrl: '/images/Logo.png',
+    },
+    description:
+      'Overall the site feels polished and easy to navigate. My only complaint is that a few sections could go deeper, especially once you already know the basics, but for most people the balance between simple and detailed is still good.',
+    badges: [negativeBadge],
   },
 ];
 
