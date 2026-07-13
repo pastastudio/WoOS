@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import type { Links } from '@/types/index';
-import { ExternalLink, UserSolid } from '@2hoch1/pixel-icon-library-react';
+import { UserSolid } from '@2hoch1/pixel-icon-library-react';
 import Link from 'next/link';
 import { Fragment, ReactElement } from 'react';
 
@@ -46,13 +46,17 @@ const LogoComponent = (): ReactElement => {
 const NavLinks = ({ links }: { links: Links[] }): ReactElement => {
   return (
     <ul className={styles.linksList}>
-      {links.map(link => (
-        <li key={link.href} className={styles.linkItem}>
-          <Link href={link.href} className={styles.link}>
-            {link.label}
-          </Link>
-        </li>
-      ))}
+      {links.map(link => {
+        const Icon = link.icon;
+        return (
+          <li key={link.href} className={styles.linkItem}>
+            <Link href={link.href} className={styles.link}>
+              {Icon && <Icon className={styles.linkIcon} />}
+              {link.label}
+            </Link>
+          </li>
+        );
+      })}
     </ul>
   );
 };
@@ -62,9 +66,9 @@ const NavLinks = ({ links }: { links: Links[] }): ReactElement => {
  */
 const LoginButton = (): ReactElement => {
   return (
-    <Link href="/" passHref>
-      <Button variant="ghost" className={styles.loginButton}>
-        Login <ExternalLink />
+    <Link href="/login" passHref>
+      <Button variant="ghost" size="icon" aria-label="Login">
+        <UserSolid className={styles.accountIcon} />
       </Button>
     </Link>
   );
@@ -77,7 +81,7 @@ const ProfileButton = (): ReactElement => {
   return (
     <Link href="/profile" passHref>
       <Button variant="ghost" size="icon" aria-label="Profil öffnen">
-        <UserSolid />
+        <UserSolid className={styles.accountIcon} />
       </Button>
     </Link>
   );
@@ -155,7 +159,7 @@ export default function Navbar({
   return (
     <header className={navbarClasses} style={navbarStyles}>
       {/* Left Section: Logo */}
-      <div>
+      <div className={styles.leftSection}>
         {logo && logoUrl && (
           <Link href={logoUrl} aria-label="Home">
             <LogoComponent />

@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
-import type { ReactNode } from 'react';
+import type { ComponentType, ReactNode } from 'react';
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: () => ReactNode;
@@ -9,6 +9,7 @@ export type NextPageWithLayout = NextPage & {
 export interface Links {
   label: string;
   href: string;
+  icon?: ComponentType<{ className?: string }>;
 }
 
 export interface Sozials {
