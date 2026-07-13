@@ -45,16 +45,16 @@ function FeedbackCard({
       <Card
         data-slot="feedback-card"
         className={cn(
-          'm-4 max-h-[264px] max-w-[419px] cursor-pointer overflow-hidden rounded-none p-4',
+          'm-4 flex h-full max-h-[264px] max-w-[419px] cursor-pointer overflow-hidden rounded-none p-4',
           className
         )}
         onClick={() => setOpen(true)}
         {...props}
       >
         {/* Header Section with Author and Badges */}
-        <div className="border-border flex items-start justify-between gap-5 border-b pb-3">
-          <div className="flex items-center gap-2">
-            <Badge className="shrink-0 ps-[3px] text-xs" variant="outline">
+        <div className="border-border flex items-start justify-between gap-3 border-b pb-3">
+          <div className="min-w-0 flex-1">
+            <Badge className="max-w-full min-w-0 shrink ps-[3px] text-xs" variant="outline">
               {author.avatarUrl && (
                 <Image
                   src={author.avatarUrl}
@@ -64,17 +64,17 @@ function FeedbackCard({
                   width={16}
                 />
               )}
-              <span>{author.name}</span>
+              <span className="min-w-0 truncate">{author.name}</span>
             </Badge>
             {wand && <Image src={wand} alt="" className="h-4 w-4" height={16} width={16} />}
           </div>
           {badges && badges.length > 0 && (
-            <div className="flex flex-wrap justify-end gap-1.5">
+            <div className="flex shrink-0 flex-nowrap justify-end gap-1.5">
               {badges.map((badge, index) => (
                 <Badge
                   key={index}
                   variant={badge.variant || 'secondary'}
-                  className={cn('shrink-0 text-xs', badge.className)}
+                  className={cn('shrink-0 text-xs whitespace-nowrap', badge.className)}
                 >
                   {badge.label}
                 </Badge>
@@ -85,7 +85,7 @@ function FeedbackCard({
 
         {/* Content Section */}
         {(description || children) && (
-          <CardContent className="px-0 pt-0">
+          <CardContent className="flex-1 px-0 pt-0">
             {description && (
               <div className="text-foreground/70 line-clamp-6 text-xs leading-relaxed">
                 {description}
