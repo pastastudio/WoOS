@@ -54,7 +54,7 @@ function QuestAnswers({ answers }: QuestAnswersProps) {
             <TableCell className="px-4">{answer.question}</TableCell>
             <TableCell className="px-4">{answer.chapterName}</TableCell>
             <TableCell className="px-4 text-right">
-              <Link href={`/informations/${answer.chapterIndex}`}>
+              <Link href={`/docs/${answer.chapterIndex}`}>
                 <Button variant="ghost" size="sm" className="gap-2">
                   View <ArrowRight className="h-4 w-4" />
                 </Button>

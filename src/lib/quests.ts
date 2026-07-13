@@ -30,8 +30,8 @@ export async function getChapterMetadata(
   chapterNumber: number
 ): Promise<{ title: string; description: string }> {
   try {
-    // Reads the chapter_X.mdx file from content/{locale}/info/
-    const { source } = getContent(locale, 'information', `chapter_${chapterNumber}`);
+    // Reads the chapter_X.mdx file from content/{locale}/docs/
+    const { source } = getContent(locale, 'docs', `chapter_${chapterNumber}`);
     // Extracts frontmatter (title, description) from the MDX file
     const { frontmatter } = await compileMdx<ChapterFrontmatter>({ source });
     return {
