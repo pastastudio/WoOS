@@ -1,7 +1,7 @@
 'use client';
 
-import Footer, { FooterProps } from '@/layouts/Footer';
-import Navbar, { NavbarProps } from '@/layouts/Navbar';
+import Footer, { FooterProps } from '@/layouts/FooterLayout';
+import Navbar, { NavbarProps } from '@/layouts/NavbarLayout';
 import deComponents from '@/i18n/de/components.json';
 import enComponents from '@/i18n/en/components.json';
 import { SupportedLanguage } from '@/lib/language';
@@ -42,7 +42,7 @@ const SystemLayout = ({ children, lang = 'en' }: Readonly<SystemLayoutProps>) =>
           label: components.footer.tests,
           href: 'https://github.com/copiedcopypasta/dmwt_WoOS/deployments',
         },
-        { label: components.footer.analytics, href: `/analyze` },
+        { label: components.footer.analytics, href: `/quests/analyze` },
         {
           label: components.footer.sourceCode,
           href: 'https://github.com/copiedcopypasta/dmwt',

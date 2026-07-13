@@ -1,6 +1,6 @@
 'use client';
 
-import { defaultQuizFlowLabels, QuizFlow } from '@/layouts/Quiz/quiz-flow';
+import { defaultQuizFlowLabels, QuizFlow } from '@/layouts/QuizLayout';
 import { useQuizFlow } from '@/hooks/use-quiz-flow';
 import { useLocale } from '@/providers/locale-provider';
 import type { QuizFlowLabels } from '@/types/quiz';
@@ -68,7 +68,7 @@ export default function QuizPage() {
       onStartPersonalQuestions={quiz.handleStartPersonalQuestions}
       onCompleteAnalyze={quiz.handleCompleteAnalyze}
       onBackToQuests={() => router.push(`/quests`)}
-      onViewAnalysis={() => router.push(`/analyze`)}
+      onViewAnalysis={() => router.push(`/quests/analyze`)}
     />
   );
 }

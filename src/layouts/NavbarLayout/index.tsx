@@ -1,6 +1,8 @@
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 import type { Links } from '@/types/index';
 import { UserSolid } from '@2hoch1/pixel-icon-library-react';
+import { cva } from 'class-variance-authority';
 import Link from 'next/link';
 import { Fragment, ReactElement } from 'react';
 
@@ -9,8 +11,6 @@ import LogoSvg from '@/assets/logo.svg';
 // TODO: Uncomment when auth is ready
 // import { auth } from '@/auth';
 import { SearchBarToggle } from '@/components/searchbar-toggle';
-
-import styles from './index.module.css';
 
 export interface NavbarProps {
   logoUrl?: string | null | undefined;
@@ -24,6 +24,23 @@ export interface NavbarProps {
   fixed?: boolean | null | undefined;
 }
 
+const navbarVariants = cva('z-[100] grid h-auto w-auto grid-cols-[1fr_auto_1fr] items-center p-4', {
+  variants: {
+    fixed: {
+      true: 'fixed top-0 right-0 left-0 z-50',
+      false: '',
+    },
+    borderLine: {
+      true: 'border-border border-b',
+      false: '',
+    },
+  },
+  defaultVariants: {
+    fixed: false,
+    borderLine: false,
+  },
+});
+
 // ============================================================================
 // Component Sections
 // ============================================================================
@@ -33,9 +50,9 @@ export interface NavbarProps {
  */
 const LogoComponent = (): ReactElement => {
   return (
-    <div className={styles.logoContainer}>
-      <LogoSvg className={styles.logoSvg} />
-      <BannerSvg className={styles.bannerSvg} />
+    <div className="hover:text-muted-foreground flex items-center gap-3">
+      <LogoSvg className="h-8 w-auto" />
+      <BannerSvg className="h-6 w-auto" />
     </div>
   );
 };
@@ -45,13 +62,13 @@ const LogoComponent = (): ReactElement => {
  */
 const NavLinks = ({ links }: { links: Links[] }): ReactElement => {
   return (
-    <ul className={styles.linksList}>
+    <ul className="font-pixelify flex gap-12 text-xl font-semibold text-[var(--color-default-font)]">
       {links.map(link => {
         const Icon = link.icon;
         return (
-          <li key={link.href} className={styles.linkItem}>
-            <Link href={link.href} className={styles.link}>
-              {Icon && <Icon className={styles.linkIcon} />}
+          <li key={link.href} className="list-none">
+            <Link href={link.href} className="hover:text-muted-foreground flex items-center gap-2">
+              {Icon && <Icon className="size-5" />}
               {link.label}
             </Link>
           </li>
@@ -68,7 +85,7 @@ const LoginButton = (): ReactElement => {
   return (
     <Link href="/login" passHref>
       <Button variant="ghost" size="icon" aria-label="Login">
-        <UserSolid className={styles.accountIcon} />
+        <UserSolid className="size-5" />
       </Button>
     </Link>
   );
@@ -81,7 +98,7 @@ const ProfileButton = (): ReactElement => {
   return (
     <Link href="/profile" passHref>
       <Button variant="ghost" size="icon" aria-label="Profil öffnen">
-        <UserSolid className={styles.accountIcon} />
+        <UserSolid className="size-5" />
       </Button>
     </Link>
   );
@@ -109,12 +126,12 @@ const RightSection = ({
   }
 
   return (
-    <div className={styles.rightSection}>
+    <div className="flex items-center gap-1 justify-self-end">
       {elements.map((element, index) => (
         <Fragment key={`element-${index}`}>
-          <div className={styles.rightElement}>{element}</div>
+          <div className="flex items-center px-[0.3rem]">{element}</div>
           {index < elements.length - 1 && (
-            <div key={`separator-${index}`} className={styles.separator} />
+            <div key={`separator-${index}`} className="bg-border mx-1 h-[1.3rem] w-px" />
           )}
         </Fragment>
       ))}
@@ -144,11 +161,6 @@ export default function Navbar({
   // const session = await auth();
   const session = null; // Placeholder
 
-  // Build navbar classes
-  const navbarClasses = [styles.navbar, fixed && styles.fixed, borderLine && styles.withBorder]
-    .filter(Boolean)
-    .join(' ');
-
   // Inline styles for dynamic colors
   const navbarStyles = {
     backgroundColor:
@@ -157,9 +169,12 @@ export default function Navbar({
   };
 
   return (
-    <header className={navbarClasses} style={navbarStyles}>
+    <header
+      className={cn(navbarVariants({ fixed: Boolean(fixed), borderLine: Boolean(borderLine) }))}
+      style={navbarStyles}
+    >
       {/* Left Section: Logo */}
-      <div className={styles.leftSection}>
+      <div className="justify-self-start">
         {logo && logoUrl && (
           <Link href={logoUrl} aria-label="Home">
             <LogoComponent />
@@ -168,7 +183,9 @@ export default function Navbar({
       </div>
 
       {/* Center Section: Navigation Links */}
-      <nav className={styles.centerNav}>{links && <NavLinks links={links} />}</nav>
+      <nav className="flex justify-center justify-self-center">
+        {links && <NavLinks links={links} />}
+      </nav>
 
       {/* Right Section: Search, Login/Profile */}
       <RightSection searchBar={searchBar} loginButton={loginButton} session={session} />
