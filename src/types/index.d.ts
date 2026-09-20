@@ -15,6 +15,7 @@ export interface Links {
 export interface Sozials {
   href: string;
   altText: string;
+  icon: ComponentType<{ className?: string }>;
 }
 
 export type AppPropsWithLayout = AppProps & {

@@ -1,7 +1,7 @@
 import NotFoundActions from '@/components/notfound-actions';
 import deSystemFiles from '@/i18n/de/system_files.json';
 import enSystemFiles from '@/i18n/en/system_files.json';
-import { SystemLayout } from '@/layouts/SystemLayout';
+import { SiteLayout } from '@/layouts/SiteLayout';
 import { SearchSolid } from '@2hoch1/pixel-icon-library-react';
 
 const systemFilesDict = {
@@ -14,23 +14,25 @@ export default function NotFound() {
   const systemFiles = systemFilesDict.en;
 
   return (
-    <SystemLayout>
-      <div className="flex flex-col items-center gap-4 text-center">
-        <div className="animate-bounce">
-          <SearchSolid className="text-error-500 h-12 w-12" />
-        </div>
+    <SiteLayout>
+      <div className="bg-background flex min-h-screen w-full flex-1 items-center justify-center">
+        <div className="flex flex-col items-center gap-4 text-center">
+          <div className="animate-bounce">
+            <SearchSolid className="text-error-500 h-12 w-12" />
+          </div>
 
-        <h1 className="text-foreground text-2xl font-semibold">{systemFiles.notFound.title}</h1>
+          <h1 className="text-foreground text-2xl font-semibold">{systemFiles.notFound.title}</h1>
 
-        <p className="text-muted-foreground max-w-sm">{systemFiles.notFound.description}</p>
+          <p className="text-muted-foreground max-w-sm">{systemFiles.notFound.description}</p>
 
-        <div className="mt-2 flex flex-wrap justify-center gap-3">
-          <NotFoundActions
-            backText={systemFiles.notFound.buttons.back}
-            homeText={systemFiles.notFound.buttons.home}
-          />
+          <div className="mt-2 flex flex-wrap justify-center gap-3">
+            <NotFoundActions
+              backText={systemFiles.notFound.buttons.back}
+              homeText={systemFiles.notFound.buttons.home}
+            />
+          </div>
         </div>
       </div>
-    </SystemLayout>
+    </SiteLayout>
   );
 }

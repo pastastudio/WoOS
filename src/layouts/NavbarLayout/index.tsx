@@ -1,27 +1,49 @@
 import { Button } from '@/components/ui/button';
+import type { getDictionary } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
+import { LayoutLinkItem } from '@/layouts/shared/link-item';
 import type { Links } from '@/types/index';
-import { UserSolid } from '@2hoch1/pixel-icon-library-react';
-import { cva } from 'class-variance-authority';
+import {
+  BookHeartSolid,
+  HomeSolid,
+  SparklesSolid,
+  UserSolid,
+} from '@2hoch1/pixel-icon-library-react';
+import { cva, type VariantProps } from 'class-variance-authority';
 import Link from 'next/link';
-import { Fragment, ReactElement } from 'react';
+import { Fragment, type ReactElement } from 'react';
+import * as React from 'react';
 
-import BannerSvg from '@/assets/banner.svg';
-import LogoSvg from '@/assets/logo.svg';
-// TODO: Uncomment when auth is ready
-// import { auth } from '@/auth';
-import { SearchBarToggle } from '@/components/searchbar-toggle';
+type Dictionary = Awaited<ReturnType<typeof getDictionary>>;
 
-export interface NavbarProps {
-  logoUrl?: string | null | undefined;
-  logo?: boolean | null | undefined;
-  links: Links[] | null | undefined;
-  searchBar?: boolean | null | undefined;
-  loginButton?: boolean | null | undefined;
-  backgroundColor?: string | false | null | undefined;
-  borderLine?: boolean | null | undefined;
-  frontColor?: string | null | undefined;
-  fixed?: boolean | null | undefined;
+// Must stay in sync with the --color-chrome-background token in globals.css.
+export const SITE_CHROME_BACKGROUND = '#161a24';
+// Literal Tailwind class (not built via template interpolation) so the
+// arbitrary-value utility is statically discoverable by Tailwind's scanner.
+export const SITE_CHROME_BACKGROUND_CLASS = 'bg-[#161a24]';
+
+export interface NavbarData {
+  logoUrl: string;
+  fixed: boolean;
+  backgroundColor?: string;
+  navLinks: Links[];
+}
+
+/** Builds the site navbar's default content from the locale dictionary. */
+export function getNavbarData(
+  dict: Dictionary,
+  options?: { withBackground?: boolean }
+): NavbarData {
+  return {
+    logoUrl: `/`,
+    fixed: false,
+    ...(options?.withBackground ? { backgroundColor: SITE_CHROME_BACKGROUND } : {}),
+    navLinks: [
+      { label: dict.nav.home, href: `/`, icon: HomeSolid },
+      { label: dict.nav.quests, href: `/quests`, icon: SparklesSolid },
+      { label: dict.nav.docs, href: `/docs/chapter_1`, icon: BookHeartSolid },
+    ],
+  };
 }
 
 const navbarVariants = cva('z-[100] grid h-auto w-auto grid-cols-[1fr_auto_1fr] items-center p-4', {
@@ -41,47 +63,120 @@ const navbarVariants = cva('z-[100] grid h-auto w-auto grid-cols-[1fr_auto_1fr] 
   },
 });
 
-// ============================================================================
-// Component Sections
-// ============================================================================
+interface NavbarProps extends React.ComponentProps<'header'>, VariantProps<typeof navbarVariants> {
+  backgroundColor?: string | false;
+  frontColor?: string;
+}
 
-/**
- * Logo component with brand assets
- */
-const LogoComponent = (): ReactElement => {
+function Navbar({
+  className,
+  backgroundColor,
+  frontColor,
+  fixed,
+  borderLine,
+  style,
+  ...props
+}: NavbarProps) {
   return (
-    <div className="hover:text-muted-foreground flex items-center gap-3">
-      <LogoSvg className="h-8 w-auto" />
-      <BannerSvg className="h-6 w-auto" />
+    <header
+      data-slot="navbar"
+      className={cn(navbarVariants({ fixed, borderLine, className }))}
+      style={{
+        backgroundColor:
+          backgroundColor === false ? 'transparent' : backgroundColor || 'var(--background)',
+        color: frontColor || 'var(--foreground)',
+        ...style,
+      }}
+      {...props}
+    />
+  );
+}
+
+function NavbarLogo({
+  className,
+  href = '/',
+  children,
+  ...props
+}: React.ComponentProps<typeof Link>) {
+  return (
+    <Link
+      data-slot="navbar-logo"
+      href={href}
+      aria-label="Home"
+      className={cn(
+        'hover:text-muted-foreground col-start-1 flex items-center gap-3 justify-self-start',
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </Link>
+  );
+}
+
+function NavbarNav({ className, children, ...props }: React.ComponentProps<'ul'>) {
+  return (
+    <nav className="col-start-2 flex justify-center justify-self-center">
+      <ul
+        data-slot="navbar-nav"
+        className={cn(
+          'font-pixelify flex gap-12 text-xl font-semibold text-[var(--color-default-font)]',
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </ul>
+    </nav>
+  );
+}
+
+function NavbarLink({ className, children, ...props }: React.ComponentProps<typeof Link>) {
+  return (
+    <LayoutLinkItem
+      slot="navbar-link"
+      className={cn('hover:text-muted-foreground gap-2', className)}
+      {...props}
+    >
+      {children}
+    </LayoutLinkItem>
+  );
+}
+
+function NavbarActions({ className, children, ...props }: React.ComponentProps<'div'>) {
+  const items = React.Children.toArray(children).filter(Boolean);
+  return (
+    <div
+      data-slot="navbar-actions"
+      className={cn('col-start-3 flex items-center justify-self-end', className)}
+      {...props}
+    >
+      {items.map((item, index) => (
+        <Fragment key={index}>
+          {item}
+          {index < items.length - 1 && (
+            <div data-slot="navbar-actions-separator" className="bg-border mx-1 h-[1.3rem] w-px" />
+          )}
+        </Fragment>
+      ))}
     </div>
   );
-};
+}
 
-/**
- * Navigation links component
- */
-const NavLinks = ({ links }: { links: Links[] }): ReactElement => {
+function NavbarAction({ className, ...props }: React.ComponentProps<'div'>) {
   return (
-    <ul className="font-pixelify flex gap-12 text-xl font-semibold text-[var(--color-default-font)]">
-      {links.map(link => {
-        const Icon = link.icon;
-        return (
-          <li key={link.href} className="list-none">
-            <Link href={link.href} className="hover:text-muted-foreground flex items-center gap-2">
-              {Icon && <Icon className="size-5" />}
-              {link.label}
-            </Link>
-          </li>
-        );
-      })}
-    </ul>
+    <div
+      data-slot="navbar-action"
+      className={cn('flex items-center px-[0.3rem]', className)}
+      {...props}
+    />
   );
-};
+}
 
 /**
  * Login button component
  */
-const LoginButton = (): ReactElement => {
+function LoginButton(): ReactElement {
   return (
     <Link href="/login" passHref>
       <Button variant="ghost" size="icon" aria-label="Login">
@@ -89,12 +184,12 @@ const LoginButton = (): ReactElement => {
       </Button>
     </Link>
   );
-};
+}
 
 /**
  * User profile button component
  */
-const ProfileButton = (): ReactElement => {
+function ProfileButton(): ReactElement {
   return (
     <Link href="/profile" passHref>
       <Button variant="ghost" size="icon" aria-label="Profil öffnen">
@@ -102,93 +197,15 @@ const ProfileButton = (): ReactElement => {
       </Button>
     </Link>
   );
-};
-
-/**
- * Right section component with actions
- */
-const RightSection = ({
-  searchBar,
-  loginButton,
-  session,
-}: {
-  searchBar?: boolean | null;
-  loginButton?: boolean | null;
-  session: unknown;
-}): ReactElement => {
-  const elements = [];
-
-  if (searchBar) elements.push(<SearchBarToggle key="search" />);
-  if (session && typeof session === 'object' && 'user' in session) {
-    elements.push(<ProfileButton key="profile" />);
-  } else if (loginButton) {
-    elements.push(<LoginButton key="login" />);
-  }
-
-  return (
-    <div className="flex items-center gap-1 justify-self-end">
-      {elements.map((element, index) => (
-        <Fragment key={`element-${index}`}>
-          <div className="flex items-center px-[0.3rem]">{element}</div>
-          {index < elements.length - 1 && (
-            <div key={`separator-${index}`} className="bg-border mx-1 h-[1.3rem] w-px" />
-          )}
-        </Fragment>
-      ))}
-    </div>
-  );
-};
-
-/**-
- * Navbar
- * Renders the navigation bar with optional logo, links, search bar, dark mode toggle, and login button.
- *
- * @param {NavbarProps} props - The properties for the Navbar component.
- * @returns {ReactElement} The Navbar component.
- */
-export default function Navbar({
-  logoUrl,
-  logo,
-  links,
-  searchBar,
-  loginButton,
-  backgroundColor,
-  borderLine,
-  frontColor,
-  fixed,
-}: NavbarProps): ReactElement {
-  // TODO: Uncomment when auth is ready
-  // const session = await auth();
-  const session = null; // Placeholder
-
-  // Inline styles for dynamic colors
-  const navbarStyles = {
-    backgroundColor:
-      backgroundColor === false ? 'transparent' : backgroundColor || 'var(--background)',
-    color: frontColor || 'var(--foreground)',
-  };
-
-  return (
-    <header
-      className={cn(navbarVariants({ fixed: Boolean(fixed), borderLine: Boolean(borderLine) }))}
-      style={navbarStyles}
-    >
-      {/* Left Section: Logo */}
-      <div className="justify-self-start">
-        {logo && logoUrl && (
-          <Link href={logoUrl} aria-label="Home">
-            <LogoComponent />
-          </Link>
-        )}
-      </div>
-
-      {/* Center Section: Navigation Links */}
-      <nav className="flex justify-center justify-self-center">
-        {links && <NavLinks links={links} />}
-      </nav>
-
-      {/* Right Section: Search, Login/Profile */}
-      <RightSection searchBar={searchBar} loginButton={loginButton} session={session} />
-    </header>
-  );
 }
+
+export {
+  LoginButton,
+  Navbar,
+  NavbarAction,
+  NavbarActions,
+  NavbarLink,
+  NavbarLogo,
+  NavbarNav,
+  ProfileButton,
+};

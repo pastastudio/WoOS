@@ -3,7 +3,7 @@
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import * as React from 'react';
 
-import { SITE_CHROME_BACKGROUND_CLASS } from '@/layouts/site-chrome';
+import { SITE_CHROME_BACKGROUND_CLASS } from '@/layouts/NavbarLayout';
 
 function ParallaxLayer({ children }: { children: React.ReactNode }) {
   const scrollY = useScrollPosition();

@@ -1,8 +1,6 @@
-'use client';
-
 import deSystemFiles from '@/i18n/de/system_files.json';
 import enSystemFiles from '@/i18n/en/system_files.json';
-import { SystemLayout } from '@/layouts/SystemLayout';
+import { SiteLayout } from '@/layouts/SiteLayout';
 
 const systemFilesDict = {
   de: deSystemFiles,
@@ -14,10 +12,14 @@ export default function Loading() {
   const systemFiles = systemFilesDict.en;
 
   return (
-    <SystemLayout lang="en">
-      <div className="animate-scale-in flex flex-col items-center gap-4">
-        <p className="text-muted-foreground animate-pulse text-sm">{systemFiles.loading.message}</p>
+    <SiteLayout>
+      <div className="bg-background flex min-h-screen w-full flex-1 items-center justify-center">
+        <div className="animate-scale-in flex flex-col items-center gap-4">
+          <p className="text-muted-foreground animate-pulse text-sm">
+            {systemFiles.loading.message}
+          </p>
+        </div>
       </div>
-    </SystemLayout>
+    </SiteLayout>
   );
 }
